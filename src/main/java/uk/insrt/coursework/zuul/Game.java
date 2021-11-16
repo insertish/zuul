@@ -12,7 +12,6 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class Game {
     private World world;
-    private Entity player;
     private CommandManager commands;
     
     private Scanner reader;
@@ -31,7 +30,6 @@ public class Game {
         while (true) {
             this.outputState();
 
-            System.out.print("$ ");
             String[] input = this.reader.nextLine().split("\\s+");
             List<String> args = new ArrayList<>(Arrays.asList(input));
             String cmd = args.remove(0);
@@ -51,7 +49,7 @@ public class Game {
                 continue;
             }
 
-            if (command.run(this, args)) {
+            if (command.run(this.world, args)) {
                 break;
             }
         }
@@ -60,6 +58,6 @@ public class Game {
     }
 
     private void outputState() {
-        System.out.println("\n\nPrint game state here.");
+        System.out.print("\n\n$ ");
     }
 }
