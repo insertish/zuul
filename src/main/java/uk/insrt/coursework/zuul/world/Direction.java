@@ -26,8 +26,9 @@ public enum Direction {
             return Direction.valueOf(directionFormatted);
         } catch (Exception ex) {
             for (Direction dir : Direction.values()) {
-                System.out.println(dir);
-                dir.matches(directionFormatted);
+                if (dir.matches(directionFormatted)) {
+                    return dir;
+                }
             }
     
             return null;

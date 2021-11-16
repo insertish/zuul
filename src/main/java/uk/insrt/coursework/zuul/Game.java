@@ -40,11 +40,6 @@ public class Game {
             Command command = this.commands.getCommand(cmd);
             if (command == null) {
                 System.out.println("Not sure what you're trying to do.");
-
-                try {
-                    Thread.sleep(500);
-                } catch (Exception e) { /* ignore exception */ }
-
                 continue;
             }
 
