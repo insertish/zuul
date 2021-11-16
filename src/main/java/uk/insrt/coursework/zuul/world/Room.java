@@ -12,4 +12,8 @@ public abstract class Room {
     }
 
     public abstract String getAdjacentRoom(Direction dir);
+
+    public boolean hasExit(Direction dir) {
+        return this.getAdjacentRoom(dir) != null;
+    }
 }

@@ -19,7 +19,7 @@ public class Location {
         this.inventory = null;
     }
 
-    public void setInventory(Inventory inventory) {
+    public void setLocation(Inventory inventory) {
         this.room = null;
         this.inventory = inventory;
     }

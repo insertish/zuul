@@ -18,6 +18,16 @@ public enum Direction {
         return this.aliases.contains(direction);
     }
 
+    public Direction flip() {
+        switch (this) {
+            default:
+            case NORTH: return Direction.SOUTH;
+            case EAST: return Direction.WEST;
+            case SOUTH: return Direction.NORTH;
+            case WEST: return Direction.EAST;
+        }
+    }
+
     public static Direction fromString(String direction) {
         if (direction == null) return null;
 

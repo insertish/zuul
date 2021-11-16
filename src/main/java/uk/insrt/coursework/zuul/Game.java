@@ -1,11 +1,7 @@
 package uk.insrt.coursework.zuul;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.commands.CommandManager;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -29,21 +25,8 @@ public class Game {
         while (true) {
             this.outputState();
 
-            String[] input = this.reader.nextLine().split("\\s+");
-            List<String> args = new ArrayList<>(Arrays.asList(input));
-            String cmd = args.remove(0);
-
-            if (cmd == null) {
-                continue;
-            }
-
-            Command command = this.commands.getCommand(cmd);
-            if (command == null) {
-                System.out.println("Not sure what you're trying to do.");
-                continue;
-            }
-
-            if (command.run(this.world, args)) {
+            String input = this.reader.nextLine().toLowerCase();
+            if (this.commands.runCommand(this.world, input)) {
                 break;
             }
         }
@@ -52,6 +35,6 @@ public class Game {
     }
 
     private void outputState() {
-        System.out.print("\n\n$ ");
+        System.out.print("\n$ ");
     }
 }
