@@ -1,22 +1,33 @@
 package uk.insrt.coursework.zuul.world;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum Direction {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST;
+    NORTH(new String[] { "N" }),
+    EAST(new String[] { "E" }),
+    SOUTH(new String[] { "S" }),
+    WEST(new String[] { "W" });
+
+    private List<String> aliases;
+    private Direction(String[] aliases) {
+        this.aliases = Arrays.asList(aliases);
+    }
+
+    private boolean matches(String direction) {
+        return this.aliases.contains(direction);
+    }
 
     public static Direction fromString(String direction) {
         if (direction == null) return null;
 
+        String directionFormatted = direction.toUpperCase();
         try {
-            return Direction.valueOf(direction.toUpperCase());
+            return Direction.valueOf(directionFormatted);
         } catch (Exception ex) {
-            switch (direction) {
-                case "N": return Direction.NORTH;
-                case "E": return Direction.EAST;
-                case "S": return Direction.SOUTH;
-                case "W": return Direction.WEST;
+            for (Direction dir : Direction.values()) {
+                System.out.println(dir);
+                dir.matches(directionFormatted);
             }
     
             return null;

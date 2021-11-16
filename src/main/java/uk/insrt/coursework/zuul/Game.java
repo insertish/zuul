@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.commands.CommandManager;
-import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.world.World;
 
 public class Game {
