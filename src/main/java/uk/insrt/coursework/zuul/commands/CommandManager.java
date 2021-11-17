@@ -9,13 +9,25 @@ import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Command handler which constructs, then resolves
+ * and executes commands from an arbitrary input.
+ */
 public class CommandManager {
     private ArrayList<Command> commands = new ArrayList<>();
 
+    /**
+     * Construct a new CommandManager.
+     * 
+     * You should only need one present at any given time.
+     */
     public CommandManager() {
         this.initialiseCommands();
     }
 
+    /**
+     * Initialise all the commands a player can execute.
+     */
     private void initialiseCommands() {
         this.commands.add(new Command() {
             public Pattern[] getPatterns() {
@@ -36,6 +48,7 @@ public class CommandManager {
                 return false;
             }
         });
+
 
         this.commands.add(new Command() {
             public Pattern[] getPatterns() {
@@ -98,6 +111,12 @@ public class CommandManager {
         });
     }
 
+    /**
+     * Interpret a given command and execute it within the scope of a given world.
+     * @param world Current World object
+     * @param cmd Arbitrary input to match against
+     * @return Boolean indicating whether the game loop should exit.
+     */
     public boolean runCommand(World world, String cmd) {
         for (Command command : this.commands) {
             for (Pattern pattern : command.getPatterns()) {

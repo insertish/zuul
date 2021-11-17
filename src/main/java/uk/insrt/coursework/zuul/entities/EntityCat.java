@@ -3,9 +3,12 @@ package uk.insrt.coursework.zuul.entities;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Cat entity which wanders around the map.
+ */
 public class EntityCat extends Entity {
-    public EntityCat(World world) {
-        super(world, new Location(world.getRoom("starting")), 5);
+    public EntityCat(World world, Location startingLocation) {
+        super(world, startingLocation, 5);
     }
 
     public String[] getAliases() {

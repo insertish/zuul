@@ -5,6 +5,9 @@ import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Player entity which we can control and move around.
+ */
 public class EntityPlayer extends Entity {
     private Room previousRoom;
     private Direction retreatingDirection;
@@ -13,13 +16,14 @@ public class EntityPlayer extends Entity {
         super(world, new Location(world.getRoom("starting")), 70);
     }
 
+    /**
+     * Override method for setLocation which
+     * keeps track of previous room.
+     */
     @Override
     public void setLocation(Room room) {
         this.previousRoom = this.getRoom();
         super.setLocation(room);
-
-        // run events here
-        System.out.println("Entity is now in " + room.getName());
     }
 
     public String[] getAliases() {
@@ -37,6 +41,10 @@ public class EntityPlayer extends Entity {
         return false;
     }
 
+    /**
+     * Move in a direction as instructed by command.
+     * @param direction Target Direction
+     */
     public void go(Direction direction) {
         Room room = this.getRoom();
         if (room == null) {
@@ -54,6 +62,9 @@ public class EntityPlayer extends Entity {
         this.setLocation(this.world.getRoom(destination));
     }
 
+    /**
+     * Move to the previous room the player was in.
+     */
     public void back() {
         if (this.retreatingDirection == null) {
             System.out.println("Nowhere to go back to!");

@@ -8,13 +8,18 @@ import java.util.stream.Collectors;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.EntityCat;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
+import uk.insrt.coursework.zuul.events.Event;
+import uk.insrt.coursework.zuul.events.EventSystem;
 
 public class World {
     private Map<String, Room> rooms = new HashMap<>();
     private Map<String, Entity> entities = new HashMap<>();
     private EntityPlayer player;
 
+    private EventSystem eventSystem;
+
     public World() {
+        this.eventSystem = new EventSystem();
         this.buildWorld();
         this.spawnEntities();
     }
@@ -68,7 +73,11 @@ public class World {
             .entities
             .values()
             .stream()
-            .filter(e -> e.isInRoom(room))
+            .filter(e -> e.getRoom() == room)
             .collect(Collectors.toList());
+    }
+
+    public void emit(Event event) {
+        this.eventSystem.emit(event);
     }
 }
