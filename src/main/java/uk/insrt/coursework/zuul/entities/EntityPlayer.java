@@ -60,7 +60,7 @@ public class EntityPlayer extends Entity {
             return;
         }
 
-        Room destination = room.getAdjacentRoom(direction);
+        Room destination = room.getAdjacent(direction);
         if (destination == null) {
             System.out.println("You cannot go this way.");
             return;

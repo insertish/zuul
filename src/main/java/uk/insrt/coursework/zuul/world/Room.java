@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Set;
 
 public abstract class Room {
-    protected String name;
-    protected HashMap<Direction, Room> adjacentRooms;
+    private String name;
+    private HashMap<Direction, Room> adjacentRooms;
 
     public Room(String name) {
         this.name = name;
@@ -16,7 +16,11 @@ public abstract class Room {
         return this.name;
     }
 
-    public Room getAdjacentRoom(Direction direction) {
+    public void setAdjacent(Direction direction, Room room) {
+        this.adjacentRooms.put(direction, room);
+    }
+
+    public Room getAdjacent(Direction direction) {
         return this.adjacentRooms.get(direction);
     }
 

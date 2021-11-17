@@ -1,5 +1,6 @@
 package uk.insrt.coursework.zuul.content.campaign;
 
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import uk.insrt.coursework.zuul.behaviours.SimpleWanderAI;
@@ -13,8 +14,12 @@ import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
 public class CampaignWorld extends World {
+    private ArrayList<Room> visitedRooms;
+
     public CampaignWorld() {
         super();
+        this.visitedRooms = new ArrayList<>();
+
         this.buildWorld();
         this.spawnEntities();
         this.registerEvents();
@@ -25,33 +30,104 @@ public class CampaignWorld extends World {
     }
 
     private void buildWorld() {
-        World world = this;
-
         this.addRoom(
-            new Room("starting") {
+            new Room("City Centre") {
                 public String describe() {
-                    return "This is the starting area.";
+                    if (visitedRooms.contains(this)) {
+                        return "you've been here before";
+                    }
+
+                    return "something something long description.";
                 }
 
                 protected void setupDirections() {
-                    this.adjacentRooms.put(Direction.NORTH, world.getRoom("next door"));
+                    this.setAdjacent(Direction.NORTH, getRoom("Back Alley"));
+                    this.setAdjacent(Direction.NORTH_WEST, getRoom("Street"));
+                    this.setAdjacent(Direction.WEST, getRoom("Apartments"));
+                    this.setAdjacent(Direction.SOUTH, getRoom("Coastline"));
                 }
             }
         );
-            
+
         this.addRoom(
-            new Room("next door") {
+            new Room("Street") {
                 public String describe() {
                     return "This is the area next to the starting area.";
                 }
 
                 protected void setupDirections() {
-                    this.adjacentRooms.put(Direction.SOUTH, world.getRoom("starting"));
+                    this.setAdjacent(Direction.SOUTH, getRoom("Apartments"));
+                    this.setAdjacent(Direction.EAST, getRoom("City Centre"));
+                    this.setAdjacent(Direction.NORTH, getRoom("Shop"));
+                }
+            }
+        );
+
+        this.addRoom(
+            new Room("Medical Centre: Reception") {
+                public String describe() {
+                    return "This is the area next to the starting area.";
+                }
+
+                protected void setupDirections() {
+                    this.setAdjacent(Direction.EAST, getRoom("Street"));
+                }
+            }
+        );
+
+        this.addRoom(
+            new Room("Shop") {
+                public String describe() {
+                    return "This is the area next to the starting area.";
+                }
+
+                protected void setupDirections() {
+                    this.setAdjacent(Direction.SOUTH, getRoom("Street"));
+                }
+            }
+        );
+
+        this.addRoom(
+            new Room("Apartments: Reception") {
+                public String describe() {
+                    return "This is the area next to the starting area.";
+                }
+
+                protected void setupDirections() {
+                    this.setAdjacent(Direction.NORTH, getRoom("Street"));
+                    this.setAdjacent(Direction.EAST, getRoom("City Centre"));
+                }
+            }
+        );
+
+        this.addRoom(
+            new Room("Back Alley") {
+                public String describe() {
+                    return "This is the area next to the starting area.";
+                }
+
+                protected void setupDirections() {
+                    this.setAdjacent(Direction.NORTH, getRoom("Street"));
+                    this.setAdjacent(Direction.EAST, getRoom("City Centre"));
+                }
+            }
+        );
+
+        this.addRoom(
+            new Room("Coastline") {
+                public String describe() {
+                    return "This is the area next to the starting area.";
+                }
+
+                protected void setupDirections() {
+                    this.setAdjacent(Direction.NORTH, getRoom("City Centre"));
                 }
             }
         );
 
         this.linkRooms();
+
+        System.out.println("There are " + this.rooms.size() + " rooms. Køłłing will permit " + (12 - this.rooms.size()) + " more.");
     }
 
     private void spawnEntities() {
@@ -74,6 +150,10 @@ public class CampaignWorld extends World {
             (EventEntityEnteredRoom event) -> {
                 Entity entity = event.getEntity();
                 if (entity instanceof EntityPlayer) {
+                    // Mark current room as previously visited.
+                    this.visitedRooms.add(entity.getRoom());
+
+                    // When we enter a new room, list what we can see.
                     String entities = this.getEntitiesInRoom(entity.getRoom())
                         .stream()
                         .filter(e -> !(e instanceof EntityPlayer))
@@ -84,6 +164,8 @@ public class CampaignWorld extends World {
                         System.out.println("You can see:\n" + entities);
                     }
                 } else {
+                    // If another entity enters the room,
+                    // conditionally mention this to the player.
                     EntityPlayer player = this.getPlayer();
                     if (entity.getRoom() == player.getRoom()) {
                         if (entity instanceof EntityCat) {
@@ -96,6 +178,6 @@ public class CampaignWorld extends World {
 
     @Override
     public void spawnPlayer() {
-        this.player.setLocation(this.rooms.get("starting"));
+        this.player.setLocation(this.rooms.get("City Centre"));
     }
 }

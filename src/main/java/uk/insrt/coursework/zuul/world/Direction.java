@@ -8,9 +8,13 @@ import java.util.List;
  */
 public enum Direction {
     NORTH(new String[] { "N" }),
+    NORTH_EAST(new String[] { "NE", "NORTH EAST" }),
     EAST(new String[] { "E" }),
+    SOUTH_EAST(new String[] { "SE", "SOUTH EAST" }),
     SOUTH(new String[] { "S" }),
-    WEST(new String[] { "W" });
+    SOUTH_WEST(new String[] { "SW", "SOUTH WEST" }),
+    WEST(new String[] { "W" }),
+    NORTH_WEST(new String[] { "NW", "NORTH WEST" });
 
     private List<String> aliases;
 
