@@ -3,6 +3,9 @@ package uk.insrt.coursework.zuul;
 import java.util.Scanner;
 
 import uk.insrt.coursework.zuul.commands.CommandManager;
+import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
+import uk.insrt.coursework.zuul.events.EventProcessCommand;
+import uk.insrt.coursework.zuul.events.EventTick;
 import uk.insrt.coursework.zuul.world.World;
 
 public class Game {
@@ -16,25 +19,29 @@ public class Game {
     }
 
     public Game() {
-        this.world = new World();
+        this.world = new CampaignWorld();
         this.commands = new CommandManager();
         this.reader = new Scanner(System.in);
     }
 
     public void start() {
-        while (true) {
-            this.outputState();
+        this.world.spawnPlayer();
 
+        while (true) {
+            System.out.print("\n$ ");
             String input = this.reader.nextLine().toLowerCase();
-            if (this.commands.runCommand(this.world, input)) {
+            System.out.print("\n----\n\n");
+
+            EventProcessCommand event = new EventProcessCommand(input);
+            this.world.emit(event);
+
+            if (this.commands.runCommand(this.world, event.getCommand())) {
                 break;
             }
+
+            this.world.emit(new EventTick());
         }
 
         System.out.println("you were game ended");
-    }
-
-    private void outputState() {
-        System.out.print("\n$ ");
     }
 }

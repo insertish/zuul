@@ -18,13 +18,12 @@ public class EntityCat extends Entity {
         };
     }
 
+    public String describe() {
+        return "A black cat";
+    }
+
     public boolean pet() {
         System.out.println("You pet the cat.");
         return true;
-    }
-
-    public boolean take() {
-        System.out.println("Where do you want to take yourself to?");
-        return false;
     }
 }

@@ -6,6 +6,8 @@ public class Location {
     private Room room;
     private Inventory inventory;
 
+    public Location() {}
+
     public Location(Room room) {
         this.room = room;
     }

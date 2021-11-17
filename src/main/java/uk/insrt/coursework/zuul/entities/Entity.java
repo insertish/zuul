@@ -53,6 +53,14 @@ public abstract class Entity {
     }
 
     /**
+     * Get the Inventory that this Entity holds.
+     * @return Inventory
+     */
+    public Inventory getInventory() {
+        return this.inventory;
+    }
+
+    /**
      * Get the Room that this Entity is currently in.
      * @return Room
      */
@@ -64,7 +72,7 @@ public abstract class Entity {
      * Get the Inventory that this Entity is currently in.
      * @return Inventory
      */
-    public Inventory getInventory() {
+    public Inventory getInventoryWithin() {
         return this.location.getInventory();
     }
 
@@ -83,10 +91,24 @@ public abstract class Entity {
     /**
      * Move the Entity into an Inventory.
      * @param inventory Destination Inventory
+     * @return Whether we successfully moved the entity into the inventory.
      */
-    public void setLocation(Inventory inventory) {
-        this.location.setLocation(inventory);
-        inventory.add(this);
+    public boolean setLocation(Inventory inventory) {
+        if (inventory.add(this)) {
+            this.location.setLocation(inventory);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Take this entity.
+     * @return Whether we managed to take this entity.
+     */
+    public boolean take() {
+        Inventory inventory = world.getPlayer().getInventory();
+        return this.setLocation(inventory);
     }
 
     /**
@@ -96,14 +118,14 @@ public abstract class Entity {
     public abstract String[] getAliases();
 
     /**
+     * Get a description of this Entity.
+     * @return String describing the Entity
+     */
+    public abstract String describe();
+
+    /**
      * Pet this entity.
      * @return Whether this entity can be pet.
      */
     public abstract boolean pet();
-
-    /**
-     * Take this entity.
-     * @return Whether this entity can be taken.
-     */
-    public abstract boolean take();
 }

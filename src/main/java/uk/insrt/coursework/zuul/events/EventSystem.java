@@ -1,22 +1,75 @@
 package uk.insrt.coursework.zuul.events;
 
-import uk.insrt.coursework.zuul.entities.Entity;
-import uk.insrt.coursework.zuul.entities.EntityPlayer;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 /**
  * Event system which manages taking in events
  * from different sources and handles them
- * appropriately by looking up any event listeners
- * and firing their callbacks.
+ * by firing callbacks on event listeners.
  */
 public class EventSystem {
-    public void emit(Event event) {
-        // temp
-        if (event instanceof EventEntityEnteredRoom) {
-            Entity entity = ((EventEntityEnteredRoom) event).getEntity();
-            if (entity instanceof EntityPlayer) {
-                System.out.println("Player is now in " + entity.getRoom().getName());
-            }
+    private HashMap<Class<? extends Event>, LinkedHashSet<EventListener<? extends Event>>> listeners = new HashMap<>();
+
+    /**
+     * Get existing Event listener list or create a new one if not exists.
+     * @param event Event
+     * @return Set of event listeners
+     */
+    private HashSet<EventListener<? extends Event>> getList(Class<? extends Event> event) {
+        var list = this.listeners.get(event);
+        if (list == null) {
+            list = new LinkedHashSet<>();
+            this.listeners.put(event, list);
+        }
+
+        return list;
+    }
+
+    /**
+     * Add a new event listener to this system.
+     * @param <E> Generic Event type
+     * @param event Event to remove from
+     * @param listener Event listener callback
+     */
+    public<E extends Event> void addListener(Class<E> event, EventListener<E> listener) {
+        this.getList(event).add(listener);
+    }
+
+    /**
+     * Remove an new event listener from this system.
+     * @param <E> Generic Event type
+     * @param event Event to remove from
+     * @param listener Event listener callback
+     */
+    public<E extends Event> void removeListener(Class<E> event, EventListener<E> listener) {
+        this.getList(event).remove(listener);
+    }
+
+    /**
+     * Shorthand for addListener(EventTick.class, <listener>)
+     * @param listener Event listener callback
+     */
+    public void onTick(EventListener<EventTick> listener) {
+        this.addListener(EventTick.class, listener);
+    }
+
+    /**
+     * Emit an Event.
+     * @param <E> Generic Event type
+     * @param event Event to emit
+     */
+    @SuppressWarnings("unchecked")
+    public <E extends Event> void emit(E event) {
+        var listeners = this.listeners.get(event.getClass());
+        if (listeners == null) return;
+
+        for (@SuppressWarnings("rawtypes") EventListener listener : listeners) {
+            listener.onEvent(event);
+            // Previously, there was a try catch ClassCastException
+            // but I've since constricted the types on `addListener`
+            // and `removeListener` so this should never happen.
         }
     }
 }

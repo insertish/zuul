@@ -13,7 +13,8 @@ public class EntityPlayer extends Entity {
     private Direction retreatingDirection;
 
     public EntityPlayer(World world) {
-        super(world, new Location(world.getRoom("starting")), 70);
+        super(world, new Location(), 70);
+        this.inventory.setMaxWeight(35);
     }
 
     /**
@@ -26,18 +27,25 @@ public class EntityPlayer extends Entity {
         super.setLocation(room);
     }
 
+    @Override
+    public boolean take() {
+        return false;
+    }
+
     public String[] getAliases() {
         return new String[] {
             "player", "me"
         };
     }
 
-    public boolean pet() {
-        return false;
+    public String describe() {
+        // We may skip defining how the Player looks,
+        // this is because EntityPlayer is ignored
+        // when looking around the room.
+        return "";
     }
 
-    public boolean take() {
-        System.out.println("Where do you want to take yourself to?");
+    public boolean pet() {
         return false;
     }
 
@@ -52,14 +60,14 @@ public class EntityPlayer extends Entity {
             return;
         }
 
-        String destination = room.getAdjacentRoom(direction);
+        Room destination = room.getAdjacentRoom(direction);
         if (destination == null) {
             System.out.println("You cannot go this way.");
             return;
         }
 
         this.retreatingDirection = direction.flip();
-        this.setLocation(this.world.getRoom(destination));
+        this.setLocation(destination);
     }
 
     /**
