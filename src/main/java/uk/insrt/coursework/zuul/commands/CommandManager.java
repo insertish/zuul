@@ -1,11 +1,11 @@
 package uk.insrt.coursework.zuul.commands;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -53,15 +53,34 @@ public class CommandManager {
         this.commands.add(new Command() {
             public Pattern[] getPatterns() {
                 return new Pattern[] {
-                    Pattern.compile("^pet\\s+(?<entity>\\w+)"),
+                    Pattern.compile("^pet\\s+(?<entity>[\\w\\s]+)"),
                     Pattern.compile("^pet(?:<entity>)")
                 };
             }
 
             public boolean run(World world, Matcher matcher) {
                 String name = matcher.group("entity");
+                if (name == null) {
+                    System.out.println("Pet what?");
+                    return false;
+                }
 
+                // turn into method
+                List<Entity> entities = world.getEntitiesInRoom(world.getPlayer().getRoom());
+                for (Entity entity : entities) {
+                    String[] aliases = entity.getAliases();
+                    for (String alias : aliases) {
+                        if (name.equalsIgnoreCase(alias)) {
+                            if (!entity.pet()) {
+                                System.out.println("You cannot pet " + alias + ".");
+                            }
 
+                            return false;
+                        }
+                    }
+                }
+
+                System.out.println("You look around for " + name + " but can't find anything.");
                 return false;
             }
         });

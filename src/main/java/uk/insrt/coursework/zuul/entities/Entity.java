@@ -26,8 +26,12 @@ public abstract class Entity {
         return this.weight;
     }
 
-    protected Room getRoom() {
+    public Room getRoom() {
         return this.location.getRoom();
+    }
+
+    public Inventory getInventory() {
+        return this.location.getInventory();
     }
 
     public void setLocation(Room room) {
@@ -46,6 +50,7 @@ public abstract class Entity {
         return this.location.getRoom() == room;
     }
 
+    public abstract String[] getAliases();
     public abstract boolean pet();
     public abstract boolean take();
 }

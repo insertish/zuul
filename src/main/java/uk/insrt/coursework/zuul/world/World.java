@@ -1,9 +1,12 @@
 package uk.insrt.coursework.zuul.world;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.entities.EntityCat;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 
 public class World {
@@ -49,6 +52,7 @@ public class World {
     private void spawnEntities() {
         this.player = new EntityPlayer(this);
         this.entities.put("player", this.player);
+        this.entities.put("cat", new EntityCat(this));
     }
 
     public EntityPlayer getPlayer() {
@@ -59,12 +63,12 @@ public class World {
         return this.rooms.get(room);
     }
 
-    public Entity[] getEntitiesInRoom(Room room) {
-        return (Entity[]) this
+    public List<Entity> getEntitiesInRoom(Room room) {
+        return this
             .entities
             .values()
             .stream()
             .filter(e -> e.isInRoom(room))
-            .toArray();
+            .collect(Collectors.toList());
     }
 }

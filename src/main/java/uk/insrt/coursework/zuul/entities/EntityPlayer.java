@@ -22,6 +22,12 @@ public class EntityPlayer extends Entity {
         System.out.println("Entity is now in " + room.getName());
     }
 
+    public String[] getAliases() {
+        return new String[] {
+            "player", "me"
+        };
+    }
+
     public boolean pet() {
         return false;
     }
