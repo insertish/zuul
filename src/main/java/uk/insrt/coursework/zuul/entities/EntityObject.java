@@ -7,7 +7,7 @@ import uk.insrt.coursework.zuul.world.World;
  * Generic object class which avoids some boilerplate.
  * Use this for entities which are guaranteed to never change.
  */
-public abstract class EntityObject extends Entity {
+public class EntityObject extends Entity {
     private String description;
     private String[] aliases;
 
@@ -25,5 +25,15 @@ public abstract class EntityObject extends Entity {
     @Override
     public String[] getAliases() {
         return this.aliases;
+    }
+
+    @Override
+    public boolean use(Entity target) {
+        return false;
+    }
+
+    @Override
+    public boolean pet() {
+        return false;
     }
 }

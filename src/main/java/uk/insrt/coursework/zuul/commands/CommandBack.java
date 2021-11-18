@@ -1,6 +1,5 @@
 package uk.insrt.coursework.zuul.commands;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import uk.insrt.coursework.zuul.world.World;
@@ -14,7 +13,7 @@ public class CommandBack extends Command {
     }
 
     @Override
-    public boolean run(World world, Matcher matcher) {
+    public boolean run(World world, Arguments arguments) {
         world.getPlayer().back();
         return false;
     }

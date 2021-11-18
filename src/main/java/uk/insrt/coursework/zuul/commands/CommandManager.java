@@ -64,7 +64,8 @@ public class CommandManager {
             for (Pattern pattern : command.getPatterns()) {
                 Matcher matcher = pattern.matcher(cmd);
                 if (matcher.find()) {
-                    return command.run(world, matcher);
+                    Arguments arguments = new Arguments(matcher);
+                    return command.run(world, arguments);
                 }
             }
         }

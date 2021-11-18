@@ -12,6 +12,7 @@ import uk.insrt.coursework.zuul.entities.EntityObject;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;
+import uk.insrt.coursework.zuul.events.EventTick;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
@@ -34,6 +35,12 @@ public class CampaignWorld extends World {
     }
 
     private void buildWorld() {
+        // https://democracy.york.gov.uk/documents/s2116/Annex%20C%20REcycling%20Report%20frnweights2005.pdf
+        // https://www.google.com/maps/@50.4293559,18.9742453,16.12z
+        // https://twitter.com/Yarung3/status/1258670295520628736/photo/1
+        // https://twitter.com/jgilleard/status/1242354985351786497
+        // [3:02] https://brand-new-animal.fandom.com/wiki/Runaway_Raccoon
+
         this.addRoom(
             new Room("City Centre") {
                 public String describe() {
@@ -138,18 +145,20 @@ public class CampaignWorld extends World {
                     this.setAdjacent(Direction.DOWN, getRoom("Apartments: Reception"));
                 }
 
-                public void placeEntities(World world, Location location) {
-                    new EntityObject(world, location, 45, new String[] { }, "") {
+                public void spawnEntities(World world, Location location) {
+                    world.spawnEntity("bed", new EntityObject(world, location, 80, new String[] { "bed" }, "Bed") {
                         @Override
                         public boolean use(Entity target) {
-                            return false;
-                        }
+                            // for example, we could move the world forwards by 20 ticks
+                            for (int i=0;i<20;i++) {
+                                world.emit(new EventTick());
+                            }
 
-                        @Override
-                        public boolean pet() {
-                            return false;
+                            return true;
                         }
-                    };
+                    });
+
+                    world.spawnEntity("laptop", new EntityObject(world, location, 2, new String[] { "laptop" }, "Laptop"));
                 }
             }
         );
@@ -214,20 +223,23 @@ public class CampaignWorld extends World {
         );
 
         this.linkRooms();
-
         System.out.println("There are " + this.rooms.size() + " rooms. Køłłing will permit " + (12 - this.rooms.size()) + " more.");
     }
 
     private void spawnEntities() {
-        this.entities.put("cat", new EntityCat(this, new Location(this.rooms.get("City Centre"))));
+        for (Room room : this.rooms.values()) {
+            room.spawnEntities(this, new Location(room));
+        }
 
-        this.entities.put("boat1",
+        this.spawnEntity("cat", new EntityCat(this, new Location(this.rooms.get("City Centre"))));
+
+        this.spawnEntity("boat1",
             new EntityBoat(this,
                 new Location(this.rooms.get("Coastline")),
                 this.rooms.get("Mainland: Coastline"))
         );
 
-        this.entities.put("boat2",
+        this.spawnEntity("boat2",
             new EntityBoat(this,
                 new Location(this.rooms.get("Mainland: Coastline")),
                 this.rooms.get("Coastline"))

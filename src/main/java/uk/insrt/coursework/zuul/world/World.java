@@ -32,6 +32,10 @@ public class World {
         return this.rooms.get(room);
     }
 
+    public void spawnEntity(String id, Entity entity) {
+        this.entities.put(id, entity);
+    }
+
     public List<Entity> getEntitiesInRoom(Room room) {
         return this
             .entities

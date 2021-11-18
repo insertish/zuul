@@ -1,6 +1,5 @@
 package uk.insrt.coursework.zuul.commands;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import uk.insrt.coursework.zuul.entities.Entity;
@@ -11,13 +10,13 @@ public class CommandPet extends Command {
         super("pet <something>: pet something in current room",
             new Pattern[] {
                 Pattern.compile("^pet\\s+(?<entity>[\\w\\s]+)"),
-                Pattern.compile("^pet(?:<entity>)")
+                Pattern.compile("^pet")
             });
     }
 
     @Override
-    public boolean run(World world, Matcher matcher) {
-        String name = matcher.group("entity");
+    public boolean run(World world, Arguments arguments) {
+        String name = arguments.group("entity");
         if (name == null) {
             System.out.println("Pet what?");
             return false;

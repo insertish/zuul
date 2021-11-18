@@ -48,7 +48,7 @@ public abstract class Room {
         this.setupDirections();
     }
     
-    public void placeEntities(World world, Location location) {}
+    public void spawnEntities(World world, Location location) {}
 
     public abstract String describe();
     protected abstract void setupDirections();

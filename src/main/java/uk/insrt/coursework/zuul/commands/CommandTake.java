@@ -1,6 +1,5 @@
 package uk.insrt.coursework.zuul.commands;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import uk.insrt.coursework.zuul.entities.Entity;
@@ -11,13 +10,13 @@ public class CommandTake extends Command {
         super("take <something>: put something in your bag",
             new Pattern[] {
                 Pattern.compile("^take\\s+(?<entity>[\\w\\s]+)"),
-                Pattern.compile("^take(?:<entity>)")
+                Pattern.compile("^take")
             });
     }
 
     @Override
-    public boolean run(World world, Matcher matcher) {
-        String name = matcher.group("entity");
+    public boolean run(World world, Arguments arguments) {
+        String name = arguments.group("entity");
         if (name == null) {
             System.out.println("Take what?");
             return false;
