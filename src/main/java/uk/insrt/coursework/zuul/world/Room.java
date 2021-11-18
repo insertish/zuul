@@ -47,6 +47,8 @@ public abstract class Room {
         this.adjacentRooms.clear();
         this.setupDirections();
     }
+    
+    public void placeEntities(World world, Location location) {}
 
     public abstract String describe();
     protected abstract void setupDirections();

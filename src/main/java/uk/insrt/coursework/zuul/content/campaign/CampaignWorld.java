@@ -8,6 +8,7 @@ import uk.insrt.coursework.zuul.behaviours.SimpleWanderAI;
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityBoat;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.EntityCat;
+import uk.insrt.coursework.zuul.entities.EntityObject;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;
@@ -80,7 +81,7 @@ public class CampaignWorld extends World {
 
                 public boolean canLeave(Direction direction) {
                     if (direction == Direction.DOWN) {
-                        System.out.println("There is security watching the entrance, there's no way to get past them.");
+                        System.out.println("There is security watching the stairs, there's no way to get past them.");
                         return false;
                     }
 
@@ -135,6 +136,20 @@ public class CampaignWorld extends World {
 
                 protected void setupDirections() {
                     this.setAdjacent(Direction.DOWN, getRoom("Apartments: Reception"));
+                }
+
+                public void placeEntities(World world, Location location) {
+                    new EntityObject(world, location, 45, new String[] { }, "") {
+                        @Override
+                        public boolean use(Entity target) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean pet() {
+                            return false;
+                        }
+                    };
                 }
             }
         );
@@ -205,11 +220,13 @@ public class CampaignWorld extends World {
 
     private void spawnEntities() {
         this.entities.put("cat", new EntityCat(this, new Location(this.rooms.get("City Centre"))));
+
         this.entities.put("boat1",
             new EntityBoat(this,
                 new Location(this.rooms.get("Coastline")),
                 this.rooms.get("Mainland: Coastline"))
         );
+
         this.entities.put("boat2",
             new EntityBoat(this,
                 new Location(this.rooms.get("Mainland: Coastline")),
@@ -339,6 +356,6 @@ public class CampaignWorld extends World {
 
     @Override
     public void spawnPlayer() {
-        this.player.setLocation(this.rooms.get("Forest"));
+        this.player.setLocation(this.rooms.get("City Centre"));
     }
 }
