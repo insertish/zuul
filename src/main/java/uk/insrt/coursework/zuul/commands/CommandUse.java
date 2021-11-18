@@ -1,0 +1,38 @@
+package uk.insrt.coursework.zuul.commands;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.world.World;
+
+public class CommandUse extends Command {
+    public CommandUse() {
+        super("use <something>: use an object or something in your inventory",
+            new Pattern[] {
+                Pattern.compile("^use\\s+(?<entity>[\\w\\s]+)"),
+                Pattern.compile("^use(?:<entity>)")
+            });
+    }
+
+    @Override
+    public boolean run(World world, Matcher matcher) {
+        String name = matcher.group("entity");
+        if (name == null) {
+            System.out.println("Use what?");
+            return false;
+        }
+
+        Entity entity = world.findEntity(name);
+        if (entity != null) {
+            if (!entity.use(world.getPlayer())) {
+                System.out.println("You cannot use " + name + ".");
+            }
+
+            return false;
+        }
+
+        System.out.println("You look around for " + name + " but can't find anything.");
+        return false;
+    }
+}

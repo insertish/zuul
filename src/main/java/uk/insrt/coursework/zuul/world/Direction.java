@@ -14,7 +14,10 @@ public enum Direction {
     SOUTH(new String[] { "S" }),
     SOUTH_WEST(new String[] { "SW", "SOUTH WEST" }),
     WEST(new String[] { "W" }),
-    NORTH_WEST(new String[] { "NW", "NORTH WEST" });
+    NORTH_WEST(new String[] { "NW", "NORTH WEST" }),
+    
+    UP(new String[] {}),
+    DOWN(new String[] {});
 
     private List<String> aliases;
 
@@ -42,9 +45,15 @@ public enum Direction {
         switch (this) {
             default:
             case NORTH: return Direction.SOUTH;
+            case NORTH_EAST: return Direction.SOUTH_WEST;
             case EAST: return Direction.WEST;
+            case SOUTH_EAST: return Direction.NORTH_WEST;
             case SOUTH: return Direction.NORTH;
+            case SOUTH_WEST: return Direction.NORTH_EAST;
             case WEST: return Direction.EAST;
+            case NORTH_WEST: return Direction.SOUTH_EAST;
+            case UP: return Direction.DOWN;
+            case DOWN: return Direction.UP;
         }
     }
 

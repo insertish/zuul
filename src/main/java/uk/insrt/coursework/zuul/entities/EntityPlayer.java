@@ -28,16 +28,13 @@ public class EntityPlayer extends Entity {
     }
 
     @Override
-    public boolean take() {
-        return false;
-    }
-
     public String[] getAliases() {
         return new String[] {
             "player", "me"
         };
     }
 
+    @Override
     public String describe() {
         // We may skip defining how the Player looks,
         // this is because EntityPlayer is ignored
@@ -45,7 +42,18 @@ public class EntityPlayer extends Entity {
         return "";
     }
 
+    @Override
+    public boolean take(Entity target) {
+        return false;
+    }
+
+    @Override
     public boolean pet() {
+        return false;
+    }
+
+    @Override
+    public boolean use(Entity target) {
         return false;
     }
 
@@ -59,6 +67,8 @@ public class EntityPlayer extends Entity {
             System.out.println("You appear to be trapped.");
             return;
         }
+
+        if (!room.canLeave(direction)) return;
 
         Room destination = room.getAdjacent(direction);
         if (destination == null) {

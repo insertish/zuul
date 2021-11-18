@@ -1,6 +1,7 @@
 package uk.insrt.coursework.zuul.entities;
 
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
+import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
@@ -84,6 +85,9 @@ public abstract class Entity {
         Inventory inventory = this.location.getInventory();
         if (inventory != null) inventory.remove(this);
 
+        Room previousRoom = this.getRoom();
+        if (previousRoom != null) this.world.emit(new EventEntityLeftRoom(this, previousRoom));
+
         this.location.setLocation(room);
         this.world.emit(new EventEntityEnteredRoom(this));
     }
@@ -106,8 +110,8 @@ public abstract class Entity {
      * Take this entity.
      * @return Whether we managed to take this entity.
      */
-    public boolean take() {
-        Inventory inventory = world.getPlayer().getInventory();
+    public boolean take(Entity target) {
+        Inventory inventory = target.getInventory();
         return this.setLocation(inventory);
     }
 
@@ -122,6 +126,12 @@ public abstract class Entity {
      * @return String describing the Entity
      */
     public abstract String describe();
+
+    /**
+     * Use this entity.
+     * @return Whether this entity can be used.
+     */
+    public abstract boolean use(Entity target);
 
     /**
      * Pet this entity.

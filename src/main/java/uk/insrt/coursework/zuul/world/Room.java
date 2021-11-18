@@ -17,11 +17,22 @@ public abstract class Room {
     }
 
     public void setAdjacent(Direction direction, Room room) {
+        if (room == null) System.err.println("Warning: assigned null Room to direction " + direction + " for the Room " + this.name);
         this.adjacentRooms.put(direction, room);
     }
 
     public Room getAdjacent(Direction direction) {
         return this.adjacentRooms.get(direction);
+    }
+
+    /**
+     * Whether the player can leave in any particular direction.
+     * Should print reason if not.
+     * @param direction
+     * @return
+     */
+    public boolean canLeave(Direction direction) {
+        return true;
     }
 
     public Set<Direction> getDirections() {

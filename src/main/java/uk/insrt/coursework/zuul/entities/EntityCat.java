@@ -11,6 +11,7 @@ public class EntityCat extends Entity {
         super(world, startingLocation, 5);
     }
 
+    @Override
     public String[] getAliases() {
         return new String[] {
             "cat",
@@ -18,12 +19,19 @@ public class EntityCat extends Entity {
         };
     }
 
+    @Override
     public String describe() {
         return "A black cat";
     }
 
+    @Override
     public boolean pet() {
         System.out.println("You pet the cat.");
         return true;
+    }
+
+    @Override
+    public boolean use(Entity target) {
+        return false;
     }
 }
