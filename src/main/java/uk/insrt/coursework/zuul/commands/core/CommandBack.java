@@ -1,7 +1,9 @@
-package uk.insrt.coursework.zuul.commands;
+package uk.insrt.coursework.zuul.commands.core;
 
 import java.util.regex.Pattern;
 
+import uk.insrt.coursework.zuul.commands.Arguments;
+import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.world.World;
 
 public class CommandBack extends Command {

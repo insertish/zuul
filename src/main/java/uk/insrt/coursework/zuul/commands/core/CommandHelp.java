@@ -1,8 +1,11 @@
-package uk.insrt.coursework.zuul.commands;
+package uk.insrt.coursework.zuul.commands.core;
 
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import uk.insrt.coursework.zuul.commands.Arguments;
+import uk.insrt.coursework.zuul.commands.Command;
+import uk.insrt.coursework.zuul.commands.CommandManager;
 import uk.insrt.coursework.zuul.world.World;
 
 public class CommandHelp extends Command {

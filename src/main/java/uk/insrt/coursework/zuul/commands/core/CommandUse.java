@@ -1,16 +1,18 @@
-package uk.insrt.coursework.zuul.commands;
+package uk.insrt.coursework.zuul.commands.core;
 
 import java.util.regex.Pattern;
 
+import uk.insrt.coursework.zuul.commands.Arguments;
+import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.world.World;
 
-public class CommandPet extends Command {
-    public CommandPet() {
-        super("pet <something>: pet something in current room",
+public class CommandUse extends Command {
+    public CommandUse() {
+        super("use <something>: use an object or something in your inventory",
             new Pattern[] {
-                Pattern.compile("^pet\\s+(?<entity>[\\w\\s]+)"),
-                Pattern.compile("^pet")
+                Pattern.compile("^use\\s+(?<entity>[\\w\\s]+)"),
+                Pattern.compile("^use")
             });
     }
 
@@ -18,14 +20,14 @@ public class CommandPet extends Command {
     public boolean run(World world, Arguments arguments) {
         String name = arguments.group("entity");
         if (name == null) {
-            System.out.println("Pet what?");
+            System.out.println("Use what?");
             return false;
         }
 
         Entity entity = world.findEntity(name);
         if (entity != null) {
-            if (!entity.pet()) {
-                System.out.println("You cannot pet " + name + ".");
+            if (!entity.use(world.getPlayer())) {
+                System.out.println("You cannot use " + name + ".");
             }
 
             return false;

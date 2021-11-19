@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import uk.insrt.coursework.zuul.commands.core.CommandBack;
+import uk.insrt.coursework.zuul.commands.core.CommandGo;
+import uk.insrt.coursework.zuul.commands.core.CommandHelp;
+import uk.insrt.coursework.zuul.commands.core.CommandPet;
+import uk.insrt.coursework.zuul.commands.core.CommandQuit;
+import uk.insrt.coursework.zuul.commands.core.CommandTake;
+import uk.insrt.coursework.zuul.commands.core.CommandUse;
 import uk.insrt.coursework.zuul.world.World;
 
 /**
