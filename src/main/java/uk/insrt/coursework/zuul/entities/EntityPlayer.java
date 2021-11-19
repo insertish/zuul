@@ -47,16 +47,6 @@ public class EntityPlayer extends Entity {
         return false;
     }
 
-    @Override
-    public boolean pet() {
-        return false;
-    }
-
-    @Override
-    public boolean use(Entity target) {
-        return false;
-    }
-
     /**
      * Move in a direction as instructed by command.
      * @param direction Target Direction

@@ -18,11 +18,8 @@ public class CommandGo extends Command {
 
     @Override
     public boolean run(World world, Arguments arguments) {
-        Direction direction = arguments.direction();
-        if (direction == null) {
-            System.out.println("Where are you going?");
-            return false;
-        }
+        Direction direction = arguments.direction("Where are you going?");
+        if (direction == null) return false;
 
         world.getPlayer().go(direction);
         return false;

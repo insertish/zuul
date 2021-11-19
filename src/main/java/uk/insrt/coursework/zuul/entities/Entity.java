@@ -53,6 +53,10 @@ public abstract class Entity {
         return this.weight;
     }
 
+    public String getName() {
+        return this.getAliases()[0];
+    }
+
     /**
      * Get the Inventory that this Entity holds.
      * @return Inventory
@@ -131,17 +135,4 @@ public abstract class Entity {
      * @return String describing the Entity
      */
     public abstract String describe();
-
-    /**
-     * Use this entity.
-     * @param target The Entity taking this entity.
-     * @return Whether this entity can be used.
-     */
-    public abstract boolean use(Entity target);
-
-    /**
-     * Pet this entity.
-     * @return Whether this entity can be pet.
-     */
-    public abstract boolean pet();
 }

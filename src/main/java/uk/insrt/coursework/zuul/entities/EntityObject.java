@@ -26,14 +26,4 @@ public class EntityObject extends Entity {
     public String[] getAliases() {
         return this.aliases;
     }
-
-    @Override
-    public boolean use(Entity target) {
-        return false;
-    }
-
-    @Override
-    public boolean pet() {
-        return false;
-    }
 }

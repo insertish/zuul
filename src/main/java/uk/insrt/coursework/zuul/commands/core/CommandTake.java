@@ -18,24 +18,15 @@ public class CommandTake extends Command {
 
     @Override
     public boolean run(World world, Arguments arguments) {
-        String name = arguments.group("entity");
-        if (name == null) {
-            System.out.println("Take what?");
-            return false;
-        }
-
-        Entity entity = world.findEntity(name);
+        Entity entity = arguments.entity(world, "What do you want to take?");
         if (entity != null) {
             if (entity.take(world.getPlayer())) {
-                System.out.println("You take " + name + " and put it in your bag.");
+                System.out.println("You take " + entity.getName() + " and put it in your bag.");
             } else {
-                System.out.println("You cannot take " + name + ".");
+                System.out.println("You cannot take " + entity.getName() + ".");
             }
-
-            return false;
         }
 
-        System.out.println("You look around for " + name + " but can't find anything.");
         return false;
     }
 }

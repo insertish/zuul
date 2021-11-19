@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import uk.insrt.coursework.zuul.commands.Arguments;
 import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.entities.actions.IPettable;
 import uk.insrt.coursework.zuul.world.World;
 
 public class CommandPet extends Command {
@@ -18,22 +19,15 @@ public class CommandPet extends Command {
 
     @Override
     public boolean run(World world, Arguments arguments) {
-        String name = arguments.group("entity");
-        if (name == null) {
-            System.out.println("Pet what?");
-            return false;
-        }
-
-        Entity entity = world.findEntity(name);
+        Entity entity = arguments.entity(world, "What are you trying to pet?");
         if (entity != null) {
-            if (!entity.pet()) {
-                System.out.println("You cannot pet " + name + ".");
+            if (entity instanceof IPettable) {
+                ((IPettable) entity).pet();
+            } else {
+                System.out.println("You cannot use " + entity.getName() + ".");
             }
-
-            return false;
         }
 
-        System.out.println("You look around for " + name + " but can't find anything.");
         return false;
     }
 }

@@ -3,7 +3,6 @@ package uk.insrt.coursework.zuul.content.campaign;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-import uk.insrt.coursework.zuul.behaviours.SimpleWanderAI;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomApartmentsHome;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomApartmentsReception;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomBackAlley;
@@ -96,7 +95,7 @@ public class CampaignWorld extends World {
                     String entities = this.getEntitiesInRoom(entity.getRoom())
                         .stream()
                         .filter(e -> !(e instanceof EntityPlayer))
-                        .map(e -> "- " + e.describe())
+                        .map(e -> "- " + e.describe() + " (\u001B[40m\u001B[37m" + e.getName() + "\u001B[0m)")
                         .collect(Collectors.joining("\n"));
 
                     if (entities.length() > 0) {
