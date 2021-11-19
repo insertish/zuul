@@ -24,12 +24,20 @@ public class World {
         this.entities.put("player", this.player);
     }
 
+    public Entity getEntity(String id) {
+        return this.entities.get(id);
+    }
+
     public EntityPlayer getPlayer() {
         return this.player;
     }
 
     public Room getRoom(String room) {
         return this.rooms.get(room);
+    }
+
+    protected void addRoom(Room room) {
+        this.rooms.put(room.getName(), room);
     }
 
     public void spawnEntity(String id, Entity entity) {

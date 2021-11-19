@@ -3,11 +3,11 @@ package uk.insrt.coursework.zuul.behaviours;
 import java.util.Random;
 
 import uk.insrt.coursework.zuul.entities.Entity;
-import uk.insrt.coursework.zuul.events.EventListener;
+import uk.insrt.coursework.zuul.events.IEventListener;
 import uk.insrt.coursework.zuul.events.EventTick;
 import uk.insrt.coursework.zuul.world.Room;
 
-public class SimpleWanderAI implements EventListener<EventTick> {
+public class SimpleWanderAI implements IEventListener<EventTick> {
     private Entity entity;
     private Room[] path;
     private int chance;

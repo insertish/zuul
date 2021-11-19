@@ -23,6 +23,7 @@ public abstract class Command {
 
     /**
      * Get information about how to use the command.
+     * @return String Information about how to use the command
      */
     public String getUsage() {
         return this.usage;

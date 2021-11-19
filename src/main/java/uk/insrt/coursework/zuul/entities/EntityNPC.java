@@ -6,28 +6,14 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * NPC entity which provides dialog.
  */
-public class EntityNPC extends Entity {
+public abstract class EntityNPC extends Entity {
     public EntityNPC(World world, Location startingLocation) {
-        super(world, startingLocation, 5);
-    }
-
-    @Override
-    public String[] getAliases() {
-        return new String[] {
-            "cat",
-            "the cat"
-        };
-    }
-
-    @Override
-    public String describe() {
-        return "A black cat";
+        super(world, startingLocation, 75);
     }
 
     @Override
     public boolean pet() {
-        System.out.println("You pet the cat.");
-        return true;
+        return false;
     }
 
     @Override

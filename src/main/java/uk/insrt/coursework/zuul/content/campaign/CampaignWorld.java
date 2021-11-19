@@ -8,6 +8,7 @@ import uk.insrt.coursework.zuul.behaviours.SimpleWanderAI;
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityBoat;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.EntityCat;
+import uk.insrt.coursework.zuul.entities.EntityNPC;
 import uk.insrt.coursework.zuul.entities.EntityObject;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
@@ -28,10 +29,6 @@ public class CampaignWorld extends World {
         this.buildWorld();
         this.spawnEntities();
         this.registerEvents();
-    }
-
-    private void addRoom(Room room) {
-        this.rooms.put(room.getName(), room);
     }
 
     private void buildWorld() {
@@ -56,6 +53,10 @@ public class CampaignWorld extends World {
                     this.setAdjacent(Direction.NORTH_WEST, getRoom("Street"));
                     this.setAdjacent(Direction.WEST, getRoom("Apartments: Reception"));
                     this.setAdjacent(Direction.SOUTH, getRoom("Coastline"));
+                }
+
+                public void spawnEntities(World world, Location location) {
+                    spawnEntity("cat", new EntityCat(world, location));
                 }
             }
         );
@@ -88,11 +89,28 @@ public class CampaignWorld extends World {
 
                 public boolean canLeave(Direction direction) {
                     if (direction == Direction.DOWN) {
-                        System.out.println("There is security watching the stairs, there's no way to get past them.");
-                        return false;
+                        if (getEntitiesInRoom(this)
+                            .contains(getEntity("guard1"))) {
+                            System.out.println("There is security watching the stairs, there's no way to get past them.");
+                            return false;
+                        }
                     }
 
                     return true;
+                }
+
+                public void spawnEntities(World world, Location location) {
+                    world.spawnEntity("guard1", new EntityNPC(world, location) {
+                        @Override
+                        public String[] getAliases() {
+                            return new String[] { "security guard", "guard" };
+                        }
+
+                        @Override
+                        public String describe() {
+                            return null;
+                        }
+                    });
                 }
             }
         );
@@ -154,6 +172,7 @@ public class CampaignWorld extends World {
                                 world.emit(new EventTick());
                             }
 
+                            System.out.println("You take a nap.");
                             return true;
                         }
                     });
@@ -184,6 +203,12 @@ public class CampaignWorld extends World {
                 protected void setupDirections() {
                     this.setAdjacent(Direction.NORTH, getRoom("City Centre"));
                 }
+
+                public void spawnEntities(World world, Location location) {
+                    world.spawnEntity("boat1",
+                        new EntityBoat(world, location,
+                            world.getRoom("Mainland: Coastline")));
+                }
             }
         );
 
@@ -195,6 +220,12 @@ public class CampaignWorld extends World {
 
                 protected void setupDirections() {
                     this.setAdjacent(Direction.SOUTH, getRoom("Forest"));
+                }
+
+                public void spawnEntities(World world, Location location) {
+                    world.spawnEntity("boat2",
+                        new EntityBoat(world, location,
+                            world.getRoom("Coastline")));
                 }
             }
         );
@@ -223,27 +254,16 @@ public class CampaignWorld extends World {
         );
 
         this.linkRooms();
-        System.out.println("There are " + this.rooms.size() + " rooms. Køłłing will permit " + (12 - this.rooms.size()) + " more.");
+
+        if (this.rooms.size() > 12) {
+            System.out.println("There are " + this.rooms.size() + " rooms. Currently over by " + (this.rooms.size() - 12) + ".");
+        }
     }
 
     private void spawnEntities() {
         for (Room room : this.rooms.values()) {
             room.spawnEntities(this, new Location(room));
         }
-
-        this.spawnEntity("cat", new EntityCat(this, new Location(this.rooms.get("City Centre"))));
-
-        this.spawnEntity("boat1",
-            new EntityBoat(this,
-                new Location(this.rooms.get("Coastline")),
-                this.rooms.get("Mainland: Coastline"))
-        );
-
-        this.spawnEntity("boat2",
-            new EntityBoat(this,
-                new Location(this.rooms.get("Mainland: Coastline")),
-                this.rooms.get("Coastline"))
-        );
     }
 
     private void registerEvents() {
@@ -260,12 +280,14 @@ public class CampaignWorld extends World {
                 this.rooms.get("Back Alley"),
                 this.rooms.get("City Centre")
             },
-            3
+            8
         ));
 
         this.eventSystem.addListener(EventEntityEnteredRoom.class,
             (EventEntityEnteredRoom event) -> {
                 Entity entity = event.getEntity();
+                System.out.println("Entity " + entity.getAliases()[0] + " has entered room " + entity.getRoom().getName());
+
                 if (entity instanceof EntityPlayer) {
                     Room room = entity.getRoom();
 

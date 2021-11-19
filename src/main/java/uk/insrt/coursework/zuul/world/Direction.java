@@ -40,6 +40,7 @@ public enum Direction {
 
     /**
      * Flip a given Direction in the opposite direction.
+     * @return Direction in the opposite direction.
      */
     public Direction flip() {
         switch (this) {
@@ -59,8 +60,8 @@ public enum Direction {
 
     /**
      * Convert an arbitrary String to a Direction.
-     * @param direction
-     * @return
+     * @param direction Raw string representing a Direction
+     * @return Direction or null from given string
      */
     public static Direction fromString(String direction) {
         if (direction == null) return null;

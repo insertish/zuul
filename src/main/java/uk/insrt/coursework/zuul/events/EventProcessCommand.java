@@ -16,7 +16,7 @@ public class EventProcessCommand extends Event {
 
     /**
      * Set command for this event.
-     * @param cmd
+     * @param cmd Overwrite current command
      */
     public void setCommand(String cmd) {
         this.cmd = cmd;

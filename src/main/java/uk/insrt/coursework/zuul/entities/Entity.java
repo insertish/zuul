@@ -108,6 +108,7 @@ public abstract class Entity {
 
     /**
      * Take this entity.
+     * @param target The Entity taking this entity
      * @return Whether we managed to take this entity.
      */
     public boolean take(Entity target) {
@@ -129,6 +130,7 @@ public abstract class Entity {
 
     /**
      * Use this entity.
+     * @param target The Entity taking this entity.
      * @return Whether this entity can be used.
      */
     public abstract boolean use(Entity target);

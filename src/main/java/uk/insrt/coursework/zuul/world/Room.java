@@ -28,8 +28,8 @@ public abstract class Room {
     /**
      * Whether the player can leave in any particular direction.
      * Should print reason if not.
-     * @param direction
-     * @return
+     * @param direction Direction which we are checking
+     * @return Whether the player can leave
      */
     public boolean canLeave(Direction direction) {
         return true;
