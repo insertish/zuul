@@ -1,6 +1,16 @@
 \documentclass{article}
 \usepackage[a4paper, total={6in, 10in}]{geometry}
+
 \usepackage{multicol}
+\usepackage{enumitem}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{xparse}
+
+\NewDocumentCommand{\codeword}{v}{%
+    \texttt{\textcolor{blue}{#1}}%
+}
 
 \title{World of Deez}
 \author{Joe}
@@ -13,14 +23,86 @@
         \section{User Level Description}
         In this game you play Among Us.
 
-        \section{Brief Implementation}
-        amogus!
+        \section{Implementation}
+        
+            \subsection{Game}
+            
+            \subsection{World}
+            
+                \subsubsection{Rooms}
+            
+            \subsection{Entities}
+            
+                \subsubsection{Actions}
+                
+                \subsubsection{Behaviours}
+            
+            \subsection{Commands}
+            
+            \subsection{Campaign}
 
         \section{Base Tasks}
-        cock
+
+            This section describes how I implemented the basic task requirements.
+
+            \begin{itemize}[leftmargin=*]
+                \item \textit{``The game has several locations the player can walk through.''}
+                
+                    I did stuff to do this trolololol
+
+                \item \textit{``There are items in some rooms that may or may not be picked up by players.''}
+                
+                    sus!
+                
+                \item \textit{``Each item has a weight and the plyer can only carry items up to a certain weight.''}
+                
+                    sus!
+                
+                \item \textit{``Player can win.''}
+                
+                    The player may not win.
+
+                \item \textit{``There is a command} \codeword{back} \textit{which takes you back to the last room.''}
+                
+                    To do this, I added a private field `previous room' to the \codeword{EntityPlayer}. Whenever the player issues \codeword{word}, I set their location to the previous room that they were in.
+                    
+                    Whenever their location is set, the `previous room' field is overwritten with the current location before the current location is replaced.
+
+                    It is also necessary to ensure that the player can actually go back, to verify this, the `retreating direction' is also stored, to check I call the method \codeword{canLeave} on the \codeword{Room}.
+
+                \item \textit{``Add at least four new commands.''}
+                
+                    sus!
+            \end{itemize}
 
         \section{Challenge Tasks}
-        cock
+
+            This section describes how I implemented the challenge tasks and what I did in addition.
+
+            \begin{itemize}[leftmargin=*]
+                \item \textit{``Add characters to your game.''}
+                
+                    I did stuff to do this trolololol
+
+                \item \textit{``Extend the parser.''}
+                
+                    I entirely replaced how the parser worked, I began by implementing a basic model of \codeword{Command}, it took a few iterations but I settled on providing Regex \codeword{Pattern}s.
+
+                    This approach has several benefits:
+
+                    \begin{itemize}
+                        \item Powerful Regex at low performance cost due to the low number of commands.
+                        \item Ability to have named capture groups which are then interpreted as arguments.
+                    \end{itemize}
+
+                    For each known \codeword{Command}, I would create a \codeword{Matcher} for each \codeword{Pattern}, execute it against the arbitrary command from the user and then pass it into a wrapper class \codeword{Arguments} which lets me safely pull out named groups.
+                
+                \item \textit{``Add a magic transporter room.''}
+                
+                    To do this, I added a new \codeword{RoomWormHole} which I made implement \codeword{EventEntityEnteredRoom} to listen for when any entities entered the room, as soon as one is detected, a short animation is begun and a room is selected at random to teleport the user to. Allowing the user to go to \textbf{any room} may interfere with my story so I chose to only spawn the user at any outside areas of the map.
+                
+                \item \textit{``TODO''}
+            \end{itemize}
 
         \section{Code Quality}
         cock
