@@ -47,7 +47,7 @@ public class CommandManager {
      * Initialise all the commands a player can execute.
      */
     private void initialiseCommands() {
-        final Command[] DEFAULT_COMMANDS = new Command[] {
+        final Command[] DEFAULT_COMMANDS = {
             new CommandHelp(this),
             new CommandGo(),
             new CommandBack(),

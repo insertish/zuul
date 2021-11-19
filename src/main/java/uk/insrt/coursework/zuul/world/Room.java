@@ -4,12 +4,18 @@ import java.util.HashMap;
 import java.util.Set;
 
 public abstract class Room {
+    private World world;
     private String name;
     private HashMap<Direction, Room> adjacentRooms;
 
-    public Room(String name) {
+    public Room(World world, String name) {
+        this.world = world;
         this.name = name;
         this.adjacentRooms = new HashMap<>();
+    }
+
+    public World getWorld() {
+        return this.world;
     }
 
     public String getName() {
@@ -48,7 +54,11 @@ public abstract class Room {
         this.setupDirections();
     }
     
-    public void spawnEntities(World world, Location location) {}
+    public void spawnEntities() {}
+
+    public Location toLocation() {
+        return new Location(this);
+    }
 
     public abstract String describe();
     protected abstract void setupDirections();
