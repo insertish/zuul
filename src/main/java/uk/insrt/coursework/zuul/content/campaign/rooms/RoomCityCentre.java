@@ -29,6 +29,20 @@ public class RoomCityCentre extends Room {
 
     public void spawnEntities() {
         World world = this.getWorld();
-        world.spawnEntity("cat", new EntityCat(world, this.toLocation()));
+
+        EntityCat cat = new EntityCat(world, this.toLocation());
+        world.spawnEntity("cat", cat);
+        cat.useWanderAI(
+            new Room[] {
+                world.getRoom("City Centre"),
+                world.getRoom("Street"),
+                world.getRoom("Shop"),
+                world.getRoom("Street"),
+                world.getRoom("City Centre"),
+                world.getRoom("Back Alley"),
+                world.getRoom("City Centre")
+            },
+            8
+        );
     }
 }

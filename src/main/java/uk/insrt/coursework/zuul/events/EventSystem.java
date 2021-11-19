@@ -70,6 +70,9 @@ public class EventSystem {
             // Previously, there was a try catch ClassCastException
             // but I've since constricted the types on `addListener`
             // and `removeListener` so this should never happen.
+
+            if (!event.canRun())
+                break;
         }
     }
 }

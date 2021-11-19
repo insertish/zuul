@@ -1,6 +1,8 @@
 package uk.insrt.coursework.zuul.entities;
 
+import uk.insrt.coursework.zuul.behaviours.SimpleWanderAI;
 import uk.insrt.coursework.zuul.world.Location;
+import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
 /**
@@ -33,5 +35,11 @@ public class EntityCat extends Entity {
     @Override
     public boolean use(Entity target) {
         return false;
+    }
+
+    public void useWanderAI(Room[] rooms, int chance) {
+        this.getWorld()
+            .getEventSystem()
+            .onTick(new SimpleWanderAI(this, rooms, chance));
     }
 }

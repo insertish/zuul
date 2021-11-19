@@ -1,7 +1,6 @@
 package uk.insrt.coursework.zuul.content.campaign;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 import uk.insrt.coursework.zuul.behaviours.SimpleWanderAI;
@@ -22,6 +21,7 @@ import uk.insrt.coursework.zuul.entities.EntityCat;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;
+import uk.insrt.coursework.zuul.events.IEventListener;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -82,83 +82,12 @@ public class CampaignWorld extends World {
     private void registerEvents() {
         super.registerDefaultEvents();
 
-        this.eventSystem.onTick(new SimpleWanderAI(
-            this.entities.get("cat"),
-            new Room[] {
-                this.rooms.get("City Centre"),
-                this.rooms.get("Street"),
-                this.rooms.get("Shop"),
-                this.rooms.get("Street"),
-                this.rooms.get("City Centre"),
-                this.rooms.get("Back Alley"),
-                this.rooms.get("City Centre")
-            },
-            8
-        ));
-
+        this.eventSystem.addListener(EventEntityEnteredRoom.class, (IEventListener<EventEntityEnteredRoom>) this.getRoom("Worm Hole"));
         this.eventSystem.addListener(EventEntityEnteredRoom.class,
             (EventEntityEnteredRoom event) -> {
                 Entity entity = event.getEntity();
-                System.out.println("Entity " + entity.getAliases()[0] + " has entered room " + entity.getRoom().getName());
-
                 if (entity instanceof EntityPlayer) {
                     Room room = entity.getRoom();
-
-                    // Handle magic transporter (Worm Hole room)
-                    if (room == this.rooms.get("Worm Hole")) {
-                        final Random random = new Random();
-                        final String[] locations = {
-                            "City Centre",
-                            "Coastline",
-                            "Mainland: Coastline",
-                            "Forest",
-                            "Street",
-                            "Back Alley"
-                        };
-
-                        System.out.println("\nYou step into the worm hole...\n");
-
-                        try {
-                            Thread.sleep(1000);
-                        } catch (Exception e) { }
-
-                        final int WIDTH = 42;
-
-                        // Transport animation, this will take 1800 ms.
-                        for (int i=0;i<5;i++) {
-                            System.out.println("*".repeat(i*3) + "\\" + " ".repeat(WIDTH - i * 6 - 2) + "/" + "*".repeat(i*3));
-                            try {
-                                Thread.sleep(60);
-                            } catch (Exception e) { }
-                        }
-
-                        for (int i=0;i<30;i++) {
-                            var out = "";
-                            for (int j=0;j<WIDTH;j++) {
-                                out += random.nextInt(8) == 0 ? "*" : " ";
-                            }
-
-                            System.out.println(out);
-
-                            try {
-                                Thread.sleep(40);
-                            } catch (Exception e) { }
-                        }
-
-                        for (int i=5;i>0;i--) {
-                            System.out.println("*".repeat(i*3) + "/" + " ".repeat(WIDTH - i * 6 - 2) + "\\" + "*".repeat(i*3));
-                            try {
-                                Thread.sleep(60);
-                            } catch (Exception e) { }
-                        }
-
-                        System.out.println();
-
-                        String location = locations[random.nextInt(locations.length)];
-                        Room target = this.getRoom(location);
-                        entity.setLocation(target);
-                        return;
-                    }
 
                     // Mark current room as previously visited.
                     this.visitedRooms.add(room);

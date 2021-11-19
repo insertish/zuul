@@ -32,6 +32,10 @@ public class World {
         return this.player;
     }
 
+    public EventSystem getEventSystem() {
+        return this.eventSystem;
+    }
+
     public Room getRoom(String room) {
         return this.rooms.get(room);
     }

@@ -61,6 +61,10 @@ public abstract class Entity {
         return this.inventory;
     }
 
+    public World getWorld() {
+        return this.world;
+    }
+
     /**
      * Get the Room that this Entity is currently in.
      * @return Room
