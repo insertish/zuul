@@ -20,7 +20,7 @@ public class JTerminalFrame extends JFrame {
         this.add(this.view);
         this.pack();
         this.setLocationRelativeTo(null);
-        this.setMinimumSize(new Dimension(960, 960));
+        this.setMinimumSize(new Dimension(1200, 960));
 
         this.addKeyListener(new KeyListener() {
             public void keyPressed(KeyEvent e) {

@@ -57,18 +57,37 @@ public class JTerminalView extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
+        g.setFont(this.font);
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-
-        g.setColor(Color.WHITE);
-        g.setFont(this.font);
 
         TextBuffer buffer = this.emulator.getBuffer();
         int ox = (this.getWidth() - this.fw * buffer.getWidth()) / 2;
         int oy = (this.getHeight() - this.fh * buffer.getHeight()) / 2;
 
         for (int y=0;y<buffer.getHeight();y++) {
-            g.drawString(buffer.getLine(y), ox, oy + this.fh + this.fh * y);
+            for (int x=0;x<buffer.getWidth();x++) {
+                Color bg = buffer.getBg(x, y);
+                Color fg = buffer.getFg(x, y);
+
+                int drawX = ox + this.fw * x;
+                int drawY = oy + this.fh + this.fh * y;
+
+                if (bg != null && bg != Color.BLACK) {
+                    g.setColor(bg);
+                    g.fillRect(drawX, drawY - this.fh + 6, this.fw, this.fh);
+                }
+
+                char c = buffer.getChar(x, y);
+                if (c != ' ') {
+                    g.setColor(fg);
+                    g.drawString(
+                        String.valueOf(c),
+                        drawX,
+                        drawY
+                    );
+                }
+            }
         }
     }
 }

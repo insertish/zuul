@@ -13,7 +13,7 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 // https://fonts.google.com/specimen/VT323?category=Monospace#standard-styles
 
 public class TerminalEmulator implements IOSystem {
-    public static int TERMINAL_WIDTH = 48;
+    public static int TERMINAL_WIDTH = 80;
     public static int TERMINAL_HEIGHT = 25;
 
     private BlockingQueue<String> queue;
@@ -50,7 +50,7 @@ public class TerminalEmulator implements IOSystem {
     }
 
     public void push(char c) {
-        if (this.input.length() == TERMINAL_WIDTH - 3) return;
+        if (this.input.length() == TERMINAL_WIDTH - 4) return;
 
         this.input += c;
         this.buffer.write(new String(new char[] { c }));
