@@ -11,8 +11,7 @@ public class CommandTake extends Command {
     public CommandTake() {
         super("take <something>: put something in your bag",
             new Pattern[] {
-                Pattern.compile("^take\\s+(?<entity>[\\w\\s]+)"),
-                Pattern.compile("^take")
+                Pattern.compile("^take(?:\\s+(?<entity>[\\w\\s]+))*")
             });
     }
 

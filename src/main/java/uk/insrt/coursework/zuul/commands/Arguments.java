@@ -34,7 +34,7 @@ public class Arguments {
             return null;
         }
 
-        Entity entity = world.findEntity(name);
+        Entity entity = world.findEntity(name, true);
         if (entity == null) {
             System.out.println("You look around for " + name + " but can't find anything.");
             return null;

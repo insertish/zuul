@@ -12,8 +12,7 @@ public class CommandPet extends Command {
     public CommandPet() {
         super("pet <something>: pet something in current room",
             new Pattern[] {
-                Pattern.compile("^pet\\s+(?<entity>[\\w\\s]+)"),
-                Pattern.compile("^pet")
+                Pattern.compile("^pet(?:\\s+(?<entity>[\\w\\s]+))*")
             });
     }
 
