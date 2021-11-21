@@ -5,7 +5,7 @@ import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.events.EventProcessCommand;
 import uk.insrt.coursework.zuul.events.EventTick;
 import uk.insrt.coursework.zuul.io.IOSystem;
-import uk.insrt.coursework.zuul.io.StandardIO;
+import uk.insrt.coursework.zuul.ui.TerminalEmulator;
 import uk.insrt.coursework.zuul.world.World;
 
 public class Game {
@@ -18,8 +18,8 @@ public class Game {
     }
 
     public Game() {
-        this.io = new StandardIO();
-        // this.io = new TerminalEmulator();
+        // this.io = new StandardIO();
+        this.io = new TerminalEmulator();
         this.world = new CampaignWorld(io);
         this.commands = new CommandManager();
     }
