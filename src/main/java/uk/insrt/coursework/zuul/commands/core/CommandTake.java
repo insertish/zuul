@@ -16,13 +16,13 @@ public class CommandTake extends Command {
     }
 
     @Override
-    public boolean run(World world, Arguments arguments) {
-        Entity entity = arguments.entity(world, "What do you want to take?");
+    public boolean run(World world, Arguments args) {
+        Entity entity = this.findEntity(world, args, "What do you want to take?");
         if (entity != null) {
             if (entity.take(world.getPlayer())) {
-                System.out.println("You take " + entity.getName() + " and put it in your bag.");
+                world.getIO().println("You take " + entity.getName() + " and put it in your bag.");
             } else {
-                System.out.println("You cannot take " + entity.getName() + ".");
+                world.getIO().println("You cannot take " + entity.getName() + ".");
             }
         }
 

@@ -25,7 +25,7 @@ public class RoomMedicalCentreReception extends Room {
         if (direction == Direction.DOWN) {
             if (world.getEntitiesInRoom(this)
                 .contains(world.getEntity("guard1"))) {
-                System.out.println("There is security watching the stairs, there's no way to get past them.");
+                this.getWorld().getIO().println("There is security watching the stairs, there's no way to get past them.");
                 return false;
             }
         }

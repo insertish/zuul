@@ -1,36 +1,36 @@
 package uk.insrt.coursework.zuul;
 
-import java.util.Scanner;
-
 import uk.insrt.coursework.zuul.commands.CommandManager;
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.events.EventProcessCommand;
 import uk.insrt.coursework.zuul.events.EventTick;
+import uk.insrt.coursework.zuul.io.IOSystem;
+import uk.insrt.coursework.zuul.io.StandardIO;
 import uk.insrt.coursework.zuul.world.World;
 
 public class Game {
     private World world;
+    private IOSystem io;
     private CommandManager commands;
-    
-    private Scanner reader;
 
     public static void main(String[] args) {
         new Game().start();
     }
 
     public Game() {
-        this.world = new CampaignWorld();
+        this.io = new StandardIO();
+        // this.io = new TerminalEmulator();
+        this.world = new CampaignWorld(io);
         this.commands = new CommandManager();
-        this.reader = new Scanner(System.in);
     }
 
     public void start() {
         this.world.spawnPlayer();
 
         while (true) {
-            System.out.print("\n$ ");
-            String input = this.reader.nextLine().toLowerCase();
-            System.out.print("\n----\n\n");
+            this.io.print("\n$ ");
+            String input = this.io.readLine().toLowerCase();
+            this.io.print("\n----\n\n");
 
             EventProcessCommand event = new EventProcessCommand(input);
             this.world.emit(event);
@@ -42,6 +42,6 @@ public class Game {
             this.world.emit(new EventTick());
         }
 
-        System.out.println("you were game ended");
+        this.io.println("you were game ended");
     }
 }

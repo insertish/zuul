@@ -10,15 +10,18 @@ import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.Event;
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventSystem;
+import uk.insrt.coursework.zuul.io.IOSystem;
 
 public class World {
     protected Map<String, Room> rooms = new HashMap<>();
     protected Map<String, Entity> entities = new HashMap<>();
     protected EntityPlayer player;
 
+    protected IOSystem io;
     protected EventSystem eventSystem;
 
-    public World() {
+    public World(IOSystem io) {
+        this.io = io;
         this.eventSystem = new EventSystem();
         this.player = new EntityPlayer(this);
         this.entities.put("player", this.player);
@@ -30,6 +33,10 @@ public class World {
 
     public EntityPlayer getPlayer() {
         return this.player;
+    }
+
+    public IOSystem getIO() {
+        return this.io;
     }
 
     public EventSystem getEventSystem() {
@@ -63,7 +70,7 @@ public class World {
                 Entity entity = event.getEntity();
                 if (entity instanceof EntityPlayer) {
                     Room room = entity.getRoom();
-                    System.out.println(
+                    this.io.println(
                         room.describe()
                             + "\nYou may go in "
                             + room.getDirections().size()

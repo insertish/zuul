@@ -18,6 +18,6 @@ public class EntityBed extends EntityObject implements IUseable {
             world.emit(new EventTick());
         }
 
-        System.out.println("You take a nap.");
+        this.world.getIO().println("You take a nap.");
     }
 }

@@ -22,8 +22,9 @@ public class CommandHelp extends Command {
 
     @Override
     public boolean run(World world, Arguments arguments) {
-        System.out.println("You can run the following commands:");
-        System.out.println(
+        var io = world.getIO();
+        io.println("You can run the following commands:");
+        io.println(
             this.commandManager
                 .getCommands()
                 .stream()

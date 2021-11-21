@@ -17,13 +17,13 @@ public class CommandPet extends Command {
     }
 
     @Override
-    public boolean run(World world, Arguments arguments) {
-        Entity entity = arguments.entity(world, "What are you trying to pet?");
+    public boolean run(World world, Arguments args) {
+        Entity entity = this.findEntity(world, args, "What are you trying to pet?");
         if (entity != null) {
             if (entity instanceof IPettable) {
                 ((IPettable) entity).pet();
             } else {
-                System.out.println("You cannot use " + entity.getName() + ".");
+                world.getIO().println("You cannot use " + entity.getName() + ".");
             }
         }
 

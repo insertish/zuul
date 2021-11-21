@@ -28,7 +28,7 @@ public class EntityCat extends Entity implements IPettable {
     }
 
     public void pet() {
-        System.out.println("You pet the cat.");
+        this.getWorld().getIO().println("You pet the cat.");
     }
 
     public void useWanderAI(Room[] rooms, int chance) {

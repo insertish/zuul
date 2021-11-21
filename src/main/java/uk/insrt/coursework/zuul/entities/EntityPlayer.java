@@ -52,9 +52,11 @@ public class EntityPlayer extends Entity {
      * @param direction Target Direction
      */
     public void go(Direction direction) {
+        var io = this.getWorld().getIO();
+
         Room room = this.getRoom();
         if (room == null) {
-            System.out.println("You appear to be trapped.");
+            io.println("You appear to be trapped.");
             return;
         }
 
@@ -62,7 +64,7 @@ public class EntityPlayer extends Entity {
 
         Room destination = room.getAdjacent(direction);
         if (destination == null) {
-            System.out.println("You cannot go this way.");
+            io.println("You cannot go this way.");
             return;
         }
 
@@ -74,8 +76,10 @@ public class EntityPlayer extends Entity {
      * Move to the previous room the player was in.
      */
     public void back() {
+        var io = this.getWorld().getIO();
+        
         if (this.retreatingDirection == null) {
-            System.out.println("Nowhere to go back to!");
+            io.println("Nowhere to go back to!");
             return;
         }
 
@@ -83,7 +87,7 @@ public class EntityPlayer extends Entity {
             this.setLocation(this.previousRoom);
             this.retreatingDirection = this.retreatingDirection.flip();
         } else {
-            System.out.println("Cannot leave the room this way.");
+            io.println("Cannot leave the room this way.");
         }
     }
 }

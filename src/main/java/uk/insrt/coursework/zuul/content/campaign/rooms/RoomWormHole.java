@@ -36,7 +36,8 @@ public class RoomWormHole extends Room implements IEventListener<EventEntityEnte
             "Back Alley"
         };
 
-        System.out.println("\nYou step into the worm hole...\n");
+        var io = this.getWorld().getIO();
+        io.println("\nYou step into the worm hole...\n");
 
         try {
             Thread.sleep(1000);
@@ -46,7 +47,7 @@ public class RoomWormHole extends Room implements IEventListener<EventEntityEnte
 
         // Transport animation, this will take 1800 ms.
         for (int i=0;i<5;i++) {
-            System.out.println("*".repeat(i*3) + "\\" + " ".repeat(WIDTH - i * 6 - 2) + "/" + "*".repeat(i*3));
+            io.println("*".repeat(i*3) + "\\" + " ".repeat(WIDTH - i * 6 - 2) + "/" + "*".repeat(i*3));
             try {
                 Thread.sleep(60);
             } catch (Exception e) { }
@@ -58,7 +59,7 @@ public class RoomWormHole extends Room implements IEventListener<EventEntityEnte
                 out += random.nextInt(8) == 0 ? "*" : " ";
             }
 
-            System.out.println(out);
+            io.println(out);
 
             try {
                 Thread.sleep(40);
@@ -66,13 +67,13 @@ public class RoomWormHole extends Room implements IEventListener<EventEntityEnte
         }
 
         for (int i=5;i>0;i--) {
-            System.out.println("*".repeat(i*3) + "/" + " ".repeat(WIDTH - i * 6 - 2) + "\\" + "*".repeat(i*3));
+            io.println("*".repeat(i*3) + "/" + " ".repeat(WIDTH - i * 6 - 2) + "\\" + "*".repeat(i*3));
             try {
                 Thread.sleep(60);
             } catch (Exception e) { }
         }
         
-        System.out.println();
+        io.print("\n");
         
         String location = locations[random.nextInt(locations.length)];
         Room target = this.getWorld().getRoom(location);

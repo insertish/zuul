@@ -77,7 +77,7 @@ public class CommandManager {
             }
         }
 
-        System.out.println("Not sure what you're trying to do.");
+        world.getIO().println("Not sure what you're trying to do.");
         return false;
     }
 }

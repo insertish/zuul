@@ -21,6 +21,7 @@ import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;
 import uk.insrt.coursework.zuul.events.IEventListener;
+import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -33,8 +34,9 @@ import uk.insrt.coursework.zuul.world.World;
 public class CampaignWorld extends World {
     private ArrayList<Room> visitedRooms;
 
-    public CampaignWorld() {
-        super();
+    public CampaignWorld(IOSystem io) {
+        super(io);
+
         this.visitedRooms = new ArrayList<>();
 
         this.buildWorld();
@@ -99,7 +101,7 @@ public class CampaignWorld extends World {
                         .collect(Collectors.joining("\n"));
 
                     if (entities.length() > 0) {
-                        System.out.println("You can see:\n" + entities);
+                        this.io.println("You can see:\n" + entities);
                     }
                 } else {
                     // If another entity enters the room,
@@ -107,7 +109,7 @@ public class CampaignWorld extends World {
                     EntityPlayer player = this.getPlayer();
                     if (entity.getRoom() == player.getRoom()) {
                         if (entity instanceof EntityCat) {
-                            System.out.println("\nA cat has wandered in.");
+                            this.io.println("\nA cat has wandered in.");
                         }
                     }
                 }
@@ -124,7 +126,7 @@ public class CampaignWorld extends World {
                 // If another entity leaves the room,
                 // conditionally mention this to the player.
                 if (entity instanceof EntityCat) {
-                    System.out.println("\nYou see a cat leave.");
+                    this.io.println("\nYou see a cat leave.");
                 }
             });
     }

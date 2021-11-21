@@ -18,13 +18,13 @@ public class CommandUse extends Command {
     }
 
     @Override
-    public boolean run(World world, Arguments arguments) {
-        Entity entity = arguments.entity(world, "What do you want to use?");
+    public boolean run(World world, Arguments args) {
+        Entity entity = this.findEntity(world, args, "What do you want to use?");
         if (entity != null) {
             if (entity instanceof IUseable) {
                 ((IUseable) entity).use(world.getPlayer());
             } else {
-                System.out.println("You cannot use " + entity.getName() + ".");
+                world.getIO().println("You cannot use " + entity.getName() + ".");
             }
         }
 

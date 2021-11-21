@@ -2,6 +2,7 @@ package uk.insrt.coursework.zuul.commands;
 
 import java.util.regex.Pattern;
 
+import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.world.World;
 
 /**
@@ -44,4 +45,19 @@ public abstract class Command {
      * @return Boolean indicating whether the game loop should exit.
      */
     public abstract boolean run(World world, Arguments args);
+
+    public Entity findEntity(World world, Arguments args, String failure) {
+        String name = args.group("entity");
+        if (name == null) {
+            world.getIO().println(failure);
+            return null;
+        }
+
+        Entity entity = world.findEntity(name, true);
+        if (entity == null) {
+            world.getIO().println("You look around for " + name + " but can't find anything.");
+        }
+
+        return entity;
+    }
 }
