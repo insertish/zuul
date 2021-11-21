@@ -6,6 +6,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import uk.insrt.coursework.zuul.io.IOSystem;
 
+// https://stackoverflow.com/questions/17922443/drawing-canvas-on-jframe
+// https://stackoverflow.com/questions/21969954/how-to-detect-a-key-press-in-java
+// https://stackoverflow.com/questions/23413297/passing-values-between-2-threads-without-intrrrupting-each-other
+// https://stackoverflow.com/questions/1088595/how-to-do-something-on-swing-component-resizing
+// https://fonts.google.com/specimen/VT323?category=Monospace#standard-styles
+
 public class TerminalEmulator implements IOSystem {
     public static int TERMINAL_WIDTH = 48;
     public static int TERMINAL_HEIGHT = 25;
