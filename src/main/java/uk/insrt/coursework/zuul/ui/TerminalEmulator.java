@@ -13,8 +13,8 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 // https://fonts.google.com/specimen/VT323?category=Monospace#standard-styles
 
 public class TerminalEmulator implements IOSystem {
-    public static int TERMINAL_WIDTH = 80;
-    public static int TERMINAL_HEIGHT = 25;
+    public static final int TERMINAL_WIDTH = 80;
+    public static final int TERMINAL_HEIGHT = 25;
 
     private BlockingQueue<String> queue;
     private JTerminalFrame frame;

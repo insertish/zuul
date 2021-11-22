@@ -1,6 +1,9 @@
 package uk.insrt.coursework.zuul.ui;
 
 import java.awt.Color;
+import java.util.regex.Matcher;
+
+import uk.insrt.coursework.zuul.io.Ansi;
 
 public class TextBuffer {
     private char[][] buffer;
@@ -38,9 +41,9 @@ public class TextBuffer {
             this.bufferFg[i] = this.bufferFg[i + 1];
         }
 
-        this.buffer[this.height - 1] = new char[this.width];
         this.bufferBg[this.height - 1] = new Color[this.width];
         this.bufferFg[this.height - 1] = new Color[this.width];
+        this.buffer[this.height - 1] = new char[this.width];
     }
 
     public void backspace() {
@@ -59,9 +62,9 @@ public class TextBuffer {
             }
         }
 
-        this.buffer[this.posY][this.posX++] = c;
         this.bufferBg[this.posY][this.posX] = this.bg;
         this.bufferFg[this.posY][this.posX] = this.fg;
+        this.buffer[this.posY][this.posX++] = c;
 
         if (this.posX == this.width) {
             this.posX = 0;
@@ -76,7 +79,29 @@ public class TextBuffer {
 
     public void write(String value) {
         for (int i=0;i<value.length();i++) {
-            this.write(value.charAt(i));
+            char c = value.charAt(i);
+
+            // ansi match
+            if (c == '\u001B') {
+                Matcher matcher = Ansi.AnsiPattern.matcher(value.substring(i));
+                if (matcher.find()) {
+                    int v = Integer.parseInt(matcher.group(1));
+                    i += 3 + (v > 9 ? 1 : 0);
+
+                    if (v == 0) {
+                        this.bg = Color.BLACK;
+                        this.fg = Color.WHITE;
+                    } else if (v >= 30 && v < 38) {
+                        this.fg = Ansi.fromEscapeCode(v);
+                    } else if (v >= 40 && v < 48) {
+                        this.bg = Ansi.fromEscapeCode(v);
+                    }
+
+                    continue;
+                }
+            }
+
+            this.write(c);
         }
     }
 

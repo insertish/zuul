@@ -21,6 +21,7 @@ import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;
 import uk.insrt.coursework.zuul.events.IEventListener;
+import uk.insrt.coursework.zuul.io.Ansi;
 import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
@@ -97,7 +98,7 @@ public class CampaignWorld extends World {
                     String entities = this.getEntitiesInRoom(entity.getRoom())
                         .stream()
                         .filter(e -> !(e instanceof EntityPlayer))
-                        .map(e -> "- " + e.describe() + " (\u001B[40m\u001B[37m" + e.getName() + "\u001B[0m)")
+                        .map(e -> "- " + e.describe() + " (" + Ansi.BackgroundPurple + Ansi.Black + e.getName() + Ansi.Reset + ")")
                         .collect(Collectors.joining("\n"));
 
                     if (entities.length() > 0) {
