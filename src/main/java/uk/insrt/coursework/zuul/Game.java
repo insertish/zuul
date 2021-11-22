@@ -14,7 +14,7 @@ public class Game {
     private CommandManager commands;
 
     public static void main(String[] args) {
-        new Game().start();
+        new Game();
     }
 
     public Game() {
@@ -22,6 +22,7 @@ public class Game {
         this.io = new TerminalEmulator();
         this.world = new CampaignWorld(io);
         this.commands = new CommandManager();
+        this.start();
     }
 
     public void start() {
@@ -43,5 +44,10 @@ public class Game {
         }
 
         this.io.println("you were game ended");
+
+        try {
+            Thread.sleep(1000);
+            this.io.dispose();
+        } catch (Exception e) {}
     }
 }

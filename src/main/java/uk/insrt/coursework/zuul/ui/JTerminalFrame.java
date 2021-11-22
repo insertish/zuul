@@ -21,6 +21,7 @@ public class JTerminalFrame extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setMinimumSize(new Dimension(1200, 960));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.addKeyListener(new KeyListener() {
             public void keyPressed(KeyEvent e) {
@@ -42,5 +43,11 @@ public class JTerminalFrame extends JFrame {
         });
 
         this.setVisible(true);
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        this.view.dispose();
     }
 }

@@ -14,11 +14,14 @@ import javax.swing.JPanel;
 
 public class JTerminalView extends JPanel {
     private TerminalEmulator emulator;
-    private Font font;
+    private boolean blinkState;
+    private Thread thread;
     private int fw, fh;
+    private Font font;
 
     public JTerminalView(TerminalEmulator emulator) {
         this.emulator = emulator;
+        this.blinkState = false;
         this.makeFrame();
     }
 
@@ -26,12 +29,31 @@ public class JTerminalView extends JPanel {
         this.setBackground(Color.BLACK);
         this.loadFont("/VT323-Regular.ttf");
 
+        var view = this;
         this.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent e) {
-                JTerminalView view = (JTerminalView) e.getComponent();
                 view.repaint();
             }
         });
+
+        this.thread = new Thread("Blink Thread") {
+            public void run() {
+                try {
+                    while (true) {
+                        view.blinkState = !view.blinkState;
+                        view.repaint();
+
+                        Thread.sleep(500);
+                    }
+                } catch (InterruptedException e) {}
+            }
+        };
+
+        this.thread.start();
+    }
+
+    public void dispose() {
+        this.thread.interrupt();
     }
 
     public void loadFont(String source) {
@@ -88,6 +110,16 @@ public class JTerminalView extends JPanel {
                     );
                 }
             }
+        }
+
+        if (this.blinkState) {
+            g.setColor(Color.WHITE);
+            g.fillRect(
+                ox + this.fw * buffer.getPosX() + 1,
+                oy + this.fh * buffer.getPosY() + 30,
+                this.fw - 2,
+                this.fh - 28
+            );
         }
     }
 }

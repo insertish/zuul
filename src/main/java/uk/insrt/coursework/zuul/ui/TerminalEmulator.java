@@ -49,6 +49,10 @@ public class TerminalEmulator implements IOSystem {
         }
     }
 
+    public void dispose() {
+        this.frame.dispose();
+    }
+
     public void push(char c) {
         if (this.input.length() == TERMINAL_WIDTH - 4) return;
 

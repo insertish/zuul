@@ -23,4 +23,7 @@ public class StandardIO implements IOSystem {
     public String readLine() {
         return this.reader.nextLine();
     }
+
+    @Override
+    public void dispose() {}
 }
