@@ -53,6 +53,7 @@ public class JTerminalView extends JPanel {
     }
 
     public void dispose() {
+        // https://docs.oracle.com/javase/1.5.0/docs/guide/misc/threadPrimitiveDeprecation.html
         this.thread.interrupt();
     }
 
