@@ -1,5 +1,6 @@
 javadoc
 target
+test
 
 *.aux
 *.fdb_latexmk
