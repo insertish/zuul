@@ -2,6 +2,7 @@ package uk.insrt.coursework.zuul.entities;
 
 import uk.insrt.coursework.zuul.behaviours.SimpleWanderAI;
 import uk.insrt.coursework.zuul.entities.actions.IPettable;
+import uk.insrt.coursework.zuul.entities.actions.IUseable;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
@@ -9,7 +10,7 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * Cat entity which wanders around the map.
  */
-public class EntityCat extends Entity implements IPettable {
+public class EntityCat extends Entity implements IPettable, IUseable {
     public EntityCat(World world, Location startingLocation) {
         super(world, startingLocation, 5);
     }
@@ -35,5 +36,10 @@ public class EntityCat extends Entity implements IPettable {
         this.getWorld()
             .getEventSystem()
             .onTick(new SimpleWanderAI(this, rooms, chance));
+    }
+
+    @Override
+    public void use(Entity target) {
+        this.getWorld().getIO().println("You cannot the cat.");
     }
 }

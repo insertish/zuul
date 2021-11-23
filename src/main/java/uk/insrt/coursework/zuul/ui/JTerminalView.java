@@ -62,7 +62,7 @@ public class JTerminalView extends JPanel {
 
         try {
             this.font = Font.createFont(Font.TRUETYPE_FONT, stream)
-                .deriveFont(32f);
+                .deriveFont(24f);
             
             var frc = new FontRenderContext(new AffineTransform(), true, true);
             var bounds = this.font.getStringBounds(" ", frc);
@@ -117,9 +117,9 @@ public class JTerminalView extends JPanel {
             g.setColor(Color.WHITE);
             g.fillRect(
                 ox + this.fw * buffer.getPosX() + 1,
-                oy + this.fh * buffer.getPosY() + 30,
+                oy + this.fh * (buffer.getPosY() + 1) + 2,
                 this.fw - 2,
-                this.fh - 28
+                (int) (this.fh / 8)
             );
         }
     }

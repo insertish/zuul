@@ -24,8 +24,9 @@ public class JTerminalFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.addKeyListener(new KeyListener() {
-            public void keyPressed(KeyEvent e) {
-                switch (e.getKeyCode()) {
+            public void keyPressed(KeyEvent event) {
+                int code = event.getKeyCode();
+                switch (code) {
                     case 8: {
                         emulator.pop();
                         return;
@@ -34,7 +35,11 @@ public class JTerminalFrame extends JFrame {
                         emulator.flush();
                         break;
                     }
-                    default: emulator.push(e.getKeyChar());
+                    default: {
+                        if ((code >= 65 && code <= 90) || (code >= 48 && code <= 57) || code == 32) {
+                            emulator.push(event.getKeyChar());
+                        }
+                    }
                 }
             }
     

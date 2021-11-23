@@ -60,6 +60,8 @@ public class TextBuffer {
             } else {
                 this.posY++;
             }
+
+            return;
         }
 
         this.bufferBg[this.posY][this.posX] = this.bg;

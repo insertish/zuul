@@ -25,7 +25,7 @@ public class Ansi {
     public static final String BackgroundCyan = "\u001B[46m";
     public static final String BackgroundWhite = "\u001B[47m";
 
-    public static final Pattern AnsiPattern = Pattern.compile("^\\u001B\\[(\\d{1,2})m");
+    public static final Pattern AnsiPattern = Pattern.compile("^\\u001B\\[(\\d{1,3})m");
 
     public static Color fromEscapeCode(int value) {
         switch (value % 10) {

@@ -89,7 +89,9 @@ public class TerminalEmulator implements IOSystem {
     @Override
     public String readLine() {
         try {
-            return this.queue.take();
+            String line = this.queue.take();
+            this.print("\n");
+            return line;
         } catch (Exception err) {
             err.printStackTrace();
             System.exit(1);
