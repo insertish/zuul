@@ -20,6 +20,12 @@ public class Game {
     public Game() {
         // this.io = new StandardIO();
         this.io = new TerminalEmulator();
+
+        /* for (int i=0;i<25;i++) {
+            this.io.print(i + ":" + " ".repeat(i - 9 > 0 ? 1 : 2) + ".".repeat(i == 24 ? 80-5 : 80-4));
+        }
+        this.io.readLine(); */
+
         this.world = new CampaignWorld(io);
         this.commands = new CommandManager();
         this.start();
@@ -29,9 +35,8 @@ public class Game {
         this.world.spawnPlayer();
 
         while (true) {
-            this.io.print("\n$ ");
+            this.io.print("> ");
             String input = this.io.readLine().toLowerCase();
-            this.io.print("\n----\n\n");
 
             EventProcessCommand event = new EventProcessCommand(input);
             this.world.emit(event);
