@@ -28,7 +28,10 @@ public class RoomMedicalCentreReception extends Room {
         if (direction == Direction.DOWN) {
             if (world.getEntitiesInRoom(this)
                 .contains(world.getEntity("guard1"))) {
-                this.getWorld().getIO().println("There is security watching the stairs, there's no way to get past them.");
+                this.getWorld()
+                    .getIO()
+                    .println("There is security watching the stairs, there's no way to get past them.");
+                
                 return false;
             }
         }
@@ -58,7 +61,14 @@ public class RoomMedicalCentreReception extends Room {
             public void setupDialogue(Dialogue<Test> dialogue) {
                 dialogue.addPart(Test.Start,
                     new DialogueNode<Test>("test")
-                        .addOption(new DialogueOption<Test>(Test.Start, "test").mustExit()));
+                        .addOption(new DialogueOption<Test>("simple", Test.Start).mustExit())
+                        .addOption(new DialogueOption<Test>("complex", io -> {
+                            io.println("here is can do a more complex interaction");
+                            io.println("press enter to continue");
+                            io.readLine();
+
+                            return Test.Start;
+                        })));
             }
         });
     }

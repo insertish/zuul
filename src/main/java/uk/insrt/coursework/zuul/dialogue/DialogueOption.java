@@ -1,22 +1,27 @@
 package uk.insrt.coursework.zuul.dialogue;
 
+import uk.insrt.coursework.zuul.io.IOSystem;
+
 public class DialogueOption<T extends Enum<T>> {
+    private IDialogueHandler<T> handler;
+
     private String description;
-    private boolean exit;
+    private boolean shouldExit;
     private T target;
 
-    public DialogueOption(T target, String description) {
+    public DialogueOption(String description, T target) {
         this.target = target;
+        this.description = description;
+    }
+
+    public DialogueOption(String description, IDialogueHandler<T> handler) {
+        this.handler = handler;
         this.description = description;
     }
     
     public DialogueOption<T> mustExit() {
-        this.exit = true;
+        this.shouldExit = true;
         return this;
-    }
-
-    public boolean shouldExit() {
-        return this.exit;
     }
 
     public String getDescription() {
@@ -25,5 +30,15 @@ public class DialogueOption<T extends Enum<T>> {
 
     public T getTarget() {
         return this.target;
+    }
+
+    public T handle(IOSystem io) {
+        if (this.handler != null) {
+            return this.handler.onAction(io);
+        } else if (!this.shouldExit) {
+            return this.target;
+        }
+
+        return null;
     }
 }

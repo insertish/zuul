@@ -21,12 +21,14 @@ public class Dialogue<T extends Enum<T>> {
         var part = this.parts.get(this.currentNode);
         io.println("\n" + part.getDescription());
         DialogueOption<T> option = part.pickOption(io);
-        this.currentNode = option.getTarget();
 
-        if (option.shouldExit()) {
+        T target = option.handle(io);
+        if (target == null) {
+            this.currentNode = option.getTarget();
             return;
         }
 
+        this.currentNode = target;
         this.run(io);
     }
 }
