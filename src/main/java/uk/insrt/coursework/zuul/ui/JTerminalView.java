@@ -137,12 +137,22 @@ public class JTerminalView extends JPanel {
 
         // Render each cell individually.
         for (int y=0;y<buffer.getHeight();y++) {
+            int offsetX = 0;
             for (int x=0;x<buffer.getWidth();x++) {
+                char c = buffer.getChar(x, y);
+
+                // Match each char for emoji codepoints.
+                Integer emojiMatch = this.emojiManager.match(c);
+                if (emojiMatch != null) {
+                    offsetX += emojiMatch - 1;
+                }
+
+                // Get this cell's background and foreground colours.
                 Color bg = buffer.getBg(x, y);
                 Color fg = buffer.getFg(x, y);
 
                 // Find this char's offset.
-                int drawX = Math.round(ox + this.fw * x);
+                int drawX = Math.round(ox + this.fw * (x - offsetX));
                 int drawY = Math.round(oy + this.fh * y);
 
                 // Draw rect if there's a background present.
@@ -151,12 +161,23 @@ public class JTerminalView extends JPanel {
                     g.fillRect(drawX, drawY, Math.round(this.fw), Math.round(this.fh));
                 }
 
+                // If we're drawing an emoji, get the image and skip text.
+                if (emojiMatch != null) {
+                    g.drawImage(
+                        this.emojiManager.getEmoji(),
+                        drawX, drawY,
+                        Math.round(this.fw),
+                        Math.round(this.fh),
+                        this
+                    );
+                    continue;
+                }
+
                 // Drawing the char if it's not a space, we have to
                 // take care to add the offset we previously found or
                 // otherwise the distance between the baseline and
                 // the ascender. This is because Graphics.drawString
                 // draws text from the leftmost baseline equal to (x,y).
-                char c = buffer.getChar(x, y);
                 if (c != 0 && c != ' ') {
                     g.setColor(fg);
                     g.drawString(
