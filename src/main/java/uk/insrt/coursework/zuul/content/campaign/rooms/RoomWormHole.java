@@ -43,7 +43,7 @@ public class RoomWormHole extends Room implements IEventListener<EventEntityEnte
             Thread.sleep(1000);
         } catch (Exception e) { }
 
-        final int WIDTH = 42;
+        final int WIDTH = 79;
 
         // Transport animation, this will take 1800 ms.
         for (int i=0;i<5;i++) {
