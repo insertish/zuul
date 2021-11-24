@@ -1,7 +1,12 @@
 Dialogue Engine
 Sound
-GUI
 Multiplayer
+
+commands:
+- bag
+- drop <item>
+- give <something> to <someone>
+- map
 
 https://stackoverflow.com/questions/577724/trouble-playing-wav-in-java/577926#577926
 https://15.ai/
