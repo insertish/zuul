@@ -1,7 +1,7 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
-import uk.insrt.coursework.zuul.entities.EntityCat;
+import uk.insrt.coursework.zuul.content.campaign.entities.EntityCat;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;

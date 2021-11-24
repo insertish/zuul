@@ -1,5 +1,8 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
+import uk.insrt.coursework.zuul.dialogue.Dialogue;
+import uk.insrt.coursework.zuul.dialogue.DialogueNode;
+import uk.insrt.coursework.zuul.dialogue.DialogueOption;
 import uk.insrt.coursework.zuul.entities.EntityNPC;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.Room;
@@ -33,9 +36,14 @@ public class RoomMedicalCentreReception extends Room {
         return true;
     }
 
+    public static enum Test {
+        Start
+    }
+
     public void spawnEntities() {
         World world = this.getWorld();
-        world.spawnEntity("guard1", new EntityNPC(world, this.toLocation()) {
+
+        world.spawnEntity("guard1", new EntityNPC<Test>(world, this.toLocation(), Test.Start) {
             @Override
             public String[] getAliases() {
                 return new String[] { "security guard", "guard" };
@@ -44,6 +52,13 @@ public class RoomMedicalCentreReception extends Room {
             @Override
             public String describe() {
                 return "guard";
+            }
+
+            @Override
+            public void setupDialogue(Dialogue<Test> dialogue) {
+                dialogue.addPart(Test.Start,
+                    new DialogueNode<Test>("test")
+                        .addOption(new DialogueOption<Test>(Test.Start, "test").mustExit()));
             }
         });
     }

@@ -12,8 +12,7 @@ public class CommandUse extends Command {
     public CommandUse() {
         super("use <something>: use an object or something in your inventory",
             new Pattern[] {
-                Pattern.compile("^use\\s+(?<entity>[\\w\\s]+)"),
-                Pattern.compile("^use")
+                Pattern.compile("^use(?:\\s+(?<entity>[\\w\\s]+))*")
             });
     }
 

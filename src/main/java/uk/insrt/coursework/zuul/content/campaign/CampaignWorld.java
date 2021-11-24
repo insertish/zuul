@@ -3,6 +3,7 @@ package uk.insrt.coursework.zuul.content.campaign;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import uk.insrt.coursework.zuul.content.campaign.entities.EntityCat;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomApartmentsHome;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomApartmentsReception;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomBackAlley;
@@ -16,7 +17,6 @@ import uk.insrt.coursework.zuul.content.campaign.rooms.RoomShop;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomStreet;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomWormHole;
 import uk.insrt.coursework.zuul.entities.Entity;
-import uk.insrt.coursework.zuul.entities.EntityCat;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;

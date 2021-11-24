@@ -10,6 +10,7 @@ import uk.insrt.coursework.zuul.commands.core.CommandHelp;
 import uk.insrt.coursework.zuul.commands.core.CommandPet;
 import uk.insrt.coursework.zuul.commands.core.CommandQuit;
 import uk.insrt.coursework.zuul.commands.core.CommandTake;
+import uk.insrt.coursework.zuul.commands.core.CommandTalk;
 import uk.insrt.coursework.zuul.commands.core.CommandUse;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -48,13 +49,14 @@ public class CommandManager {
      */
     private void initialiseCommands() {
         final Command[] DEFAULT_COMMANDS = {
-            new CommandHelp(this),
-            new CommandGo(),
             new CommandBack(),
+            new CommandGo(),
+            new CommandHelp(this),
             new CommandPet(),
-            new CommandUse(),
+            new CommandQuit(),
             new CommandTake(),
-            new CommandQuit()
+            new CommandTalk(),
+            new CommandUse(),
         };
 
         this.registerCommands(DEFAULT_COMMANDS);
