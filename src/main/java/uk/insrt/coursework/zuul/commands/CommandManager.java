@@ -12,6 +12,7 @@ import uk.insrt.coursework.zuul.commands.core.CommandQuit;
 import uk.insrt.coursework.zuul.commands.core.CommandTake;
 import uk.insrt.coursework.zuul.commands.core.CommandTalk;
 import uk.insrt.coursework.zuul.commands.core.CommandUse;
+import uk.insrt.coursework.zuul.commands.core.CommandWhereAmI;
 import uk.insrt.coursework.zuul.world.World;
 
 /**
@@ -57,6 +58,7 @@ public class CommandManager {
             new CommandTake(),
             new CommandTalk(),
             new CommandUse(),
+            new CommandWhereAmI(),
         };
 
         this.registerCommands(DEFAULT_COMMANDS);
