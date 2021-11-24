@@ -1,0 +1,4 @@
+emojis = [
+    { unicode = "😳", path = "flosh.png" },
+    { unicode = "😁", path = "trol.png" },
+]

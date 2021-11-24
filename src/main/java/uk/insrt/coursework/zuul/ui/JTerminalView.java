@@ -8,26 +8,34 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.AffineTransform;
+import java.awt.Image;
 import java.io.InputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class JTerminalView extends JPanel {
     private TerminalEmulator emulator;
-    private boolean blinkState;
-    private Thread thread;
-    private int fw, fh;
+    
+    private EmojiManager emojiManager;
+    private Image temp;
     private Font font;
+
+    private Thread blinkThread;
+    private boolean blinkState;
+
+    private int fw, fh;
 
     public JTerminalView(TerminalEmulator emulator) {
         this.emulator = emulator;
+        this.emojiManager = new EmojiManager();
         this.blinkState = false;
+        this.loadResources();
         this.makeFrame();
     }
 
     public void makeFrame() {
         this.setBackground(Color.BLACK);
-        this.loadFont("/VT323-Regular.ttf");
 
         var view = this;
         this.addComponentListener(new ComponentAdapter() {
@@ -36,7 +44,7 @@ public class JTerminalView extends JPanel {
             }
         });
 
-        this.thread = new Thread("Blink Thread") {
+        this.blinkThread = new Thread("Blink Thread") {
             public void run() {
                 try {
                     while (true) {
@@ -49,12 +57,19 @@ public class JTerminalView extends JPanel {
             }
         };
 
-        this.thread.start();
+        this.blinkThread.start();
     }
 
-    public void dispose() {
-        // https://docs.oracle.com/javase/1.5.0/docs/guide/misc/threadPrimitiveDeprecation.html
-        this.thread.interrupt();
+    public void loadResources() {
+        this.loadFont("/VT323-Regular.ttf");
+        
+        try {
+            this.emojiManager.loadResources();
+            InputStream stream = this.getClass().getResourceAsStream("/emojis/trol.png");
+            this.temp = ImageIO.read(stream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadFont(String source) {
@@ -69,6 +84,11 @@ public class JTerminalView extends JPanel {
             this.fw = (int) bounds.getWidth();
             this.fh = (int) bounds.getHeight();
         } catch (Exception e) { }
+    }
+
+    public void dispose() {
+        // https://docs.oracle.com/javase/1.5.0/docs/guide/misc/threadPrimitiveDeprecation.html
+        this.blinkThread.interrupt();
     }
 
     @Override
@@ -121,6 +141,8 @@ public class JTerminalView extends JPanel {
                 this.fw - 2,
                 (int) (this.fh / 8)
             );
+
+            g.drawImage(this.temp, ox + this.fw * buffer.getPosX(), oy + this.fh * (buffer.getPosY() + 1), 64, 64, Color.BLACK, this);
         }
     }
 }
