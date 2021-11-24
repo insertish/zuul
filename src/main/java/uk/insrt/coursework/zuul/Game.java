@@ -1,10 +1,13 @@
 package uk.insrt.coursework.zuul;
 
+import javax.swing.JOptionPane;
+
 import uk.insrt.coursework.zuul.commands.CommandManager;
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.events.EventProcessCommand;
 import uk.insrt.coursework.zuul.events.EventTick;
 import uk.insrt.coursework.zuul.io.IOSystem;
+import uk.insrt.coursework.zuul.io.StandardIO;
 import uk.insrt.coursework.zuul.ui.TerminalEmulator;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -18,17 +21,21 @@ public class Game {
     }
 
     public Game() {
-        // this.io = new StandardIO();
-        this.io = new TerminalEmulator();
+        this.init();
+        this.start();
+    }
 
-        /* for (int i=0;i<25;i++) {
-            this.io.print(i + ":" + " ".repeat(i - 9 > 0 ? 1 : 2) + ".".repeat(i == 24 ? 80-5 : 80-4));
+    public void init() {
+        int selection = JOptionPane.showConfirmDialog(null, "Play full experience?\nUses custom terminal emulator.\n(recommended option)", "World of Deez", JOptionPane.YES_NO_OPTION);
+        if (selection == 0) {
+            selection = JOptionPane.showConfirmDialog(null, "Immersive mode?\nRuns emulator in fullscreen.\n(recommended option)", "World of Deez", JOptionPane.YES_NO_OPTION);
+            this.io = new TerminalEmulator(selection == 0);
+        } else {
+            this.io = new StandardIO();
         }
-        this.io.readLine(); */
 
         this.world = new CampaignWorld(io);
         this.commands = new CommandManager();
-        this.start();
     }
 
     public void start() {
