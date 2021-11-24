@@ -2,6 +2,7 @@ package uk.insrt.coursework.zuul.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -9,9 +10,11 @@ import javax.swing.JFrame;
 
 public class JTerminalFrame extends JFrame {
     private JTerminalView view;
+    private boolean fullscreen;
 
     public JTerminalFrame(TerminalEmulator emulator) {
         this.view = new JTerminalView(emulator);
+        this.fullscreen = emulator.isFullscreen();
         this.makeFrame(emulator);
     }
 
@@ -20,7 +23,7 @@ public class JTerminalFrame extends JFrame {
         this.add(this.view);
         this.pack();
         this.setLocationRelativeTo(null);
-        this.setMinimumSize(new Dimension(1200, 960));
+        this.setMinimumSize(new Dimension(640, 640));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.addKeyListener(new KeyListener() {
@@ -48,6 +51,13 @@ public class JTerminalFrame extends JFrame {
         });
 
         this.setVisible(true);
+
+        if (this.fullscreen) {
+            GraphicsEnvironment
+                .getLocalGraphicsEnvironment()
+                .getDefaultScreenDevice()
+                .setFullScreenWindow(this);
+        }
     }
 
     @Override

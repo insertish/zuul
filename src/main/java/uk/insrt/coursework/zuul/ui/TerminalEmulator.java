@@ -18,15 +18,21 @@ public class TerminalEmulator implements IOSystem {
 
     private BlockingQueue<String> queue;
     private JTerminalFrame frame;
+    private boolean fullscreen;
     private TextBuffer buffer;
     private String input;
 
-    public TerminalEmulator() {
+    public TerminalEmulator(boolean fullscreen) {
         this.queue = new LinkedBlockingQueue<>();
         this.buffer = new TextBuffer(TERMINAL_WIDTH, TERMINAL_HEIGHT);
+        this.fullscreen = fullscreen;
         this.input = new String();
 
         this.buildFrame();
+    }
+
+    public TerminalEmulator() {
+        this(false);
     }
 
     public void buildFrame() {
@@ -47,6 +53,10 @@ public class TerminalEmulator implements IOSystem {
         if (this.frame != null) {
             this.frame.repaint();
         }
+    }
+
+    public boolean isFullscreen() {
+        return this.fullscreen;
     }
 
     public void dispose() {
