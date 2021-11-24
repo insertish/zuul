@@ -10,7 +10,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandPet extends Command {
     public CommandPet() {
-        super("pet <something>: pet something in current room",
+        super("pet <something>", "pet something in current room",
             new Pattern[] {
                 Pattern.compile("^pet(?:\\s+(?<entity>[\\w\\s]+))*")
             });

@@ -9,7 +9,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandTake extends Command {
     public CommandTake() {
-        super("take <something>: put something in your bag",
+        super("take <something>", "put something in your bag",
             new Pattern[] {
                 Pattern.compile("^take(?:\\s+(?<entity>[\\w\\s]+))*")
             });
@@ -22,7 +22,7 @@ public class CommandTake extends Command {
             if (entity.take(world.getPlayer())) {
                 world.getIO().println("You take " + entity.getName() + " and put it in your bag.");
             } else {
-                world.getIO().println("You cannot take " + entity.getName() + ".");
+                world.getIO().println("You cannot take " + entity.getName() + ", it's too heavy to put in your bag.");
             }
         }
 

@@ -10,7 +10,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandTalk extends Command {
     public CommandTalk() {
-        super("talk with <someone>: start talking with someone",
+        super("talk with <someone>", "start talking with someone",
             new Pattern[] {
                 Pattern.compile("^talk with(?:\\s+(?<entity>[\\w\\s]+))*"),
                 Pattern.compile("^talk")

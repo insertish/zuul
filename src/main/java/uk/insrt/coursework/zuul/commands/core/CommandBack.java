@@ -8,7 +8,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandBack extends Command {
     public CommandBack() {
-        super("back: go back to the previous room",
+        super("back", "go back to the previous room",
             new Pattern[] {
                 Pattern.compile("^back(?!\\w)"),
             });

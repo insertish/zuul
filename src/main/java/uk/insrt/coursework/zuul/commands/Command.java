@@ -10,21 +10,32 @@ import uk.insrt.coursework.zuul.world.World;
  */
 public abstract class Command {
     private Pattern[] patterns;
+    private String syntax;
     private String usage;
 
     /**
      * Construct a new Command.
-     * @param usage Information about how to use the command
+     * @param syntax Information about how to use the command
+     * @param usage Information about what the command does
      * @param patterns Patterns to execute this command on
      */
-    public Command(String usage, Pattern[] patterns) {
+    public Command(String syntax, String usage, Pattern[] patterns) {
         this.patterns = patterns;
+        this.syntax = syntax;
         this.usage = usage;
     }
 
     /**
      * Get information about how to use the command.
      * @return String Information about how to use the command
+     */
+    public String getSyntax() {
+        return this.syntax;
+    }
+
+    /**
+     * Get information about what the command does.
+     * @return String Information about what the command does
      */
     public String getUsage() {
         return this.usage;

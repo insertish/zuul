@@ -9,7 +9,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandGo extends Command {
     public CommandGo() {
-        super("go <direction>: go in a certain direction",
+        super("go <direction>", "go in a certain direction",
             new Pattern[] {
                 Pattern.compile("^(?:go|walk)(?:\\s+(?<direction>[\\w\\s]+))*")
             });

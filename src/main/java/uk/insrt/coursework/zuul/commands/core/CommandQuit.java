@@ -8,7 +8,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandQuit extends Command {
     public CommandQuit() {
-        super("quit: quit the game",
+        super("quit", "quit the game",
             new Pattern[] {
                 Pattern.compile("^quit(?!\\w)"),
             });
