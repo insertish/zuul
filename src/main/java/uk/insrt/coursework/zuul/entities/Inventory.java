@@ -26,11 +26,15 @@ public class Inventory {
         this.maxWeight = maxWeight;
     }
 
+    public int getMaxWeight() {
+        return this.maxWeight;
+    }
+
     /**
      * Get the current weight of this inventory.
      * @return Weight (in kg)
      */
-    private int getWeight() {
+    public int getWeight() {
         return this
             .items
             .stream()
@@ -61,5 +65,9 @@ public class Inventory {
      */
     public boolean remove(Entity entity) {
         return this.items.remove(entity);
+    }
+
+    public Iterable<Entity> getItems() {
+        return this.items;
     }
 }
