@@ -4,10 +4,12 @@ import javax.swing.JOptionPane;
 
 import uk.insrt.coursework.zuul.commands.CommandManager;
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
-import uk.insrt.coursework.zuul.events.EventProcessCommand;
-import uk.insrt.coursework.zuul.events.EventTick;
+import uk.insrt.coursework.zuul.content.campaign.commands.CommandMap;
+import uk.insrt.coursework.zuul.events.world.EventProcessCommand;
+import uk.insrt.coursework.zuul.events.world.EventTick;
 import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.io.StandardIO;
+import uk.insrt.coursework.zuul.ui.EventDraw;
 import uk.insrt.coursework.zuul.ui.TerminalEmulator;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -34,8 +36,15 @@ public class Game {
             this.io = new StandardIO();
         }
 
-        this.world = new CampaignWorld(io);
+        this.world = new CampaignWorld(this.io);
         this.commands = new CommandManager();
+
+        // The map is only available in full experience mode.
+        if (this.io instanceof TerminalEmulator) {
+            CommandMap map = new CommandMap();
+            this.commands.registerCommand(map);
+            ((TerminalEmulator) this.io).getEventSystem().addListener(EventDraw.class, map);
+        }
     }
 
     public void start() {
