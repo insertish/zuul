@@ -226,5 +226,8 @@ public class JTerminalView extends JPanel {
                 (int) (this.fh / 8)
             );
         }
+
+        // Fire draw event for custom rendering.
+        this.emulator.getEventSystem().emit(new EventDraw(g, ox, oy, this.fw, this.fh));
     }
 }

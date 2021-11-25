@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import uk.insrt.coursework.zuul.events.EventSystem;
 import uk.insrt.coursework.zuul.io.IOSystem;
 
 // https://stackoverflow.com/questions/17922443/drawing-canvas-on-jframe
@@ -17,6 +18,7 @@ public class TerminalEmulator implements IOSystem {
     public static final int TERMINAL_HEIGHT = 25;
 
     private BlockingQueue<String> queue;
+    private EventSystem eventSystem;
     private JTerminalFrame frame;
     private boolean fullscreen;
     private TextBuffer buffer;
@@ -24,6 +26,7 @@ public class TerminalEmulator implements IOSystem {
 
     public TerminalEmulator(boolean fullscreen) {
         this.queue = new LinkedBlockingQueue<>();
+        this.eventSystem = new EventSystem();
         this.buffer = new TextBuffer(TERMINAL_WIDTH, TERMINAL_HEIGHT);
         this.fullscreen = fullscreen;
         this.input = new String();
@@ -43,6 +46,10 @@ public class TerminalEmulator implements IOSystem {
                 emulator.frame = new JTerminalFrame(emulator);
             }
         });
+    }
+
+    public EventSystem getEventSystem() {
+        return this.eventSystem;
     }
 
     public TextBuffer getBuffer() {
