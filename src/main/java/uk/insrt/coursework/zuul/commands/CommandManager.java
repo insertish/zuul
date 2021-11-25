@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 
 import uk.insrt.coursework.zuul.commands.core.CommandBack;
 import uk.insrt.coursework.zuul.commands.core.CommandBag;
+import uk.insrt.coursework.zuul.commands.core.CommandDrop;
 import uk.insrt.coursework.zuul.commands.core.CommandGo;
 import uk.insrt.coursework.zuul.commands.core.CommandHelp;
 import uk.insrt.coursework.zuul.commands.core.CommandPet;
@@ -53,6 +54,7 @@ public class CommandManager {
         final Command[] DEFAULT_COMMANDS = {
             new CommandBack(),
             new CommandBag(),
+            new CommandDrop(),
             new CommandGo(),
             new CommandHelp(this),
             new CommandPet(),
