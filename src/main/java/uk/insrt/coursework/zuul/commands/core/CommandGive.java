@@ -13,6 +13,7 @@ public class CommandGive extends Command {
         super("give <something> to <someone>", "give something to someone",
             new Pattern[] {
                 Pattern.compile("^(?:give|put)(?:\\s+(?<item>[\\w\\s]+)\\s+(?:to|in)\\s+(?<entity>[\\w\\s]+))*")
+                // give, put, give <something> to <someone>, put <something> in <something>, (+2)
             });
     }
 

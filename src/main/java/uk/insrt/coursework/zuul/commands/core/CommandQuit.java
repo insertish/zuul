@@ -11,6 +11,7 @@ public class CommandQuit extends Command {
         super("quit", "quit the game",
             new Pattern[] {
                 Pattern.compile("^quit(?!\\w)"),
+                // quit
             });
     }
 

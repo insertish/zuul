@@ -13,6 +13,7 @@ public class CommandPet extends Command {
         super("pet <something>", "pet something around you or in your inventory",
             new Pattern[] {
                 Pattern.compile("^pet(?:\\s+(?<entity>[\\w\\s]+))*")
+                // pet, pet <something>
             });
     }
 
@@ -23,7 +24,7 @@ public class CommandPet extends Command {
             if (entity instanceof IPettable) {
                 ((IPettable) entity).pet();
             } else {
-                world.getIO().println("You cannot use " + entity.getName() + ".");
+                world.getIO().println("You cannot pet " + entity.getHighlightedName() + ".");
             }
         }
 

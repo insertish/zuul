@@ -12,6 +12,7 @@ public class CommandGo extends Command {
         super("go <direction>", "go in a certain direction",
             new Pattern[] {
                 Pattern.compile("^(?:go|walk)(?:\\s+(?<direction>[\\w\\s]+))*")
+                // go, walk, go <direction>, walk <direction>
             });
     }
 

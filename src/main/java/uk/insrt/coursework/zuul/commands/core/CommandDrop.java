@@ -12,7 +12,8 @@ public class CommandDrop extends Command {
     public CommandDrop() {
         super("drop <item>", "drop an item from your bag",
             new Pattern[] {
-                Pattern.compile("^drop(?:\\s+(?<entity>[\\w\\s]+))*")
+                Pattern.compile("^(?:drop|place|put down)(?:\\s+(?<entity>[\\w\\s]+))*")
+                // drop, place, put down, drop <item>, place <item>, put down <item>
             });
     }
 

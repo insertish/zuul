@@ -16,6 +16,7 @@ public class CommandHelp extends Command {
         super("help", "show help menu",
             new Pattern[] {
                 Pattern.compile("^(?:h(?:elp)*)(?!\\w)")
+                // h, help
             });
         
         this.commandManager = commandManager;

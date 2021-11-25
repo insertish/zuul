@@ -15,6 +15,7 @@ public class CommandBag extends Command {
         super("bag", "look inside your bag",
             new Pattern[] {
                 Pattern.compile("^b(?:ag)*(?!\\w)"),
+                // b, bag
             });
     }
 

@@ -41,6 +41,6 @@ public class EntityCat extends Entity implements IPettable, IUseable {
 
     @Override
     public void use(Entity target) {
-        this.getWorld().getIO().println("You cannot the cat.");
+        this.getWorld().getIO().println("You cannot the cat.\nPlease do not the cat. 😳😳😳");
     }
 }

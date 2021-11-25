@@ -12,6 +12,7 @@ public class CommandWhereAmI extends Command {
         super("where am i", "describe the current room again",
             new Pattern[] {
                 Pattern.compile("^where am i(?!\\w)"),
+                // where am i
             });
     }
 

@@ -10,7 +10,8 @@ public class CommandBack extends Command {
     public CommandBack() {
         super("back", "go back to the previous room",
             new Pattern[] {
-                Pattern.compile("^back(?!\\w)"),
+                Pattern.compile("^(?:(?:go|walk)\\s+)*back(?!\\w)"),
+                // back, go back, walk back
             });
     }
 

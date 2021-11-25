@@ -11,9 +11,10 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandTake extends Command {
     public CommandTake() {
-        super("take <something>", "put something in your bag",
+        super("take <something> [from <someone>]", "put something in your bag",
             new Pattern[] {
-                Pattern.compile("^take(?:\\s+(?<entity>[\\w\\s]+))*")
+                Pattern.compile("^take(?:\\s+(?<entity>[\\w\\s]+)(?:\\s+from\\s+(?<other>[\\w\\s]+))*)*")
+                // take, take <item>, take <item> from <entity>
             });
     }
 

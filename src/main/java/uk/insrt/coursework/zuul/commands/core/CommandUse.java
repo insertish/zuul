@@ -13,6 +13,7 @@ public class CommandUse extends Command {
         super("use <something>", "use something around you or in your inventory",
             new Pattern[] {
                 Pattern.compile("^use(?:\\s+(?<entity>[\\w\\s]+))*")
+                // use, use <entity>
             });
     }
 
@@ -23,7 +24,7 @@ public class CommandUse extends Command {
             if (entity instanceof IUseable) {
                 ((IUseable) entity).use(world.getPlayer());
             } else {
-                world.getIO().println("You cannot use " + entity.getName() + ".");
+                world.getIO().println("You cannot use " + entity.getHighlightedName() + ".");
             }
         }
 
