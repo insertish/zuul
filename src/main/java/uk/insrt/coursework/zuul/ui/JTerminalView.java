@@ -187,6 +187,8 @@ public class JTerminalView extends JPanel {
                     );
                 }
             }
+
+            this.emojiManager.resetState();
         }
 
         // Draw a blinker to indicate the user can type here.

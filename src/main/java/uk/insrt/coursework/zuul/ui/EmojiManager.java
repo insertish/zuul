@@ -3,6 +3,7 @@ package uk.insrt.coursework.zuul.ui;
 import java.awt.Image;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,6 +12,8 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import com.moandjiezana.toml.Toml;
+
+import org.apache.commons.io.IOUtils;
 
 import uk.insrt.coursework.zuul.util.Tree;
 
@@ -41,11 +44,11 @@ public class EmojiManager {
     public Image getEmoji() {
         String value = this.currentNode.getValue();
         Image image = this.emojis.get(value);
-        this.reset();
+        this.resetState();
         return image;
     }
 
-    public void reset() {
+    public void resetState() {
         this.currentNode = this.emojiTree;
     }
 
@@ -83,7 +86,9 @@ public class EmojiManager {
 
     public void loadResources() throws IOException {
         InputStream defnStream = this.getClass().getResourceAsStream("/emojis/definitions.toml");
-        Toml defn = new Toml().read(defnStream);
+        // We need to force UTF-8 encoding or else unicode emojis may get mangled.
+        String defnString = IOUtils.toString(defnStream, StandardCharsets.UTF_8);
+        Toml defn = new Toml().read(defnString);
         List<HashMap<String, String>> emojis = defn.getList("emojis");
 
         for (var emoji : emojis) {
