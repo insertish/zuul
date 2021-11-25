@@ -84,8 +84,8 @@ public class EmojiManager {
         return null;
     }
 
-    public void loadResources() throws IOException {
-        InputStream defnStream = this.getClass().getResourceAsStream("/emojis/definitions.toml");
+    public void loadResources(String rootDir) throws IOException {
+        InputStream defnStream = this.getClass().getResourceAsStream(rootDir + "/definitions.toml");
         // We need to force UTF-8 encoding or else unicode emojis may get mangled.
         String defnString = IOUtils.toString(defnStream, StandardCharsets.UTF_8);
         Toml defn = new Toml().read(defnString);
@@ -95,7 +95,7 @@ public class EmojiManager {
             String path = emoji.get("path");
             String unicode = emoji.get("unicode");
 
-            InputStream stream = this.getClass().getResourceAsStream("/emojis/" + path);
+            InputStream stream = this.getClass().getResourceAsStream(rootDir + "/" + path);
             this.emojis.put(unicode, ImageIO.read(stream));
             this.emojiTree.addChildWithPath(
                 new ArrayList<>(Arrays.asList(

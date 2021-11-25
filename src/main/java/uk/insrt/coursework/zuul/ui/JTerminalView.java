@@ -14,6 +14,8 @@ import java.io.InputStream;
 
 import javax.swing.JPanel;
 
+import com.moandjiezana.toml.Toml;
+
 public class JTerminalView extends JPanel {
     private TerminalEmulator emulator;
     
@@ -63,10 +65,20 @@ public class JTerminalView extends JPanel {
 
     public void loadResources() {
         try {
-            this.loadFont("/VT323-Regular.ttf", 32.0f / 12.8f);
-            this.emojiManager.loadResources();
+            InputStream stream = this.getClass().getResourceAsStream("/emulator.toml");
+            Toml defn = new Toml().read(stream);
+
+            String font = defn.getString("font");
+            if (font != null) {
+                this.loadFont(font, 32.0f / 12.8f);
+            }
+
+            String rootDir = defn.getString("emojis");
+            if (rootDir != null) {
+                this.emojiManager.loadResources(rootDir);
+            }
         } catch (Exception e) {
-            System.err.println("Failed to load resources for terminal view!");
+            System.err.println("Failed to load any resources for terminal view!");
             e.printStackTrace();
         }
     }
