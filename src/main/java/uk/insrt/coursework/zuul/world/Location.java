@@ -26,6 +26,11 @@ public class Location {
         this.inventory = inventory;
     }
 
+    public void clear() {
+        this.room = null;
+        this.inventory = null;
+    }
+
     public Room getRoom() {
         return this.room;
     }

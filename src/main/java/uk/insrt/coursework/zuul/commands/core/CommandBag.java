@@ -32,8 +32,8 @@ public class CommandBag extends Command {
         io.println("You look in your bag to see:");
         for (Entity item : inv.getItems()) {
             io.println("- " + Ansi.Yellow + item.getWeight() + " kg"
-                + Ansi.Reset + " " + item.describe() + " (" + Ansi.BackgroundYellow
-                + Ansi.Black + item.getName() + Ansi.Reset + ")");
+                + Ansi.Reset + " " + item.describe()
+                + " (" + item.getHighlightedName() + ")");
         }
 
         return false;

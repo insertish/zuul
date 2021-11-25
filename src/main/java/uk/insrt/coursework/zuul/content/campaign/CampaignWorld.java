@@ -76,6 +76,11 @@ public class CampaignWorld extends World {
         for (Room room : this.rooms.values()) {
             room.spawnEntities();
         }
+
+        // Entangle boat inventories.
+        Entity boat1 = this.entities.get("boat1");
+        Entity boat2 = this.entities.get("boat2");
+        boat1.entangleInventory(boat2.getInventory());
     }
 
     /**
@@ -98,7 +103,9 @@ public class CampaignWorld extends World {
                     String entities = this.getEntitiesInRoom(entity.getRoom())
                         .stream()
                         .filter(e -> !(e instanceof EntityPlayer))
-                        .map(e -> "- " + e.describe() + " (" + Ansi.BackgroundPurple + Ansi.Black + e.getName() + Ansi.Reset + ")")
+                        .map(e -> "- " + e.describe() + " ("
+                            + Ansi.BackgroundPurple + Ansi.Black
+                            + e.getName() + Ansi.Reset + ")")
                         .collect(Collectors.joining("\n"));
 
                     if (entities.length() > 0) {

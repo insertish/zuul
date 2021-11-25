@@ -2,6 +2,7 @@ package uk.insrt.coursework.zuul.entities;
 
 import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;
+import uk.insrt.coursework.zuul.io.Ansi;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
@@ -57,6 +58,10 @@ public abstract class Entity {
         return this.getAliases()[0];
     }
 
+    public String getHighlightedName() {
+        return Ansi.BackgroundWhite + Ansi.Black + this.getName() + Ansi.Reset;
+    }
+
     /**
      * Get the Inventory that this Entity holds.
      * @return Inventory
@@ -85,17 +90,23 @@ public abstract class Entity {
         return this.location.getInventory();
     }
 
-    /**
-     * Move the Entity into a Room.
-     * @param room Destination Room
-     */
-    public void setLocation(Room room) {
+    /** Remove from any existing place */
+    public void consume() {
         Inventory inventory = this.location.getInventory();
         if (inventory != null) inventory.remove(this);
 
         Room previousRoom = this.getRoom();
         if (previousRoom != null) this.world.emit(new EventEntityLeftRoom(this, previousRoom));
 
+        this.location.clear();
+    }
+
+    /**
+     * Move the Entity into a Room.
+     * @param room Destination Room
+     */
+    public void setLocation(Room room) {
+        this.consume();
         this.location.setLocation(room);
         this.world.emit(new EventEntityEnteredRoom(this));
     }
@@ -107,11 +118,20 @@ public abstract class Entity {
      */
     public boolean setLocation(Inventory inventory) {
         if (inventory.add(this)) {
+            this.consume();
             this.location.setLocation(inventory);
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Link this Entity's inventory with an existing inventory.
+     * @param inventory
+     */
+    public void entangleInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     /**
