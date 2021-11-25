@@ -3,8 +3,11 @@ package uk.insrt.coursework.zuul.io;
 import java.awt.Color;
 import java.util.regex.Pattern;
 
+/**
+ * ANSI escape codes
+ * Used https://stackoverflow.com/a/5762502 as a reference.
+ */
 public class Ansi {
-    // used https://stackoverflow.com/a/5762502 as a reference
 
     public static final String Reset = "\u001B[0m";
     public static final String Black = "\u001B[30m";
