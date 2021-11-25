@@ -1,6 +1,6 @@
 package uk.insrt.coursework.zuul.content.campaign;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityCat;
@@ -33,12 +33,12 @@ import uk.insrt.coursework.zuul.world.World;
 // [3:02] https://brand-new-animal.fandom.com/wiki/Runaway_Raccoon
 
 public class CampaignWorld extends World {
-    private ArrayList<Room> visitedRooms;
+    private HashSet<Room> visitedRooms;
 
     public CampaignWorld(IOSystem io) {
         super(io);
 
-        this.visitedRooms = new ArrayList<>();
+        this.visitedRooms = new HashSet<>();
 
         this.buildWorld();
         this.spawnEntities();
@@ -47,6 +47,10 @@ public class CampaignWorld extends World {
 
     public boolean hasVisited(Room room) {
         return this.visitedRooms.contains(room);
+    }
+
+    public int percentVisited() {
+        return (int) ((float) this.visitedRooms.size() / this.rooms.size() * 100.0f);
     }
 
     private void buildWorld() {

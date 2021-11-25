@@ -8,7 +8,9 @@ import javax.imageio.ImageIO;
 
 import uk.insrt.coursework.zuul.commands.Arguments;
 import uk.insrt.coursework.zuul.commands.Command;
+import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.events.IEventListener;
+import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.ui.EventDraw;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -33,10 +35,12 @@ public class CommandMap extends Command implements IEventListener<EventDraw> {
 
     @Override
     public boolean run(World world, Arguments arguments) {
-        var io = world.getIO();
-        io.print("You have discovered aribtrary% of the world!" + "\n".repeat(24) + "Press any key to return.");
-        this.visible = true;
+        CampaignWorld campaignWorld = (CampaignWorld) world;
+        IOSystem io = world.getIO();
+        io.print("You have discovered " + campaignWorld.percentVisited()
+            + "% of the world!" + "\n".repeat(24) + "Press any key to return.");
 
+        this.visible = true;
         io.readLine();
         this.visible = false;
         return false;
