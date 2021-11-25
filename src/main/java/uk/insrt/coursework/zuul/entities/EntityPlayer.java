@@ -30,7 +30,7 @@ public class EntityPlayer extends Entity {
     @Override
     public String[] getAliases() {
         return new String[] {
-            "player", "me"
+            "player", "me", "myself", "self", "yourself"
         };
     }
 

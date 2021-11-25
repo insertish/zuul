@@ -90,25 +90,6 @@ public class World {
         }
     }
 
-    public Entity findEntity(String name, boolean fuzzy) {
-        String normalised = name.toLowerCase();
-        List<Entity> entities = this.getEntitiesInRoom(this.getPlayer().getRoom());
-        for (Entity entity : entities) {
-            String[] aliases = entity.getAliases();
-            for (String alias : aliases) {
-                if (fuzzy) {
-                    if (normalised.contains(alias)) {
-                        return entity;
-                    }
-                } else if (normalised.equals(alias)) {
-                    return entity;
-                }
-            }
-        }
-
-        return null;
-    }
-
     public void emit(Event event) {
         this.eventSystem.emit(event);
     }
