@@ -1,18 +1,17 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
-import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityCat;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
-public class RoomCityCentre extends Room {
+public class RoomCityCentre extends CampaignRoom {
     public RoomCityCentre(World world) {
         super(world, "City Centre");
     }
 
     public String describe() {
-        if (((CampaignWorld) this.getWorld()).hasVisited(this)) {
+        if (this.getWorld().hasVisited(this)) {
             return "you've been here before";
         }
 

@@ -5,10 +5,9 @@ import uk.insrt.coursework.zuul.dialogue.DialogueNode;
 import uk.insrt.coursework.zuul.dialogue.DialogueOption;
 import uk.insrt.coursework.zuul.entities.EntityNPC;
 import uk.insrt.coursework.zuul.world.Direction;
-import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
-public class RoomMedicalCentreReception extends Room {
+public class RoomMedicalCentreReception extends CampaignRoom {
     public RoomMedicalCentreReception(World world) {
         super(world, "Medical Centre: Reception");
     }

@@ -1,10 +1,9 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
 import uk.insrt.coursework.zuul.world.Direction;
-import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
-public class RoomBackAlley extends Room {
+public class RoomBackAlley extends CampaignRoom {
     public RoomBackAlley(World world) {
         super(world, "Back Alley");
     }

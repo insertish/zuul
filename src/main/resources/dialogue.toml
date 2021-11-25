@@ -1,0 +1,16 @@
+[home]
+first_load = '''
+You're about to be placed into the world.
+If at any point you are stuck with what to do,
+you can use `help` to view all available commands.
+
+---
+
+You wake up; hear ambience
+You know something strange is going on but can't really put your finger on it.
+/Maybe there's something on the news/ you think to yourself.
+'''
+
+enter = '''
+You enter your apartment.
+'''

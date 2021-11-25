@@ -8,7 +8,7 @@ import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
-public class RoomWormHole extends Room implements IEventListener<EventEntityEnteredRoom> {
+public class RoomWormHole extends CampaignRoom implements IEventListener<EventEntityEnteredRoom> {
     public RoomWormHole(World world) {
         super(world, "Worm Hole");
     }

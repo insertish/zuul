@@ -14,6 +14,8 @@ import uk.insrt.coursework.zuul.ui.TerminalEmulator;
 import uk.insrt.coursework.zuul.world.World;
 
 public class Game {
+    public static final String GAME_NAME = "World of Deez";
+
     private World world;
     private IOSystem io;
     private CommandManager commands;
@@ -28,9 +30,9 @@ public class Game {
     }
 
     public void init() {
-        int selection = JOptionPane.showConfirmDialog(null, "Play full experience?\nUses custom terminal emulator.\n(recommended option)", "World of Deez", JOptionPane.YES_NO_OPTION);
+        int selection = JOptionPane.showConfirmDialog(null, "Play full experience?\nUses custom terminal emulator.\n(recommended option)", GAME_NAME, JOptionPane.YES_NO_OPTION);
         if (selection == 0) {
-            selection = JOptionPane.showConfirmDialog(null, "Immersive mode?\nRuns emulator in fullscreen.\n(recommended option)", "World of Deez", JOptionPane.YES_NO_OPTION);
+            selection = JOptionPane.showConfirmDialog(null, "Immersive mode?\nRuns emulator in fullscreen.\n(recommended option)", GAME_NAME, JOptionPane.YES_NO_OPTION);
             this.io = new TerminalEmulator(selection == 0);
         } else {
             this.io = new StandardIO();

@@ -1,10 +1,9 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
 import uk.insrt.coursework.zuul.world.Direction;
-import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
-public class RoomMedicalCentreOffice extends Room {
+public class RoomMedicalCentreOffice extends CampaignRoom {
     public RoomMedicalCentreOffice(World world) {
         super(world, "Medical Centre: Office");
     }

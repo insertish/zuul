@@ -1,10 +1,9 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
 import uk.insrt.coursework.zuul.world.Direction;
-import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
-public class RoomApartmentsReception extends Room {
+public class RoomApartmentsReception extends CampaignRoom {
     public RoomApartmentsReception(World world) {
         super(world, "Apartments: Reception");
     }
