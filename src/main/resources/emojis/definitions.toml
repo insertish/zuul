@@ -4,4 +4,10 @@ emojis = [
     { unicode = "🐸", path = "monkaStare.png" },
     { unicode = "🙂", path = "pauseChamp.png" },
     { unicode = "😐", path = "weirdChamp.png" },
+    { unicode = "😄", path = "peepoHappy.png" },
+
+    # Example definitions:
+    #{ unicode = "[wideChamp]", path = "weirdChamp.png" },
+    #{ unicode = "[widePeepo]", path = "peepoHappy.png" },
+    #{ unicode = "😄", path = "peepoHappy.png", width = 8, height = 4 },
 ]

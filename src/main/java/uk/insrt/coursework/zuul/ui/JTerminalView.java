@@ -149,14 +149,23 @@ public class JTerminalView extends JPanel {
 
         // Render each cell individually.
         for (int y=0;y<buffer.getHeight();y++) {
-            int offsetX = 0;
+            int skipChars = 0;
             for (int x=0;x<buffer.getWidth();x++) {
+                // If needs be, skip chars in this line.
+                if (skipChars > 0) {
+                    skipChars--;
+                    continue;
+                }
+
+                // Get the character to render.
                 char c = buffer.getChar(x, y);
 
                 // Match each char for emoji codepoints.
+                // If we start to match an emoji, peek ahead.
                 Integer emojiMatch = this.emojiManager.match(c);
-                if (emojiMatch != null) {
-                    offsetX += emojiMatch - 1;
+                int offset = 0;
+                while (emojiMatch == EmojiManager.MATCH_SOME) {
+                    emojiMatch = this.emojiManager.match(buffer.getChar(x + ++offset, y));
                 }
 
                 // Get this cell's background and foreground colours.
@@ -164,7 +173,7 @@ public class JTerminalView extends JPanel {
                 Color fg = buffer.getFg(x, y);
 
                 // Find this char's offset.
-                int drawX = Math.round(ox + this.fw * (x - offsetX));
+                int drawX = Math.round(ox + this.fw * x);
                 int drawY = Math.round(oy + this.fh * y);
 
                 // Draw rect if there's a background present.
@@ -174,14 +183,17 @@ public class JTerminalView extends JPanel {
                 }
 
                 // If we're drawing an emoji, get the image and skip text.
-                if (emojiMatch != null) {
+                if (emojiMatch == EmojiManager.MATCH_FOUND) {
+                    Emoji emoji = this.emojiManager.getEmoji();
                     g.drawImage(
-                        this.emojiManager.getEmoji(),
+                        emoji.getImage(),
                         drawX, drawY,
-                        Math.round(this.fw),
-                        Math.round(this.fh),
+                        Math.round(this.fw * emoji.getWidth()),
+                        Math.round(this.fh * emoji.getHeight()),
                         this
                     );
+
+                    skipChars = offset;
                     continue;
                 }
 

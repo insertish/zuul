@@ -53,7 +53,7 @@ public class Tree<K, V> {
         Tree<K, V> node = this;
         while (keys.size() > 0) {
             K key = keys.remove(0);
-            Tree<K, V> child = this.getChild(key);
+            Tree<K, V> child = node.getChild(key);
             if (child == null) {
                 child = new Tree<>(node, keys.size() == 0 ? value : null);
                 node.addChild(key, child);

@@ -18,7 +18,7 @@ import org.apache.commons.io.IOUtils;
 import uk.insrt.coursework.zuul.util.Tree;
 
 public class EmojiManager {
-    private HashMap<String, Image> emojis;
+    private HashMap<String, Emoji> emojis;
     private Tree<Character, String> emojiTree;
     private Tree<Character, String> currentNode;
 
@@ -32,7 +32,7 @@ public class EmojiManager {
         return this.emojis.containsKey(emoji);
     }
 
-    public Image getEmoji(String emoji) {
+    public Emoji getEmoji(String emoji) {
         return this.emojis.get(emoji);
     }
 
@@ -41,47 +41,44 @@ public class EmojiManager {
      * @throws NullPointerException
      * @return
      */
-    public Image getEmoji() {
+    public Emoji getEmoji() {
         String value = this.currentNode.getValue();
-        Image image = this.emojis.get(value);
+        Emoji emoji = this.emojis.get(value);
         this.resetState();
-        return image;
+        return emoji;
     }
 
     public void resetState() {
         this.currentNode = this.emojiTree;
     }
 
+    public static final int MATCH_NONE = 0;
+    public static final int MATCH_SOME = 1;
+    public static final int MATCH_FOUND = 2;
+
     /**
      * >> Null if no match.
      * @param c
      * @return
      */
-    public Integer match(char c) {
+    public int match(char c) {
         var child = this.currentNode.getChild(c);
         if (child != null) {
             this.currentNode = child;
-
-            if (child.getValue() == null) {
-                return null;
-            }
-
-            return child.getHeight();
+            if (child.getValue() == null) return MATCH_SOME;
+            return MATCH_FOUND;
         }
 
         if (this.currentNode != this.emojiTree) {
             this.currentNode = this.emojiTree;
             child = this.emojiTree.getChild(c);
             if (child != null) {
-                if (child.getValue() == null) {
-                    return null;
-                }
-
-                return 1;
+                if (child.getValue() != null) return MATCH_SOME;
+                return MATCH_FOUND;
             }
         }
 
-        return null;
+        return MATCH_NONE;
     }
 
     public void loadResources(String rootDir) throws IOException {
@@ -89,14 +86,25 @@ public class EmojiManager {
         // We need to force UTF-8 encoding or else unicode emojis may get mangled.
         String defnString = IOUtils.toString(defnStream, StandardCharsets.UTF_8);
         Toml defn = new Toml().read(defnString);
-        List<HashMap<String, String>> emojis = defn.getList("emojis");
+        List<HashMap<String, Object>> emojis = defn.getList("emojis");
 
         for (var emoji : emojis) {
-            String path = emoji.get("path");
-            String unicode = emoji.get("unicode");
+            String path = (String) emoji.get("path");
+            String unicode = (String) emoji.get("unicode");
 
             InputStream stream = this.getClass().getResourceAsStream(rootDir + "/" + path);
-            this.emojis.put(unicode, ImageIO.read(stream));
+            Image image = ImageIO.read(stream);
+
+            Emoji newEmoji;
+            if (emoji.containsKey("width") && emoji.containsKey("height")) {
+                int width = ((Long) emoji.get("width")).intValue();
+                int height = ((Long) emoji.get("height")).intValue();
+                newEmoji = new Emoji(image, width, height);
+            } else {
+                newEmoji = new Emoji(image, unicode);
+            }
+
+            this.emojis.put(unicode, newEmoji);
             this.emojiTree.addChildWithPath(
                 new ArrayList<>(Arrays.asList(
                     unicode.chars()
