@@ -91,7 +91,11 @@ public abstract class Command {
         return entity;
     }
 
+    public Entity findEntity(World world, int filter, Arguments args, String failure) {
+        return this.findEntity(world, filter, args, "entity", failure);
+    }
+
     public Entity findEntity(World world, Arguments args, String failure) {
-        return this.findEntity(world, FILTER_ROOM, args, "entity", failure);
+        return this.findEntity(world, FILTER_ROOM, args, failure);
     }
 }

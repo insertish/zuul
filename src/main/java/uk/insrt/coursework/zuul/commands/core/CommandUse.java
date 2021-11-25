@@ -10,7 +10,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandUse extends Command {
     public CommandUse() {
-        super("use <something>", "use an object or something in your inventory",
+        super("use <something>", "use something around you or in your inventory",
             new Pattern[] {
                 Pattern.compile("^use(?:\\s+(?<entity>[\\w\\s]+))*")
             });
@@ -18,7 +18,7 @@ public class CommandUse extends Command {
 
     @Override
     public boolean run(World world, Arguments args) {
-        Entity entity = this.findEntity(world, args, "What do you want to use?");
+        Entity entity = this.findEntity(world, Command.FILTER_ALL, args, "What do you want to use?");
         if (entity != null) {
             if (entity instanceof IUseable) {
                 ((IUseable) entity).use(world.getPlayer());

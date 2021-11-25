@@ -10,7 +10,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CommandPet extends Command {
     public CommandPet() {
-        super("pet <something>", "pet something in current room",
+        super("pet <something>", "pet something around you or in your inventory",
             new Pattern[] {
                 Pattern.compile("^pet(?:\\s+(?<entity>[\\w\\s]+))*")
             });
@@ -18,7 +18,7 @@ public class CommandPet extends Command {
 
     @Override
     public boolean run(World world, Arguments args) {
-        Entity entity = this.findEntity(world, args, "What are you trying to pet?");
+        Entity entity = this.findEntity(world, Command.FILTER_ALL, args, "What are you trying to pet?");
         if (entity != null) {
             if (entity instanceof IPettable) {
                 ((IPettable) entity).pet();
