@@ -98,4 +98,8 @@ public abstract class Command {
     public Entity findEntity(World world, Arguments args, String failure) {
         return this.findEntity(world, FILTER_ROOM, args, failure);
     }
+
+    public Entity findEntity(World world, Arguments args, String group, String failure) {
+        return this.findEntity(world, FILTER_ROOM, args, group, failure);
+    }
 }

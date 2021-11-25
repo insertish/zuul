@@ -19,6 +19,10 @@ public class Arguments {
         }
     }
 
+    public boolean has(String group) {
+        return this.group(group) != null;
+    }
+
     public Direction direction() {
         return Direction.fromString(this.group("direction"));
     }
