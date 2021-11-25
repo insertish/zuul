@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 import uk.insrt.coursework.zuul.commands.Arguments;
 import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.entities.Inventory;
+import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.world.World;
 
 public class CommandTake extends Command {
@@ -19,10 +21,18 @@ public class CommandTake extends Command {
     public boolean run(World world, Arguments args) {
         Entity entity = this.findEntity(world, args, "What do you want to take?");
         if (entity != null) {
-            if (entity.take(world.getPlayer())) {
-                world.getIO().println("You take " + entity.getName() + " and put it in your bag.");
+            IOSystem io = world.getIO();
+            Entity player = world.getPlayer();
+            if (entity == player) {
+                io.println("😳");
+                return false;
+            }
+
+            Inventory target = player.getInventory();
+            if (entity.setLocation(target)) {
+                io.println("You take " + entity.getName() + " and put it in your bag.");
             } else {
-                world.getIO().println("You cannot take " + entity.getName() + ", it's too heavy to put in your bag.");
+                io.println("You cannot take " + entity.getName() + ", it's too heavy to put in your bag.");
             }
         }
 

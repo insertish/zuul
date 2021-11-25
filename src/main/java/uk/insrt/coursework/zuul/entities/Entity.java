@@ -115,16 +115,6 @@ public abstract class Entity {
     }
 
     /**
-     * Take this entity.
-     * @param target The Entity taking this entity
-     * @return Whether we managed to take this entity.
-     */
-    public boolean take(Entity target) {
-        Inventory inventory = target.getInventory();
-        return this.setLocation(inventory);
-    }
-
-    /**
      * Get names that this Entity can be called by.
      * @return String array of names for this Entity
      */

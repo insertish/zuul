@@ -42,11 +42,6 @@ public class EntityPlayer extends Entity {
         return "";
     }
 
-    @Override
-    public boolean take(Entity target) {
-        return false;
-    }
-
     /**
      * Move in a direction as instructed by command.
      * @param direction Target Direction
