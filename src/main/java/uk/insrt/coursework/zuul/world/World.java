@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.Event;
-import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.EventSystem;
+import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.io.IOSystem;
 
 public class World {

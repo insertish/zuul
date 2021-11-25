@@ -48,14 +48,6 @@ public class EventSystem {
     }
 
     /**
-     * Shorthand for addListener(EventTick.class, listener)
-     * @param listener Event listener callback
-     */
-    public void onTick(IEventListener<EventTick> listener) {
-        this.addListener(EventTick.class, listener);
-    }
-
-    /**
      * Emit an Event.
      * @param <E> Generic Event type
      * @param event Event to emit

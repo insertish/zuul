@@ -3,7 +3,7 @@ package uk.insrt.coursework.zuul.content.campaign.entities;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.EntityObject;
 import uk.insrt.coursework.zuul.entities.actions.IUseable;
-import uk.insrt.coursework.zuul.events.EventTick;
+import uk.insrt.coursework.zuul.events.world.EventTick;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 

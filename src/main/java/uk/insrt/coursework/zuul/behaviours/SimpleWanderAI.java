@@ -4,7 +4,7 @@ import java.util.Random;
 
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.events.IEventListener;
-import uk.insrt.coursework.zuul.events.EventTick;
+import uk.insrt.coursework.zuul.events.world.EventTick;
 import uk.insrt.coursework.zuul.world.Room;
 
 public class SimpleWanderAI implements IEventListener<EventTick> {

@@ -1,6 +1,7 @@
-package uk.insrt.coursework.zuul.events;
+package uk.insrt.coursework.zuul.events.world;
 
 import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.events.Event;
 import uk.insrt.coursework.zuul.world.Room;
 
 /**

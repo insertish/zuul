@@ -4,6 +4,7 @@ import uk.insrt.coursework.zuul.behaviours.SimpleWanderAI;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.actions.IPettable;
 import uk.insrt.coursework.zuul.entities.actions.IUseable;
+import uk.insrt.coursework.zuul.events.world.EventTick;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
@@ -36,7 +37,7 @@ public class EntityCat extends Entity implements IPettable, IUseable {
     public void useWanderAI(Room[] rooms, int chance) {
         this.getWorld()
             .getEventSystem()
-            .onTick(new SimpleWanderAI(this, rooms, chance));
+            .addListener(EventTick.class, new SimpleWanderAI(this, rooms, chance));
     }
 
     @Override

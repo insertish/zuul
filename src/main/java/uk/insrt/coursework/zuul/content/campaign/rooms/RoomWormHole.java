@@ -3,8 +3,8 @@ package uk.insrt.coursework.zuul.content.campaign.rooms;
 import java.util.Random;
 
 import uk.insrt.coursework.zuul.entities.Entity;
-import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.IEventListener;
+import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 

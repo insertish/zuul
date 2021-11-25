@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 import uk.insrt.coursework.zuul.commands.Arguments;
 import uk.insrt.coursework.zuul.commands.Command;
-import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
+import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.world.World;
 
 public class CommandWhereAmI extends Command {

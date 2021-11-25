@@ -1,7 +1,7 @@
 package uk.insrt.coursework.zuul.entities;
 
-import uk.insrt.coursework.zuul.events.EventEntityEnteredRoom;
-import uk.insrt.coursework.zuul.events.EventEntityLeftRoom;
+import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
+import uk.insrt.coursework.zuul.events.world.EventEntityLeftRoom;
 import uk.insrt.coursework.zuul.io.Ansi;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
