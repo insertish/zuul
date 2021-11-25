@@ -5,9 +5,7 @@ import java.util.regex.Pattern;
 import uk.insrt.coursework.zuul.commands.Arguments;
 import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.entities.Entity;
-import uk.insrt.coursework.zuul.entities.Inventory;
 import uk.insrt.coursework.zuul.io.Ansi;
-import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.world.World;
 
 public class CommandDrop extends Command {
