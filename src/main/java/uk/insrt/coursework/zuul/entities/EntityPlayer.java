@@ -1,5 +1,8 @@
 package uk.insrt.coursework.zuul.entities;
 
+import java.util.ArrayList;
+
+import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
@@ -9,22 +12,14 @@ import uk.insrt.coursework.zuul.world.World;
  * Player entity which we can control and move around.
  */
 public class EntityPlayer extends Entity {
-    private Room previousRoom;
-    private Direction retreatingDirection;
+    private ArrayList<Room> previousRooms;
+    private ArrayList<Direction> retreatingDirection;
 
     public EntityPlayer(World world) {
         super(world, new Location(), 70);
+        this.previousRooms = new ArrayList<>();
+        this.retreatingDirection = new ArrayList<>();
         this.inventory.setMaxWeight(35);
-    }
-
-    /**
-     * Override method for setLocation which
-     * keeps track of previous room.
-     */
-    @Override
-    public void setLocation(Room room) {
-        this.previousRoom = this.getRoom();
-        super.setLocation(room);
     }
 
     @Override
@@ -63,7 +58,8 @@ public class EntityPlayer extends Entity {
             return;
         }
 
-        this.retreatingDirection = direction.flip();
+        this.retreatingDirection.add(direction.flip());
+        this.previousRooms.add(this.getRoom());
         this.setLocation(destination);
     }
 
@@ -71,16 +67,18 @@ public class EntityPlayer extends Entity {
      * Move to the previous room the player was in.
      */
     public void back() {
-        var io = this.getWorld().getIO();
-        
-        if (this.retreatingDirection == null) {
+        IOSystem io = this.getWorld().getIO();
+        int index = this.retreatingDirection.size() - 1;
+
+        if (index < 0) {
             io.println("Nowhere to go back to!");
             return;
         }
 
-        if (this.getRoom().hasExit(this.retreatingDirection)) {
-            this.setLocation(this.previousRoom);
-            this.retreatingDirection = this.retreatingDirection.flip();
+        Direction lastDirection = this.retreatingDirection.get(index);
+        if (this.getRoom().hasExit(lastDirection)) {
+            this.retreatingDirection.remove(index);
+            this.setLocation(this.previousRooms.remove(index));
         } else {
             io.println("Cannot leave the room this way.");
         }
