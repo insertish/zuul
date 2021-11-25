@@ -170,7 +170,7 @@ public class JTerminalView extends JPanel {
                 // Draw rect if there's a background present.
                 if (bg != null && bg != Color.BLACK) {
                     g.setColor(bg);
-                    g.fillRect(drawX, drawY, Math.round(this.fw), Math.round(this.fh));
+                    g.fillRect(drawX, drawY, (int) Math.ceil(this.fw), (int) Math.ceil(this.fh));
                 }
 
                 // If we're drawing an emoji, get the image and skip text.
