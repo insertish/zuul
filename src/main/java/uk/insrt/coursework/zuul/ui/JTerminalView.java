@@ -162,7 +162,7 @@ public class JTerminalView extends JPanel {
 
                 // Match each char for emoji codepoints.
                 // If we start to match an emoji, peek ahead.
-                Integer emojiMatch = this.emojiManager.match(c);
+                int emojiMatch = this.emojiManager.match(c);
                 int offset = 0;
                 while (emojiMatch == EmojiManager.MATCH_SOME) {
                     emojiMatch = this.emojiManager.match(buffer.getChar(x + ++offset, y));

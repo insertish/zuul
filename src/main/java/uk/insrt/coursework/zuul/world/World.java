@@ -77,7 +77,11 @@ public class World {
                             + " directions: "
                             + room.getDirections()
                                 .stream()
-                                .map(x -> x.toString().toLowerCase())
+                                .map(x ->
+                                    x.toString()
+                                     .toLowerCase()
+                                     .replaceAll("_", " ")
+                                )
                                 .collect(Collectors.joining(", "))
                     );
                 }
