@@ -14,7 +14,7 @@ public class CommandBag extends Command {
     public CommandBag() {
         super("inventory [of <something>]", "look inside your bag or at something's inventory",
             new Pattern[] {
-                Pattern.compile("^(?:b(?:ag)|inv(?:entory))(?:\\s+(?<entity>[\\w\\s]+))*"),
+                Pattern.compile("^(?:b(?:ag)*|inv(?:entory)*)(?:\\s+(?<entity>[\\w\\s]+))*"),
                 // b, bag, inv, inventory, bag of <entity>, inventory of <entity>, (+2)
             });
     }
