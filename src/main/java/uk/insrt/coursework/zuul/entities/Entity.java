@@ -92,14 +92,16 @@ public abstract class Entity {
 
     /** Remove from any existing place */
     // * @param suppressEvents Whether to suppress all events.
-    public void consume(boolean suppressEvents) {
+    public boolean consume(boolean suppressEvents) {
+        boolean consumed = false;
         Inventory inventory = this.location.getInventory();
-        if (inventory != null) inventory.remove(this);
+        if (inventory != null) consumed = inventory.remove(this);
 
         Room previousRoom = this.getRoom();
         if (previousRoom != null && !suppressEvents) this.world.emit(new EventEntityLeftRoom(this, previousRoom));
 
         this.location.clear();
+        return consumed;
     }
 
     /**
@@ -107,9 +109,9 @@ public abstract class Entity {
      * @param room Destination Room
      */
     public void setLocation(Room room) {
-        this.consume(false);
+        boolean consumed = this.consume(false);
         this.location.setLocation(room);
-        this.world.emit(new EventEntityEnteredRoom(this));
+        if (!consumed) this.world.emit(new EventEntityEnteredRoom(this));
     }
 
     /**

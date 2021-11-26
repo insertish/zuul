@@ -21,7 +21,8 @@ public class CommandDrop extends Command {
     public boolean run(World world, Arguments args) {
         Entity entity = this.findEntity(world, Command.FILTER_INVENTORY, args, "What do you want to drop?");
         if (entity != null) {
-            world.getIO().println("You drop " + Ansi.BackgroundWhite + Ansi.Black + entity.getName() + Ansi.Reset + " out of your bag!");
+            world.getIO().println("You drop " + Ansi.BackgroundWhite + Ansi.Black
+                + entity.getName() + Ansi.Reset + " out of your bag!");
             entity.setLocation(world.getPlayer().getRoom());
         }
 

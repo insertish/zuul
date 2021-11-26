@@ -13,7 +13,7 @@ public class RoomApartmentsHome extends CampaignRoom {
     
     public String describe() {
         var world = this.getWorld();
-        var d = world.getDialogue();
+        var d = world.getLocale();
 
         if (!world.hasVisited(this)) {
             return d.get("home", "first_load");

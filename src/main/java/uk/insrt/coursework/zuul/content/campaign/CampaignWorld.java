@@ -34,21 +34,22 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CampaignWorld extends World {
     private HashSet<Room> visitedRooms;
-    private Dialogue dialogue;
+    private Localisation locale;
 
     public CampaignWorld(IOSystem io) {
         super(io);
 
         this.visitedRooms = new HashSet<>();
-        this.dialogue = new Dialogue();
-
+        this.locale = new Localisation();
+        
+        this.locale.loadLocale("en_GB");
         this.buildWorld();
         this.spawnEntities();
         this.registerEvents();
     }
 
-    public Dialogue getDialogue() {
-        return this.dialogue;
+    public Localisation getLocale() {
+        return this.locale;
     }
 
     public boolean hasVisited(Room room) {
@@ -107,7 +108,6 @@ public class CampaignWorld extends World {
                     Room room = entity.getRoom();
 
                     // Mark current room as previously visited.
-                    System.out.println("we are adding " + room + " to " + this.visitedRooms);
                     this.visitedRooms.add(room);
 
                     // When we enter a new room, list what we can see.

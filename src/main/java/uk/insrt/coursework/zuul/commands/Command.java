@@ -62,7 +62,7 @@ public abstract class Command {
 
     public static final int FILTER_ROOM = 1;
     public static final int FILTER_INVENTORY = 2;
-    public static final int FILTER_ALL = 3;
+    public static final int FILTER_ALL = FILTER_ROOM + FILTER_INVENTORY;
 
     public Entity findEntity(World world, int filter, Arguments args, String group, String failure) {
         String name = args.group(group);

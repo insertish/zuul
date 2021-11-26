@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
  * Used https://stackoverflow.com/a/5762502 as a reference.
  */
 public class Ansi {
-
     public static final String Reset = "\u001B[0m";
     public static final String Black = "\u001B[30m";
     public static final String Red = "\u001B[31m";
