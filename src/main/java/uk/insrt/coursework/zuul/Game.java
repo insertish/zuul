@@ -1,14 +1,18 @@
 package uk.insrt.coursework.zuul;
 
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 import uk.insrt.coursework.zuul.commands.CommandManager;
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
+import uk.insrt.coursework.zuul.content.campaign.Localisation;
 import uk.insrt.coursework.zuul.content.campaign.commands.CommandMap;
 import uk.insrt.coursework.zuul.events.world.EventProcessCommand;
 import uk.insrt.coursework.zuul.events.world.EventTick;
-import uk.insrt.coursework.zuul.io.LimitedIO;
 import uk.insrt.coursework.zuul.io.IOSystem;
+import uk.insrt.coursework.zuul.io.LimitedIO;
+import uk.insrt.coursework.zuul.io.LocalisedIO;
 import uk.insrt.coursework.zuul.io.StandardIO;
 import uk.insrt.coursework.zuul.ui.EventDraw;
 import uk.insrt.coursework.zuul.ui.TerminalEmulator;
@@ -32,6 +36,7 @@ public class Game {
     }
 
     private void init() {
+        // Determine how the game should run.
         boolean inBlueJ = BlueJ.isRunningInBlueJ();
         int selection = JOptionPane.showConfirmDialog(null, "Play full experience?\nUses custom terminal emulator.\n(recommended option)", GAME_NAME, JOptionPane.YES_NO_OPTION);
         if (selection == 0) {
@@ -47,10 +52,26 @@ public class Game {
             this.io = new TerminalEmulator(selection == 0);
         } else {
             if (inBlueJ) {
-                this.io = new LimitedIO();
+                selection = JOptionPane.showConfirmDialog(null, "Is this running from inside BlueJ?", GAME_NAME, JOptionPane.YES_NO_OPTION);
+                if (selection == 0) {
+                    this.io = new LimitedIO();
+                } else {
+                    this.io = new StandardIO();
+                }
             } else {
                 this.io = new StandardIO();
             }
+        }
+
+        // Load all the data we need and initialise world.
+        Localisation locale = new Localisation();
+        this.io = new LocalisedIO(this.io, locale);
+
+        try {
+            locale.loadLocale("en_GB");
+        } catch (IOException e) {
+            System.err.println("Failed to load translations!");
+            e.printStackTrace();
         }
 
         this.world = new CampaignWorld(this.io);

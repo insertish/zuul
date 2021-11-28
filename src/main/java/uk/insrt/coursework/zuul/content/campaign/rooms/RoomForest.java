@@ -9,7 +9,7 @@ public class RoomForest extends CampaignRoom {
     }
     
     public String describe() {
-        return this.getName();
+        return "<forest.enter>";
     }
 
     protected void setupDirections() {

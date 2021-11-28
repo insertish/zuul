@@ -36,18 +36,15 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class CampaignWorld extends World {
     private HashSet<Room> visitedRooms;
-    private Localisation locale;
     private DialogueLoader dialogueLoader;
 
     public CampaignWorld(IOSystem io) {
         super(io);
 
         this.visitedRooms = new HashSet<>();
-        this.locale = new Localisation();
-        this.dialogueLoader = new DialogueLoader(this.locale);
+        this.dialogueLoader = new DialogueLoader();
         
         try {
-            this.locale.loadLocale("en_GB");
             this.dialogueLoader.load("/dialogue.toml");
         } catch (IOException e) {
             System.err.println("Failed to load resources for campaign world!");
@@ -61,10 +58,6 @@ public class CampaignWorld extends World {
 
     public DialogueLoader getDialogueLoader() {
         return this.dialogueLoader;
-    }
-
-    public Localisation getLocale() {
-        return this.locale;
     }
 
     public boolean hasVisited(Room room) {

@@ -27,11 +27,11 @@ public class EntityCat extends Entity implements IPettable, IUseable {
 
     @Override
     public String describe() {
-        return "A black cat";
+        return "<entities.cat.description>";
     }
 
     public void pet() {
-        this.getWorld().getIO().println("You pet the cat.");
+        this.getWorld().getIO().println("<entities.cat.pet>");
     }
 
     public void useWanderAI(Room[] rooms, int chance) {
@@ -42,6 +42,6 @@ public class EntityCat extends Entity implements IPettable, IUseable {
 
     @Override
     public void use(Entity target) {
-        this.getWorld().getIO().println("You cannot the cat.\nPlease do not the cat. 😳😳😳");
+        this.getWorld().getIO().println("<entities.cat.use>");
     }
 }

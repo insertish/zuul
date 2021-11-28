@@ -1,3 +1,15 @@
+[entities]
+laptop = "Laptop"
+
+    [entities.bed]
+    description = "Bed"
+    use = "You take a nap."
+
+    [entities.cat]
+    description = "A stray black cat"
+    pet = "You pet the cat."
+    use = "You cannot the cat.\nPlease do not the cat. 😳😳😳"
+
 [home]
 first_load = '''
 You're about to be placed into the world.
@@ -21,12 +33,21 @@ enter = '''
 You enter your apartment.
 '''
 
+    [home.tv]
+        description = "LG 55NANO966PA 55\" Super UHD 8K HDR Smart LED TV"
+        off = "Turn the TV off."
+
+        [home.tv.first_on]
+        dialog = "sus!"
+
 [apartments]
 enter = '''
 You enter the apartment complex reception.
 '''
 
     [apartments.receptionist]
+        description = "The receptionist sitting behind a desk"
+
         [apartments.receptionist.first_encounter]
         dialog = "\u001B[36mReceptionist\u001B[37m: Good morning, how are you doing today?"
         option_1 = "What is that racket outside?"
@@ -47,6 +68,11 @@ You enter the apartment complex reception.
         option_q = "That's all, thanks."
 
 [city_centre]
+enter = '''
+desc
+'''
+
+[street]
 enter = '''
 desc
 '''
@@ -78,10 +104,14 @@ desc
 
 [medical_centre]
 enter = '''
-desc
+You're now at the Medical Centre's reception.
 '''
 
 [medical_centre_office]
 enter = '''
-desc
+You find yourself at the Medical Centre's office.\nYou definitely shouldn't be here...
 '''
+
+[marie]
+
+    [alley]

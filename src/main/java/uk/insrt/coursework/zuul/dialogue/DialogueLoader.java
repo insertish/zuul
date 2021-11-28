@@ -9,14 +9,10 @@ import java.util.Map.Entry;
 
 import com.moandjiezana.toml.Toml;
 
-import uk.insrt.coursework.zuul.content.campaign.Localisation;
-
 public class DialogueLoader {
-    private Localisation locale;
     private Map<String, Object> data;
 
-    public DialogueLoader(Localisation locale) {
-        this.locale = locale;
+    public DialogueLoader() {
         this.data = new HashMap<>();
     }
 
@@ -46,12 +42,12 @@ public class DialogueLoader {
 
             Map<String, Object> values = (Map<String, Object>) node.getValue();
 
-            String description = this.locale.get(prefix + (String) values.get("description"));
+            String description = "<" + prefix + (String) values.get("description") + ">";
             List<Map<String, Object>> options = (List<Map<String, Object>>) values.get("options");
 
             DialogueNode<String> dialogueNode = new DialogueNode<>(description);
             for (Map<String, Object> object : options) {
-                String desc = this.locale.get(prefix + (String) object.get("description"));
+                String desc = "<" + prefix + (String) object.get("description") + ">";
                 String to = (String) object.get("to");
                 Boolean mustExit = (Boolean) object.get("mustExit");
 

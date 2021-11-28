@@ -14,7 +14,7 @@ public class RoomWormHole extends CampaignRoom implements IEventListener<EventEn
     }
     
     public String describe() {
-        return this.getName();
+        return "";
     }
 
     protected void setupDirections() {}

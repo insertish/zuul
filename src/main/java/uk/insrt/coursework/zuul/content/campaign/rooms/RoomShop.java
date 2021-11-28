@@ -9,7 +9,7 @@ public class RoomShop extends CampaignRoom {
     }
     
     public String describe() {
-        return this.getName();
+        return "<shop.enter>";
     }
 
     protected void setupDirections() {

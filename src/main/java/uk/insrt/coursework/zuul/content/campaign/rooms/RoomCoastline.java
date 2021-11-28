@@ -10,7 +10,7 @@ public class RoomCoastline extends CampaignRoom {
     }
     
     public String describe() {
-        return this.getName();
+        return "<coastline.enter>";
     }
 
     protected void setupDirections() {

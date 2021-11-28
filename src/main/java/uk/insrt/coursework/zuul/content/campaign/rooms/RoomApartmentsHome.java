@@ -13,13 +13,11 @@ public class RoomApartmentsHome extends CampaignRoom {
     
     public String describe() {
         var world = this.getWorld();
-        var d = world.getLocale();
-
         if (!world.hasVisited(this)) {
-            return d.get("home.first_load");
+            return "<home.first_load>";
         }
 
-        return d.get("home.enter");
+        return "<home.enter>";
     }
 
     protected void setupDirections() {
@@ -31,6 +29,6 @@ public class RoomApartmentsHome extends CampaignRoom {
 
         world.spawnEntity("tv", new EntityTV(world, this.toLocation()));
         world.spawnEntity("bed", new EntityBed(world, this.toLocation()));
-        world.spawnEntity("laptop", new EntityObject(world, this.toLocation(), 2, new String[] { "laptop" }, "Laptop"));
+        world.spawnEntity("laptop", new EntityObject(world, this.toLocation(), 2, new String[] { "laptop" }, "<entities.laptop>"));
     }
 }

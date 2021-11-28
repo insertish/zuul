@@ -9,7 +9,7 @@ public class RoomBackAlley extends CampaignRoom {
     }
     
     public String describe() {
-        return this.getName();
+        return "<back_alley.enter>";
     }
 
     protected void setupDirections() {

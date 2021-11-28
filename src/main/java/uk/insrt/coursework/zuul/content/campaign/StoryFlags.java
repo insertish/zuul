@@ -3,6 +3,10 @@ package uk.insrt.coursework.zuul.content.campaign;
 public class StoryFlags {
     public enum Stage {
         Exposition,
+        Recon,
+        Stealth,
+        Twist,
+        Conclusion,
     }
 
     private Stage stage;
@@ -13,5 +17,9 @@ public class StoryFlags {
 
     public Stage getStage() {
         return this.stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

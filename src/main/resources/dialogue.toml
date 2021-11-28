@@ -1,3 +1,53 @@
+# 1. Marie located in Back Alley
+[npc_marie]
+    _prefix = "marie.alley."
+    _start = "small_talk"
+    small_talk = { description = "small_talk", options = [
+        { description = "leave", to = "small_talk", mustExit = true }
+    ] }
+
+# 2. Random City NPC located in the City Centre
+[npc_city_centre]
+    _prefix = "city_centre.npc."
+    _start = "small_talk"
+    small_talk = { description = "small_talk", options = [
+        { description = "leave", to = "small_talk", mustExit = true }
+    ] }
+
+# 3. Old Man located in Forest
+# out of scope until (2.) or (sq1.)
+[npc_old_man]
+    _prefix = "city_centre.npc."
+    _start = "small_talk"
+    small_talk = { description = "small_talk", options = [
+        { description = "leave", to = "small_talk", mustExit = true }
+    ] }
+
+# 4. Protestors located on Street
+[npc_protestors]
+    _prefix = "city_centre.npc."
+    _start = "small_talk"
+    small_talk = { description = "small_talk", options = [
+        { description = "leave", to = "small_talk", mustExit = true }
+    ] }
+
+# 5. Security guard stationed at Medical Centre
+[npc_security_guard]
+    _prefix = "medical_centre.guard."
+    _start = "small_talk"
+    small_talk = { description = "small_talk", options = [
+        { description = "leave", to = "small_talk", mustExit = true }
+    ] }
+
+# 6. Shop shopkeeper in the Shop
+[npc_shopkeeper]
+    _prefix = "shop.npc."
+    _start = "small_talk"
+    small_talk = { description = "small_talk", options = [
+        { description = "leave", to = "small_talk", mustExit = true }
+    ] }
+
+# 7. Receptionist located in Apartments
 [npc_receptionist]
     _prefix = "apartments.receptionist."
     _start = "first_encounter"
@@ -15,4 +65,12 @@
     repeated = { description = "repeated.dialog", options = [
         { description = "repeated.option_1", to = "protestors" },
         { description = "repeated.option_q", to = "repeated", mustExit = true }
+    ] }
+
+# 8. TV located in Apartments
+[home_tv]
+    _prefix = "home.tv."
+    _start = "first_on"
+    first_on = { description = "first_on", options = [
+        { description = "off", to = "first_on", mustExit = true }
     ] }

@@ -11,11 +11,7 @@ public class RoomCityCentre extends CampaignRoom {
     }
 
     public String describe() {
-        if (this.getWorld().hasVisited(this)) {
-            return "you've been here before";
-        }
-
-        return "something something long description.";
+        return "<city_centre.enter>";
     }
 
     protected void setupDirections() {

@@ -27,6 +27,13 @@ public class EntityBoat extends Entity implements IUseable, IGiveable {
     }
 
     public void use(Entity target) {
+        var io = this.getWorld().getIO();
+        if (target.getInventory().getWeight() > 0) {
+            io.println("You must not be carrying anything to use the boat.\nYou can however put things in the boat.");
+            return;
+        }
+
+        io.println("You hop in the boat and travel to the other side...\n");
         target.setLocation(this.destination);
     }
 

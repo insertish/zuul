@@ -25,15 +25,22 @@ public class Localisation {
     public String from(String... path) {
         if (path.length == 0) return "<empty string>";
 
-        var index = 1;
-        var node = this.map.get(path[0]);
-        while (index != path.length) {
-            Map<String, Object> map = (Map<String, Object>) node;
-            node = map.get(path[index++]);
-        }
+        try {
+            var index = 1;
+            var node = this.map.get(path[0]);
+            while (index != path.length) {
+                Map<String, Object> map = (Map<String, Object>) node;
+                node = map.get(path[index++]);
+            }
 
-        if (node != null) {
-            return (String) node;
+            if (node != null) {
+                return (String) node;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // We don't want this to be a fatal error
+            // but it should be something that the developer
+            // should handle immediately.
         }
 
         return "<" + Arrays.asList(path).stream().collect(Collectors.joining(".")) + ">";

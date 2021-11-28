@@ -9,7 +9,7 @@ import uk.insrt.coursework.zuul.world.World;
 
 public class EntityBed extends EntityObject implements IUseable {
     public EntityBed(World world, Location location) {
-        super(world, location, 80, new String[] { "bed" }, "Bed");
+        super(world, location, 80, new String[] { "bed" }, "<entities.bed.description>");
     }
 
     public void use(Entity target) {
@@ -18,6 +18,6 @@ public class EntityBed extends EntityObject implements IUseable {
             world.emit(new EventTick());
         }
 
-        this.world.getIO().println("You take a nap.");
+        this.world.getIO().println("<entities.bed.use>");
     }
 }

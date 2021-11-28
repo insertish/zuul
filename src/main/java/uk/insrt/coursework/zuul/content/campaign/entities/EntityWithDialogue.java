@@ -1,6 +1,8 @@
-package uk.insrt.coursework.zuul.entities;
+package uk.insrt.coursework.zuul.content.campaign.entities;
 
+import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.dialogue.Dialogue;
+import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -11,7 +13,6 @@ public abstract class EntityWithDialogue<T> extends Entity {
         super(world, location, weight);
 
         Dialogue<T> dialogue = new Dialogue<T>(startNode);
-        this.setupDialogue(dialogue);
         this.dialogue = dialogue;
     }
 
@@ -20,4 +21,9 @@ public abstract class EntityWithDialogue<T> extends Entity {
     }
 
     public abstract void setupDialogue(Dialogue<T> dialogue);
+
+    public void setupDialogueFromId(Dialogue<String> dialogue, String id) {
+        var world = (CampaignWorld) this.getWorld();
+        world.getDialogueLoader().populate(dialogue, id);
+    }
 }

@@ -1,22 +1,14 @@
 package uk.insrt.coursework.zuul.content.campaign.entities;
 
 import uk.insrt.coursework.zuul.dialogue.Dialogue;
-import uk.insrt.coursework.zuul.dialogue.DialogueNode;
-import uk.insrt.coursework.zuul.dialogue.DialogueOption;
 import uk.insrt.coursework.zuul.entities.Entity;
-import uk.insrt.coursework.zuul.entities.EntityWithDialogue;
 import uk.insrt.coursework.zuul.entities.actions.IUseable;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 
-public class EntityTV extends EntityWithDialogue<EntityTV.State> implements IUseable {
+public class EntityTV extends EntityWithDialogue<String> implements IUseable {
     public EntityTV(World world, Location location) {
-        super(world, location, 40, State.FirstOn);
-    }
-
-    protected enum State {
-        FirstOn,
-        Menu,
+        super(world, location, 40);
     }
 
     @Override
@@ -25,9 +17,8 @@ public class EntityTV extends EntityWithDialogue<EntityTV.State> implements IUse
     }
 
     @Override
-    public void setupDialogue(Dialogue<State> dialogue) {
-        dialogue.addPart(State.FirstOn, new DialogueNode<State>("sus!")
-            .addOption(new DialogueOption<State>("Turn the TV off.", State.FirstOn).mustExit()));
+    public void setupDialogue(Dialogue<String> dialogue) {
+        this.setupDialogueFromId(dialogue, "home_tv");
     }
 
     @Override
@@ -37,6 +28,6 @@ public class EntityTV extends EntityWithDialogue<EntityTV.State> implements IUse
 
     @Override
     public String describe() {
-        return "LG 55NANO966PA 55\" Super UHD 8K HDR Smart LED TV";
+        return "<home.tv.description>";
     }
 }

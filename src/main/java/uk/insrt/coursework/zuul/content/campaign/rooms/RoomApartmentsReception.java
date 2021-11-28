@@ -1,6 +1,6 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
-import uk.insrt.coursework.zuul.content.campaign.entities.npc.EntityNpcReceptionist;
+import uk.insrt.coursework.zuul.content.campaign.entities.EntityNpc;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -11,7 +11,7 @@ public class RoomApartmentsReception extends CampaignRoom {
     
     @Override
     public String describe() {
-        return this.getName();
+        return "<apartments.enter>";
     }
 
     @Override
@@ -25,6 +25,13 @@ public class RoomApartmentsReception extends CampaignRoom {
     @Override
     public void spawnEntities() {
         World world = this.getWorld();
-        world.spawnEntity("receptionist", new EntityNpcReceptionist(world, this.toLocation()));
+        world.spawnEntity("receptionist",
+            new EntityNpc(
+                world,
+                this.toLocation(),
+                "npc_receptionist",
+                "<apartments.receptionist.description>",
+                new String[] { "receptionist" }
+            ));
     }
 }

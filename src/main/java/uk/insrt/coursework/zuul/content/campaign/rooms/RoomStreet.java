@@ -9,7 +9,7 @@ public class RoomStreet extends CampaignRoom {
     }
     
     public String describe() {
-        return this.getName();
+        return "<street.enter>";
     }
 
     protected void setupDirections() {

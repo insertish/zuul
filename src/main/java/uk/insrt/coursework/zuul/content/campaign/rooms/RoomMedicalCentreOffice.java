@@ -9,7 +9,7 @@ public class RoomMedicalCentreOffice extends CampaignRoom {
     }
     
     public String describe() {
-        return "You find yourself at the Medical Centre's office.\nYou definitely shouldn't be here...";
+        return "<medical_centre_office.enter>";
     }
 
     protected void setupDirections() {

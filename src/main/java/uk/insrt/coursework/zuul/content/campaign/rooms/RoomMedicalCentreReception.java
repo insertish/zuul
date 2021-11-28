@@ -1,9 +1,5 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
-import uk.insrt.coursework.zuul.dialogue.Dialogue;
-import uk.insrt.coursework.zuul.dialogue.DialogueNode;
-import uk.insrt.coursework.zuul.dialogue.DialogueOption;
-import uk.insrt.coursework.zuul.entities.EntityNPC;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -13,7 +9,7 @@ public class RoomMedicalCentreReception extends CampaignRoom {
     }
     
     public String describe() {
-        return "You're now at the Medical Centre's reception.";
+        return "<medical_centre.enter>";
     }
 
     protected void setupDirections() {
@@ -38,17 +34,13 @@ public class RoomMedicalCentreReception extends CampaignRoom {
         return true;
     }
 
-    public static enum Test {
-        Start
-    }
-
     public void spawnEntities() {
         World world = this.getWorld();
 
-        world.spawnEntity("guard1", new EntityNPC<Test>(world, this.toLocation(), Test.Start) {
+        /*world.spawnEntity("guard1", new EntityNpc(world, this.toLocation(), 75) {
             @Override
             public String[] getAliases() {
-                return new String[] { "security guard", "guard" };
+                return new String[] { "security", "guard" };
             }
 
             @Override
@@ -57,7 +49,7 @@ public class RoomMedicalCentreReception extends CampaignRoom {
             }
 
             @Override
-            public void setupDialogue(Dialogue<Test> dialogue) {
+            public void setupDialogue(Dialogue<String> dialogue) {
                 dialogue.addPart(Test.Start,
                     new DialogueNode<Test>("test")
                         .addOption(new DialogueOption<Test>("simple", Test.Start).mustExit())
@@ -69,6 +61,6 @@ public class RoomMedicalCentreReception extends CampaignRoom {
                             return Test.Start;
                         })));
             }
-        });
+        });*/
     }
 }
