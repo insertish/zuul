@@ -2,7 +2,7 @@ package uk.insrt.coursework.zuul.dialogue;
 
 import uk.insrt.coursework.zuul.io.IOSystem;
 
-public class DialogueOption<T extends Enum<T>> {
+public class DialogueOption<T> {
     private IDialogueHandler<T> handler;
 
     private String description;

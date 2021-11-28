@@ -4,13 +4,21 @@ import java.util.HashMap;
 
 import uk.insrt.coursework.zuul.io.IOSystem;
 
-public class Dialogue<T extends Enum<T>> {
+public class Dialogue<T> {
     private HashMap<T, DialogueNode<T>> parts;
     private T currentNode;
 
-    public Dialogue(T start) {
+    public Dialogue() {
         this.parts = new HashMap<>();
+    }
+
+    public Dialogue(T start) {
+        this();
         this.currentNode = start;
+    }
+
+    public void setNode(T node) {
+        this.currentNode = node;
     }
 
     public void addPart(T part, DialogueNode<T> node) {

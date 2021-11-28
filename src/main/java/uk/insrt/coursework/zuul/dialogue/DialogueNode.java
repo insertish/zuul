@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import uk.insrt.coursework.zuul.io.IOSystem;
 
-public class DialogueNode<T extends Enum<T>> {
+public class DialogueNode<T> {
     private String description;
     private ArrayList<DialogueOption<T>> options;
 
@@ -20,6 +20,17 @@ public class DialogueNode<T extends Enum<T>> {
     public DialogueNode<T> addOption(DialogueOption<T> option) {
         this.options.add(option);
         return this;
+    }
+
+    public DialogueNode<T> addOption(String description, T stage, boolean mustExit) {
+        var option = new DialogueOption<T>(description, stage);
+        if (mustExit) option.mustExit();
+        this.options.add(option);
+        return this;
+    }
+
+    public DialogueNode<T> addOption(String description, T stage) {
+        return this.addOption(description, stage, false);
     }
 
     public DialogueOption<T> pickOption(IOSystem io) {
