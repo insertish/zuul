@@ -16,10 +16,10 @@ public class RoomApartmentsHome extends CampaignRoom {
         var d = world.getLocale();
 
         if (!world.hasVisited(this)) {
-            return d.get("home", "first_load");
+            return d.get("home.first_load");
         }
 
-        return d.get("home", "enter");
+        return d.get("home.enter");
     }
 
     protected void setupDirections() {

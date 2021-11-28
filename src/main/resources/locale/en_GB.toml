@@ -6,11 +6,82 @@ you can use `help` to view all available commands.
 
 ---
 
-You wake up; hear ambience
-You know something strange is going on but can't really put your finger on it.
-/Maybe there's something on the news/ you think to yourself.
+You wake up to the sound of people chanting outside..
+You really should've closed the window last night..
+
+Curious, you peer out the window to see what's going on.. there's a group of
+protestors outside the Medical Centre down the street, you can't really make out
+what they're saying or what their signs say.
+
+Though it'd not be surprising if something strange is going on in there, but you
+can't really put your finger on it. Maybe there's something on the news..
 '''
 
 enter = '''
 You enter your apartment.
+'''
+
+[apartments]
+enter = '''
+You enter the apartment complex reception.
+'''
+
+    [apartments.receptionist]
+        [apartments.receptionist.first_encounter]
+        dialog = "\u001B[36mReceptionist\u001B[37m: Good morning, how are you doing today?"
+        option_1 = "What is that racket outside?"
+        option_q = "Nevermind."
+
+        [apartments.receptionist.protestors]
+        dialog = "\u001B[36mReceptionist\u001B[37m: I don't know much but it looks like they're outside the Medical Centre..."
+        option_1 = "Do you know anything more?"
+        option_q = "Alright."
+
+        [apartments.receptionist.protestors2]
+        dialog = "\u001B[36mReceptionist\u001B[37m: I know as much as you really..."
+        option_q = "Thanks."
+
+        [apartments.receptionist.repeated]
+        dialog = "\u001B[36mReceptionist\u001B[37m: Hello, what can I help you with?"
+        option_1 = "What's going on with those protestors outside?"
+        option_q = "That's all, thanks."
+
+[city_centre]
+enter = '''
+desc
+'''
+
+[shop]
+enter = '''
+desc
+'''
+
+[back_alley]
+enter = '''
+desc
+'''
+
+[coastline]
+enter = '''
+desc
+'''
+
+[mainland_coastline]
+enter = '''
+desc
+'''
+
+[forest]
+enter = '''
+desc
+'''
+
+[medical_centre]
+enter = '''
+desc
+'''
+
+[medical_centre_office]
+enter = '''
+desc
 '''

@@ -1,0 +1,18 @@
+[npc_receptionist]
+    _prefix = "apartments.receptionist."
+    _start = "first_encounter"
+    first_encounter = { description = "first_encounter.dialog", options = [
+        { description = "first_encounter.option_1", to = "protestors" },
+        { description = "first_encounter.option_q", to = "repeated", mustExit = true }
+    ] }
+    protestors = { description = "protestors.dialog", options = [
+        { description = "protestors.option_1", to = "protestors2" },
+        { description = "protestors.option_q", to = "repeated" }
+    ] }
+    protestors2 = { description = "protestors2.dialog", options = [
+        { description = "protestors2.option_q", to = "repeated" }
+    ] }
+    repeated = { description = "repeated.dialog", options = [
+        { description = "repeated.option_1", to = "protestors" },
+        { description = "repeated.option_q", to = "repeated", mustExit = true }
+    ] }

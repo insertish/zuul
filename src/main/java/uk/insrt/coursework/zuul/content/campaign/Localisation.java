@@ -1,5 +1,6 @@
 package uk.insrt.coursework.zuul.content.campaign;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,18 +16,13 @@ public class Localisation {
         this.map = new HashMap<>();
     }
 
-    public void loadLocale(String locale) {
-        try {
-            InputStream stream = this.getClass().getResourceAsStream("/locale/" + locale + ".toml");
-            this.map = new Toml().read(stream).toMap();
-        } catch (Exception e) {
-            System.err.println("Failed to load any resources for terminal view!");
-            e.printStackTrace();
-        }
+    public void loadLocale(String locale) throws IOException {
+        InputStream stream = this.getClass().getResourceAsStream("/locale/" + locale + ".toml");
+        this.map = new Toml().read(stream).toMap();
     }
 
     @SuppressWarnings("unchecked")
-    public String get(String... path) {
+    public String from(String... path) {
         if (path.length == 0) return "<empty string>";
 
         var index = 1;
@@ -41,5 +37,9 @@ public class Localisation {
         }
 
         return "<" + Arrays.asList(path).stream().collect(Collectors.joining(".")) + ">";
+    }
+
+    public String get(String path) {
+        return this.from(path.split("\\."));
     }
 }

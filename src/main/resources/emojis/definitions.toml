@@ -1,5 +1,5 @@
 emojis = [
-    { unicode = "😳", path = "flosh.png" },
+    { unicode = "😳", codepoints = [128563, 56883], path = "flosh.png" },
     { unicode = "😁", path = "trol.png" },
     { unicode = "🐸", path = "monkaStare.png" },
     { unicode = "🙂", path = "pauseChamp.png" },

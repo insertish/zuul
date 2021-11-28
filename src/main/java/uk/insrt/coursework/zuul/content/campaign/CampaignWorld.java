@@ -1,5 +1,6 @@
 package uk.insrt.coursework.zuul.content.campaign;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,7 @@ import uk.insrt.coursework.zuul.content.campaign.rooms.RoomMedicalCentreReceptio
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomShop;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomStreet;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomWormHole;
+import uk.insrt.coursework.zuul.dialogue.DialogueLoader;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.IEventListener;
@@ -35,17 +37,30 @@ import uk.insrt.coursework.zuul.world.World;
 public class CampaignWorld extends World {
     private HashSet<Room> visitedRooms;
     private Localisation locale;
+    private DialogueLoader dialogueLoader;
 
     public CampaignWorld(IOSystem io) {
         super(io);
 
         this.visitedRooms = new HashSet<>();
         this.locale = new Localisation();
+        this.dialogueLoader = new DialogueLoader(this.locale);
         
-        this.locale.loadLocale("en_GB");
+        try {
+            this.locale.loadLocale("en_GB");
+            this.dialogueLoader.load("/dialogue.toml");
+        } catch (IOException e) {
+            System.err.println("Failed to load resources for campaign world!");
+            e.printStackTrace();
+        }
+
         this.buildWorld();
         this.spawnEntities();
         this.registerEvents();
+    }
+
+    public DialogueLoader getDialogueLoader() {
+        return this.dialogueLoader;
     }
 
     public Localisation getLocale() {
