@@ -51,6 +51,14 @@ public class TextBuffer {
         this.buffer[this.posY][--this.posX] = ' ';
     }
 
+    public void setLastFg(Color color) {
+        this.bufferFg[this.posY][this.posX - 1] = color;
+    }
+
+    public void setLastBg(Color color) {
+        this.bufferBg[this.posY][this.posX - 1] = color;
+    }
+
     public void write(char c) {
         if (c == '\n') {
             this.posX = 0;

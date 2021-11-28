@@ -1,5 +1,6 @@
 package uk.insrt.coursework.zuul.ui;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -75,6 +76,7 @@ public class TerminalEmulator implements IOSystem {
 
         this.input += c;
         this.buffer.write(new String(new char[] { c }));
+        this.buffer.setLastFg(Color.GRAY);
         this.repaint();
     }
 
