@@ -15,6 +15,7 @@ public class Arguments {
         try {
             return this.matcher.group(group);
         } catch (Exception e) {
+            // not good practice but more convenient
             return null;
         }
     }
