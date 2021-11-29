@@ -8,10 +8,12 @@ public class RoomStreet extends CampaignRoom {
         super(world, "Street");
     }
     
+    @Override
     public String describe() {
         return "<street.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         World world = this.getWorld();
         this.setAdjacent(Direction.SOUTH, world.getRoom("Apartments: Reception"));

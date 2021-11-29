@@ -1,3 +1,101 @@
+[global]
+sight = "You can see:"
+
+    [global.can_go_in_x_directions]
+    1 = "You may go in"
+    2 = "directions"
+
+[selectors]
+direction = "<direction>"
+something = "<something>"
+someone = "<someone>"
+item = "<item>"
+
+    [selectors.cant_find]
+    1 = "You look around for"
+    2 = "but can't find anything"
+
+[commands]
+unknown = "Not sure what you're trying to do."
+
+back = "go back to the previous room"
+quit = "quit the game"
+where_am_i = "describe the current room again"
+
+    [commands.bag]
+    usage = "look inside your bag or at something's inventory"
+    cant_find = "Can't find what you want to look at."
+    empty = "Your bag is empty!"
+    entity_empty = "doesn't appear to have anything"
+    can_carry_kg = "You can carry"
+    are_carrying_kg = "You are carrying"
+    look_in_bag = "You look in your bag to see"
+    entity_appears_to_have = "appears to have"
+
+    [commands.drop]
+    usage = "drop an item from your bag"
+    nothing_specified = "What do you want to drop?"
+    
+        [commands.drop.dropped]
+        1 = "You drop"
+        2 = "out of your bag"
+    
+    [commands.give]
+    usage = "give something to someone"
+    nothing_specified = "What do you want to give?"
+    no_target = "What / who are you putting this in?"
+    denied_player = "You cannot give yourself to anyone or anything. 🐸"
+
+        [commands.give.denied]
+        1 = "Cannot give"
+        2 = "to"
+
+    [commands.go]
+    usage = "go in a certain direction"
+    nothing_specified = "Where are you going?"
+
+    [commands.help]
+    usage = "show help menu"
+    can_run = "You can run the following commands:"
+
+    [commands.pet]
+    usage = "pet something around you or in your inventory"
+    nothing_specified = "What are you trying to pet?"
+    denied = "You cannot pet"
+
+    [commands.take]
+    usage = "put something in your bag"
+    nothing_specified = "From who?"
+    entity_does_not_have_entity = "does not have"
+    item_not_specified = "What do you want to take?"
+
+        [commands.take.took]
+        1 = "You take"
+        2 = "from"
+        3 = "and put it in your bag"
+
+        [commands.take.denied]
+        1 = "You cannot take"
+        2 = "it's too heavy to put in your bad"
+    
+    [commands.talk]
+    usage = "start talking with someone"
+    nothing_specified = "What do you want to talk with?"
+    denied = "You cannot talk with"
+
+    [commands.use]
+    usage = "use something around you or in your inventory"
+    nothing_specified = "What do you want to use?"
+    denied = "You cannot use"
+
+    [commands.map]
+    usage = "show the world map"
+    close = "Press enter to close."
+
+        [commands.map.discovered]
+        1 = "You have discovered"
+        2 = "of the world"
+
 [entities]
 laptop = "Laptop"
 
@@ -9,6 +107,18 @@ laptop = "Laptop"
     description = "A stray black cat"
     pet = "You pet the cat."
     use = "You cannot the cat.\nPlease do not the cat. 😳😳😳"
+    enter = "A cat has wandered in."
+    leave = "You see a cat leave."
+
+    [entities.boat]
+    description = "Speedboat docked on the coast."
+    denied = "You must not be carrying anything to use the boat.\nYou can however put things in the boat."
+    travel = "You hop in the boat and travel to the other side..."
+    too_heavy = "The boat is carrying too much stuff already!"
+
+        [entities.boat.give]
+        1 = "Put"
+        2 = "in the boat"
 
 [home]
 first_load = '''
@@ -100,6 +210,11 @@ desc
 [forest]
 enter = '''
 desc
+'''
+
+[worm_hole]
+enter = '''
+You step into the worm hole...
 '''
 
 [medical_centre]

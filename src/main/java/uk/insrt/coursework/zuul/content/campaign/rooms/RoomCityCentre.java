@@ -10,10 +10,12 @@ public class RoomCityCentre extends CampaignRoom {
         super(world, "City Centre");
     }
 
+    @Override
     public String describe() {
         return "<city_centre.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         World world = this.getWorld();
         this.setAdjacent(Direction.NORTH, world.getRoom("Back Alley"));
@@ -22,6 +24,7 @@ public class RoomCityCentre extends CampaignRoom {
         this.setAdjacent(Direction.SOUTH, world.getRoom("Coastline"));
     }
 
+    @Override
     public void spawnEntities() {
         World world = this.getWorld();
 

@@ -9,14 +9,17 @@ public class RoomMainlandCoastline extends CampaignRoom {
         super(world, "Mainland: Coastline");
     }
     
+    @Override
     public String describe() {
         return "<mainland_coastline.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         this.setAdjacent(Direction.SOUTH, this.getWorld().getRoom("Forest"));
     }
 
+    @Override
     public void spawnEntities() {
         World world = this.getWorld();
         world.spawnEntity("boat2",

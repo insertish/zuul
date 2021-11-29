@@ -6,6 +6,10 @@ import uk.insrt.coursework.zuul.entities.actions.IUseable;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * TV entity present in the player's room which they interact
+ * with at the start of the game to learn more about the world.
+ */
 public class EntityTV extends EntityWithDialogue<String> implements IUseable {
     public EntityTV(World world, Location location) {
         super(world, location, 40);

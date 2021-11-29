@@ -7,9 +7,12 @@ import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Command which allows the player to reorient themselves in the world.
+ */
 public class CommandWhereAmI extends Command {
     public CommandWhereAmI() {
-        super("where am i", "describe the current room again",
+        super("where am i", "<commands.where_am_i>",
             new Pattern[] {
                 Pattern.compile("^where am i(?!\\w)"),
                 // where am i
@@ -18,6 +21,8 @@ public class CommandWhereAmI extends Command {
 
     @Override
     public boolean run(World world, Arguments arguments) {
+        // We can just re-emit the enter room event to
+        // trigger the room description logic to run again.
         world.emit(new EventEntityEnteredRoom(world.getPlayer()));
         return false;
     }

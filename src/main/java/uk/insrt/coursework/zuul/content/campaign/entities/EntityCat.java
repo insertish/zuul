@@ -30,18 +30,24 @@ public class EntityCat extends Entity implements IPettable, IUseable {
         return "<entities.cat.description>";
     }
 
+    @Override
     public void pet() {
         this.getWorld().getIO().println("<entities.cat.pet>");
-    }
-
-    public void useWanderAI(Room[] rooms, int chance) {
-        this.getWorld()
-            .getEventSystem()
-            .addListener(EventTick.class, new SimpleWanderAI(this, rooms, chance));
     }
 
     @Override
     public void use(Entity target) {
         this.getWorld().getIO().println("<entities.cat.use>");
+    }
+
+    /**
+     * Enable a simple wander behaviour for entity within given bounds.
+     * @param rooms Path that this Entity should follow
+     * @param chance The chance x that this entity moves, where x gives a 1/x fractional chance of moving.
+     */
+    public void useWanderAI(Room[] rooms, int chance) {
+        this.getWorld()
+            .getEventSystem()
+            .addListener(EventTick.class, new SimpleWanderAI(this, rooms, chance));
     }
 }

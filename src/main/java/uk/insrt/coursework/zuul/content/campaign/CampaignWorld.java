@@ -106,14 +106,29 @@ public class CampaignWorld extends World {
      * Register all the game logic
      */
     private void registerEvents() {
-        super.registerDefaultEvents();
-
-        this.eventSystem.addListener(EventEntityEnteredRoom.class, (IEventListener<EventEntityEnteredRoom>) this.getRoom("Worm Hole"));
+        // Capture all Events for Entities entering Rooms.
         this.eventSystem.addListener(EventEntityEnteredRoom.class,
             (EventEntityEnteredRoom event) -> {
                 Entity entity = event.getEntity();
                 if (entity instanceof EntityPlayer) {
                     Room room = entity.getRoom();
+
+                    // Whenever the Player enters a Room, we should print the
+                    // description of the Room and list things found in the Room.
+                    this.io.println(
+                        room.describe()
+                            + "\n<global.can_go_in_x_directions.1> "
+                            + room.getDirections().size()
+                            + " <global.can_go_in_x_directions.2>: "
+                            + room.getDirections()
+                                .stream()
+                                .map(x ->
+                                    x.toString()
+                                     .toLowerCase()
+                                     .replaceAll("_", " ")
+                                )
+                                .collect(Collectors.joining(", "))
+                    );
 
                     // Mark current room as previously visited.
                     this.visitedRooms.add(room);
@@ -128,7 +143,7 @@ public class CampaignWorld extends World {
                         .collect(Collectors.joining("\n"));
 
                     if (entities.length() > 0) {
-                        this.io.println("You can see:\n" + entities);
+                        this.io.println("<global.sight>\n" + entities);
                     }
                 } else {
                     // If another entity enters the room,
@@ -136,12 +151,13 @@ public class CampaignWorld extends World {
                     EntityPlayer player = this.getPlayer();
                     if (entity.getRoom() == player.getRoom()) {
                         if (entity instanceof EntityCat) {
-                            this.io.println("\nA cat has wandered in.");
+                            this.io.println("\n<entities.cat.enter>");
                         }
                     }
                 }
             });
 
+        // Capture all Events for Entities leaving Rooms.
         this.eventSystem.addListener(EventEntityLeftRoom.class,
             (EventEntityLeftRoom event) -> {
                 Entity entity = event.getEntity();
@@ -153,9 +169,12 @@ public class CampaignWorld extends World {
                 // If another entity leaves the room,
                 // conditionally mention this to the player.
                 if (entity instanceof EntityCat) {
-                    this.io.println("\nYou see a cat leave.");
+                    this.io.println("\n<entities.cat.leave>");
                 }
             });
+
+        // Register required Events for Worm Hole room to function.
+        this.eventSystem.addListener(EventEntityEnteredRoom.class, (IEventListener<EventEntityEnteredRoom>) this.getRoom("Worm Hole"));
     }
 
     @Override

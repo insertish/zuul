@@ -7,9 +7,12 @@ import uk.insrt.coursework.zuul.commands.Command;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Command which allows the Player to walk in a particular Direction.
+ */
 public class CommandGo extends Command {
     public CommandGo() {
-        super("go <direction>", "go in a certain direction",
+        super("go <selectors.direction>", "<commands.go.usage>",
             new Pattern[] {
                 Pattern.compile("^(?:go|walk)(?:\\s+(?<direction>[\\w\\s]+))*")
                 // go, walk, go <direction>, walk <direction>
@@ -20,7 +23,7 @@ public class CommandGo extends Command {
     public boolean run(World world, Arguments arguments) {
         Direction direction = arguments.direction();
         if (direction == null) {
-            System.out.println("Where are you going?");
+            System.out.println("<commands.go.nothing_specified>");
             return false;
         }
 

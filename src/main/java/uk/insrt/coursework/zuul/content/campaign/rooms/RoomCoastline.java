@@ -9,14 +9,17 @@ public class RoomCoastline extends CampaignRoom {
         super(world, "Coastline");
     }
     
+    @Override
     public String describe() {
         return "<coastline.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         this.setAdjacent(Direction.NORTH, this.getWorld().getRoom("City Centre"));
     }
 
+    @Override
     public void spawnEntities() {
         World world = this.getWorld();
         world.spawnEntity("boat1",

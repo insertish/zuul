@@ -60,10 +60,34 @@ public abstract class Command {
      */
     public abstract boolean run(World world, Arguments args);
 
+    /**
+     * Filter entities by those that are in the current room.
+     */
     public static final int FILTER_ROOM = 1;
+
+    /**
+     * Filter entities by those that are in the player's inventory.
+     */
     public static final int FILTER_INVENTORY = 2;
+
+    /**
+     * Don't filter entities and instead search through both the current room and the player's inventory.
+     */
     public static final int FILTER_ALL = FILTER_ROOM + FILTER_INVENTORY;
 
+    /**
+     * Given a World and filter, use the provided Arguments and the relevant group to find an entity.
+     * If an Entity is not found or not provided, the appropriate error is displayed to the player.
+     * @param world World to look for the Entity within
+     * @param filter Integer value which represents the filtering, specify one of: {@link #FILTER_ROOM}, {@link #FILTER_INVENTORY}, {@link #FILTER_ALL}
+     * @param args Arguments object to pull information out of
+     * @param group Group we should pull the Entity query out of
+     * @param failure Failure message if an Entity is not specified
+     * @return An Entity if one is found, or null if one isn't.
+     * @see {@link #FILTER_ROOM} Filter entities by those in current room.
+     * @see {@link #FILTER_INVENTORY} Filter entities by those in player's inventory.
+     * @see {@link #FILTER_ALL} Don't filter entities.
+     */
     public Entity findEntity(World world, int filter, Arguments args, String group, String failure) {
         String name = args.group(group);
         if (name == null) {
@@ -71,6 +95,7 @@ public abstract class Command {
             return null;
         }
 
+        // Search the inventory first.
         Entity player = world.getPlayer();
         Entity entity = null;
         if ((filter & FILTER_INVENTORY) == FILTER_INVENTORY) {
@@ -78,6 +103,7 @@ public abstract class Command {
             entity = Search.findEntity(inventory.getItems(), name, true);
         }
         
+        // If we haven't found an entity yet, search the room.
         if (entity == null
          && (filter & FILTER_ROOM) == FILTER_ROOM) {
             List<Entity> entities = world.getEntitiesInRoom(player.getRoom());
@@ -85,20 +111,51 @@ public abstract class Command {
         }
 
         if (entity == null) {
-            world.getIO().println("You look around for " + name + " but can't find anything.");
+            world.getIO().println("<selectors.cant_find.1> " + name + " <selectors.cant_find.2>.");
         }
 
         return entity;
     }
 
+    /**
+     * Given a World and filter, use the provided Arguments and using the group "entity" to find an entity.
+     * If an Entity is not found or not provided, the appropriate error is displayed to the player.
+     * @param world World to look for the Entity within
+     * @param filter Integer value which represents the filtering, specify one of: {@link #FILTER_ROOM}, {@link #FILTER_INVENTORY}, {@link #FILTER_ALL}
+     * @param args Arguments object to pull information out of
+     * @param failure Failure message if an Entity is not specified
+     * @return An Entity if one is found, or null if one isn't.
+     * @see {@link #FILTER_ROOM} Filter entities by those in current room.
+     * @see {@link #FILTER_INVENTORY} Filter entities by those in player's inventory.
+     * @see {@link #FILTER_ALL} Don't filter entities.
+     */
     public Entity findEntity(World world, int filter, Arguments args, String failure) {
         return this.findEntity(world, filter, args, "entity", failure);
     }
 
+    /**
+     * Given a World and using the {@link #FILTER_ROOM} filter, use the provided Arguments and using the group "entity" to find an entity.
+     * If an Entity is not found or not provided, the appropriate error is displayed to the player.
+     * @param world World to look for the Entity within
+     * @param args Arguments object to pull information out of
+     * @param failure Failure message if an Entity is not specified
+     * @return An Entity if one is found, or null if one isn't.
+     * @see {@link #FILTER_ROOM} Filter entities by those in current room.
+     */
     public Entity findEntity(World world, Arguments args, String failure) {
         return this.findEntity(world, FILTER_ROOM, args, failure);
     }
 
+    /**
+     * Given a World and using the {@link #FILTER_ROOM} filter, use the provided Arguments and the relevant group to find an entity.
+     * If an Entity is not found or not provided, the appropriate error is displayed to the player.
+     * @param world World to look for the Entity within
+     * @param args Arguments object to pull information out of
+     * @param group Group we should pull the Entity query out of
+     * @param failure Failure message if an Entity is not specified
+     * @return An Entity if one is found, or null if one isn't.
+     * @see {@link #FILTER_ROOM} Filter entities by those in current room.
+     */
     public Entity findEntity(World world, Arguments args, String group, String failure) {
         return this.findEntity(world, FILTER_ROOM, args, group, failure);
     }

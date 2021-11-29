@@ -63,6 +63,17 @@ public class Game {
             }
         }
 
+        // Setup the command manager.
+        this.commands = new CommandManager();
+
+        // Register the Map command if we're in term emu mode.
+        // We draw images here so it's not available generally.
+        if (this.io instanceof TerminalEmulator) {
+            CommandMap map = new CommandMap();
+            this.commands.registerCommand(map);
+            ((TerminalEmulator) this.io).getEventSystem().addListener(EventDraw.class, map);
+        }
+
         // Load all the data we need and initialise world.
         Localisation locale = new Localisation();
         this.io = new LocalisedIO(this.io, locale);
@@ -75,14 +86,6 @@ public class Game {
         }
 
         this.world = new CampaignWorld(this.io);
-        this.commands = new CommandManager();
-
-        // The map is only available in full experience mode.
-        if (this.io instanceof TerminalEmulator) {
-            CommandMap map = new CommandMap();
-            this.commands.registerCommand(map);
-            ((TerminalEmulator) this.io).getEventSystem().addListener(EventDraw.class, map);
-        }
     }
 
     private void start() {

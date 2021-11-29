@@ -8,9 +8,12 @@ import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.actions.ITalkwith;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Command which allows the Player to talk with other Entities.
+ */
 public class CommandTalk extends Command {
     public CommandTalk() {
-        super("talk with <someone>", "start talking with someone",
+        super("talk with <selectors.someone>", "<commands.talk.usage>",
             new Pattern[] {
                 Pattern.compile("^talk(?: (?:with|to)(?:\\s+(?<entity>[\\w\\s]+))*)*")
                 // talk, talk with <entity>, talk to <entity>
@@ -19,12 +22,12 @@ public class CommandTalk extends Command {
 
     @Override
     public boolean run(World world, Arguments args) {
-        Entity entity = this.findEntity(world, args, "What do you want to talk with?");
+        Entity entity = this.findEntity(world, args, "<commands.talk.nothing_specified>");
         if (entity != null) {
             if (entity instanceof ITalkwith) {
                 ((ITalkwith) entity).talk();
             } else {
-                world.getIO().println("You cannot talk with " + entity.getName() + ".");
+                world.getIO().println("<commands.talk.denied> " + entity.getName() + ".");
             }
         }
 

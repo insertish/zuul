@@ -8,10 +8,12 @@ public class RoomShop extends CampaignRoom {
         super(world, "Shop");
     }
     
+    @Override
     public String describe() {
         return "<shop.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         this.setAdjacent(Direction.SOUTH, this.getWorld().getRoom("Street"));
     }

@@ -1,6 +1,13 @@
 Sound
 Multiplayer
 
+Launcher with:
+- options such as:
+  - bluej
+  - immersive
+  - full screen
+  - limited IO
+
 https://stackoverflow.com/questions/577724/trouble-playing-wav-in-java/577926#577926
 https://15.ai/
 https://uberduck.ai/#voice=jschlatt&mode=tts-basic
@@ -11,3 +18,9 @@ https://freesound.org/people/Timbre/sounds/418692/
 
 https://www.youtube.com/watch?v=4_GL_iCxz0o
 https://refactoring.guru/design-patterns
+
+at the end:
+
+ * 
+ * @author Pawel Makles (k21002534)
+ * @version 1.0-SNAPSHOT

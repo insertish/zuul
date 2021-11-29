@@ -8,10 +8,12 @@ public class RoomBackAlley extends CampaignRoom {
         super(world, "Back Alley");
     }
     
+    @Override
     public String describe() {
         return "<back_alley.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         this.setAdjacent(Direction.SOUTH, this.getWorld().getRoom("City Centre"));
     }

@@ -11,6 +11,7 @@ public class RoomApartmentsHome extends CampaignRoom {
         super(world, "Apartments: Home");
     }
     
+    @Override
     public String describe() {
         var world = this.getWorld();
         if (!world.hasVisited(this)) {
@@ -20,10 +21,12 @@ public class RoomApartmentsHome extends CampaignRoom {
         return "<home.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         this.setAdjacent(Direction.DOWN, this.getWorld().getRoom("Apartments: Reception"));
     }
 
+    @Override
     public void spawnEntities() {
         World world = this.getWorld();
 

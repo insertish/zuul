@@ -13,10 +13,12 @@ public class RoomWormHole extends CampaignRoom implements IEventListener<EventEn
         super(world, "Worm Hole");
     }
     
+    @Override
     public String describe() {
         return "";
     }
 
+    @Override
     protected void setupDirections() {}
 
     @Override
@@ -37,7 +39,7 @@ public class RoomWormHole extends CampaignRoom implements IEventListener<EventEn
         };
 
         var io = this.getWorld().getIO();
-        io.println("\nYou step into the worm hole...\n");
+        io.println("\n<worm_hole.enter>");
 
         try {
             Thread.sleep(1000);

@@ -1,6 +1,7 @@
 package uk.insrt.coursework.zuul.commands;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,17 +35,29 @@ public class CommandManager {
         this.initialiseCommands();
     }
 
+    /**
+     * Register a new Command.
+     * @param command Command
+     */
     public void registerCommand(Command command) {
         this.commands.add(command);
     }
 
+    /**
+     * Register multiple commands.
+     * @param commands Command array
+     */
     public void registerCommands(Command[] commands) {
         for (Command command : commands) {
             this.registerCommand(command);
         }
     }
 
-    public ArrayList<Command> getCommands() {
+    /**
+     * Get Commands provided by this Command manager.
+     * @return List of Commands
+     */
+    public List<Command> getCommands() {
         return this.commands;
     }
 
@@ -87,7 +100,7 @@ public class CommandManager {
             }
         }
 
-        world.getIO().println("Not sure what you're trying to do.");
+        world.getIO().println("<commands.unknown>");
         return false;
     }
 }

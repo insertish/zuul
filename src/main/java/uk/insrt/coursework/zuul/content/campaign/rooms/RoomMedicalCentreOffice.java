@@ -8,10 +8,12 @@ public class RoomMedicalCentreOffice extends CampaignRoom {
         super(world, "Medical Centre: Office");
     }
     
+    @Override
     public String describe() {
         return "<medical_centre_office.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         this.setAdjacent(Direction.UP, this.getWorld().getRoom("Medical Centre: Reception"));
     }

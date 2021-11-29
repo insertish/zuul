@@ -8,9 +8,12 @@ import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.actions.IUseable;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Command which allows the Player to use an Entity.
+ */
 public class CommandUse extends Command {
     public CommandUse() {
-        super("use <something>", "use something around you or in your inventory",
+        super("use <selectors.something>", "<commands.use.usage>",
             new Pattern[] {
                 Pattern.compile("^use(?:\\s+(?<entity>[\\w\\s]+))*")
                 // use, use <entity>
@@ -19,12 +22,12 @@ public class CommandUse extends Command {
 
     @Override
     public boolean run(World world, Arguments args) {
-        Entity entity = this.findEntity(world, Command.FILTER_ALL, args, "What do you want to use?");
+        Entity entity = this.findEntity(world, Command.FILTER_ALL, args, "<commands.use.nothing_specified>");
         if (entity != null) {
             if (entity instanceof IUseable) {
                 ((IUseable) entity).use(world.getPlayer());
             } else {
-                world.getIO().println("You cannot use " + entity.getHighlightedName() + ".");
+                world.getIO().println("<commands.use.denied> " + entity.getHighlightedName() + ".");
             }
         }
 

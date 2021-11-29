@@ -8,10 +8,12 @@ public class RoomForest extends CampaignRoom {
         super(world, "Forest");
     }
     
+    @Override
     public String describe() {
         return "<forest.enter>";
     }
 
+    @Override
     protected void setupDirections() {
         World world = this.getWorld();
         this.setAdjacent(Direction.NORTH, world.getRoom("Mainland: Coastline"));

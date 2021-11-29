@@ -8,9 +8,12 @@ import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.actions.IPettable;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Command which allows the player to pet another entity.
+ */
 public class CommandPet extends Command {
     public CommandPet() {
-        super("pet <something>", "pet something around you or in your inventory",
+        super("pet <selectors.something>", "<commands.pet.usage>",
             new Pattern[] {
                 Pattern.compile("^pet(?:\\s+(?<entity>[\\w\\s]+))*")
                 // pet, pet <something>
@@ -19,12 +22,13 @@ public class CommandPet extends Command {
 
     @Override
     public boolean run(World world, Arguments args) {
-        Entity entity = this.findEntity(world, Command.FILTER_ALL, args, "What are you trying to pet?");
+        // Scan the room for entities that have IPettable.
+        Entity entity = this.findEntity(world, Command.FILTER_ALL, args, "<commands.pet.nothing_specified>");
         if (entity != null) {
             if (entity instanceof IPettable) {
                 ((IPettable) entity).pet();
             } else {
-                world.getIO().println("You cannot pet " + entity.getHighlightedName() + ".");
+                world.getIO().println("<commands.pet.denied> " + entity.getHighlightedName() + ".");
             }
         }
 

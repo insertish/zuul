@@ -7,6 +7,14 @@ import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Boat entity which ferries the Player to an arbitrary location.
+ * There is no restriction on location but they should be place as
+ * appropriate and where it would be realistic to put a boat.
+ * 
+ * Boats may not be operated by the player while they are carrying
+ * anything so instead they must use the boat's storage.
+ */
 public class EntityBoat extends Entity implements IUseable, IGiveable {
     private Room destination;
 
@@ -23,26 +31,28 @@ public class EntityBoat extends Entity implements IUseable, IGiveable {
 
     @Override
     public String describe() {
-        return "boat";
+        return "<entities.boat.description>";
     }
 
+    @Override
     public void use(Entity target) {
         var io = this.getWorld().getIO();
         if (target.getInventory().getWeight() > 0) {
-            io.println("You must not be carrying anything to use the boat.\nYou can however put things in the boat.");
+            io.println("<entities.boat.denied>");
             return;
         }
 
-        io.println("You hop in the boat and travel to the other side...\n");
+        io.println("<entities.boat.travel>\n");
         target.setLocation(this.destination);
     }
 
+    @Override
     public void give(Entity item) {
         var io = this.getWorld().getIO();
         if (item.setLocation(this.getInventory())) {
-            io.println("Put " + item.getHighlightedName() + " in boat.");
+            io.println("<entities.boat.give.1> " + item.getHighlightedName() + " <entities.boat.give.2>.");
         } else {
-            io.println("The boat is carrying too much stuff already!");
+            io.println("<entities.boat.too_heavy>");
         }
     }
 }

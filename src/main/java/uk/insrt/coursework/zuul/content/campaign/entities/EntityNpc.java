@@ -6,7 +6,7 @@ import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 
 /**
- * NPC entity which provides dialog.
+ * NPC entity which provides dialog and can be talked with by the Player.
  */
 public class EntityNpc extends EntityWithDialogue<String> implements ITalkwith {
     private String description;
@@ -36,5 +36,9 @@ public class EntityNpc extends EntityWithDialogue<String> implements ITalkwith {
     }
 
     @Override
-    public void setupDialogue(Dialogue<String> dialogue) {}
+    public void setupDialogue(Dialogue<String> dialogue) {
+        // We do not want anything extending EntityNpc to need to
+        // setupDialogue themselves as we are already loading it
+        // from the dialogue.toml file above.
+    }
 }
