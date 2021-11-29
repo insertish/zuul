@@ -52,4 +52,21 @@ public abstract class EntityWithDialogue<T> extends Entity {
         var world = (CampaignWorld) this.getWorld();
         world.getDialogueLoader().populate(dialogue, id);
     }
+
+    /**
+     * Set the current dialogue node if the given node is present.
+     * @param node Target node
+     */
+    public void setDialogueNodeIfPresent(Object node) {
+        try {
+            @SuppressWarnings("unchecked")
+            T n = (T) node;
+
+            this.dialogue.setNodeIfPresent(n);
+        } catch (ClassCastException ex) {
+            // Ignore the error since if we can't cast it
+            // to whatever type this is, then obviously this
+            // node is not present within this Dialogue.
+        }
+    }
 }

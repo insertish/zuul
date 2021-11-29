@@ -36,6 +36,16 @@ public class Dialogue<T> {
     }
 
     /**
+     * Change the current node to a different one if it exists
+     * @param node New node
+     */
+    public void setNodeIfPresent(T node) {
+        if (this.parts.containsKey(node)) {
+            this.currentNode = node;
+        }
+    }
+
+    /**
      * Add a new part to the dialogue
      * @param part What this node is identified by
      * @param node The new node

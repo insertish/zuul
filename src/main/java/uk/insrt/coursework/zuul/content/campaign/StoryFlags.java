@@ -1,5 +1,8 @@
 package uk.insrt.coursework.zuul.content.campaign;
 
+import uk.insrt.coursework.zuul.content.campaign.events.EventGameStageChanged;
+import uk.insrt.coursework.zuul.events.EventSystem;
+
 /**
  * Class which controls story progression within the Campaign World.
  */
@@ -14,13 +17,15 @@ public class StoryFlags {
         Twist, // Skipped
         Conclusion, // Skipped
     }
-
+    
+    private EventSystem eventSystem;
     private Stage stage;
 
     /**
      * Construct a new instance of StoryFlags
      */
-    public StoryFlags() {
+    public StoryFlags(EventSystem eventSystem) {
+        this.eventSystem = eventSystem;
         this.stage = Stage.Exposition;
     }
 
@@ -36,7 +41,8 @@ public class StoryFlags {
      * Set the current stage (chapter) of the story.
      * @param stage New stage
      */
-    public void setStage(Stage stage) {
+    public void setStage(EventSystem eventSystem, Stage stage) {
         this.stage = stage;
+        this.eventSystem.emit(new EventGameStageChanged(stage));
     }
 }

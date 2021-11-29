@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
+import uk.insrt.coursework.zuul.content.campaign.StoryFlags.Stage;
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityCat;
+import uk.insrt.coursework.zuul.content.campaign.entities.EntityWithDialogue;
+import uk.insrt.coursework.zuul.content.campaign.events.EventGameStageChanged;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomApartmentsHome;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomApartmentsReception;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomBackAlley;
@@ -32,6 +35,7 @@ import uk.insrt.coursework.zuul.world.World;
  * The main campaign World.
  */
 public class CampaignWorld extends World {
+    private StoryFlags flags;
     private HashSet<Room> visitedRooms;
     private DialogueLoader dialogueLoader;
 
@@ -44,6 +48,7 @@ public class CampaignWorld extends World {
 
         this.visitedRooms = new HashSet<>();
         this.dialogueLoader = new DialogueLoader();
+        this.flags = new StoryFlags(this.getEventSystem());
         
         try {
             this.dialogueLoader.load("/dialogue.toml");
@@ -63,6 +68,14 @@ public class CampaignWorld extends World {
      */
     public DialogueLoader getDialogueLoader() {
         return this.dialogueLoader;
+    }
+
+    /**
+     * Get the global story flags.
+     * @return Story flags instance
+     */
+    public StoryFlags getStoryFlags() {
+        return this.flags;
     }
 
     /**
@@ -192,9 +205,28 @@ public class CampaignWorld extends World {
                     this.io.println("\n<entities.cat.leave>");
                 }
             });
+        
+        // Register event for game stage changing.
+        this.eventSystem.addListener(EventGameStageChanged.class,
+            (EventGameStageChanged event) -> {
+                Stage stage = event.getStage();
+                switch (stage) {
+                    case Recon: {
+                        for (Entity entity : this.entities.values()) {
+                            if (entity instanceof EntityWithDialogue) {
+                                ((EntityWithDialogue<?>) entity).setDialogueNodeIfPresent("recon");
+                            }
+                        }
+                        break;
+                    }
+                    default: break;
+                }
+            });
 
         // Register required Events for Worm Hole room to function.
-        this.eventSystem.addListener(EventEntityEnteredRoom.class, (IEventListener<EventEntityEnteredRoom>) this.getRoom("Worm Hole"));
+        @SuppressWarnings("unchecked")
+        IEventListener<EventEntityEnteredRoom> wh = (IEventListener<EventEntityEnteredRoom>) this.getRoom("Worm Hole");
+        this.eventSystem.addListener(EventEntityEnteredRoom.class, wh);
     }
 
     @Override
