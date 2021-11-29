@@ -3,6 +3,7 @@ package uk.insrt.coursework.zuul.content.campaign.rooms;
 import java.util.Random;
 
 import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.IEventListener;
 import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.world.Room;
@@ -88,5 +89,10 @@ public class RoomWormHole extends CampaignRoom implements IEventListener<EventEn
         String location = locations[random.nextInt(locations.length)];
         Room target = this.getWorld().getRoom(location);
         entity.setLocation(target);
+
+        // If it was the player, clear their walk history.
+        if (entity instanceof EntityPlayer) {
+            ((EntityPlayer) entity).clearHistory();
+        }
     }
 }

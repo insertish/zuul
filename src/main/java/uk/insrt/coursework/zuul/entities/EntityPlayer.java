@@ -87,4 +87,12 @@ public class EntityPlayer extends Entity {
             io.println("Cannot leave the room this way.");
         }
     }
+
+    /**
+     * Clear walk history.
+     */
+    public void clearHistory() {
+        this.retreatingDirection.clear();
+        this.previousRooms.clear();
+    }
 }
