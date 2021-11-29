@@ -14,6 +14,11 @@ public class RoomBackAlley extends CampaignRoom {
     
     @Override
     public String describe() {
+        var world = this.getWorld();
+        if (!world.hasVisited(this)) {
+            return "<back_alley.first_load>";
+        }
+
         return "<back_alley.enter>";
     }
 

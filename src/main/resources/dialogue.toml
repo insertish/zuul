@@ -13,6 +13,9 @@
     small_talk = { description = "small_talk", options = [
         { description = "leave", to = "small_talk", mustExit = true }
     ] }
+    recon = { description = "testing", options = [
+        { description = "sususus!", to = "recon", mustExit = true }
+    ] }
 
 # 3. Old Man located in Forest
 # out of scope until (2.) or (sq1.)

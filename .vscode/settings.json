@@ -1,4 +1,4 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "editor.rulers": [80],
+    "editor.rulers": [80, 118],
 }

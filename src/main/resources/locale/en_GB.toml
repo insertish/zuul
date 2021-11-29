@@ -155,6 +155,7 @@ enter = '''
 You enter the apartment complex reception.
 '''
 
+    # Cyan: \u001B[36m
     [apartments.receptionist]
     description = "The receptionist sitting behind a desk"
 
@@ -164,12 +165,12 @@ You enter the apartment complex reception.
         option_q = "Nevermind."
 
         [apartments.receptionist.protestors]
-        dialog = "\u001B[36mReceptionist\u001B[37m: I don't know much but it looks like they're outside the Medical Centre..."
+        dialog = "\u001B[36mReceptionist\u001B[37m: I don't know much but it looks like a group of people shouting\noutside the Medical Centre..."
         option_1 = "Do you know anything more?"
         option_q = "Alright."
 
         [apartments.receptionist.protestors2]
-        dialog = "\u001B[36mReceptionist\u001B[37m: I know as much as you really..."
+        dialog = "\u001B[36mReceptionist\u001B[37m: They were handing out flyers as they came up, maybe someone\nnearby would know..."
         option_q = "Thanks."
 
         [apartments.receptionist.repeated]
@@ -178,47 +179,78 @@ You enter the apartment complex reception.
         option_q = "That's all, thanks."
 
 [city_centre]
-enter = '''
-desc
+first_load = '''
+You enter the city square, it's quite busy in the mornings. There's a lot of
+people running around, unlikely you could stop most of them for a chat.
+
+There's a general unease in the area, some people look quite tense and others
+look like they're spending their last day on Earth...
 '''
 
+enter = '''
+You enter the city square.
+'''
+
+    # Yellow: \u001B[33m
     [city_centre.npc]
-    description = "city centre npc"
+    description = "A person sitting at a bench."
 
 [street]
-enter = '''
-desc
+first_load = '''
+You enter the main city street connecting the major parts of the city.
+
+There's a lot of chaos and noise here, to your west you can see protestors
+outside of the medical centre complex, they're holding signs up, "UNETHICAL
+RESEARCH", "OUR RELATIONS AT STAKE".
 '''
 
+enter = '''
+You enter the city street.
+'''
+
+    # Red: \u001B[31m
     [street.protestors]
-    description = "protestors"
+    description = "A group of protestors holding signs."
 
 [shop]
 enter = '''
-desc
+You enter the shop, the bell rings as you close the door behind you.
 '''
 
+    # Green: \u001B[32m
     [shop.npc]
     description = "shop keeper"
 
 [back_alley]
+first_load = '''
+You enter a dark alley, it is quite quiet here, a stark contrast to the city
+centre yet located nearly right in the middle. The sides of the alley are lined
+with derelict buildings and dim lighting.
+
+You make out a familiar figure further ahead.
+'''
+
 enter = '''
-desc
+You enter the back alley.
 '''
 
 [coastline]
 enter = '''
-desc
+You arrive at the city's coastline, the water is rather calm and still.
 '''
 
 [mainland_coastline]
 enter = '''
-desc
+You arrive at the coastline on the mainland,
+the sea is crashing against rocks lined against it,
+it is significantly colder out here away from the concrete jungle.
 '''
 
 [forest]
 enter = '''
-desc
+You wander through the forest, you hear birds whistling at the peaks of trees...
+There's a river flowing through the middle with an old wooden bridge above it.
+It would be quite easy to lose yourself here for a few hours.
 '''
 
     [forest.old_man]
@@ -234,15 +266,18 @@ enter = '''
 You're now at the Medical Centre's reception.
 '''
 
+    # Red: \u001B[31m
     [medical_centre.guard]
     description = "guy"
 
 [medical_centre_office]
 enter = '''
-You find yourself at the Medical Centre's office.\nYou definitely shouldn't be here...
+You find yourself at the Medical Centre's office.
+You definitely shouldn't be here...
 '''
 
 [marie]
 
+    # Purple: \u001B[35m
     [alley]
     description = "trol!"

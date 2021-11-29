@@ -14,6 +14,11 @@ public class RoomStreet extends CampaignRoom {
     
     @Override
     public String describe() {
+        var world = this.getWorld();
+        if (!world.hasVisited(this)) {
+            return "<street.first_load>";
+        }
+
         return "<street.enter>";
     }
 

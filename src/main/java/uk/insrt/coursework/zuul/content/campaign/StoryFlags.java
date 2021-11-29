@@ -41,7 +41,7 @@ public class StoryFlags {
      * Set the current stage (chapter) of the story.
      * @param stage New stage
      */
-    public void setStage(EventSystem eventSystem, Stage stage) {
+    public void setStage(Stage stage) {
         this.stage = stage;
         this.eventSystem.emit(new EventGameStageChanged(stage));
     }

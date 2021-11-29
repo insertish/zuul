@@ -23,6 +23,8 @@ public class TextBuffer {
     private Color bg;
     private Color fg;
 
+    private boolean overflow;
+
     /**
      * Construct a new TextBuffer with given constraints.
      * @param width Buffer width
@@ -41,6 +43,8 @@ public class TextBuffer {
 
         this.bg = Color.BLACK;
         this.fg = Color.WHITE;
+
+        this.overflow = false;
     }
 
     /**
@@ -90,6 +94,11 @@ public class TextBuffer {
     public void write(char c) {
         // If we encounter a newline, shift downwards or go on to a new line.
         if (c == '\n') {
+            if (this.overflow) {
+                this.overflow = false;
+                return;
+            }
+
             this.posX = 0;
 
             if (this.posY == this.height - 1) {
@@ -100,6 +109,9 @@ public class TextBuffer {
 
             return;
         }
+
+        // Clear any overflow value.
+        this.overflow = false;
 
         // Commit new character to buffer.
         this.bufferBg[this.posY][this.posX] = this.bg;
@@ -115,6 +127,10 @@ public class TextBuffer {
             } else {
                 this.posY++;
             }
+
+            // Set a flag to say we just naturally overflowed and to ignore
+            // the next newline character that may appear.
+            this.overflow = true;
         }
     }
 

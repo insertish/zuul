@@ -16,6 +16,11 @@ public class RoomCityCentre extends CampaignRoom {
 
     @Override
     public String describe() {
+        var world = this.getWorld();
+        if (!world.hasVisited(this)) {
+            return "<city_centre.first_load>";
+        }
+
         return "<city_centre.enter>";
     }
 
