@@ -144,8 +144,8 @@ You enter your apartment.
 '''
 
     [home.tv]
-        description = "LG 55NANO966PA 55\" Super UHD 8K HDR Smart LED TV"
-        off = "Turn the TV off."
+    description = "LG 55NANO966PA 55\" Super UHD 8K HDR Smart LED TV"
+    off = "Turn the TV off."
 
         [home.tv.first_on]
         dialog = "sus!"
@@ -156,7 +156,7 @@ You enter the apartment complex reception.
 '''
 
     [apartments.receptionist]
-        description = "The receptionist sitting behind a desk"
+    description = "The receptionist sitting behind a desk"
 
         [apartments.receptionist.first_encounter]
         dialog = "\u001B[36mReceptionist\u001B[37m: Good morning, how are you doing today?"
@@ -182,15 +182,24 @@ enter = '''
 desc
 '''
 
+    [city_centre.npc]
+    description = "city centre npc"
+
 [street]
 enter = '''
 desc
 '''
 
+    [street.protestors]
+    description = "protestors"
+
 [shop]
 enter = '''
 desc
 '''
+
+    [shop.npc]
+    description = "shop keeper"
 
 [back_alley]
 enter = '''
@@ -212,6 +221,9 @@ enter = '''
 desc
 '''
 
+    [forest.old_man]
+    description = "sus!"
+
 [worm_hole]
 enter = '''
 You step into the worm hole...
@@ -222,6 +234,9 @@ enter = '''
 You're now at the Medical Centre's reception.
 '''
 
+    [medical_centre.guard]
+    description = "guy"
+
 [medical_centre_office]
 enter = '''
 You find yourself at the Medical Centre's office.\nYou definitely shouldn't be here...
@@ -230,3 +245,4 @@ You find yourself at the Medical Centre's office.\nYou definitely shouldn't be h
 [marie]
 
     [alley]
+    description = "trol!"

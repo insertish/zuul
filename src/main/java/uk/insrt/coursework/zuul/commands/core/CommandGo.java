@@ -23,7 +23,7 @@ public class CommandGo extends Command {
     public boolean run(World world, Arguments arguments) {
         Direction direction = arguments.direction();
         if (direction == null) {
-            System.out.println("<commands.go.nothing_specified>");
+            world.getIO().println("<commands.go.nothing_specified>");
             return false;
         }
 

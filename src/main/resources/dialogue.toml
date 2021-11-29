@@ -17,7 +17,7 @@
 # 3. Old Man located in Forest
 # out of scope until (2.) or (sq1.)
 [npc_old_man]
-    _prefix = "city_centre.npc."
+    _prefix = "forest.old_man."
     _start = "small_talk"
     small_talk = { description = "small_talk", options = [
         { description = "leave", to = "small_talk", mustExit = true }
@@ -25,7 +25,7 @@
 
 # 4. Protestors located on Street
 [npc_protestors]
-    _prefix = "city_centre.npc."
+    _prefix = "street.protestors."
     _start = "small_talk"
     small_talk = { description = "small_talk", options = [
         { description = "leave", to = "small_talk", mustExit = true }

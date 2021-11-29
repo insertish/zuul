@@ -1,6 +1,7 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityCat;
+import uk.insrt.coursework.zuul.content.campaign.entities.EntityNpc;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
@@ -45,5 +46,14 @@ public class RoomCityCentre extends CampaignRoom {
             },
             8
         );
+        
+        world.spawnEntity("city_npc",
+            new EntityNpc(
+                world,
+                this.toLocation(),
+                "npc_city_centre",
+                "<city_centre.npc.description>",
+                new String[] { "citizen" }
+            ));
     }
 }
