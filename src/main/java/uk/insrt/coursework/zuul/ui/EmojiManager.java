@@ -17,29 +17,44 @@ import org.apache.commons.io.IOUtils;
 
 import uk.insrt.coursework.zuul.util.Tree;
 
+/**
+ * Class which helps manage loading and resolving Emojis.
+ */
 public class EmojiManager {
     private HashMap<String, Emoji> emojis;
     private Tree<Character, String> emojiTree;
     private Tree<Character, String> currentNode;
 
+    /**
+     * Construct a new EmojiManager.
+     */
     public EmojiManager() {
         this.emojis = new HashMap<>();
         this.emojiTree = new Tree<>();
         this.currentNode = this.emojiTree;
     }
 
+    /**
+     * Check whether a given Emoji is present in this manager.
+     * @param emoji Unicode representation of Emoji
+     * @return True if the Emoji is available
+     */
     public boolean hasEmoji(String emoji) {
         return this.emojis.containsKey(emoji);
     }
 
+    /**
+     * Get an Emoji by its Unicode representation.
+     * @param emoji Unicode representation of Emoji
+     * @return The Emoji or null if it doesn't exist
+     */
     public Emoji getEmoji(String emoji) {
         return this.emojis.get(emoji);
     }
 
     /**
      * Get currently matched emoji and resets position.
-     * @throws NullPointerException
-     * @return
+     * @return Emoji if it was found, or null if not
      */
     public Emoji getEmoji() {
         String value = this.currentNode.getValue();
@@ -48,18 +63,32 @@ public class EmojiManager {
         return emoji;
     }
 
+    /**
+     * Reset the state of the matching mechanism.
+     */
     public void resetState() {
         this.currentNode = this.emojiTree;
     }
 
+    /**
+     * The matching mechanism has not matched any characters to potential emojis.
+     */
     public static final int MATCH_NONE = 0;
+
+    /**
+     * The matching mechanism has matched some characters to potential emojis.
+     */
     public static final int MATCH_SOME = 1;
+
+    /**
+     * The matching mechanism has matched an emoji.
+     */
     public static final int MATCH_FOUND = 2;
 
     /**
-     * >> Null if no match.
-     * @param c
-     * @return
+     * Match the next character.
+     * @param c Character to match against
+     * @return One of {@link #MATCH_NONE}, {@link #MATCH_SOME} or {@link #MATCH_FOUND}
      */
     public int match(char c) {
         var child = this.currentNode.getChild(c);
@@ -81,6 +110,11 @@ public class EmojiManager {
         return MATCH_NONE;
     }
 
+    /**
+     * Load emoji definitions and resources from a given resource directory.
+     * @param rootDir Root directory at which we expect a valid {@code definitions.toml} to exist
+     * @throws IOException if the definition file is missing or defined emojis are invalid
+     */
     public void loadResources(String rootDir) throws IOException {
         InputStream defnStream = this.getClass().getResourceAsStream(rootDir + "/definitions.toml");
         // We need to force UTF-8 encoding or else unicode emojis may get mangled.
@@ -88,6 +122,7 @@ public class EmojiManager {
         Toml defn = new Toml().read(defnString);
         List<HashMap<String, Object>> emojis = defn.getList("emojis");
 
+        // Load each emoji in sequence
         for (var emoji : emojis) {
             String path = (String) emoji.get("path");
             String unicode = (String) emoji.get("unicode");
@@ -103,7 +138,6 @@ public class EmojiManager {
             } else {
                 newEmoji = new Emoji(image, unicode);
             }
-
             this.emojis.put(unicode, newEmoji);
             this.emojiTree.addChildWithPath(
                 new ArrayList<>(Arrays.asList(

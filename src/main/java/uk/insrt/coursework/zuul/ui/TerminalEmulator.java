@@ -8,12 +8,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 import uk.insrt.coursework.zuul.events.EventSystem;
 import uk.insrt.coursework.zuul.io.IOSystem;
 
-// https://stackoverflow.com/questions/17922443/drawing-canvas-on-jframe
-// https://stackoverflow.com/questions/21969954/how-to-detect-a-key-press-in-java
-// https://stackoverflow.com/questions/23413297/passing-values-between-2-threads-without-intrrrupting-each-other
-// https://stackoverflow.com/questions/1088595/how-to-do-something-on-swing-component-resizing
-// https://fonts.google.com/specimen/VT323?category=Monospace#standard-styles
-
+/**
+ * A terminal emulator which implements an IO system to
+ * be arbitrarily plugged into any existing components.
+ */
 public class TerminalEmulator implements IOSystem {
     public static final int TERMINAL_WIDTH = 80;
     public static final int TERMINAL_HEIGHT = 25;
@@ -25,6 +23,10 @@ public class TerminalEmulator implements IOSystem {
     private TextBuffer buffer;
     private String input;
 
+    /**
+     * Construct and build a new TerminalEmulator
+     * @param fullscreen Whether to launch the emulator in fullscreen
+     */
     public TerminalEmulator(boolean fullscreen) {
         this.queue = new LinkedBlockingQueue<>();
         this.eventSystem = new EventSystem();
@@ -35,10 +37,16 @@ public class TerminalEmulator implements IOSystem {
         this.buildFrame();
     }
 
+    /**
+     * Construct a new TerminalEmulator and force windowed mode.
+     */
     public TerminalEmulator() {
         this(false);
     }
 
+    /**
+     * Build and show the terminal emulator.
+     */
     public void buildFrame() {
         var emulator = this;
         EventQueue.invokeLater(new Runnable() {
@@ -49,30 +57,45 @@ public class TerminalEmulator implements IOSystem {
         });
     }
 
+    /**
+     * Get the local event system for this emulator.
+     * @return The event system
+     */
     public EventSystem getEventSystem() {
         return this.eventSystem;
     }
 
+    /**
+     * Get the emulator's text buffer.
+     * @return The text buffer
+     */
     public TextBuffer getBuffer() {
         return this.buffer;
     }
 
+    /**
+     * Tell the terminal frame to repaint contents.
+     */
     private void repaint() {
         if (this.frame != null) {
             this.frame.repaint();
         }
     }
 
+    /**
+     * Check whether we are in fullscreen mode.
+     * @return True if we are fullscreen
+     */
     public boolean isFullscreen() {
         return this.fullscreen;
     }
 
-    public void dispose() {
-        this.frame.dispose();
-    }
-
+    /**
+     * Push a new character to the input buffer.
+     * @param c Character to push
+     */
     public void push(char c) {
-        if (this.input.length() == TERMINAL_WIDTH - 4) return;
+        if (this.buffer.getPosX() + 1 == TERMINAL_WIDTH) return;
 
         this.input += c;
         this.buffer.write(new String(new char[] { c }));
@@ -80,6 +103,9 @@ public class TerminalEmulator implements IOSystem {
         this.repaint();
     }
 
+    /**
+     * Pop last character from the input buffer.
+     */
     public void pop() {
         if (this.input.length() > 0) {
             this.input = this.input.substring(0, this.input.length() - 1);
@@ -88,6 +114,11 @@ public class TerminalEmulator implements IOSystem {
         }
     }
 
+    /**
+     * Flush input from terminal emulator thread and send it to whatever is
+     * waiting for it on another thread. Uses a blocking queue to send data
+     * between threads, as seen here: https://stackoverflow.com/a/23413506
+     */
     public void flush() {
         this.queue.add(this.input);
         this.input = new String();
@@ -116,5 +147,10 @@ public class TerminalEmulator implements IOSystem {
             System.exit(1);
             return " ";
         }
+    }
+
+    @Override
+    public void dispose() {
+        this.frame.dispose();
     }
 }

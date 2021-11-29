@@ -8,6 +8,10 @@ import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Teleporter room implemented as required by the challenge tasks.
+ * Any Entity that walks into the worm hole is transported into a random public location.
+ */
 public class RoomWormHole extends CampaignRoom implements IEventListener<EventEntityEnteredRoom> {
     public RoomWormHole(World world) {
         super(world, "Worm Hole");
@@ -28,6 +32,9 @@ public class RoomWormHole extends CampaignRoom implements IEventListener<EventEn
         if (room != this) return;
         event.stopPropagation();
 
+        // This is a restricted set of locations as to not break
+        // the game's plot, say if we were transported to the medical
+        // centre complex office when we're not meant to go there yet.
         final Random random = new Random();
         final String[] locations = {
             "City Centre",
@@ -43,40 +50,41 @@ public class RoomWormHole extends CampaignRoom implements IEventListener<EventEn
 
         try {
             Thread.sleep(1000);
-        } catch (Exception e) { }
 
-        final int WIDTH = 79;
+            final int WIDTH = 79;
 
-        // Transport animation, this will take 1800 ms.
-        for (int i=0;i<5;i++) {
-            io.println("*".repeat(i*3) + "\\" + " ".repeat(WIDTH - i * 6 - 2) + "/" + "*".repeat(i*3));
-            try {
+            // Transport animation, this will take 1800 ms.
+            for (int i=0;i<5;i++) {
+                io.println("*".repeat(i*3) + "\\"
+                    + " ".repeat(WIDTH - i * 6 - 2) + "/" + "*".repeat(i*3));
+                
                 Thread.sleep(60);
-            } catch (Exception e) { }
-        }
-
-        for (int i=0;i<30;i++) {
-            var out = "";
-            for (int j=0;j<WIDTH;j++) {
-                out += random.nextInt(8) == 0 ? "*" : " ";
             }
 
-            io.println(out);
+            for (int i=0;i<30;i++) {
+                var out = "";
+                for (int j=0;j<WIDTH;j++) {
+                    out += random.nextInt(8) == 0 ? "*" : " ";
+                }
 
-            try {
+                io.println(out);
                 Thread.sleep(40);
-            } catch (Exception e) { }
-        }
+            }
 
-        for (int i=5;i>0;i--) {
-            io.println("*".repeat(i*3) + "/" + " ".repeat(WIDTH - i * 6 - 2) + "\\" + "*".repeat(i*3));
-            try {
+            for (int i=5;i>0;i--) {
+                io.println("*".repeat(i*3) + "/"
+                    + " ".repeat(WIDTH - i * 6 - 2) + "\\" + "*".repeat(i*3));
+                
                 Thread.sleep(60);
-            } catch (Exception e) { }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            io.println("There was a disruption when travelling.");
         }
         
         io.print("\n");
         
+        // Pick a random location and put the entering entity in it.
         String location = locations[random.nextInt(locations.length)];
         Room target = this.getWorld().getRoom(location);
         entity.setLocation(target);

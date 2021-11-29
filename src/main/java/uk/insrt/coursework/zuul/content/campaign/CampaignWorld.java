@@ -28,16 +28,17 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
-// https://democracy.york.gov.uk/documents/s2116/Annex%20C%20REcycling%20Report%20frnweights2005.pdf
-// https://www.google.com/maps/@50.4293559,18.9742453,16.12z
-// https://twitter.com/Yarung3/status/1258670295520628736/photo/1
-// https://twitter.com/jgilleard/status/1242354985351786497
-// [3:02] https://brand-new-animal.fandom.com/wiki/Runaway_Raccoon
-
+/**
+ * The main campaign World.
+ */
 public class CampaignWorld extends World {
     private HashSet<Room> visitedRooms;
     private DialogueLoader dialogueLoader;
 
+    /**
+     * Construct a new Campaign World
+     * @param io Provided IO system
+     */
     public CampaignWorld(IOSystem io) {
         super(io);
 
@@ -56,18 +57,34 @@ public class CampaignWorld extends World {
         this.registerEvents();
     }
 
+    /**
+     * Get this World's Dialogue Loader
+     * @return Dialogue Loader
+     */
     public DialogueLoader getDialogueLoader() {
         return this.dialogueLoader;
     }
 
+    /**
+     * Check whether the Player has visited a certain Room yet
+     * @param room Room to check
+     * @return True if the Player has visited the given Room
+     */
     public boolean hasVisited(Room room) {
         return this.visitedRooms.contains(room);
     }
 
+    /**
+     * Get a rounded whole number percentage of how much the World has been explored.
+     * @return Integer representing percentage of World explored
+     */
     public int percentVisited() {
-        return (int) ((float) this.visitedRooms.size() / this.rooms.size() * 100.0f);
+        return Math.round((float) this.visitedRooms.size() / this.rooms.size() * 100.0f);
     }
 
+    /**
+     * Create all the Worlds and link adjacent Rooms together.
+     */
     private void buildWorld() {
         final Room[] rooms = {
             new RoomCityCentre(this),
@@ -91,6 +108,9 @@ public class CampaignWorld extends World {
         this.linkRooms();
     }
 
+    /**
+     * Spawn and setup any Entities within this World.
+     */
     private void spawnEntities() {
         for (Room room : this.rooms.values()) {
             room.spawnEntities();
@@ -103,7 +123,7 @@ public class CampaignWorld extends World {
     }
 
     /**
-     * Register all the game logic
+     * Register all the game logic.
      */
     private void registerEvents() {
         // Capture all Events for Entities entering Rooms.

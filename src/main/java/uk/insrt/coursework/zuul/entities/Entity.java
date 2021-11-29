@@ -54,10 +54,18 @@ public abstract class Entity {
         return this.weight;
     }
 
+    /**
+     * Get the name of this Entity.
+     * Shorthand for {@link #getAliases()}[0].
+     * @return First matched alias
+     */
     public String getName() {
         return this.getAliases()[0];
     }
 
+    /**
+     * Get a highlighted representation of this Entity's name.
+     */
     public String getHighlightedName() {
         return Ansi.BackgroundWhite + Ansi.Black + this.getName() + Ansi.Reset;
     }
@@ -70,6 +78,10 @@ public abstract class Entity {
         return this.inventory;
     }
 
+    /**
+     * Get the World this Entity resides in.
+     * @return World
+     */
     public World getWorld() {
         return this.world;
     }
@@ -90,8 +102,12 @@ public abstract class Entity {
         return this.location.getInventory();
     }
 
-    /** Remove from any existing place */
-    // * @param suppressEvents Whether to suppress all events.
+    /**
+     * Remove this Entity from any existing place.
+     * Provides a consistent way to clean up the Entity before placing it anywhere.
+     * @param suppressEvents Whether to suppress the "Entity Left Room" Event
+     * @return Whether this Entity was removed from an Inventory
+     */
     public boolean consume(boolean suppressEvents) {
         boolean consumed = false;
         Inventory inventory = this.location.getInventory();

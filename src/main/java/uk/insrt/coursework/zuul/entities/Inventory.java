@@ -26,6 +26,10 @@ public class Inventory {
         this.maxWeight = maxWeight;
     }
 
+    /**
+     * Get the maximum weight that can be carried in this inventory.
+     * @return Maximum weight that can be carried
+     */
     public int getMaxWeight() {
         return this.maxWeight;
     }
@@ -67,6 +71,10 @@ public class Inventory {
         return this.items.remove(entity);
     }
 
+    /**
+     * Get an Iterable over the Entities within this inventory.
+     * @return Iterable over Entities
+     */
     public Iterable<Entity> getItems() {
         return this.items;
     }

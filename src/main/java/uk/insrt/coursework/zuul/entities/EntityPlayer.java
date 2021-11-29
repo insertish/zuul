@@ -15,6 +15,10 @@ public class EntityPlayer extends Entity {
     private ArrayList<Room> previousRooms;
     private ArrayList<Direction> retreatingDirection;
 
+    /**
+     * Construct a new Player Entity.
+     * @param world World to place Player in
+     */
     public EntityPlayer(World world) {
         super(world, new Location(), 70);
         this.previousRooms = new ArrayList<>();

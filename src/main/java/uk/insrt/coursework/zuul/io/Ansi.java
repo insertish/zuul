@@ -27,8 +27,16 @@ public class Ansi {
     public static final String BackgroundCyan = "\u001B[46m";
     public static final String BackgroundWhite = "\u001B[47m";
 
+    /**
+     * Regex Pattern used to match Ansi codes forwards.
+     */
     public static final Pattern AnsiPattern = Pattern.compile("^\\u001B\\[(\\d{1,3})m");
 
+    /**
+     * Convert a given escape code value, {@code (\d+?)} in {@link #AnsiPattern}, to a Color.
+     * @param value Escape code value
+     * @return Resolved Java awt Color
+     */
     public static Color fromEscapeCode(int value) {
         switch (value % 10) {
             case 0: return Color.BLACK;

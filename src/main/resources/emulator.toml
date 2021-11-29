@@ -1,2 +1,6 @@
+# Path to emoji root directory
 emojis = "/emojis"
+
+# Path to font file
+# https://fonts.google.com/specimen/VT323?category=Monospace#standard-styles
 font = "/VT323-Regular.ttf"

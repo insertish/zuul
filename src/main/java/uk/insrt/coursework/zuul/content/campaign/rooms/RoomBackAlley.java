@@ -3,6 +3,9 @@ package uk.insrt.coursework.zuul.content.campaign.rooms;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * The back alley in the North East side of the map.
+ */
 public class RoomBackAlley extends CampaignRoom {
     public RoomBackAlley(World world) {
         super(world, "Back Alley");

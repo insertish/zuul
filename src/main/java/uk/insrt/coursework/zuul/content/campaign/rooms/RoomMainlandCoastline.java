@@ -4,6 +4,9 @@ import uk.insrt.coursework.zuul.content.campaign.entities.EntityBoat;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * The coast which connects the mainland to the main city.
+ */
 public class RoomMainlandCoastline extends CampaignRoom {
     public RoomMainlandCoastline(World world) {
         super(world, "Mainland: Coastline");

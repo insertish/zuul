@@ -3,31 +3,43 @@ package uk.insrt.coursework.zuul.io;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import uk.insrt.coursework.zuul.content.campaign.Localisation;
+import uk.insrt.coursework.zuul.util.Localisation;
 
+/**
+ * Translate and localise any incoming output.
+ */
 public class LocalisedIO implements IOSystem {
     private final Pattern pattern = Pattern.compile("<([\\w\\.]+?)>");
 
     private IOSystem io;
     private Localisation locale;
 
+    /**
+     * Construct a new LocalisedIO.
+     * @param io Provided IO system we should feed into
+     * @param locale Locale to apply to any i18n strings
+     */
     public LocalisedIO(IOSystem io, Localisation locale) {
         this.io = io;
         this.locale = locale;
     }
 
-    // https://stackoverflow.com/a/27359491
+    /**
+     * Replace i18n strings in any given String with their actual localised values.
+     * Using replacement code from https://stackoverflow.com/a/27359491.
+     * @param input String to process
+     * @return Final processed string
+     */
     private String replace(String input) {
-        StringBuffer resultString = new StringBuffer();
-        Matcher regexMatcher = this.pattern.matcher(input);
+        StringBuffer result = new StringBuffer();
+        Matcher matcher = this.pattern.matcher(input);
 
-        while (regexMatcher.find()) {
-            regexMatcher.appendReplacement(resultString, this.locale.get(regexMatcher.group(1)));
+        while (matcher.find()) {
+            matcher.appendReplacement(result, this.locale.get(matcher.group(1)));
         }
 
-        regexMatcher.appendTail(resultString);
-
-        return resultString.toString();
+        matcher.appendTail(result);
+        return result.toString();
     }
 
     @Override

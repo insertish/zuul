@@ -3,6 +3,9 @@ package uk.insrt.coursework.zuul.content.campaign.rooms;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Reception of the Medical Centre complex.
+ */
 public class RoomMedicalCentreReception extends CampaignRoom {
     public RoomMedicalCentreReception(World world) {
         super(world, "Medical Centre: Reception");
@@ -35,7 +38,7 @@ public class RoomMedicalCentreReception extends CampaignRoom {
     }
 
     public void spawnEntities() {
-        World world = this.getWorld();
+        // World world = this.getWorld();
 
         /*world.spawnEntity("guard1", new EntityNpc(world, this.toLocation(), 75) {
             @Override

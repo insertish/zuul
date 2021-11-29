@@ -7,10 +7,17 @@ package uk.insrt.coursework.zuul.events;
 public class Event {
     private boolean propagating = true;
 
+    /**
+     * Whether this event can continue running.
+     * @return Whether propogation of this event was stopped
+     */
     public boolean canRun() {
         return this.propagating;
     }
 
+    /**
+     * Stop further propagation of this event.
+     */
     public void stopPropagation() {
         this.propagating = false;
     }

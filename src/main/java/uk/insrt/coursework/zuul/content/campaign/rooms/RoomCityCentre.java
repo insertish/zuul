@@ -5,6 +5,9 @@ import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * The city centre connecting most major locations.
+ */
 public class RoomCityCentre extends CampaignRoom {
     public RoomCityCentre(World world) {
         super(world, "City Centre");

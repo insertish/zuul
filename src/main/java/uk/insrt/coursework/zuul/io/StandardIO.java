@@ -2,9 +2,16 @@ package uk.insrt.coursework.zuul.io;
 
 import java.util.Scanner;
 
+/**
+ * A simple IO system implementation which feeds
+ * into System.out and takes data from System.in
+ */
 public class StandardIO implements IOSystem {
     private Scanner reader;
 
+    /**
+     * Construct a new StandardIO.
+     */
     public StandardIO() {
         this.reader = new Scanner(System.in);
     }

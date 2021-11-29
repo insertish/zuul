@@ -6,19 +6,22 @@ import javax.swing.JOptionPane;
 
 import uk.insrt.coursework.zuul.commands.CommandManager;
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
-import uk.insrt.coursework.zuul.content.campaign.Localisation;
 import uk.insrt.coursework.zuul.content.campaign.commands.CommandMap;
 import uk.insrt.coursework.zuul.events.world.EventProcessCommand;
 import uk.insrt.coursework.zuul.events.world.EventTick;
 import uk.insrt.coursework.zuul.io.IOSystem;
-import uk.insrt.coursework.zuul.io.LimitedIO;
 import uk.insrt.coursework.zuul.io.LocalisedIO;
+import uk.insrt.coursework.zuul.io.SanitiseIO;
 import uk.insrt.coursework.zuul.io.StandardIO;
 import uk.insrt.coursework.zuul.ui.EventDraw;
 import uk.insrt.coursework.zuul.ui.TerminalEmulator;
 import uk.insrt.coursework.zuul.util.BlueJ;
+import uk.insrt.coursework.zuul.util.Localisation;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * Class for managing the game loop and initialising the world.
+ */
 public class Game {
     public static final String GAME_NAME = "World of Deez";
 
@@ -26,15 +29,25 @@ public class Game {
     private IOSystem io;
     private CommandManager commands;
 
+    /**
+     * Entrypoint to our application.
+     * @param args Arguments provided to the application
+     */
     public static void main(String[] args) {
         new Game().play();
     }
 
+    /**
+     * Initialise and start the game.
+     */
     public void play() {
         this.init();
         this.start();
     }
 
+    /**
+     * Initialise all required resources for the game to run.
+     */
     private void init() {
         // Determine how the game should run.
         boolean inBlueJ = BlueJ.isRunningInBlueJ();
@@ -51,15 +64,13 @@ public class Game {
 
             this.io = new TerminalEmulator(selection == 0);
         } else {
+            this.io = new StandardIO();
+
             if (inBlueJ) {
                 selection = JOptionPane.showConfirmDialog(null, "Is this running from inside BlueJ?", GAME_NAME, JOptionPane.YES_NO_OPTION);
                 if (selection == 0) {
-                    this.io = new LimitedIO();
-                } else {
-                    this.io = new StandardIO();
+                    this.io = new SanitiseIO(this.io);
                 }
-            } else {
-                this.io = new StandardIO();
             }
         }
 
@@ -88,6 +99,9 @@ public class Game {
         this.world = new CampaignWorld(this.io);
     }
 
+    /**
+     * Start the game loop.
+     */
     private void start() {
         this.world.spawnPlayer();
 

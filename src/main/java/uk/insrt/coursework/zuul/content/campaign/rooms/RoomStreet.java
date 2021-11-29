@@ -3,6 +3,9 @@ package uk.insrt.coursework.zuul.content.campaign.rooms;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * One of the major connecting points between locations in the city.
+ */
 public class RoomStreet extends CampaignRoom {
     public RoomStreet(World world) {
         super(world, "Street");

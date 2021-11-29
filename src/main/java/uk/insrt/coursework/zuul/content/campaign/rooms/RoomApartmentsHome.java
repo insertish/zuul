@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.entities.EntityObject;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * The player's home in the apartments complex.
+ */
 public class RoomApartmentsHome extends CampaignRoom {
     public RoomApartmentsHome(World world) {
         super(world, "Apartments: Home");

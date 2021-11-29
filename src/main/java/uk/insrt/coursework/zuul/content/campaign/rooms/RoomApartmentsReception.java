@@ -4,6 +4,9 @@ import uk.insrt.coursework.zuul.content.campaign.entities.EntityNpc;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
+/**
+ * The reception of the apartments complex.
+ */
 public class RoomApartmentsReception extends CampaignRoom {
     public RoomApartmentsReception(World world) {
         super(world, "Apartments: Reception");

@@ -34,18 +34,34 @@ public class EventDraw extends Event {
         return this.g;
     }
 
+    /**
+     * Get the origin X position of the contents of the terminal.
+     * @return X position
+     */
     public float getOriginX() {
         return this.ox;
     }
 
+    /**
+     * Get the origin Y position of the contents of the terminal.
+     * @return Y position
+     */
     public float getOriginY() {
         return this.oy;
     }
 
+    /**
+     * Get the character width.
+     * @return Character width
+     */
     public float getCharWidth() {
         return this.fw;
     }
 
+    /**
+     * Get the character height.
+     * @return Character height
+     */
     public float getCharHeight() {
         return this.fh;
     }
