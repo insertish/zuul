@@ -13,7 +13,7 @@ public class CommandQuit extends Command {
     public CommandQuit() {
         super("quit", "<commands.quit>",
             new Pattern[] {
-                Pattern.compile("^quit(?!\\w)"),
+                Pattern.compile("^quit|exit(?!\\w)"),
                 // quit
             });
     }
