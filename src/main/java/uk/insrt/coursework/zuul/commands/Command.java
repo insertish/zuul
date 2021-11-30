@@ -84,9 +84,6 @@ public abstract class Command {
      * @param group Group we should pull the Entity query out of
      * @param failure Failure message if an Entity is not specified
      * @return An Entity if one is found, or null if one isn't.
-     * @see {@link #FILTER_ROOM} Filter entities by those in current room.
-     * @see {@link #FILTER_INVENTORY} Filter entities by those in player's inventory.
-     * @see {@link #FILTER_ALL} Don't filter entities.
      */
     public Entity findEntity(World world, int filter, Arguments args, String group, String failure) {
         String name = args.group(group);
@@ -125,9 +122,6 @@ public abstract class Command {
      * @param args Arguments object to pull information out of
      * @param failure Failure message if an Entity is not specified
      * @return An Entity if one is found, or null if one isn't.
-     * @see {@link #FILTER_ROOM} Filter entities by those in current room.
-     * @see {@link #FILTER_INVENTORY} Filter entities by those in player's inventory.
-     * @see {@link #FILTER_ALL} Don't filter entities.
      */
     public Entity findEntity(World world, int filter, Arguments args, String failure) {
         return this.findEntity(world, filter, args, "entity", failure);
@@ -140,7 +134,6 @@ public abstract class Command {
      * @param args Arguments object to pull information out of
      * @param failure Failure message if an Entity is not specified
      * @return An Entity if one is found, or null if one isn't.
-     * @see {@link #FILTER_ROOM} Filter entities by those in current room.
      */
     public Entity findEntity(World world, Arguments args, String failure) {
         return this.findEntity(world, FILTER_ROOM, args, failure);
@@ -154,7 +147,6 @@ public abstract class Command {
      * @param group Group we should pull the Entity query out of
      * @param failure Failure message if an Entity is not specified
      * @return An Entity if one is found, or null if one isn't.
-     * @see {@link #FILTER_ROOM} Filter entities by those in current room.
      */
     public Entity findEntity(World world, Arguments args, String group, String failure) {
         return this.findEntity(world, FILTER_ROOM, args, group, failure);

@@ -16,7 +16,11 @@ public class EventDraw extends Event {
 
     /**
      * Construct a new EventDraw Event.
-     * @param entity Target Entity
+     * @param g Graphics context
+     * @param ox Origin X position
+     * @param oy Origin Y position
+     * @param fw Font character width
+     * @param fh Font character height
      */
     public EventDraw(Graphics g, float ox, float oy, float fw, float fh) {
         this.g = g;

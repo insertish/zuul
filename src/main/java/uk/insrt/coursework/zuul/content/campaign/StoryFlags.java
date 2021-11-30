@@ -23,6 +23,7 @@ public class StoryFlags {
 
     /**
      * Construct a new instance of StoryFlags
+     * @param eventSystem World event system
      */
     public StoryFlags(EventSystem eventSystem) {
         this.eventSystem = eventSystem;

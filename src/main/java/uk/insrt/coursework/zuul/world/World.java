@@ -47,7 +47,7 @@ public class World {
 
     /**
      * Find an Room by its ID.
-     * @param id Room ID
+     * @param room Room ID
      * @return Room if it exists, otherwise null.
      */
     public Room getRoom(String room) {

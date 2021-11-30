@@ -38,7 +38,7 @@ public abstract class Entity {
     /**
      * Construct a new Entity.
      * 
-     * Weight value is set to Integer.MAX_VALUE.
+     * Weight value is set to {@link Integer#MAX_VALUE}.
      * @param world Current World object
      * @param location Initial Location of this Entity
     */
@@ -65,6 +65,7 @@ public abstract class Entity {
 
     /**
      * Get a highlighted representation of this Entity's name.
+     * @return Ansi hightlighted name
      */
     public String getHighlightedName() {
         return Ansi.BackgroundWhite + Ansi.Black + this.getName() + Ansi.Reset;
@@ -147,7 +148,7 @@ public abstract class Entity {
 
     /**
      * Link this Entity's inventory with an existing inventory.
-     * @param inventory
+     * @param inventory Target inventory
      */
     public void entangleInventory(Inventory inventory) {
         this.inventory = inventory;
