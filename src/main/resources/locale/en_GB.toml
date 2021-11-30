@@ -150,13 +150,19 @@ You enter your apartment.
     description = "LG 55NANO966PA 55\" Super UHD 8K HDR Smart LED TV"
     off = "Turn the TV off."
 
+        # Red: \u001B[31m
         [home.tv.first_on]
-        dialog = ""
+        dialog = "You turn the TV on.\n\nThe news channel comes up, you listen in on what they're saying...\n\u001B[31mNews Anchor\u001B[37m: the impostor is sus!\n"
 
 a='''
-You turn the TV on.
+News Anchor: Civil unrest is rising, Sylvasta is facing criticism from all
+sides, and many people are uneasy about their future as rising tension between
+human and beastman societies is causing escalated conflict around the city
+borders.
 
-The news channel comes up and 
+News Anchor: 
+
+Correspondent: 
 '''
 
 [apartments]

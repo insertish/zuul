@@ -93,6 +93,6 @@
     _prefix = "home.tv."
     _start = "first_on"
     #TODO
-    first_on = { description = "first_on", options = [
+    first_on = { description = "first_on.dialog", options = [
         { description = "off", to = "first_on", mustExit = true }
     ] }

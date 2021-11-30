@@ -44,6 +44,13 @@ public abstract class EntityWithDialogue<T> extends Entity {
     public abstract void setupDialogue(Dialogue<T> dialogue);
 
     /**
+     * Configure dialogue.
+     */
+    public void setupDialogue() {
+        this.setupDialogue(this.dialogue);
+    }
+
+    /**
      * Use the CampaignWorld's DialogueLoader to populate this Entity's Dialogue
      * @param dialogue Entity Dialogue
      * @param id Target dialogue ID in file

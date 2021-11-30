@@ -13,6 +13,7 @@ import uk.insrt.coursework.zuul.world.World;
 public class EntityTV extends EntityWithDialogue<String> implements IUseable {
     public EntityTV(World world, Location location) {
         super(world, location, 40);
+        this.setupDialogue();
     }
 
     @Override
