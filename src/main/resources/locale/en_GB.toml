@@ -1,3 +1,6 @@
+# A subtle game of trust.
+# In this game the consequences of secrecy and conspiracy duke it out.
+
 [global]
 sight = "You can see:"
 
@@ -111,7 +114,7 @@ laptop = "Laptop"
     leave = "You see a cat leave."
 
     [entities.boat]
-    description = "Speedboat docked on the coast."
+    description = "Speedboat docked on the coast"
     denied = "You must not be carrying anything to use the boat.\nYou can however put things in the boat."
     travel = "You hop in the boat and travel to the other side..."
     too_heavy = "The boat is carrying too much stuff already!"
@@ -193,7 +196,25 @@ You enter the city square.
 
     # Yellow: \u001B[33m
     [city_centre.npc]
-    description = "A person sitting at a bench."
+    description = "A person sitting at a bench"
+
+        [city_centre.npc.small_talk]
+        dialog = "\u001B[33mStranger\u001B[37m: Hello, could I help you?"
+        option_1 = "You don't happen to have seen the protestors go by here?"
+        option_2 = "What are you reading?"
+        option_q = "Nevermind."
+
+        [city_centre.npc.protestors]
+        dialog = "\u001B[33mStranger\u001B[37m: Oh yes, they were quite loud..\nThey were rather annoying, disturbed my morning.\n...\nThey did leave me this leaflet though"
+        option_1 = "Can I see it?"
+
+        [city_centre.npc.enquire]
+        dialog = "\u001B[33mStranger\u001B[37m: These guys went past and left me a leaflet."
+
+        [city_centre.npc.leaflet]
+        # dialog = "\u001B[33mStranger\u001B[37m: Sure, here you go, keep it.\n[\u001B[33mStranger\u001B[37m gave you an item.]"
+        dialog = "\u001B[33mStranger\u001B[37m: Sure, I've got it here...\n\nYou look at the leaflet:\n\n\u001B[41m\u001B[37mUNETHICAL RESEARCH\n\u001B[40m\u001B[31mOur city is in danger, Slyvasta further\nfunding into their research yet do nothing\nto help the city survive.\n\nSylvasta is abusing their position to\ncontinue work into completely ILLEGAL\nbioengineering of beastmen.\u001B[37m\n\nSupport us: \u001B[36mhttps://sylvasta.vercel.app\u001B[37m\n"
+        option_1 = "Thanks."
 
 [street]
 first_load = '''
@@ -201,7 +222,7 @@ You enter the main city street connecting the major parts of the city.
 
 There's a lot of chaos and noise here, to your west you can see protestors
 outside of the medical centre complex, they're holding signs up, "UNETHICAL
-RESEARCH", "OUR RELATIONS AT STAKE".
+RESEARCH", "OUR RELATIONS AT STAKE", "UNFORSEEN CONSEQUENCES".
 '''
 
 enter = '''
@@ -210,7 +231,7 @@ You enter the city street.
 
     # Red: \u001B[31m
     [street.protestors]
-    description = "A group of protestors holding signs."
+    description = "A group of protestors holding signs"
 
 [shop]
 enter = '''
@@ -219,7 +240,7 @@ You enter the shop, the bell rings as you close the door behind you.
 
     # Green: \u001B[32m
     [shop.npc]
-    description = "shop keeper"
+    description = "The shop keeper"
 
 [back_alley]
 first_load = '''
@@ -254,7 +275,7 @@ It would be quite easy to lose yourself here for a few hours.
 '''
 
     [forest.old_man]
-    description = "sus!"
+    description = "An old man wandering through the forest"
 
 [worm_hole]
 enter = '''
@@ -268,7 +289,7 @@ You're now at the Medical Centre's reception.
 
     # Red: \u001B[31m
     [medical_centre.guard]
-    description = "guy"
+    description = "Security guard stationed at the door"
 
 [medical_centre_office]
 enter = '''
@@ -279,5 +300,5 @@ You definitely shouldn't be here...
 [marie]
 
     # Purple: \u001B[35m
-    [alley]
-    description = "trol!"
+    [marie.alley]
+    description = "we do a little"

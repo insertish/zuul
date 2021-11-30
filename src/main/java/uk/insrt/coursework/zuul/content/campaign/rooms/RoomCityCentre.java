@@ -58,7 +58,7 @@ public class RoomCityCentre extends CampaignRoom {
                 this.toLocation(),
                 "npc_city_centre",
                 "<city_centre.npc.description>",
-                new String[] { "citizen" }
+                new String[] { "stranger", "person", "people" }
             ));
     }
 }

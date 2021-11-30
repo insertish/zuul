@@ -38,7 +38,7 @@ public class CommandTake extends Command {
 
             Entity item = Search.findEntity(other.getInventory().getItems(), name, true);
             if (item == null) {
-                io.println(other.getHighlightedName() + " <commands.take.entity_does_not_have_entity> "+ name + "!");
+                io.println(other.getHighlightedName() + " <commands.take.entity_does_not_have_entity> " + name + "!");
                 return false;
             }
 

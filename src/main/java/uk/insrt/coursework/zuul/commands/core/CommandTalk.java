@@ -27,7 +27,7 @@ public class CommandTalk extends Command {
             if (entity instanceof ITalkwith) {
                 ((ITalkwith) entity).talk();
             } else {
-                world.getIO().println("<commands.talk.denied> " + entity.getName() + ".");
+                world.getIO().println("<commands.talk.denied> " + entity.getHighlightedName() + ".");
             }
         }
 

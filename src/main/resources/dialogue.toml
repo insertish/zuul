@@ -2,6 +2,7 @@
 [npc_marie]
     _prefix = "marie.alley."
     _start = "small_talk"
+    #TODO
     small_talk = { description = "small_talk", options = [
         { description = "leave", to = "small_talk", mustExit = true }
     ] }
@@ -10,18 +11,32 @@
 [npc_city_centre]
     _prefix = "city_centre.npc."
     _start = "small_talk"
-    small_talk = { description = "small_talk", options = [
-        { description = "leave", to = "small_talk", mustExit = true }
+    small_talk = { description = "small_talk.dialog", options = [
+        { description = "small_talk.option_1", to = "protestors" },
+        { description = "small_talk.option_2", to = "leaflet" },
+        { description = "small_talk.option_q", to = "small_talk", mustExit = true }
     ] }
-    recon = { description = "testing", options = [
-        { description = "sususus!", to = "recon", mustExit = true }
+    protestors = { description = "protestors.dialog", options = [
+        { description = "protestors.option_1", to = "leaflet" },
+        { description = "small_talk.option_q", to = "small_talk", mustExit = true }
     ] }
+    enquire = { description = "enquire.dialog", options = [
+        { description = "protestors.option_1", to = "leaflet", },
+        { description = "small_talk.option_q", to = "small_talk", mustExit = true }
+    ] }
+    leaflet = { description = "leaflet.dialog", options = [
+        { description = "leaflet.option_1", to= "small_talk", mustExit = true }
+    ] }
+    #recon = { description = "testing", options = [
+    #    { description = "sususus!", to = "recon", mustExit = true }
+    #] }
 
 # 3. Old Man located in Forest
 # out of scope until (2.) or (sq1.)
 [npc_old_man]
     _prefix = "forest.old_man."
     _start = "small_talk"
+    #TODO
     small_talk = { description = "small_talk", options = [
         { description = "leave", to = "small_talk", mustExit = true }
     ] }
@@ -30,6 +45,7 @@
 [npc_protestors]
     _prefix = "street.protestors."
     _start = "small_talk"
+    #TODO
     small_talk = { description = "small_talk", options = [
         { description = "leave", to = "small_talk", mustExit = true }
     ] }
@@ -38,6 +54,7 @@
 [npc_security_guard]
     _prefix = "medical_centre.guard."
     _start = "small_talk"
+    #TODO
     small_talk = { description = "small_talk", options = [
         { description = "leave", to = "small_talk", mustExit = true }
     ] }
@@ -46,6 +63,7 @@
 [npc_shopkeeper]
     _prefix = "shop.npc."
     _start = "small_talk"
+    #TODO
     small_talk = { description = "small_talk", options = [
         { description = "leave", to = "small_talk", mustExit = true }
     ] }
@@ -74,6 +92,7 @@
 [home_tv]
     _prefix = "home.tv."
     _start = "first_on"
+    #TODO
     first_on = { description = "first_on", options = [
         { description = "off", to = "first_on", mustExit = true }
     ] }

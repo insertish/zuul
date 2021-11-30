@@ -61,10 +61,8 @@ public class Localisation {
                 return (String) node;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            // We don't want this to be a fatal error
-            // but it should be something that the developer
-            // should handle immediately.
+            // We don't want this to be a fatal error,
+            // we instead return the original template.
         }
 
         return "<" + Arrays.asList(path).stream().collect(Collectors.joining(".")) + ">";
