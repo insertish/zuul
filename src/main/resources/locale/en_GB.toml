@@ -151,7 +151,13 @@ You enter your apartment.
     off = "Turn the TV off."
 
         [home.tv.first_on]
-        dialog = "sus!"
+        dialog = ""
+
+a='''
+You turn the TV on.
+
+The news channel comes up and 
+'''
 
 [apartments]
 enter = '''
