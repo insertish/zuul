@@ -47,7 +47,7 @@ where_am_i = "describe the current room again"
     usage = "give something to someone"
     nothing_specified = "What do you want to give?"
     no_target = "What / who are you putting this in?"
-    denied_player = "You cannot give yourself to anyone or anything. 🐸"
+    denied_player = "You cannot give yourself to anyone or anything. \u1F438"
 
         [commands.give.denied]
         1 = "Cannot give"
@@ -109,7 +109,7 @@ laptop = "Laptop"
     [entities.cat]
     description = "A stray black cat"
     pet = "You pet the cat."
-    use = "You cannot the cat.\nPlease do not the cat. 😳😳😳"
+    use = "You cannot the cat.\nPlease do not the cat. \u1F633\u1F633\u1F633"
     enter = "A cat has wandered in."
     leave = "You see a cat leave."
 

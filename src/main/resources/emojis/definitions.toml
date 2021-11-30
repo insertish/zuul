@@ -1,10 +1,10 @@
 emojis = [
-    { unicode = "😳", path = "flosh.png" },
-    { unicode = "😁", path = "trol.png" },
-    { unicode = "🐸", path = "monkaStare.png" },
-    { unicode = "🙂", path = "pauseChamp.png" },
-    { unicode = "😐", path = "weirdChamp.png" },
-    { unicode = "😄", path = "peepoHappy.png" },
+    { unicode = "\u1F633", path = "flosh.png" }, # 😳
+    { unicode = "\u1F601", path = "trol.png" }, # 😁
+    { unicode = "\u1F438", path = "monkaStare.png" }, # 🐸
+    { unicode = "\u1F642", path = "pauseChamp.png" }, # 🙂
+    { unicode = "\u1F610", path = "weirdChamp.png" }, # 😐
+    { unicode = "\u1F604", path = "peepoHappy.png" }, # 😄
 
     # Example definitions:
     #{ unicode = "[wideChamp]", path = "weirdChamp.png" },

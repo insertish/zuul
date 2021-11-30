@@ -58,7 +58,7 @@ public class CommandTake extends Command {
         Entity entity = this.findEntity(world, args, "<commands.take.item_not_specified>");
         if (entity != null) {
             if (entity == player) {
-                io.println("😳");
+                io.println("\u1F633");
                 return false;
             }
 
