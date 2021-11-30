@@ -14,7 +14,7 @@ public class CommandWhereAmI extends Command {
     public CommandWhereAmI() {
         super("where am i", "<commands.where_am_i>",
             new Pattern[] {
-                Pattern.compile("^where am i(?!\\w)"),
+                Pattern.compile("^where(\\s+am\\s+(i(?!\\w))*)*"),
                 // where am i
             });
     }
