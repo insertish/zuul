@@ -32,6 +32,15 @@ public class Ansi {
      */
     public static final Pattern AnsiPattern = Pattern.compile("^\\u001B\\[(\\d{1,3})m");
 
+    private static final Color ColorBlack = new Color(0, 0, 0);
+    private static final Color ColorRed = new Color(224, 108, 117);
+    private static final Color ColorGreen = new Color(152, 195, 121);
+    private static final Color ColorYellow = new Color(229, 192, 123);
+    private static final Color ColorBlue = new Color(97, 175, 239);
+    private static final Color ColorMagenta = new Color(198, 120, 221);
+    private static final Color ColorCyan = new Color(86, 182, 194);
+    private static final Color ColorWhite = new Color(255, 255, 255);
+
     /**
      * Convert a given escape code value, {@code (\d+?)} in {@link #AnsiPattern}, to a Color.
      * @param value Escape code value
@@ -39,15 +48,15 @@ public class Ansi {
      */
     public static Color fromEscapeCode(int value) {
         switch (value % 10) {
-            case 0: return Color.BLACK;
-            case 1: return Color.RED;
-            case 2: return Color.GREEN;
-            case 3: return Color.YELLOW;
-            case 4: return Color.BLUE;
-            case 5: return Color.MAGENTA;
-            case 6: return Color.CYAN;
+            case 0: return ColorBlack;
+            case 1: return ColorRed;
+            case 2: return ColorGreen;
+            case 3: return ColorYellow;
+            case 4: return ColorBlue;
+            case 5: return ColorMagenta;
+            case 6: return ColorCyan;
             case 7:
-            default: return Color.WHITE;
+            default: return ColorWhite;
         }
     }
 }
