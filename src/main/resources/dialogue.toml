@@ -196,3 +196,24 @@
     home = { description = "home.dialog", options = [
         { description = "home.option_q", to = "home", mustExit = true }
     ] }
+
+# 10. Laptop
+[entity_laptop]
+    _prefix = "entities.laptop."
+    _start = "boot"
+
+    boot = { description = "boot.dialog", options = [
+        { description = "boot.option_1", to = "home" }
+    ] }
+    home = { description = "home.dialog", options = [
+        { description = "home.option_q", to = "boot", mustExit = true },
+        { description = "home.option_1", to = "pictures" },
+        { description = "home.option_2", to = "funny_cat_videos" },
+        { description = "home.option_3", to = "document" }
+    ] }
+    pictures = { description = "pictures.dialog", options = [
+        { description = "pictures.option_q", to = "home" }
+    ] }
+    document = { description = "document.dialog", options = [
+        { description = "document.option_q", to = "home" }
+    ] }

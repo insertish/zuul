@@ -100,12 +100,23 @@ where_am_i = "describe the current room again"
         2 = "of the world"
 
 [entities]
-laptop = "Laptop"
 boat_key = "A key to the speed boat"
 
     [entities.bed]
     description = "Bed"
     use = "You take a nap."
+
+    [entities.boat]
+    description = "Speedboat docked on the coast"
+    locked = "The boat is locked."
+    locked_for_sale = "The boat is locked.\nThere is a note which says to contact the shopkeeper to buy this boat."
+    denied = "You must not be carrying anything to use the boat.\nYou can however put things in the boat."
+    travel = "You hop in the boat and travel to the other side..."
+    too_heavy = "The boat is carrying too much stuff already!"
+
+        [entities.boat.give]
+        1 = "Put"
+        2 = "in the boat"
 
     [entities.cat]
     description = "A stray black cat"
@@ -123,17 +134,42 @@ boat_key = "A key to the speed boat"
     sitting = "You are already sitting in the couch."
     sit = "You sit down on the couch."
 
-    [entities.boat]
-    description = "Speedboat docked on the coast"
-    locked = "The boat is locked."
-    locked_for_sale = "The boat is locked.\nThere is a note which says to contact the shopkeeper to buy this boat."
-    denied = "You must not be carrying anything to use the boat.\nYou can however put things in the boat."
-    travel = "You hop in the boat and travel to the other side..."
-    too_heavy = "The boat is carrying too much stuff already!"
+    [entities.laptop]
+    description = "Laptop"
 
-        [entities.boat.give]
-        1 = "Put"
-        2 = "in the boat"
+        [entities.laptop.boot]
+        dialog = "You turn the computer on..."
+        option_1 = "[wait]"
+
+        [entities.laptop.home]
+        dialog = "Select an option:"
+        option_q = "Power off"
+        option_1 = "/My Pictures"
+        option_2 = "/Funny cat videos"
+        option_3 = "/Marie's document scanner"
+
+        [entities.laptop.pictures]
+        dialog = """There is only one picture in your pictures folder:
+
+\u1F99D
+
+
+
+
+
+
+
+"""
+        option_q = "Go back."
+
+        [entities.laptop.cat_videos]
+        dialog = "You look at funny cat videos..."
+        option_q = "Neat."
+
+        [entities.laptop.document]
+        dialog = """\u001B[35mMarie\u001B[0m's document scanner"""
+        option_q = "Quit"
+        option_1 = "Send documents"
 
 [home]
 first_load = '''
@@ -516,6 +552,9 @@ once you're down there, let me know.
         option_q = "Ok."
 
     [marie.comms]
+    received = """\u001B[35mMarie\u001B[0m: Alright, I've received the documents, I'm sending them out far and wide,
+good job on getting in and getting these."""
+    bad_documents = "\u001B[35mMarie\u001B[0m: These don't look like the right documents..."
 
         [marie.comms.orientation]
         dialog = "\u001B[35mMarie\u001B[0m: What do you want?"

@@ -77,6 +77,7 @@ public class EntityShopkeeper extends EntityNpc {
         this.items.put(Stage.Exposition, new Entity[] {  });
         this.items.put(Stage.Recon, new Entity[] { itemBoatKey, itemComms });
         this.items.put(Stage.Stealth, new Entity[] { itemBoatKey, itemComms, itemCat });
+        this.items.put(Stage.Conclusion, new Entity[] { itemBoatKey, itemCat });
     }
 
     /**

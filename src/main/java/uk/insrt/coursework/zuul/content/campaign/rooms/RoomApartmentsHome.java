@@ -1,8 +1,8 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityBed;
+import uk.insrt.coursework.zuul.content.campaign.entities.EntityLaptop;
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityTV;
-import uk.insrt.coursework.zuul.entities.EntityObject;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -35,6 +35,6 @@ public class RoomApartmentsHome extends CampaignRoom {
 
         world.spawnEntity("tv", new EntityTV(world, this.toLocation()));
         world.spawnEntity("bed", new EntityBed(world, this.toLocation()));
-        world.spawnEntity("laptop", new EntityObject(world, this.toLocation(), 2, new String[] { "laptop" }, "<entities.laptop>"));
+        world.spawnEntity("laptop", new EntityLaptop(world, this.toLocation()));
     }
 }
