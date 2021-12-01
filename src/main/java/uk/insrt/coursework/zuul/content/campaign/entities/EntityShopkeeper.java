@@ -20,10 +20,10 @@ import uk.insrt.coursework.zuul.world.World;
  * Shop keeper which the player can buy items from in the town.
  */
 public class EntityShopkeeper extends EntityNpc {
-    private HashMap<Stage, EntityObject[]> items;
-    private HashMap<EntityObject, Integer> stock;
-    private HashMap<EntityObject, Integer> price;
-    private HashMap<EntityObject, IEntityFactory> entityFactory;
+    private HashMap<Stage, Entity[]> items;
+    private HashMap<Entity, Integer> stock;
+    private HashMap<Entity, Integer> price;
+    private HashMap<Entity, IEntityFactory> entityFactory;
 
     /**
      * Construct a new EntityShopkeeper.
@@ -74,9 +74,9 @@ public class EntityShopkeeper extends EntityNpc {
         this.stock.put(itemCat, 0);
         this.price.put(itemCat, 21_300);
 
-        this.items.put(Stage.Exposition, new EntityObject[] {  });
-        this.items.put(Stage.Recon, new EntityObject[] { itemBoatKey, itemComms });
-        this.items.put(Stage.Stealth, new EntityObject[] { itemBoatKey, itemComms, itemCat });
+        this.items.put(Stage.Exposition, new Entity[] {  });
+        this.items.put(Stage.Recon, new Entity[] { itemBoatKey, itemComms });
+        this.items.put(Stage.Stealth, new Entity[] { itemBoatKey, itemComms, itemCat });
     }
 
     /**
@@ -112,8 +112,8 @@ public class EntityShopkeeper extends EntityNpc {
             var player = w.getPlayer();
 
             // Get all the items we can access at this story stage.
-            EntityObject[] list = items.get(flags.getStage());
-            for (EntityObject item : list) {
+            Entity[] list = items.get(flags.getStage());
+            for (Entity item : list) {
                 int count = stock.get(item);
                 int cost = price.get(item);
                 IEntityFactory factory = entityFactory.get(item);

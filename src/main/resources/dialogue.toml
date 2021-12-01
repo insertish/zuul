@@ -26,6 +26,10 @@
         { description = "waiting.option_q", to = "waiting", mustExit = true }
     ] }
 
+    mission_brief = { description = "mission_brief.dialog", options = [
+        { description = "mission_brief.option_q", to = "mission_brief", mustExit = true }
+    ] }
+
 # 2. Random City NPC located in the City Centre
 [npc_city_centre]
     _prefix = "city_centre.npc."
@@ -152,4 +156,32 @@
 [comms_marie]
     _prefix = "marie.comms."
     _start = "orientation"
-    orientation = { description = "orientation.dialog", options = [] }
+    
+    orientation = { description = "orientation.dialog", options = [
+        { description = "orientation.option_1", to = "directions" },
+        { description = "orientation.option_2", to = "hear" },
+        { description = "orientation.option_q", to = "orientation", mustExit = true }
+    ] }
+    directions = { description = "directions.dialog", options = [
+        { description = "directions.option_q", to = "orientation" }
+    ] }
+    hear = { description = "hear.dialog", options = [
+        { description = "hear.option_q", to = "orientation" }
+    ] }
+
+    complaint = { description = "complaint.dialog", options = [
+        { description = "complaint.option_q", to = "complaint", mustExit = true }
+    ] }
+
+    in_position = { description = "in_position.dialog", options = [
+        { description = "in_position.option_1", to = "distraction" }
+    ] }
+    distraction = { description = "distraction.dialog", options = [
+        #{ description = "in_position.option_1", to = "coast_is_clear" }
+    ] }
+    coast_is_clear = { description = "coast_is_clear.dialog", options = [
+        { description = "coast_is_clear.option_q", to = "gogogo", mustExit = true }
+    ] }
+    gogogo = { description = "gogogo.dialog", options = [
+        { description = "gogogo.option_q", to = "gogogo", mustExit = true }
+    ] }

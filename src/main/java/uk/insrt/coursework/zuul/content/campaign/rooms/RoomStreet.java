@@ -1,14 +1,17 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
+import uk.insrt.coursework.zuul.content.campaign.StoryFlags.Stage;
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityNpc;
+import uk.insrt.coursework.zuul.content.campaign.events.EventGameStageChanged;
 import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.events.IEventListener;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
 /**
  * One of the major connecting points between locations in the city.
  */
-public class RoomStreet extends CampaignRoom {
+public class RoomStreet extends CampaignRoom implements IEventListener<EventGameStageChanged> {
     private Entity protestorsEntity;
 
     public RoomStreet(World world) {
@@ -60,5 +63,15 @@ public class RoomStreet extends CampaignRoom {
             new String[] { "protestors", "protestor" }
         );
         world.spawnEntity("npc_protestors", this.protestorsEntity);
+    }
+
+    @Override
+    public void onEvent(EventGameStageChanged event) {
+        // Remove the protestors if we are in Stealth chapter.
+        if (event.getStage() == Stage.Stealth) {
+            this.protestorsEntity.consume(false);
+        } else {
+            this.protestorsEntity.setLocation(this);
+        }
     }
 }

@@ -1,7 +1,9 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
+import uk.insrt.coursework.zuul.content.campaign.entities.EntityCouch;
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityNpc;
 import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.events.world.EventEntityLeftRoom;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -10,6 +12,7 @@ import uk.insrt.coursework.zuul.world.World;
  */
 public class RoomMedicalCentreReception extends CampaignRoom {
     private Entity guardEntity;
+    private EntityCouch couchEntity;
 
     public RoomMedicalCentreReception(World world) {
         super(world, "Medical Centre: Reception");
@@ -45,6 +48,7 @@ public class RoomMedicalCentreReception extends CampaignRoom {
     @Override
     public void spawnEntities() {
         World world = this.getWorld();
+
         this.guardEntity = new EntityNpc(
             world,
             this.toLocation(),
@@ -53,5 +57,17 @@ public class RoomMedicalCentreReception extends CampaignRoom {
             new String[] { "guard", "security" }
         );
         world.spawnEntity("npc_guard", this.guardEntity);
+
+        this.couchEntity = new EntityCouch(world, this.toLocation());
+        world.spawnEntity("couch", this.couchEntity);
+        world.getEventSystem().addListener(EventEntityLeftRoom.class, this.couchEntity);
+    }
+
+    public EntityCouch getCouch() {
+        return this.couchEntity;
+    }
+
+    public Entity getGuard() {
+        return this.guardEntity;
     }
 }

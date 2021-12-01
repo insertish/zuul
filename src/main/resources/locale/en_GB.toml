@@ -101,7 +101,6 @@ where_am_i = "describe the current room again"
 
 [entities]
 laptop = "Laptop"
-comms = "Communicator device"
 boat_key = "A key to the speed boat"
 
     [entities.bed]
@@ -114,6 +113,15 @@ boat_key = "A key to the speed boat"
     use = "You cannot the cat.\nPlease do not the cat. \u1F633\u1F633\u1F633"
     enter = "A cat has wandered in."
     leave = "You see a cat leave."
+
+    [entities.comms]
+    description = "Communicator device"
+    off = "The device is off."
+
+    [entities.couch]
+    description = "A brown leather couch"
+    sitting = "You are already sitting in the couch."
+    sit = "You sit down on the couch."
 
     [entities.boat]
     description = "Speedboat docked on the coast"
@@ -422,7 +430,7 @@ You're now at the Medical Centre's reception.
     blocking = "There is security watching the stairs, there's no way to get past them."
 
         [medical_centre.guard.small_talk]
-        dialog = "What do you want?"
+        dialog = "\u001B[31mGuard\u001B[0m: What do you want?"
         option_q = "Nevermind."
 
 [medical_centre_office]
@@ -466,5 +474,59 @@ get something."""
         option_q = "Got it."
 
         [marie.alley.waiting]
-        dialog = "Well? Go get it."
+        dialog = "\u001B[35mMarie\u001B[0m: Well? Go get it."
         option_q = "Ok."
+
+        [marie.alley.mission_brief]
+        dialog = """\u001B[35mMarie\u001B[0m: Ok so the plan is, you go to the Medical Centre, casually stroll in to
+the reception, try to blend in though... Maybe find a chair to sit on or
+something, either way, once you're there and you think security isn't looking,
+use your comms device to let me know.
+
+\u001B[35mMarie\u001B[0m: From there, I will send a distraction and lead them into their breakroom
+while you sneak into the office and try to find anything you can... although
+once you're down there, let me know.
+
+\u001B[35mMarie\u001B[0m: If you want to, you can test the comms device now."""
+        option_q = "Ok."
+
+    [marie.comms]
+
+        [marie.comms.orientation]
+        dialog = "\u001B[35mMarie\u001B[0m: What do you want?"
+        option_1 = "Where do I go again?"
+        option_2 = "Can you hear me?"
+        option_q = "Nevermind."
+
+        [marie.comms.directions]
+        dialog = """\u001B[35mMarie\u001B[0m: You need to go to the Medical Centre, once you're there, try to blend in
+and let me know once you're in position."""
+        option_q = "Got it."
+
+        [marie.comms.hear]
+        dialog = "\u001B[35mMarie\u001B[0m: Loud and clear."
+        option_q = "Neat."
+
+        [marie.comms.complaint]
+        dialog = "\u001B[35mMarie\u001B[0m: Try to blend in..."
+        option_q = "Ok."
+
+        [marie.comms.in_position]
+        dialog = "\u001B[35mMarie\u001B[0m: Ok, I'll create a distraction, give me a moment..."
+        option_1 = "[wait]"
+
+        [marie.comms.distraction]
+        dialog = """\u001B[31mGuard\u001B[0m: Who's there?
+You better come out or we're going to have a problem.
+
+(you see the guard go into the breakroom)
+"""
+        option_1 = "[wait]"
+
+        [marie.comms.coast_is_clear]
+        dialog = "\u001B[35mMarie\u001B[0m: Ok, now is your chance."
+        option_q = "Got it."
+
+        [marie.comms.gogogo]
+        dialog = "\u001B[35mMarie\u001B[0m: What are you waiting for??"
+        option_q = "AAAAAAA"

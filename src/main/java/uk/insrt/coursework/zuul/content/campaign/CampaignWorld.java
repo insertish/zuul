@@ -225,8 +225,13 @@ public class CampaignWorld extends World {
 
         // Register required Events for Worm Hole room to function.
         @SuppressWarnings("unchecked")
-        IEventListener<EventEntityEnteredRoom> wh = (IEventListener<EventEntityEnteredRoom>) this.getRoom("Worm Hole");
+        var wh = (IEventListener<EventEntityEnteredRoom>) this.getRoom("Worm Hole");
         this.eventSystem.addListener(EventEntityEnteredRoom.class, wh);
+
+        // Register required Events for the protestors to disappear.
+        @SuppressWarnings("unchecked")
+        var st = (IEventListener<EventGameStageChanged>) this.getRoom("Street");
+        this.eventSystem.addListener(EventGameStageChanged.class, st);
     }
 
     @Override

@@ -4,11 +4,14 @@ import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.content.campaign.StoryFlags.Stage;
 import uk.insrt.coursework.zuul.dialogue.Dialogue;
 import uk.insrt.coursework.zuul.dialogue.DialogueOption;
+import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.entities.Inventory;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Marie Itami
+ * https://brand-new-animal.fandom.com/wiki/Marie_Itami
  */
 public class EntityMarie extends EntityNpc {
     /**
@@ -41,8 +44,15 @@ public class EntityMarie extends EntityNpc {
 
     @Override
     public void talk() {
-        if (this.dialogue.getCurrentNode() == "waiting") {
-            //
+        if (this.dialogue.getCurrentNode().equals("waiting")) {
+            var w = ((CampaignWorld) this.getWorld());
+            Inventory inv = w.getPlayer().getInventory();
+            for (Entity item : inv.getItems()) {
+                if (item instanceof EntityComms) {
+                    this.dialogue.setNodeIfPresent("mission_brief");
+                    w.getStoryFlags().setStage(Stage.Stealth);
+                }
+            }
         }
 
         super.talk();
