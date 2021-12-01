@@ -94,5 +94,17 @@
     _start = "first_on"
     #TODO
     first_on = { description = "first_on.dialog", options = [
+        { description = "keep_watching", to = "dialog_a" },
+        { description = "off", to = "first_on", mustExit = true }
+    ] }
+    dialog_a = { description = "first_on.dialog_a", options = [
+        { description = "keep_watching", to = "dialog_b" },
+        { description = "off", to = "first_on", mustExit = true }
+    ] }
+    dialog_b = { description = "first_on.dialog_b", options = [
+        { description = "keep_watching", to = "dialog_c" },
+        { description = "off", to = "first_on", mustExit = true }
+    ] }
+    dialog_c = { description = "first_on.dialog_c", options = [
         { description = "off", to = "first_on", mustExit = true }
     ] }
