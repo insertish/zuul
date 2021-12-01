@@ -355,6 +355,7 @@ You're now at the Medical Centre's reception.
     # Red: \u001B[31m
     [medical_centre.guard]
     description = "Security guard stationed at the door"
+    blocking = "There is security watching the stairs, there's no way to get past them."
 
 [medical_centre_office]
 enter = '''

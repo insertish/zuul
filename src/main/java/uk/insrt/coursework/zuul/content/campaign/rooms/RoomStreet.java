@@ -38,7 +38,10 @@ public class RoomStreet extends CampaignRoom {
     public boolean canLeave(Direction direction) {
         if (direction == Direction.WEST) {
             if (this.protestorsEntity.getRoom() == this) {
-                this.getWorld().getIO().println("<street.protestors.blocking>");
+                this.getWorld()
+                    .getIO()
+                    .println("<street.protestors.blocking>");
+                
                 return false;
             }
         }
@@ -56,6 +59,6 @@ public class RoomStreet extends CampaignRoom {
             "<street.protestors.description>",
             new String[] { "protestors", "protestor" }
         );
-        world.spawnEntity("npc_protestors", protestorsEntity);
+        world.spawnEntity("npc_protestors", this.protestorsEntity);
     }
 }

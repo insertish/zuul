@@ -1,6 +1,7 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityNpc;
+import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -8,6 +9,8 @@ import uk.insrt.coursework.zuul.world.World;
  * Reception of the Medical Centre complex.
  */
 public class RoomMedicalCentreReception extends CampaignRoom {
+    private Entity guardEntity;
+
     public RoomMedicalCentreReception(World world) {
         super(world, "Medical Centre: Reception");
     }
@@ -26,13 +29,11 @@ public class RoomMedicalCentreReception extends CampaignRoom {
 
     @Override
     public boolean canLeave(Direction direction) {
-        World world = this.getWorld();
         if (direction == Direction.DOWN) {
-            if (world.getEntitiesInRoom(this)
-                .contains(world.getEntity("npc_guard"))) {
+            if (this.guardEntity.getRoom() == this) {
                 this.getWorld()
                     .getIO()
-                    .println("There is security watching the stairs, there's no way to get past them.");
+                    .println("<medical_centre.guard.blocking>");
                 
                 return false;
             }
@@ -44,13 +45,13 @@ public class RoomMedicalCentreReception extends CampaignRoom {
     @Override
     public void spawnEntities() {
         World world = this.getWorld();
-        world.spawnEntity("npc_guard",
-            new EntityNpc(
-                world,
-                this.toLocation(),
-                "npc_security_guard",
-                "<medical_centre.guard.description>",
-                new String[] { "guard", "security" }
-            ));
+        this.guardEntity = new EntityNpc(
+            world,
+            this.toLocation(),
+            "npc_security_guard",
+            "<medical_centre.guard.description>",
+            new String[] { "guard", "security" }
+        );
+        world.spawnEntity("npc_guard", this.guardEntity);
     }
 }
