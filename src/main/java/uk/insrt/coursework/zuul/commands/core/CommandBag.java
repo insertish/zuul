@@ -1,5 +1,6 @@
 package uk.insrt.coursework.zuul.commands.core;
 
+import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 
 import uk.insrt.coursework.zuul.commands.Arguments;
@@ -14,6 +15,8 @@ import uk.insrt.coursework.zuul.world.World;
  * Command which allows the Player to look at their or another Entity's inventory.
  */
 public class CommandBag extends Command {
+    private final DecimalFormat format = new DecimalFormat("0.00");
+
     public CommandBag() {
         super("inventory [of <selectors.something>]", "<commands.bag.usage>",
             new Pattern[] {
@@ -53,7 +56,7 @@ public class CommandBag extends Command {
 
         // Otherwise describe some statistics about the inventory.
         if (ours) {
-            io.println("<commands.bag.are_carrying_kg> " + inv.getWeight()
+            io.println("<commands.bag.are_carrying_kg> " + this.format.format(inv.getWeight())
                 + " / " + inv.getMaxWeight() + " kg.\n<commands.bag.look_in_bag>:");
         } else {
             io.println(entity.getHighlightedName() + " <commands.bag.entity_appears_to_have>:");
