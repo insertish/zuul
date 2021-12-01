@@ -62,10 +62,15 @@
 # 6. Shop shopkeeper in the Shop
 [npc_shopkeeper]
     _prefix = "shop.npc."
-    _start = "small_talk"
-    #TODO
-    small_talk = { description = "small_talk", options = [
-        { description = "leave", to = "small_talk", mustExit = true }
+    _start = "index"
+    index = { description = "index", options = [
+        { description = "leave", to = "index", mustExit = true }
+    ] }
+    recon = { description = "recon", options = [
+        { description = "leave", to = "recon", mustExit = true }
+    ] }
+    stealth = { description = "stealth", options = [
+        { description = "leave", to = "stealth", mustExit = true }
     ] }
 
 # 7. Receptionist located in Apartments

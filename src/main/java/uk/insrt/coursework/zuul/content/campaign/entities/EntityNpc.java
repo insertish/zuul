@@ -11,14 +11,16 @@ import uk.insrt.coursework.zuul.world.World;
 public class EntityNpc extends EntityWithDialogue<String> implements ITalkwith {
     private String description;
     private String alias[];
+    private String id;
 
     public EntityNpc(World world, Location startingLocation, String id, String description, String alias[]) {
         super(world, startingLocation, 75, null);
 
         this.description = description;
         this.alias = alias;
-        
-        this.setupDialogueFromId(dialogue, id);
+        this.id = id;
+
+        this.setupDialogue();
     }
 
     public void talk() {
@@ -37,8 +39,6 @@ public class EntityNpc extends EntityWithDialogue<String> implements ITalkwith {
 
     @Override
     public void setupDialogue(Dialogue<String> dialogue) {
-        // We do not want anything extending EntityNpc to need to
-        // setupDialogue themselves as we are already loading it
-        // from the dialogue.toml file above.
+        this.setupDialogueFromId(dialogue, id);
     }
 }

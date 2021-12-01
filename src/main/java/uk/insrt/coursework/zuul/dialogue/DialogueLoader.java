@@ -51,7 +51,7 @@ public class DialogueLoader {
             if (nodeKey.equals("_prefix")) {
                 prefix = (String) nodes.get(nodeKey);
             } else if (nodeKey.equals("_start")) {
-                dialogue.setNode((String) nodes.get(nodeKey));
+                dialogue.getCurrentNode((String) nodes.get(nodeKey));
             }
         }
 

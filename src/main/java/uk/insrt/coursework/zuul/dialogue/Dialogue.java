@@ -28,10 +28,17 @@ public class Dialogue<T> {
     }
 
     /**
+     * Get the current node
+     */
+    public T getCurrentNode() {
+        return this.currentNode;
+    }
+
+    /**
      * Set the current node
      * @param node New node
      */
-    public void setNode(T node) {
+    public void getCurrentNode(T node) {
         this.currentNode = node;
     }
 
@@ -55,6 +62,15 @@ public class Dialogue<T> {
     }
 
     /**
+     * Get an existing part from the dialogue
+     * @param part What the node is identified by
+     * @return The node if it exists, otherwise null
+     */
+    public DialogueNode<T> getPart(T part) {
+        return this.parts.get(part);
+    }
+
+    /**
      * Run the Dialogue engine until one of the options exits us out
      * @param io Provided IO system
      */
@@ -65,7 +81,12 @@ public class Dialogue<T> {
 
         T target = option.handle(io);
         if (target == null) {
-            this.currentNode = option.getTarget();
+            T newTarget = option.getTarget();
+            if (newTarget != null) {
+                this.currentNode = newTarget;
+            }
+
+            
             return;
         }
 

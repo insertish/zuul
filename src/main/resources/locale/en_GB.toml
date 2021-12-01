@@ -308,6 +308,16 @@ You enter the shop, the bell rings as you close the door behind you.
     # Green: \u001B[32m
     [shop.npc]
     description = "The shop keeper"
+    leave = "Nevermind."
+
+    item_boat = "69 knot speed boat (YEN CURRENCY CONVERSION)"
+    item_cat_food = "cat food 20% off (YEN X)"
+    item_among_us_plushie = "among us plushie (YEN 99999)"
+
+        [shop.npc.greeting]
+        Exposition = "Good day, what would you like to buy?"
+        Recon = "Hello, anything in mind today?"
+        Stealth = "Looking to buy something?"
 
 [back_alley]
 first_load = '''
