@@ -15,7 +15,7 @@ public class CommandTalk extends Command {
     public CommandTalk() {
         super("talk with <selectors.someone>", "<commands.talk.usage>",
             new Pattern[] {
-                Pattern.compile("^talk(?: (?:with|to)(?:\\s+(?<entity>[\\w\\s]+))*)*")
+                Pattern.compile("^talk(?:(?:\\s*with|to)*(?:\\s+(?<entity>[\\w\\s]+))*)*")
                 // talk, talk with <entity>, talk to <entity>
             });
     }

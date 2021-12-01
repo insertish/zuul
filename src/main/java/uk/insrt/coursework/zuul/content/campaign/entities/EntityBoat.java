@@ -1,7 +1,6 @@
 package uk.insrt.coursework.zuul.content.campaign.entities;
 
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
-import uk.insrt.coursework.zuul.content.campaign.StoryFlags;
 import uk.insrt.coursework.zuul.content.campaign.StoryFlags.Stage;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.Inventory;
@@ -56,9 +55,10 @@ public class EntityBoat extends Entity implements IUseable, IGiveable {
         if (!hasKey) {
             if (world.getStoryFlags().getStage() == Stage.Exposition) {
                 io.println("<entities.boat.locked>");
+            } else {
+                io.println("<entities.boat.locked_for_sale>");
             }
             
-            io.println("<entities.boat.locked_for_sale>");
             return;
         }
 

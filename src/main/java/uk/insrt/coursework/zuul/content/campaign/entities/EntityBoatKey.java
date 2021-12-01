@@ -9,8 +9,8 @@ import uk.insrt.coursework.zuul.world.World;
  * speed boat present on the coast.
  */
 public class EntityBoatKey extends EntityObject {
-    public EntityBoatKey(World world, Location location, int weight, String[] aliases, String description) {
-        super(world, location, weight,
+    public EntityBoatKey(World world, Location location) {
+        super(world, location, 0.01d,
             new String[] { "key" },
             "A key to the speed boat");
     }

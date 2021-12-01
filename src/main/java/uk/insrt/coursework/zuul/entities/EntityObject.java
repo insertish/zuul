@@ -19,10 +19,22 @@ public class EntityObject extends Entity {
      * @param aliases Aliases which this object can be referred to by
      * @param description A description of this object
      */
-    public EntityObject(World world, Location location, int weight, String[] aliases, String description) {
+    public EntityObject(World world, Location location, double weight, String[] aliases, String description) {
         super(world, location, weight);
         this.description = description;
         this.aliases = aliases;
+    }
+
+    /**
+     * Construct a new EntityObject
+     * @param world Current World object
+     * @param location Initial Location of this Entity
+     * @param weight The weight (in kg) of this Entity
+     * @param name Name of this object
+     * @param description A description of this object
+     */
+    public EntityObject(World world, Location location, double weight, String alias, String description) {
+        this(world, location, weight, new String[] { alias }, description);
     }
     
     @Override

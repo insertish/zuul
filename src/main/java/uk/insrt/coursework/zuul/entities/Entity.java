@@ -20,7 +20,7 @@ public abstract class Entity {
     protected Inventory inventory;
     
     private Location location;
-    private int weight;
+    private double weight;
 
     /**
      * Construct a new Entity.
@@ -28,7 +28,7 @@ public abstract class Entity {
      * @param location Initial Location of this Entity
      * @param weight The weight (in kg) of this Entity
     */
-    public Entity(World world, Location location, int weight) {
+    public Entity(World world, Location location, double weight) {
         this.world = world;
         this.location = location;
         this.inventory = new Inventory();
@@ -50,7 +50,7 @@ public abstract class Entity {
      * Get this Entity's weight.
      * @return Weight (in kg)
      */
-    public int getWeight() {
+    public double getWeight() {
         return this.weight;
     }
 

@@ -8,8 +8,8 @@
 \usepackage{listings}
 \usepackage{xparse}
 
-\NewDocumentCommand{\codeword}{v}{%
-    \texttt{\textcolor{blue}{#1}}%
+\NewDocumentCommand{\codeword}{v}{
+    \texttt{\textcolor{blue}{#1}}
 }
 
 \title{World of Deez}
@@ -66,10 +66,8 @@
 
                 \item \textit{``There is a command} \codeword{back} \textit{which takes you back to the last room.''}
                 
-                    To do this, I added a private field `previous room' to the \codeword{EntityPlayer}. Whenever the player issues \codeword{word}, I set their location to the previous room that they were in.
-                    
-                    Whenever their location is set, the `previous room' field is overwritten with the current location before the current location is replaced.
-
+                    This changed.    
+                
                     It is also necessary to ensure that the player can actually go back, to verify this, the `retreating direction' is also stored, to check I call the method \codeword{canLeave} on the \codeword{Room}.
 
                 \item \textit{``Add at least four new commands.''}
@@ -101,9 +99,11 @@
                 
                 \item \textit{``Add a magic transporter room.''}
                 
-                    To do this, I added a new \codeword{RoomWormHole} which I made implement \codeword{EventEntityEnteredRoom} to listen for when any entities entered the room, as soon as one is detected, a short animation is begun and a room is selected at random to teleport the user to. Allowing the user to go to \textbf{any room} may interfere with my story so I chose to only spawn the user at any outside areas of the map.
+                    To do this, I added a \codeword{RoomWormHole} which I made implement \codeword{EventEntityEnteredRoom} to listen for when any entities entered the room, as soon as one is detected, a short animation is begun and a room is selected at random to teleport the user to. Allowing the user to go to \textbf{any room} may interfere with my story so I chose to only spawn the user at any outside areas of the map.
                 
-                \item \textit{``TODO''}
+                    \item \textit{``Implement a terminal emulator.''}
+                
+                    \item \textit{``Add a system for managing world events.''}
             \end{itemize}
 
         \section{Code Quality}

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Inventory {
     private ArrayList<Entity> items = new ArrayList<>();
-    private int maxWeight;
+    private double maxWeight;
 
     /**
      * Construct a new Inventory.
@@ -22,7 +22,7 @@ public class Inventory {
      * Set the max weight that can be carried in this inventory.
      * @param maxWeight Max weight (in kg)
      */
-    public void setMaxWeight(int maxWeight) {
+    public void setMaxWeight(double maxWeight) {
         this.maxWeight = maxWeight;
     }
 
@@ -30,7 +30,7 @@ public class Inventory {
      * Get the maximum weight that can be carried in this inventory.
      * @return Maximum weight that can be carried
      */
-    public int getMaxWeight() {
+    public double getMaxWeight() {
         return this.maxWeight;
     }
 
@@ -38,11 +38,11 @@ public class Inventory {
      * Get the current weight of this inventory.
      * @return Weight (in kg)
      */
-    public int getWeight() {
+    public double getWeight() {
         return this
             .items
             .stream()
-            .mapToInt(Entity::getWeight)
+            .mapToDouble(Entity::getWeight)
             .sum();
     }
 

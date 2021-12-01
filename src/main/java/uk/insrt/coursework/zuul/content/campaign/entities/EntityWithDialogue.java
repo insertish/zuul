@@ -19,7 +19,7 @@ public abstract class EntityWithDialogue<T> extends Entity {
      * @param weight The weight (in kg) of this Entity
      * @param startNode The starting dialogue node
      */
-    public EntityWithDialogue(World world, Location location, int weight, T startNode) {
+    public EntityWithDialogue(World world, Location location, double weight, T startNode) {
         super(world, location, weight);
 
         Dialogue<T> dialogue = new Dialogue<T>(startNode);
@@ -32,7 +32,7 @@ public abstract class EntityWithDialogue<T> extends Entity {
      * @param location Initial Location of this Entity
      * @param weight The weight (in kg) of this Entity
      */
-    public EntityWithDialogue(World world, Location location, int weight) {
+    public EntityWithDialogue(World world, Location location, double weight) {
         this(world, location, weight, null);
     }
 

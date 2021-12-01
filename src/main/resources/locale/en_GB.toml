@@ -310,9 +310,24 @@ You enter the shop, the bell rings as you close the door behind you.
     description = "The shop keeper"
     leave = "Nevermind."
 
+    currently_have_amount_of_money = "You currently have:"
+    not_enough = "You don't have enough money to buy"
+    too_heavy = "Too heavy for you to carry!"
+
+    out_of_stock = "out of stock"
+    x_left = "left"
+
     item_boat = "69 knot speed boat (YEN CURRENCY CONVERSION)"
     item_cat_food = "cat food 20% off (YEN X)"
     item_among_us_plushie = "among us plushie (YEN 99999)"
+
+        [shop.npc.item_out_of_stock]
+        1 = "This item is"
+        2 = "you may not buy it"
+
+        [shop.npc.bought]
+        1 = "You buy"
+        2 = "and put it in your bag"
 
         [shop.npc.greeting]
         Exposition = "Good day, what would you like to buy?"

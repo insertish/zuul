@@ -1,6 +1,7 @@
 package uk.insrt.coursework.zuul.dialogue;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import uk.insrt.coursework.zuul.io.IOSystem;
 
@@ -63,13 +64,22 @@ public class DialogueNode<T> {
     }
 
     /**
+     * Get the options available to this node.
+     * @return List of options
+     */
+    protected List<DialogueOption<T>> getOptions() {
+        return this.options;
+    }
+
+    /**
      * Ask the player to pick one of the valid options branching off this node.
      * @param io Provided IO system
      * @return The selected option
      */
     public DialogueOption<T> pickOption(IOSystem io) {
-        for (int i=0;i<this.options.size();i++) {
-            io.println((i + 1) + ". " + this.options.get(i).getDescription());
+        List<DialogueOption<T>> options = this.getOptions();
+        for (int i=0;i<options.size();i++) {
+            io.println((i + 1) + ". " + options.get(i).getDescription());
         }
 
         while (true) {
@@ -77,12 +87,12 @@ public class DialogueNode<T> {
             String value = io.readLine();
             try {
                 int v = Integer.parseInt(value);
-                if (v < 1 || v > this.options.size()) {
+                if (v < 1 || v > options.size()) {
                     io.println("Provide a valid option!");
                     continue;
                 }
 
-                return this.options.get(v - 1);
+                return options.get(v - 1);
             } catch (Exception e) {
                 io.println("Provide a valid number!");
             }
