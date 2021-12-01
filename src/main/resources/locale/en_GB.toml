@@ -296,6 +296,7 @@ You enter the city street.
     # Red: \u001B[31m
     [street.protestors]
     description = "A group of protestors holding signs"
+    blocking = "There is a group of protestors blocking the way in."
 
 [shop]
 enter = '''
