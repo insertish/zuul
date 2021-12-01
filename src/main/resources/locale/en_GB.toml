@@ -115,6 +115,8 @@ laptop = "Laptop"
 
     [entities.boat]
     description = "Speedboat docked on the coast"
+    locked = "The boat is locked."
+    locked_for_sale = "The boat is locked.\nThere is a note which says to contact the shopkeeper to buy this boat."
     denied = "You must not be carrying anything to use the boat.\nYou can however put things in the boat."
     travel = "You hop in the boat and travel to the other side..."
     too_heavy = "The boat is carrying too much stuff already!"

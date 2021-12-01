@@ -1,8 +1,13 @@
 package uk.insrt.coursework.zuul.content.campaign.entities;
 
+import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
+import uk.insrt.coursework.zuul.content.campaign.StoryFlags;
+import uk.insrt.coursework.zuul.content.campaign.StoryFlags.Stage;
 import uk.insrt.coursework.zuul.entities.Entity;
+import uk.insrt.coursework.zuul.entities.Inventory;
 import uk.insrt.coursework.zuul.entities.actions.IGiveable;
 import uk.insrt.coursework.zuul.entities.actions.IUseable;
+import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
@@ -36,12 +41,34 @@ public class EntityBoat extends Entity implements IUseable, IGiveable {
 
     @Override
     public void use(Entity target) {
-        var io = this.getWorld().getIO();
-        if (target.getInventory().getWeight() > 0) {
+        CampaignWorld world = (CampaignWorld) this.getWorld();
+        IOSystem io = world.getIO();
+        Inventory inventory = target.getInventory();
+
+        // Check if the player has the key to this boat.
+        boolean hasKey = false;
+        for (Entity item : inventory.getItems()) {
+            if (item instanceof EntityBoatKey) {
+                hasKey = true;
+            }
+        }
+
+        if (!hasKey) {
+            if (world.getStoryFlags().getStage() == Stage.Exposition) {
+                io.println("<entities.boat.locked>");
+            }
+            
+            io.println("<entities.boat.locked_for_sale>");
+            return;
+        }
+
+        // Check whether the player is carrying too much.
+        if (inventory.getWeight() > 1) {
             io.println("<entities.boat.denied>");
             return;
         }
 
+        // If we're good to go, travel to the other side.
         io.println("<entities.boat.travel>\n");
         target.setLocation(this.destination);
     }
