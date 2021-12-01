@@ -1,6 +1,9 @@
 package uk.insrt.coursework.zuul.content.campaign.entities;
 
+import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
+import uk.insrt.coursework.zuul.content.campaign.StoryFlags.Stage;
 import uk.insrt.coursework.zuul.dialogue.Dialogue;
+import uk.insrt.coursework.zuul.dialogue.DialogueOption;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -23,5 +26,16 @@ public class EntityMarie extends EntityNpc {
     @Override
     public void setupDialogue(Dialogue<String> dialogue) {
         super.setupDialogue(dialogue);
+        var w = (CampaignWorld) this.world;
+
+        // Progress story if player accepts mission.
+        dialogue.getPart("confirm")
+            .addOption(new DialogueOption<>("<marie.alley.confirm.option_1>",
+                io -> {
+                    w.getStoryFlags()
+                     .setStage(Stage.Recon);
+
+                    return "recon";
+                }));
     }
 }

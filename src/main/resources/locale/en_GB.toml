@@ -425,7 +425,7 @@ description = "\u001B[35mMarie the Mink\u001B[0m"
     [marie.alley]
 
         [marie.alley.small_talk]
-        dialog = "What brings you here?"
+        dialog = "\u001B[35mMarie\u001B[0m: What brings you here?"
         option_1 = "Did you hear about the protests?"
         option_2 = "Sylvasta is up to something..."
         option_q = "Nevermind, have a good day."
