@@ -101,6 +101,7 @@ where_am_i = "describe the current room again"
 
 [entities]
 laptop = "Laptop"
+comms = "Communicator device"
 boat_key = "A key to the speed boat"
 
     [entities.bed]
@@ -301,8 +302,6 @@ You enter the city street.
     description = "A group of protestors holding signs"
     blocking = "There is a group of protestors blocking the way in."
 
-# \u001B[31mProtestor\u001B[36m: 
-
         [street.protestors.small_talk]
         dialog = "\u001B[31mProtestor\u001B[0m: Have you heard about what Sylvasta is doing and why we're out here?"
         option_1 = "No, enlighten me."
@@ -393,6 +392,20 @@ It would be quite easy to lose yourself here for a few hours.
     [forest.old_man]
     description = "An old man wandering through the forest"
 
+        [forest.old_man.small_talk]
+        dialog = "You haven't seen my cat anywhere have you?"
+        option_1 = "I've seen this black stray around town..."
+        option_q = "No."
+
+        [forest.old_man.request]
+        dialog = "Could you bring him back to me?"
+        option_1 = "Sure."
+        option_q = "Sorry, not right now."
+
+        [forest.old_man.praise]
+        dialog = "Thank you for helping me!"
+        option_q = "[leave]"
+
 [worm_hole]
 enter = '''
 You step into the worm hole...
@@ -445,3 +458,13 @@ something but I don't know whether I believe the crowds showing up."""
         dialog = "\u001B[35mMarie\u001B[0m: I suppose we could break in and find out the truth."
         option_1 = "Let's do it! [progress story]"
         option_q = "No way!"
+
+        [marie.alley.recon]
+        dialog = """\u001B[35mMarie\u001B[0m: Ok, while I go figure out how we get in, I need you to fetch something we
+can talk over, I'm sure the shop will have something, meet me back here when you
+get something."""
+        option_q = "Got it."
+
+        [marie.alley.waiting]
+        dialog = "Well? Go get it."
+        option_q = "Ok."

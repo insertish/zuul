@@ -20,7 +20,10 @@
     ] }
 
     recon = { description = "recon.dialog", options = [
-        #
+        { description = "recon.option_q", to = "waiting", mustExit = true }
+    ] }
+    waiting = { description = "waiting.dialog", options = [
+        { description = "waiting.option_q", to = "waiting", mustExit = true }
     ] }
 
 # 2. Random City NPC located in the City Centre
@@ -48,13 +51,19 @@
     #] }
 
 # 3. Old Man located in Forest
-# out of scope until (2.) or (sq1.)
 [npc_old_man]
     _prefix = "forest.old_man."
     _start = "small_talk"
-    #TODO
-    small_talk = { description = "small_talk", options = [
-        { description = "leave", to = "small_talk", mustExit = true }
+    small_talk = { description = "small_talk.dialog", options = [
+        { description = "small_talk.option_1", to = "request" },
+        { description = "small_talk.option_q", to = "small_talk", mustExit = true }
+    ] }
+    request = { description = "request.dialog", options = [
+        { description = "request.option_1", to = "small_talk", mustExit = true },
+        { description = "request.option_q", to = "small_talk", mustExit = true }
+    ] }
+    praise = { description = "praise.dialog", options = [
+        { description = "praise.option_q", to = "praise", mustExit = true }
     ] }
 
 # 4. Protestors located on Street
@@ -138,3 +147,9 @@
     dialog_c = { description = "first_on.dialog_c", options = [
         { description = "off", to = "first_on", mustExit = true }
     ] }
+
+# 9. Communicator device with Marie
+[comms_marie]
+    _prefix = "marie.comms."
+    _start = "orientation"
+    orientation = { description = "orientation.dialog", options = [] }

@@ -34,7 +34,7 @@ public class EntityShopkeeper extends EntityNpc {
         super(world, location,
             "npc_shopkeeper",
             "<shop.npc.description>",
-            new String[] { "shopkeeper" });
+            new String[] { "shopkeeper", "shop", "keeper" });
         
         this.items = new HashMap<>();
         this.stock = new HashMap<>();
@@ -65,13 +65,18 @@ public class EntityShopkeeper extends EntityNpc {
         this.price.put(itemBoatKey, 39_260);
         this.entityFactory.put(itemBoatKey, () -> new EntityBoatKey(world, new Location()));
 
+        EntityComms itemComms = new EntityComms(world, new Location());
+        this.stock.put(itemComms, 3);
+        this.price.put(itemComms, 3_100);
+        this.entityFactory.put(itemComms, () -> new EntityComms(world, new Location()));
+
         EntityObject itemCat = new EntityObject(world, new Location(), 5, "", "<shop.npc.fake_item.cat>");
         this.stock.put(itemCat, 0);
         this.price.put(itemCat, 21_300);
 
         this.items.put(Stage.Exposition, new EntityObject[] {  });
-        this.items.put(Stage.Recon, new EntityObject[] { itemBoatKey });
-        this.items.put(Stage.Stealth, new EntityObject[] { itemBoatKey, itemCat });
+        this.items.put(Stage.Recon, new EntityObject[] { itemBoatKey, itemComms });
+        this.items.put(Stage.Stealth, new EntityObject[] { itemBoatKey, itemComms, itemCat });
     }
 
     /**

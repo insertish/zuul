@@ -38,4 +38,13 @@ public class EntityMarie extends EntityNpc {
                     return "recon";
                 }));
     }
+
+    @Override
+    public void talk() {
+        if (this.dialogue.getCurrentNode() == "waiting") {
+            //
+        }
+
+        super.talk();
+    }
 }
