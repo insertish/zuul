@@ -2,6 +2,7 @@ package uk.insrt.coursework.zuul.content.campaign.entities;
 
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.content.campaign.StoryFlags.Stage;
+import uk.insrt.coursework.zuul.content.campaign.rooms.RoomMedicalCentreOffice;
 import uk.insrt.coursework.zuul.content.campaign.rooms.RoomMedicalCentreReception;
 import uk.insrt.coursework.zuul.dialogue.Dialogue;
 import uk.insrt.coursework.zuul.dialogue.DialogueOption;
@@ -28,7 +29,9 @@ public class EntityComms extends EntityWithDialogue<String> implements IUseable 
 
         if (w.getStoryFlags().getStage() == Stage.Stealth) {
             Room room = w.getPlayer().getRoom();
-            if (room instanceof RoomMedicalCentreReception) {
+            if (room instanceof RoomMedicalCentreOffice) {
+                this.dialogue.setNodeIfPresent("office");
+            } else if (room instanceof RoomMedicalCentreReception) {
                 if (((RoomMedicalCentreReception) room).getCouch().isSitting()) {
                     this.dialogue.setNodeIfPresent("in_position");
                 } else {

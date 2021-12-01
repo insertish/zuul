@@ -185,3 +185,14 @@
     gogogo = { description = "gogogo.dialog", options = [
         { description = "gogogo.option_q", to = "gogogo", mustExit = true }
     ] }
+
+    office = { description = "office.dialog", options = [
+        { description = "office.option_1", to = "documents" }
+    ] }
+    documents = { description = "office.dialog", options = [
+        { description = "office.option_q", to = "office", mustExit = true }
+    ] }
+
+    home = { description = "home.dialog", options = [
+        { description = "home.option_q", to = "home", mustExit = true }
+    ] }

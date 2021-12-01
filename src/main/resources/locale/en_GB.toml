@@ -439,6 +439,31 @@ You find yourself at the Medical Centre's office.
 You definitely shouldn't be here...
 '''
 
+    [medical_centre_office.books]
+        [medical_centre_office.books.1]
+        title = "sus"
+        contents = "gdfghdfs"
+
+        [medical_centre_office.books.2] # yes
+        title = "sus"
+        contents = "gdfghdfs"
+
+        [medical_centre_office.books.3]
+        title = "sus"
+        contents = "gdfghdfs"
+
+        [medical_centre_office.books.4] # yes
+        title = "sus"
+        contents = "gdfghdfs"
+
+        [medical_centre_office.books.5] # yes
+        title = "sus"
+        contents = "gdfghdfs"
+
+        [medical_centre_office.books.6]
+        title = "sus"
+        contents = "gdfghdfs"
+
 [marie]
 description = "\u001B[35mMarie the Mink\u001B[0m"
 
@@ -530,3 +555,22 @@ You better come out or we're going to have a problem.
         [marie.comms.gogogo]
         dialog = "\u001B[35mMarie\u001B[0m: What are you waiting for??"
         option_q = "AAAAAAA"
+
+        [marie.comms.office]
+        dialog = "\u001B[35mMarie\u001B[0m: What do you see?"
+        option_1 = "A bunch of documents scattered around."
+
+        [marie.comms.documents]
+        dialog = """\u001B[35mMarie\u001B[0m: Ok, look through them and find anything that looks relevant, look out for
+anything that mentions the stuff they were protesting about. Once you do, you'll
+need to upload them to me, I guess go back to your apartments and we'll do it
+from there, let me know once you're there.
+
+\u001B[35mMarie\u001B[0m: I'll be making sure your cover is not blown.
+
+\u001B[33mHint: you can use the documents to read them.\u001B[0m"""
+        option_q = "Ok."
+
+        [marie.comms.home]
+        dialog = """\u001B[35mMarie\u001B[0m: Presumably you have the documents, turn your computer on, go to the link
+I've sent you, it should show up, and upload them."""
