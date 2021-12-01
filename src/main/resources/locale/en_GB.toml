@@ -159,44 +159,44 @@ You enter your apartment.
         # Cyan: \u001B[36m
         [home.tv.first_on]
         dialog = "You turn the TV on.\n\nThe news channel comes up..."
-        dialog_a="""\u001B[31mNews Anchor\u001B[37m: Civil unrest is rising, Sylvasta is facing criticism from all
+        dialog_a="""\u001B[31mNews Anchor\u001B[0m: Civil unrest is rising, Sylvasta is facing criticism from all
 sides, and many people are uneasy about their future as rising tension between
 human and beastman societies is causing escalated conflict around the city
 borders.
 
-\u001B[31mNews Anchor\u001B[37m: We bring you now to scenes outside of the Medical Centre where a
+\u001B[31mNews Anchor\u001B[0m: We bring you now to scenes outside of the Medical Centre where a
 group of protestors have shown up in opposition to the research being led at
 Slyvasta.
 
-\u001B[36mCorrespondent\u001B[37m: I am here, standing outside with the group of protestors..
+\u001B[36mCorrespondent\u001B[0m: I am here, standing outside with the group of protestors..
 
-\u001B[36mCorrespondent\u001B[37m to \u001B[33mProtestor\u001B[37m: What brings you here today?
+\u001B[36mCorrespondent\u001B[0m to \u001B[33mProtestor\u001B[0m: What brings you here today?
 """
 
-        dialog_b="""\u001B[33mProtestor\u001B[37m: They're taking the city's money and using it for gain, I don't think
+        dialog_b="""\u001B[33mProtestor\u001B[0m: They're taking the city's money and using it for gain, I don't think
 they should receive any funding let alone be allowed to continue operating here.
 
-\u001B[31mNews Anchor\u001B[37m: Bold claims coming straight from outside Sylvasta, whether these
+\u001B[31mNews Anchor\u001B[0m: Bold claims coming straight from outside Sylvasta, whether these
 claims are grounded in anything is yet to be discovered, we've seen months and
 months of leaks come out from former employees and internal mishaps.
 
-\u001B[31mNews Anchor\u001B[37m: Sylvasta has personally announced that they refuse to communicate
+\u001B[31mNews Anchor\u001B[0m: Sylvasta has personally announced that they refuse to communicate
 or elaborate any further on their internal research citing public safety,
 whatever that means nobody outside of their internal staff knows.
 """
 
-dialog_c="""\u001B[31mNews Anchor\u001B[37m: It also begs the question whether the protests are unfounded and
+dialog_c="""\u001B[31mNews Anchor\u001B[0m: It also begs the question whether the protests are unfounded and
 just there to stir up trouble in the city. Earlier today we also spoke to local
 residents living in the centre of the city..
 
-\u001B[32mShopkeeper\u001B[37m: I think these guys just want to cause trouble, Sylvasta was vital in
+\u001B[32mShopkeeper\u001B[0m: I think these guys just want to cause trouble, Sylvasta was vital in
 establishing this city and letting us live in peace without having to worry
 about being attacked, I just don't think there's enough reason to protest.
 
-\u001B[32mShopkeeper\u001B[37m: We're already seeing the world turn against the city and these sorts
+\u001B[32mShopkeeper\u001B[0m: We're already seeing the world turn against the city and these sorts
 of internal conflicts will just give them reason to step in and take control.
 
-\u001B[31mNews Anchor\u001B[37m: That concludes our broadcast for this morning, and we'll be back
+\u001B[31mNews Anchor\u001B[0m: That concludes our broadcast for this morning, and we'll be back
 for the 1pm News Hour.
 """
 
@@ -210,23 +210,23 @@ You enter the apartment complex reception.
     description = "The receptionist sitting behind a desk"
 
         [apartments.receptionist.first_encounter]
-        dialog = "\u001B[36mReceptionist\u001B[37m: Good morning, how are you doing today?"
+        dialog = "\u001B[36mReceptionist\u001B[0m: Good morning, how are you doing today?"
         option_1 = "What is that racket outside?"
         option_q = "Nevermind."
 
         [apartments.receptionist.protestors]
-        dialog = """\u001B[36mReceptionist\u001B[37m: I don't know much but it looks like a group of people shouting
+        dialog = """\u001B[36mReceptionist\u001B[0m: I don't know much but it looks like a group of people shouting
 outside the Medical Centre..."""
         option_1 = "Do you know anything more?"
         option_q = "Alright."
 
         [apartments.receptionist.protestors2]
-        dialog = """\u001B[36mReceptionist\u001B[37m: They were handing out flyers as they came up, maybe someone
+        dialog = """\u001B[36mReceptionist\u001B[0m: They were handing out flyers as they came up, maybe someone
 nearby would know..."""
         option_q = "Thanks."
 
         [apartments.receptionist.repeated]
-        dialog = "\u001B[36mReceptionist\u001B[37m: Hello, what can I help you with?"
+        dialog = "\u001B[36mReceptionist\u001B[0m: Hello, what can I help you with?"
         option_1 = "What's going on with those protestors outside?"
         option_q = "That's all, thanks."
 
@@ -248,37 +248,37 @@ You enter the city square.
     description = "A person sitting at a bench"
 
         [city_centre.npc.small_talk]
-        dialog = "\u001B[33mStranger\u001B[37m: Hello, could I help you?"
+        dialog = "\u001B[33mStranger\u001B[0m: Hello, could I help you?"
         option_1 = "You don't happen to have seen the protestors go by here?"
         option_2 = "What are you reading?"
         option_q = "Nevermind."
 
         [city_centre.npc.protestors]
-        dialog = """\u001B[33mStranger\u001B[37m: Oh yes, they were quite loud..
+        dialog = """\u001B[33mStranger\u001B[0m: Oh yes, they were quite loud..
 They were rather annoying, disturbed my morning.
 ...
 They did leave me this leaflet though"""
         option_1 = "Can I see it?"
 
         [city_centre.npc.enquire]
-        dialog = "\u001B[33mStranger\u001B[37m: These guys went past and left me a leaflet."
+        dialog = "\u001B[33mStranger\u001B[0m: These guys went past and left me a leaflet."
 
         [city_centre.npc.leaflet]
-        # dialog = "\u001B[33mStranger\u001B[37m: Sure, here you go, keep it.\n[\u001B[33mStranger\u001B[37m gave you an item.]"
-        dialog = """\u001B[33mStranger\u001B[37m: Sure, I've got it here...
+        # dialog = "\u001B[33mStranger\u001B[0m: Sure, here you go, keep it.\n[\u001B[33mStranger\u001B[0m gave you an item.]"
+        dialog = """\u001B[33mStranger\u001B[0m: Sure, I've got it here...
 
 You look at the leaflet:
 
-\u001B[41m\u001B[37mUNETHICAL RESEARCH
+\u001B[41mUNETHICAL RESEARCH
 \u001B[40m\u001B[31mOur city is in danger, Slyvasta further
 funding into their research yet do nothing
 to help the city survive.
 
 Sylvasta is abusing their position to
 continue work into completely ILLEGAL
-bioengineering of beastmen.\u001B[37m
+bioengineering of beastmen.\u001B[0m
 
-Support us: \u001B[36mhttps://sylvasta.vercel.app\u001B[37m
+Support us: \u001B[36mhttps://sylvasta.vercel.app\u001B[0m
 """
         option_1 = "Thanks."
 
@@ -299,6 +299,30 @@ You enter the city street.
     [street.protestors]
     description = "A group of protestors holding signs"
     blocking = "There is a group of protestors blocking the way in."
+
+# \u001B[31mProtestor\u001B[36m: 
+
+        [street.protestors.small_talk]
+        dialog = "\u001B[31mProtestor\u001B[0m: Have you heard about what Sylvasta is doing and why we're out here?"
+        option_1 = "No, enlighten me."
+        option_2 = "Nevermind."
+
+        [street.protestors.enquire]
+        dialog = """\u001B[31mProtestor\u001B[0m: They are using the city's money to further their frankly illegal
+research, you've seen the leaks right?"""
+        option_1 = "No."
+        option_2 = "Right.. I'll leave you to it."
+
+        [street.protestors.leaks]
+        dialog = """\u001B[31mProtestor\u001B[0m: Well some former employees leaked information about their current
+research projects and from what we can tell is that they're doing bioengineering
+on beastmen, this shouldn't be tolerated let alone funded by the city."""
+        option_1 = "Ok."
+
+        [street.protestors.confrontation]
+        dialog = "\u001B[31mProtestor\u001B[0m: You taking me for some sort of conspiracy theorist?"
+        option_1 = "Yes."
+        option_2 = "I'm leaving now."
 
 [shop]
 enter = '''
@@ -384,6 +408,10 @@ You're now at the Medical Centre's reception.
     description = "Security guard stationed at the door"
     blocking = "There is security watching the stairs, there's no way to get past them."
 
+        [medical_centre.guard.small_talk]
+        dialog = "What do you want?"
+        option_q = "Nevermind."
+
 [medical_centre_office]
 enter = '''
 You find yourself at the Medical Centre's office.
@@ -391,7 +419,7 @@ You definitely shouldn't be here...
 '''
 
 [marie]
-description = "\u001B[35mMarie the Mink\u001B[37m"
+description = "\u001B[35mMarie the Mink\u001B[0m"
 
     # Purple: \u001B[35m
     [marie.alley]
@@ -403,17 +431,17 @@ description = "\u001B[35mMarie the Mink\u001B[37m"
         option_q = "Nevermind, have a good day."
 
         [marie.alley.protests]
-        dialog = """\u001B[35mMarie\u001B[37m: Yeah, those Sylvasta guys are definitely up to
+        dialog = """\u001B[35mMarie\u001B[0m: Yeah, those Sylvasta guys are definitely up to
 something but I don't know whether I believe the crowds showing up."""
         option_1 = "Do you want to help me find out?"
         option_q = "Nevermind."
 
         [marie.alley.sylvasta]
-        dialog = "\u001B[35mMarie\u001B[37m: You think I don't know? You want to help me find out?"
+        dialog = "\u001B[35mMarie\u001B[0m: You think I don't know? You want to help me find out?"
         option_1 = "Sure."
         option_q = "No thanks."
 
         [marie.alley.confirm]
-        dialog = "\u001B[35mMarie\u001B[37m: I suppose we could break in and find out the truth."
+        dialog = "\u001B[35mMarie\u001B[0m: I suppose we could break in and find out the truth."
         option_1 = "Let's do it! [progress story]"
         option_q = "No way!"

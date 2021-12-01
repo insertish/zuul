@@ -57,18 +57,28 @@
 [npc_protestors]
     _prefix = "street.protestors."
     _start = "small_talk"
-    #TODO
-    small_talk = { description = "small_talk", options = [
-        { description = "leave", to = "small_talk", mustExit = true }
+    small_talk = { description = "small_talk.dialog", options = [
+        { description = "small_talk.option_1", to = "enquire" },
+        { description = "small_talk.option_2", to = "small_talk", mustExit = true }
+    ] }
+    enquire = { description = "enquire.dialog", options = [
+        { description = "enquire.option_1", to = "leaks" },
+        { description = "enquire.option_2", to = "confrontation" }
+    ] }
+    leaks = { description = "leaks.dialog", options = [
+        { description = "leaks.option_1", to = "small_talk", mustExit = true }
+    ] }
+    confrontation = { description = "confrontation.dialog", options = [
+        { description = "confrontation.option_1", to = "small_talk", mustExit = true },
+        { description = "confrontation.option_2", to = "small_talk", mustExit = true }
     ] }
 
 # 5. Security guard stationed at Medical Centre
 [npc_security_guard]
     _prefix = "medical_centre.guard."
     _start = "small_talk"
-    #TODO
-    small_talk = { description = "small_talk", options = [
-        { description = "leave", to = "small_talk", mustExit = true }
+    small_talk = { description = "small_talk.dialog", options = [
+        { description = "small_talk.option_q", to = "small_talk", mustExit = true }
     ] }
 
 # 6. Shop shopkeeper in the Shop
