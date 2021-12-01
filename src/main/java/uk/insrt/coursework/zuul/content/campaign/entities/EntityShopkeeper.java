@@ -65,7 +65,7 @@ public class EntityShopkeeper extends EntityNpc {
         this.price.put(itemBoatKey, 39_260);
         this.entityFactory.put(itemBoatKey, () -> new EntityBoatKey(world, new Location()));
 
-        EntityObject itemCat = new EntityObject(world, new Location(), 5, "", "A singular cat.");
+        EntityObject itemCat = new EntityObject(world, new Location(), 5, "", "<shop.npc.fake_item.cat>");
         this.stock.put(itemCat, 0);
         this.price.put(itemCat, 21_300);
 

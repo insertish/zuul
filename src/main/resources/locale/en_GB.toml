@@ -101,6 +101,7 @@ where_am_i = "describe the current room again"
 
 [entities]
 laptop = "Laptop"
+boat_key = "A key to the speed boat"
 
     [entities.bed]
     description = "Bed"
@@ -341,9 +342,8 @@ You enter the shop, the bell rings as you close the door behind you.
     out_of_stock = "out of stock"
     x_left = "left"
 
-    item_boat = "69 knot speed boat (YEN CURRENCY CONVERSION)"
-    item_cat_food = "cat food 20% off (YEN X)"
-    item_among_us_plushie = "among us plushie (YEN 99999)"
+        [shop.npc.fake_item]
+        cat = "A singular cat"
 
         [shop.npc.item_out_of_stock]
         1 = "This item is"

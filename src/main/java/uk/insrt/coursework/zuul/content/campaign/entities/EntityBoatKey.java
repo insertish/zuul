@@ -12,6 +12,6 @@ public class EntityBoatKey extends EntityObject {
     public EntityBoatKey(World world, Location location) {
         super(world, location, 0.01d,
             new String[] { "key" },
-            "A key to the speed boat");
+            "<entities.boat_key>");
     }
 }
