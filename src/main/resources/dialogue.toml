@@ -2,9 +2,21 @@
 [npc_marie]
     _prefix = "marie.alley."
     _start = "small_talk"
-    #TODO
-    small_talk = { description = "small_talk", options = [
-        { description = "leave", to = "small_talk", mustExit = true }
+    small_talk = { description = "small_talk.dialog", options = [
+        { description = "small_talk.option_1", to = "protests" },
+        { description = "small_talk.option_2", to = "sylvasta" },
+        { description = "small_talk.option_q", to = "small_talk", mustExit = true }
+    ] }
+    protests = { description = "protests.dialog", options = [
+        { description = "protests.option_1", to = "confirm" },
+        { description = "protests.option_q", to = "small_talk", mustExit = true }
+    ] }
+    sylvasta = { description = "sylvasta.dialog", options = [
+        { description = "sylvasta.option_1", to = "confirm" },
+        { description = "sylvasta.option_q", to = "small_talk", mustExit = true }
+    ] }
+    confirm = { description = "confirm.dialog", options = [
+        { description = "confirm.option_q", to = "small_talk", mustExit = true }
     ] }
 
 # 2. Random City NPC located in the City Centre

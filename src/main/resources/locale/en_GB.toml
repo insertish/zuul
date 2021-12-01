@@ -391,7 +391,29 @@ You definitely shouldn't be here...
 '''
 
 [marie]
+description = "\u001B[35mMarie the Mink\u001B[37m"
 
     # Purple: \u001B[35m
     [marie.alley]
-    description = "we do a little"
+
+        [marie.alley.small_talk]
+        dialog = "What brings you here?"
+        option_1 = "Did you hear about the protests?"
+        option_2 = "Sylvasta is up to something..."
+        option_q = "Nevermind, have a good day."
+
+        [marie.alley.protests]
+        dialog = """\u001B[35mMarie\u001B[37m: Yeah, those Sylvasta guys are definitely up to
+something but I don't know whether I believe the crowds showing up."""
+        option_1 = "Do you want to help me find out?"
+        option_q = "Nevermind."
+
+        [marie.alley.sylvasta]
+        dialog = "\u001B[35mMarie\u001B[37m: You think I don't know? You want to help me find out?"
+        option_1 = "Sure."
+        option_q = "No thanks."
+
+        [marie.alley.confirm]
+        dialog = "\u001B[35mMarie\u001B[37m: I suppose we could break in and find out the truth."
+        option_1 = "Let's do it! [progress story]"
+        option_q = "No way!"
