@@ -25,7 +25,7 @@ public class CommandWin extends Command {
         var io = world.getIO();
         var w = (CampaignWorld) world;
         var flags = w.getStoryFlags();
-        if (flags.getStage() != Stage.Conclusion) return false;
+        if (flags.getStage() != Stage.End) return false;
 
         io.println("<commands.win.conclusion>\n<commands.win.stats>\n"
             + "<commands.win.total_ticks>" + flags.getTicks() + "\n"

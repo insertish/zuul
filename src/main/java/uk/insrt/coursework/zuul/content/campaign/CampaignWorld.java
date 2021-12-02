@@ -219,7 +219,7 @@ public class CampaignWorld extends World {
                         }
                         break;
                     }
-                    case Conclusion: {
+                    case End: {
                         io.println("<stage.reached_conclusion>");
                         break;
                     }

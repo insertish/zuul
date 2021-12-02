@@ -72,7 +72,7 @@ public class EntityLaptop extends EntityWithDialogue<String> implements IUseable
                     
                     if (validPieces == 3) {
                         io.println("<marie.comms.received>");
-                        flags.setStage(Stage.Conclusion);
+                        flags.setStage(Stage.End);
                         return null;
                     }
 

@@ -12,11 +12,13 @@ public class StoryFlags {
      * The current story chapter.
      */
     public enum Stage {
-        Exposition, // WIP
-        Recon, // Unimplemented
-        Stealth, // Unimplemented
-        Twist, // Skipped
-        Conclusion, // Skipped
+        Exposition, // Ch 1.
+        Recon, // Ch 2.
+        Stealth, // Ch 3.
+        End, // Current Ending
+        
+        Twist, // Ch 4. Skipped
+        Conclusion, // Ch 5. Skipped
     }
     
     private EventSystem eventSystem;
