@@ -13,8 +13,10 @@ import uk.insrt.coursework.zuul.world.World;
  * Cat entity which wanders around the map.
  */
 public class EntityCat extends Entity implements IPettable, IUseable {
+    public static final int WEIGHT = 5;
+
     public EntityCat(World world, Location startingLocation) {
-        super(world, startingLocation, 5);
+        super(world, startingLocation, WEIGHT);
     }
 
     @Override

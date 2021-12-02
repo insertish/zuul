@@ -1,5 +1,4 @@
-# A subtle game of trust.
-# In this game the consequences of secrecy and conspiracy duke it out.
+# Translations for World of Deez
 
 [global]
 sight = "You can see:"
@@ -421,9 +420,10 @@ You enter the shop, the bell rings as you close the door behind you.
         2 = "and put it in your bag"
 
         [shop.npc.greeting]
-        Exposition = "Good day, what would you like to buy?"
-        Recon = "Hello, anything in mind today?"
-        Stealth = "Looking to buy something?"
+        Exposition = "\u001B[32mShopkeeper\u001B[0m: Good day, what would you like to buy?"
+        Recon = "\u001B[32mShopkeeper\u001B[0m: Hello, anything in mind today?"
+        Stealth = "\u001B[32mShopkeeper\u001B[0m: Looking to buy something?"
+        End = "\u001B[32mShopkeeper\u001B[0m: Need anything new?"
 
 [back_alley]
 first_load = '''
@@ -457,21 +457,25 @@ There's a river flowing through the middle with an old wooden bridge above it.
 It would be quite easy to lose yourself here for a few hours.
 '''
 
+    # Yellow: \u001B[33m
     [forest.old_man]
     description = "An old man wandering through the forest"
+    full = "There's nothing else you can give them."
+    accept = "\u001B[33mOld Man\u001B[0m: Thank you for bringing him back to me."
+    deny = "\u001B[33mOld Man\u001B[0m: I don't want your"
 
         [forest.old_man.small_talk]
-        dialog = "You haven't seen my cat anywhere have you?"
+        dialog = "\u001B[33mOld Man\u001B[0m: You haven't seen my cat anywhere have you?"
         option_1 = "I've seen this black stray around town..."
         option_q = "No."
 
         [forest.old_man.request]
-        dialog = "Could you bring him back to me?"
+        dialog = "\u001B[33mOld Man\u001B[0m: Could you bring him back to me?"
         option_1 = "Sure."
         option_q = "Sorry, not right now."
 
         [forest.old_man.praise]
-        dialog = "Thank you for helping me!"
+        dialog = "\u001B[33mOld Man\u001B[0m: Thank you for helping me!"
         option_q = "[leave]"
 
 [worm_hole]

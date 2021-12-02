@@ -47,6 +47,14 @@ public class Inventory {
     }
 
     /**
+     * Check if the inventory is full.
+     * @return True if the weight is greater than the max weight
+     */
+    public boolean isFull() {
+        return this.getWeight() >= this.getMaxWeight();
+    }
+
+    /**
      * Add an entity to this inventory.
      * 
      * There must be sufficient space for the entity.
