@@ -12,6 +12,10 @@
     \texttt{\textcolor{blue}{#1}}
 }
 
+\NewDocumentCommand{\cmd}{v}{
+    \textit{\textcolor{purple}{#1}}
+}
+
 \title{World of Deez}
 \author{Joe}
 \date{19th November 2021}
@@ -50,29 +54,40 @@
             \begin{itemize}[leftmargin=*]
                 \item \textit{``The game has several locations the player can walk through.''}
                 
-                    I did stuff to do this trolololol
+                    I ended up adding $10$ locations into my game:
+                    \begin{itemize}[leftmargin=*]
+                        \item \textbf{City Centre}: Centre of the city connecting major areas.
+                        \item \textbf{Apartments}: This is the player's residence.
+                        \item \textbf{Street}: This is the main city street connecting important buildings.
+                        \item \textbf{Shop}: The local city shop where the player frequents to get necessary items.
+                    \end{itemize}
 
                 \item \textit{``There are items in some rooms that may or may not be picked up by players.''}
                 
-                    sus!
+                    To achieve this, I considered all entities to be items which may or may not be picked up by other entities, each entity has its own \codeword{Inventory} which is in effect a list of other entities which it is holding.
                 
-                \item \textit{``Each item has a weight and the plyer can only carry items up to a certain weight.''}
+                \item \textit{``Each item has a weight and the player can only carry items up to a certain weight.''}
                 
-                    sus!
+                    To do this, I added a new private field \codeword{weight} of type double to the \codeword{Entity} class, which is used to store the entity's weight. It is a double as I wanted access to fractional weights (say $0.01$kg) and I wanted to have access to \codeword{Stream::mapToDouble} for summations.
+
+                    For the second part, I made it so each \codeword{Inventory} has a maximum weight it can store, which by default is set to $0$ as each entity has an inventory but may not necessarily have the ability to store anything.
+
+                    When putting anything in an inventory, we check that the following is satisfied:
+                    $$
+                        \textsf{currentWeight} + \textsf{itemWeight} \le \textsf{maxWeight}
+                    $$
                 
                 \item \textit{``Player can win.''}
                 
-                    The player may not win.
+                    The player may win by completing the main story mission which sets a flag that the game has been completed, the player may choose to keep playing in the open world or run \cmd{win} to end the game.
 
-                \item \textit{``There is a command} \codeword{back} \textit{which takes you back to the last room.''}
+                \item \textit{``There is a command} \cmd{back} {which takes you back to the last room.''}
                 
-                    This changed.    
-                
-                    It is also necessary to ensure that the player can actually go back, to verify this, the `retreating direction' is also stored, to check I call the method \codeword{canLeave} on the \codeword{Room}.
+                    I added two new private fields to the player entity, which were \codeword{previousRooms} and \codeword{retreatingDirection}, these are used to store the path back through the room and the direction which we need to go to get back there respectively. The direction is stored in order to run a check whether the player can actually go back in the direction they intend to, to verify this, the `retreating direction' is used to call the method \codeword{canLeave} on the current room the player is in.
 
                 \item \textit{``Add at least four new commands.''}
                 
-                    sus!
+                    %
             \end{itemize}
 
         \section{Challenge Tasks}
@@ -82,7 +97,7 @@
             \begin{itemize}[leftmargin=*]
                 \item \textit{``Add characters to your game.''}
                 
-                    I did stuff to do this trolololol
+                    %
 
                 \item \textit{``Extend the parser.''}
                 
@@ -90,30 +105,43 @@
 
                     This approach has several benefits:
 
-                    \begin{itemize}
+                    \begin{itemize}[leftmargin=*]
                         \item Powerful Regex at low performance cost due to the low number of commands.
                         \item Ability to have named capture groups which are then interpreted as arguments.
                     \end{itemize}
 
-                    For each known \codeword{Command}, I would create a \codeword{Matcher} for each \codeword{Pattern}, execute it against the arbitrary command from the user and then pass it into a wrapper class \codeword{Arguments} which lets me safely pull out named groups.
+                    For each known \codeword{Command}, I would create a \codeword{Matcher} for each \codeword{Pattern}, execute it against the arbitrary command from the user and then pass it into a wrapper class \codeword{Arguments} which lets me safely pull out named groups, directions or any other argument type I need.
                 
                 \item \textit{``Add a magic transporter room.''}
                 
-                    To do this, I added a \codeword{RoomWormHole} which I made implement \codeword{EventEntityEnteredRoom} to listen for when any entities entered the room, as soon as one is detected, a short animation is begun and a room is selected at random to teleport the user to. Allowing the user to go to \textbf{any room} may interfere with my story so I chose to only spawn the user at any outside areas of the map.
+                    To do this, I added a \codeword{RoomWormHole} which I made implement \codeword{EventEntityEnteredRoom} to listen for when any entities entered the room, as soon as one is detected, a short animation is played and a room is selected at random to teleport the user to. Allowing the user to go to \textbf{any room} may interfere with my story so I chose to only spawn the user at any outside areas of the map.
                 
-                    \item \textit{``Implement a terminal emulator.''}
+                \item \textit{``Implement a terminal emulator.''}
+            
+                    I implemented this by creating a new class \codeword{TerminalEmulator} which implements the \codeword{IOSystem} so that it could be easily slotted into the game. 
+                    %
                 
-                    \item \textit{``Add a system for managing world events.''}
+                \item \textit{``Give NPCs interactive dynamic dialogue.''}
+                
+                    %
+
+                \item \textit{``Add a system for managing world events.''}
+                
+                    %
             \end{itemize}
 
         \section{Code Quality}
-        cock
+        %
 
         \section{Walkthrough}
-        cock
+        %
 
         \section{Known Issues}
-        - Emoji do not correctly render on Windows hosts running BlueJ, reported bug... etc etc
+        
+            \begin{itemize}
+                \item testing
+            \end{itemize}
+
     \end{multicols}
 
     \begin{thebibliography}{9}
@@ -123,8 +151,6 @@
 
     \begin{multicols}{2}
         \section{First Section}
-        so we do a lot of writing
-
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin congue leo nec ligula euismod, sit amet efficitur mi condimentum. Nulla pulvinar, justo sed sollicitudin euismod, mi velit vestibulum diam, et mollis odio felis id nulla. Nam id velit nec lacus fringilla cursus. Nulla quis tempus erat, a dignissim urna. Curabitur justo risus, varius vel iaculis finibus, eleifend quis metus. Proin id bibendum purus, non elementum ante. Vestibulum eu orci non erat luctus iaculis. Suspendisse potenti. Praesent libero leo, condimentum eu mauris et, mollis efficitur ligula. Duis eget nisi erat. Donec urna ipsum, convallis at faucibus non, maximus quis orci. Donec vitae neque ac dui tempor scelerisque id faucibus nulla. Nullam vel suscipit metus. Mauris vel semper nisl, eu elementum arcu.
 
         Vivamus in leo et enim laoreet tempor. Phasellus feugiat volutpat neque, a faucibus justo fringilla eleifend. Pellentesque condimentum ipsum nec justo blandit aliquam ac et nisl. Donec placerat et dui ac varius. Integer faucibus odio est, nec hendrerit ex scelerisque ac. In viverra tortor id aliquet eleifend. Sed ut dignissim ligula. Aenean dapibus ornare venenatis.
