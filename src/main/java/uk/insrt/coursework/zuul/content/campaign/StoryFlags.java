@@ -1,5 +1,7 @@
 package uk.insrt.coursework.zuul.content.campaign;
 
+import java.util.HashSet;
+
 import uk.insrt.coursework.zuul.content.campaign.events.EventGameStageChanged;
 import uk.insrt.coursework.zuul.events.EventSystem;
 import uk.insrt.coursework.zuul.events.world.EventTick;
@@ -16,15 +18,22 @@ public class StoryFlags {
         Recon, // Ch 2.
         Stealth, // Ch 3.
         End, // Current Ending
-        
+
         Twist, // Ch 4. Skipped
         Conclusion, // Ch 5. Skipped
     }
+
+    /**
+     * Side-quests available in the game.
+     */
+    public enum Quest {
+        Cat
+    }
     
     private EventSystem eventSystem;
+    private HashSet<Quest> quests;
     private int balance;
     private Stage stage;
-    private int quests;
     private int ticks;
 
     /**
@@ -34,8 +43,8 @@ public class StoryFlags {
     public StoryFlags(EventSystem eventSystem) {
         this.eventSystem = eventSystem;
         this.stage = Stage.Exposition;
+        this.quests = new HashSet<>();
         this.balance = 100_000;
-        this.quests = 0;
         this.ticks = 0;
 
         this.eventSystem.addListener(EventTick.class, e -> this.ticks++);
@@ -99,8 +108,8 @@ public class StoryFlags {
     /**
      * Mark a side-quest as complete
      */
-    public void completeSideQuest() {
-        this.quests++;
+    public void completeSideQuest(Quest quest) {
+        this.quests.add(quest);
     }
 
     /**
@@ -108,6 +117,14 @@ public class StoryFlags {
      * @return Number of completed side-quests
      */
     public int getCompletedQuests() {
-        return this.quests;
+        return this.quests.size();
+    }
+
+    /**
+     * Get total number of side-quests.
+     * @return Total number of side-quests
+     */
+    public int getTotalQuests() {
+        return Quest.values().length;
     }
 }

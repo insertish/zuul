@@ -29,8 +29,9 @@ public class CommandWin extends Command {
 
         io.println("<commands.win.conclusion>\n<commands.win.stats>\n"
             + "<commands.win.total_ticks>" + flags.getTicks() + "\n"
-            + "<commands.win.sidequests_complete>" + flags.getCompletedQuests()
-            + " / 1\n\n<commands.win.press_enter_key>");
+            + "<commands.win.sidequests_complete>"
+            + flags.getCompletedQuests() + " / " + flags.getTotalQuests()
+            + "\n\n<commands.win.press_enter_key>");
 
         io.readLine();
         return true;
