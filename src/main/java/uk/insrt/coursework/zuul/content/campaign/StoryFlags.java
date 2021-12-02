@@ -2,6 +2,7 @@ package uk.insrt.coursework.zuul.content.campaign;
 
 import uk.insrt.coursework.zuul.content.campaign.events.EventGameStageChanged;
 import uk.insrt.coursework.zuul.events.EventSystem;
+import uk.insrt.coursework.zuul.events.world.EventTick;
 
 /**
  * Class which controls story progression within the Campaign World.
@@ -21,6 +22,8 @@ public class StoryFlags {
     private EventSystem eventSystem;
     private int balance;
     private Stage stage;
+    private int quests;
+    private int ticks;
 
     /**
      * Construct a new instance of StoryFlags
@@ -30,6 +33,10 @@ public class StoryFlags {
         this.eventSystem = eventSystem;
         this.stage = Stage.Exposition;
         this.balance = 100_000;
+        this.quests = 0;
+        this.ticks = 0;
+
+        this.eventSystem.addListener(EventTick.class, e -> this.ticks++);
     }
 
     /**
@@ -77,5 +84,28 @@ public class StoryFlags {
 
         this.balance -= value;
         return true;
+    }
+
+    /**
+     * Get ticks since start of the World.
+     * @return Number of ticks since start
+     */
+    public int getTicks() {
+        return this.ticks;
+    }
+
+    /**
+     * Mark a side-quest as complete
+     */
+    public void completeSideQuest() {
+        this.quests++;
+    }
+
+    /**
+     * Get completed side-quests.
+     * @return Number of completed side-quests
+     */
+    public int getCompletedQuests() {
+        return this.quests;
     }
 }

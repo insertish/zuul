@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import uk.insrt.coursework.zuul.commands.CommandManager;
 import uk.insrt.coursework.zuul.content.campaign.CampaignWorld;
 import uk.insrt.coursework.zuul.content.campaign.commands.CommandMap;
+import uk.insrt.coursework.zuul.content.campaign.commands.CommandWin;
 import uk.insrt.coursework.zuul.events.world.EventProcessCommand;
 import uk.insrt.coursework.zuul.events.world.EventTick;
 import uk.insrt.coursework.zuul.io.IOSystem;
@@ -76,6 +77,7 @@ public class Game {
 
         // Setup the command manager.
         this.commands = new CommandManager();
+        this.commands.registerCommand(new CommandWin());
 
         // Register the Map command if we're in term emu mode.
         // We draw images here so it's not available generally.
@@ -119,7 +121,7 @@ public class Game {
             this.world.emit(new EventTick());
         }
 
-        this.io.println("you were game ended");
+        this.io.println("Goodbye.");
 
         try {
             Thread.sleep(1000);

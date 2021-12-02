@@ -99,6 +99,28 @@ where_am_i = "describe the current room again"
         1 = "You have discovered"
         2 = "of the world"
 
+    [commands.win]
+    usage = "win the game"
+    conclusion = """...
+
+Chapter 4.:
+The files are released into the internet for anyone to read, people are quick to
+analyse through every single tiny detail, some immediate details come to light:
+- Slyvasta was researching ethically questionable areas of science, in
+  particular, they were running hundreds of tests daily on a variety of beastman
+  test subjects. But nobody could prove anyone was there against their will.
+- However, the research did also get immediately picked up by foreign powers who
+  quickly discovered that the beastman society living in the city is a far
+  greater threat than they initially anticipated.
+- The city, with Sylvasta's public advice, immediately ordered evacuation of all
+  citizens to any area they could find fearing a potentially deadly conflict on
+  the horizon. The city quickly came under fire over the coming days.
+"""
+    stats = "\u001B[47m\u001B[30mYour final game stats\u001B[0m"
+    total_ticks = "Total game ticks: "
+    sidequests_complete = "Side-quests completed: "
+    press_enter_key = "Press enter to close the game."
+
 [entities]
 boat_key = "A key to the speed boat"
 
@@ -219,12 +241,14 @@ Slyvasta.
 \u001B[36mCorrespondent\u001B[0m to \u001B[33mProtestor\u001B[0m: What brings you here today?
 """
 
-        dialog_b="""\u001B[33mProtestor\u001B[0m: They're taking the city's money and using it for gain, I don't think
-they should receive any funding let alone be allowed to continue operating here.
+        dialog_b="""\u001B[33mProtestor\u001B[0m:
+Protestor: They're taking the city's money and using it for their own gain, they
+shouldn't receive any funding let alone be allowed to operate here.
 
 \u001B[31mNews Anchor\u001B[0m: Bold claims coming straight from outside Sylvasta, whether these
 claims are grounded in anything is yet to be discovered, we've seen months and
-months of leaks come out from former employees and internal mishaps.
+months of leaks come out from former employees and internal mishaps but are yet
+to truly find out the intention behind the people at Sylvasta.
 
 \u001B[31mNews Anchor\u001B[0m: Sylvasta has personally announced that they refuse to communicate
 or elaborate any further on their internal research citing public safety,
@@ -555,6 +579,7 @@ once you're down there, let me know.
     received = """\u001B[35mMarie\u001B[0m: Alright, I've received the documents, I'm sending them out far and wide,
 good job on getting in and getting these."""
     bad_documents = "\u001B[35mMarie\u001B[0m: These don't look like the right documents..."
+    no_access = "\u001B[31mAccess denied!\u001B[0m"
 
         [marie.comms.orientation]
         dialog = "\u001B[35mMarie\u001B[0m: What do you want?"
@@ -613,3 +638,11 @@ from there, let me know once you're there.
         [marie.comms.home]
         dialog = """\u001B[35mMarie\u001B[0m: Presumably you have the documents, turn your computer on, go to the link
 I've sent you, it should show up, and upload them."""
+
+[stage]
+reached_conclusion = """\n
+You've reached the end of the game, you're now in an open world mode, keep
+exploring anything you haven't to maximise your score.
+
+You can conclude by typing \u001B[47m\u001B[30mwin\u001B[0m
+"""

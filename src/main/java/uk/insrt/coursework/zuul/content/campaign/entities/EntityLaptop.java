@@ -56,6 +56,7 @@ public class EntityLaptop extends EntityWithDialogue<String> implements IUseable
                     var w = (CampaignWorld) this.getWorld();
                     var flags = w.getStoryFlags();
                     if (flags.getStage() != Stage.Stealth) {
+                        io.println("<marie.comms.no_access>");
                         return "document";
                     }
 

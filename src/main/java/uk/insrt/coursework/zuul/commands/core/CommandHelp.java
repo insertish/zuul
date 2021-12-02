@@ -34,12 +34,17 @@ public class CommandHelp extends Command {
             this.commandManager
                 .getCommands()
                 .stream()
-                .filter(c -> !(c instanceof CommandHelp))
+                .filter(Command::isVisible)
                 .map(c -> "- " + Ansi.BackgroundWhite + Ansi.Black
                     + c.getSyntax() + Ansi.Reset + ": " + c.getUsage())
                 .collect(Collectors.joining("\n"))
         );
 
+        return false;
+    }
+
+    @Override
+    public boolean isVisible() {
         return false;
     }
 }

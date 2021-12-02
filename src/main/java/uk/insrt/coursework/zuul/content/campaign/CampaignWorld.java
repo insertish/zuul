@@ -219,6 +219,10 @@ public class CampaignWorld extends World {
                         }
                         break;
                     }
+                    case Conclusion: {
+                        io.println("<stage.reached_conclusion>");
+                        break;
+                    }
                     default: break;
                 }
             });
@@ -236,6 +240,6 @@ public class CampaignWorld extends World {
 
     @Override
     public void spawnPlayer() {
-        this.player.setLocation(this.rooms.get("City Centre"));
+        this.player.setLocation(this.rooms.get("Apartments: Home"));
     }
 }

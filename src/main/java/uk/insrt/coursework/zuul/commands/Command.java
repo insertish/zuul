@@ -53,6 +53,14 @@ public abstract class Command {
     }
 
     /**
+     * Check whether this command is visible to the player in the help menu.
+     * @return True if visible
+     */
+    public boolean isVisible() {
+        return true;
+    }
+
+    /**
      * Run this command within the scope of a world and with any parsed arguments.
      * @param world Current World object
      * @param args Arguments passed into command
