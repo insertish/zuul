@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.events.Event;
 
 /**
  * Event fired when the terminal emulator draws a new frame.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EventDraw extends Event {
     private Graphics g;

@@ -12,6 +12,9 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * Marie Itami
  * https://brand-new-animal.fandom.com/wiki/Marie_Itami
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityMarie extends EntityNpc {
     /**

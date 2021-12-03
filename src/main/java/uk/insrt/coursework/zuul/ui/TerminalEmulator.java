@@ -11,6 +11,9 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 /**
  * A terminal emulator which implements an IO system to
  * be arbitrarily plugged into any existing components.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class TerminalEmulator implements IOSystem {
     public static final int TERMINAL_WIDTH = 80;

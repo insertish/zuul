@@ -3,6 +3,9 @@ package uk.insrt.coursework.zuul.io;
 /**
  * Sanitise incoming output and remove any Ansi escape sequences.
  * This is required to print out into the BlueJ console without additional characters.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class SanitiseIO implements IOSystem {
     private final String ansiPattern = "\\u001B\\[(\\d{1,3})m";

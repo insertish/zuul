@@ -5,6 +5,9 @@ import java.util.ArrayList;
 /**
  * Representation of an Entity's inventory
  * and what they are holding.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Inventory {
     private ArrayList<Entity> items = new ArrayList<>();

@@ -18,6 +18,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Shop keeper which the player can buy items from in the town.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityShopkeeper extends EntityNpc {
     private HashMap<Stage, Entity[]> items;

@@ -7,6 +7,9 @@ import uk.insrt.coursework.zuul.util.Localisation;
 
 /**
  * Translate and localise any incoming output.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class LocalisedIO implements IOSystem {
     private final Pattern pattern = Pattern.compile("<([\\w\\.]+?)>");

@@ -8,6 +8,9 @@ import uk.insrt.coursework.zuul.events.world.EventTick;
 
 /**
  * Class which controls story progression within the Campaign World.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class StoryFlags {
     /**

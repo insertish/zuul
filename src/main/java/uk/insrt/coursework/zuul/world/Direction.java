@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * Enum which represents a Cardinal direction.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public enum Direction {
     NORTH(new String[] { "N" }),

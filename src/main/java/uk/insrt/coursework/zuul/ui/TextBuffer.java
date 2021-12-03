@@ -8,6 +8,9 @@ import uk.insrt.coursework.zuul.io.Ansi;
 /**
  * Representation of a text and colour buffer.
  * Provides various utilities for manipulating text on screen.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class TextBuffer {
     private char[][] buffer;

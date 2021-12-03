@@ -10,6 +10,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Couch present in the Medical Centre reception area.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityCouch extends EntityObject implements IUseable, IEventListener<EventEntityLeftRoom> {
     private boolean isSitting;

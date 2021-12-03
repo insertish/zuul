@@ -10,6 +10,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * This command is unlocked after the player completes the final mission.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class CommandWin extends Command {
     public CommandWin() {

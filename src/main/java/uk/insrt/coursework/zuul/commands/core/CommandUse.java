@@ -10,6 +10,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Command which allows the Player to use an Entity.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class CommandUse extends Command {
     public CommandUse() {

@@ -4,6 +4,9 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 
 /**
  * An option which branches off a {@link DialogueNode} into another node.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class DialogueOption<T> {
     private IDialogueHandler<T> handler;

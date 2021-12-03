@@ -13,6 +13,9 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * Command which allows the Player to take an Entity and put it in their Inventory.
  * They may also take these Entities from other Entity Inventories.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class CommandTake extends Command {
     public CommandTake() {

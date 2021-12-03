@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 
 /**
  * Simple dialogue engine which navigates between {@link DialogueNode}(s).
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Dialogue<T> {
     private HashMap<T, DialogueNode<T>> parts;

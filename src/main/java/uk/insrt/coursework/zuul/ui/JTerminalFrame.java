@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 
 /**
  * Window frame for {@link TerminalEmulator}
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class JTerminalFrame extends JFrame {
     private JTerminalView view;

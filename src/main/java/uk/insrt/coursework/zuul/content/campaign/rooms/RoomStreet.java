@@ -10,6 +10,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * One of the major connecting points between locations in the city.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class RoomStreet extends CampaignRoom implements IEventListener<EventGameStageChanged> {
     private Entity protestorsEntity;

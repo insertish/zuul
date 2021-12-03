@@ -18,6 +18,9 @@ import uk.insrt.coursework.zuul.world.World;
  * 
  * Boats may not be operated by the player while they are carrying
  * anything so instead they must use the boat's storage.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityBoat extends Entity implements IUseable, IGiveable {
     private Room destination;

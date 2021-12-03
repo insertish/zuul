@@ -12,6 +12,9 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * Teleporter room implemented as required by the challenge tasks.
  * Any Entity that walks into the worm hole is transported into a random public location.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class RoomWormHole extends CampaignRoom implements IEventListener<EventEntityEnteredRoom> {
     public RoomWormHole(World world) {

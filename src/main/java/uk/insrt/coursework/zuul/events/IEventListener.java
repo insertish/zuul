@@ -2,6 +2,9 @@ package uk.insrt.coursework.zuul.events;
 
 /**
  * Interface implementing an listener for an arbitrary {@link Event}.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public interface IEventListener<E extends Event> {
     /**

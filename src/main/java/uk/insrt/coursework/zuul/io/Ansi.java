@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 /**
  * ANSI escape codes
  * Used https://stackoverflow.com/a/5762502 as a reference.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Ansi {
     public static final String Reset = "\u001B[0m";

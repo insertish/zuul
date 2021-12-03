@@ -15,6 +15,9 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * Comms entity which is used to communicate between
  * Marie and the player during the mission.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityComms extends EntityWithDialogue<String> implements IUseable {
     public EntityComms(World world, Location location) {

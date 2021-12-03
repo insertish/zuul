@@ -8,6 +8,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Abstract implementation of an entity which provides some sort of dialogue.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public abstract class EntityWithDialogue<T> extends Entity {
     protected Dialogue<T> dialogue;

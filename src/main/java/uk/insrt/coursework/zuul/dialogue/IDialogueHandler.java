@@ -4,6 +4,9 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 
 /**
  * Interface implemented to provide an onAction method.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public interface IDialogueHandler<T> {
     /**

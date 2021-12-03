@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.world.Direction;
 
 /**
  * Wrapper around regex Matcher for deriving the values of given arguments in commands.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Arguments {
     private Matcher matcher;

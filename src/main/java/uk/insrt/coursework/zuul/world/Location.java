@@ -5,6 +5,9 @@ import uk.insrt.coursework.zuul.entities.Inventory;
 /**
  * Representation of a physical location in the world,
  * whether it is a room or inventory or neither but not both.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Location {
     private Room room;

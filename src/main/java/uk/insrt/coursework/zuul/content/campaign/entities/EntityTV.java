@@ -9,6 +9,9 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * TV entity present in the player's room which they interact
  * with at the start of the game to learn more about the world.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityTV extends EntityWithDialogue<String> implements IUseable {
     public EntityTV(World world, Location location) {

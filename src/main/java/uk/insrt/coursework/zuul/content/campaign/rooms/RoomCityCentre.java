@@ -8,6 +8,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * The city centre connecting most major locations.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class RoomCityCentre extends CampaignRoom {
     public RoomCityCentre(World world) {

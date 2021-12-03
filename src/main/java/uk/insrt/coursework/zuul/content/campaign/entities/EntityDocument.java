@@ -8,6 +8,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Documents which the player needs to find and take.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityDocument extends EntityObject implements IUseable {
     private int count;

@@ -16,6 +16,9 @@ import uk.insrt.coursework.zuul.io.IOSystem;
  * Contains all the Rooms and Entities as well as the Player.
  * Has its own Event system for signaling when things should happen.
  * Also has access to the IO system which is provided to all Rooms and Entities.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class World {
     protected Map<String, Room> rooms = new HashMap<>();

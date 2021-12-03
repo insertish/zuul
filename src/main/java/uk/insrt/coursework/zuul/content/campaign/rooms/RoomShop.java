@@ -1,12 +1,14 @@
 package uk.insrt.coursework.zuul.content.campaign.rooms;
 
-import uk.insrt.coursework.zuul.content.campaign.entities.EntityNpc;
 import uk.insrt.coursework.zuul.content.campaign.entities.EntityShopkeeper;
 import uk.insrt.coursework.zuul.world.Direction;
 import uk.insrt.coursework.zuul.world.World;
 
 /**
  * A shop within the city, the only one the player can interact with.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class RoomShop extends CampaignRoom {
     public RoomShop(World world) {

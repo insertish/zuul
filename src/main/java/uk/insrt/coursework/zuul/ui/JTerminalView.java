@@ -18,6 +18,9 @@ import com.moandjiezana.toml.Toml;
 
 /**
  * Rendering component of {@link TerminalEmulator}
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class JTerminalView extends JPanel {
     private TerminalEmulator emulator;

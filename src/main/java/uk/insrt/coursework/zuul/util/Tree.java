@@ -7,6 +7,9 @@ import java.util.List;
  * This is an implementation of a Tree-like data structure.
  * Each node has a one or more children identified by a key
  * and each node can have more children or have a value.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Tree<K, V> {
     private HashMap<K, Tree<K, V>> children = new HashMap<>();

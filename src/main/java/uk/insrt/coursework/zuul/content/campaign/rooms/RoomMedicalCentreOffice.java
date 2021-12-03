@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Private, usually inaccessible room within the Medical Centre complex.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class RoomMedicalCentreOffice extends CampaignRoom {
     public RoomMedicalCentreOffice(World world) {

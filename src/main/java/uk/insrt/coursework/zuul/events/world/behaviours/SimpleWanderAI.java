@@ -10,6 +10,9 @@ import uk.insrt.coursework.zuul.world.Room;
 /**
  * This is a simple behaviour which just randomly decides to move an Entity
  * through a set path whenever the game ticks forwards.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class SimpleWanderAI implements IEventListener<EventTick> {
     private Entity entity;

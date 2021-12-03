@@ -6,6 +6,9 @@ import java.util.Set;
 /**
  * Representation of a Room within the World.
  * Handles how entities can move from this to other Rooms.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public abstract class Room {
     private World world;

@@ -4,6 +4,9 @@ import java.awt.Image;
 
 /**
  * Representation of a single Emoji which can be rendered in the terminal emulator.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Emoji {
     private Image image;

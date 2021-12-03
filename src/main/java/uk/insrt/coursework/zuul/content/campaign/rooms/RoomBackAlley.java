@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * The back alley in the North East side of the map.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class RoomBackAlley extends CampaignRoom {
     public RoomBackAlley(World world) {

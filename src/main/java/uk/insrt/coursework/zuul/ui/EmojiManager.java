@@ -19,6 +19,9 @@ import uk.insrt.coursework.zuul.util.Tree;
 
 /**
  * Class which helps manage loading and resolving Emojis.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EmojiManager {
     private HashMap<String, Emoji> emojis;

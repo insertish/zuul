@@ -14,6 +14,9 @@ import uk.insrt.coursework.zuul.world.World;
  * exist in the world are considered an Entity. Each
  * Entity also has an Inventory so things may be stored
  * inside of it.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public abstract class Entity {
     protected World world;

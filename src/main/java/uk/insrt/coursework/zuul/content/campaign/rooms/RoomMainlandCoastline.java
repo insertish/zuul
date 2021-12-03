@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * The coast which connects the mainland to the main city.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class RoomMainlandCoastline extends CampaignRoom {
     public RoomMainlandCoastline(World world) {

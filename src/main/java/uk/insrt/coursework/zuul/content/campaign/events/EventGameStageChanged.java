@@ -5,6 +5,9 @@ import uk.insrt.coursework.zuul.events.Event;
 
 /**
  * Event fired when the story stage (chapter) changes.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EventGameStageChanged extends Event {
     private Stage stage;

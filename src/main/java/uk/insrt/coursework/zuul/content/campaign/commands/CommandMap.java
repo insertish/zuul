@@ -16,6 +16,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Command available for the terminal emulator which displays a graphical map.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class CommandMap extends Command implements IEventListener<EventDraw> {
     private boolean visible;

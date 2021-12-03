@@ -7,6 +7,9 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 
 /**
  * A node in a {@link Dialogue} system.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class DialogueNode<T> {
     private String description;

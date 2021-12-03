@@ -3,6 +3,9 @@ package uk.insrt.coursework.zuul.io;
 /**
  * Interface representing an arbitrary IO system.
  * This can be implemented to input or output from various interfaces.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public interface IOSystem {
     /**

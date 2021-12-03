@@ -10,6 +10,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Player entity which we can control and move around.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityPlayer extends Entity {
     private ArrayList<Room> previousRooms;

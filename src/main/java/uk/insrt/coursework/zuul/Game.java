@@ -22,6 +22,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Class for managing the game loop and initialising the world.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Game {
     public static final String GAME_NAME = "World of Deez";

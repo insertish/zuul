@@ -5,6 +5,9 @@ import uk.insrt.coursework.zuul.events.Event;
 
 /**
  * Event fired when an Entity enters a room.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EventEntityEnteredRoom extends Event {
     private Entity entity;

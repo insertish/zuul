@@ -5,6 +5,9 @@ import java.util.Scanner;
 /**
  * A simple IO system implementation which feeds
  * into System.out and takes data from System.in
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class StandardIO implements IOSystem {
     private Scanner reader;

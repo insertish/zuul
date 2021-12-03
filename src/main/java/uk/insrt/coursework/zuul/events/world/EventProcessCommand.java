@@ -4,6 +4,9 @@ import uk.insrt.coursework.zuul.events.Event;
 
 /**
  * Event fired when an arbitrary command is about to be run.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EventProcessCommand extends Event {
     private String cmd;

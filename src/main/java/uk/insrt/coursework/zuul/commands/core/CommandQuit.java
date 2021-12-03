@@ -8,6 +8,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Command which allows the player to quit the game.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class CommandQuit extends Command {
     public CommandQuit() {

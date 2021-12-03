@@ -22,6 +22,9 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * Command handler which constructs, then resolves
  * and executes commands from an arbitrary input.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class CommandManager {
     private ArrayList<Command> commands = new ArrayList<>();

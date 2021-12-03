@@ -8,6 +8,9 @@ import java.util.LinkedHashSet;
  * Event system which manages taking in events
  * from different sources and handles them
  * by firing callbacks on event listeners.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EventSystem {
     private HashMap<Class<? extends Event>, LinkedHashSet<IEventListener<? extends Event>>> listeners = new HashMap<>();

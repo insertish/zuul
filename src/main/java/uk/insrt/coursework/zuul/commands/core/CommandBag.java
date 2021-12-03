@@ -13,6 +13,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Command which allows the Player to look at their or another Entity's inventory.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class CommandBag extends Command {
     private final DecimalFormat format = new DecimalFormat("0.00");

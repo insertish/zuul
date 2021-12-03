@@ -11,6 +11,9 @@ import com.moandjiezana.toml.Toml;
 
 /**
  * This class provides localisation capabilities for the game.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Localisation {
     private Map<String, Object> map;

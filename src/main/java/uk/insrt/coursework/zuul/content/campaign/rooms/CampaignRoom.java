@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Class which overrides getWorld to instead provide the CampaignWorld.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public abstract class CampaignRoom extends Room {
     /**

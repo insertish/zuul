@@ -3,6 +3,9 @@ package uk.insrt.coursework.zuul.events;
 /**
  * Represents a single event fired from
  * any source to be consumed by anything.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Event {
     private boolean propagating = true;

@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.entities.Entity;
 
 /**
  * Utilities for searching through data structures related to the game
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class Search {
     /**

@@ -12,6 +12,9 @@ import com.moandjiezana.toml.Toml;
 /**
  * This is a helper class for loading and populating {@link Dialogue}.
  * This DialogueLoader assumes that i18n is being used in the dialogue data.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class DialogueLoader {
     private Map<String, Object> data;

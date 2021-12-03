@@ -9,6 +9,9 @@ import uk.insrt.coursework.zuul.world.World;
 
 /**
  * Command which allows the player to reorient themselves in the world.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class CommandWhereAmI extends Command {
     public CommandWhereAmI() {

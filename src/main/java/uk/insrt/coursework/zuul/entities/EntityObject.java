@@ -6,6 +6,9 @@ import uk.insrt.coursework.zuul.world.World;
 /**
  * Generic object class which avoids some boilerplate.
  * Use this for entities which are guaranteed to never change.
+ * 
+ * @author Pawel Makles (K21002534)
+ * @version 1.0-SNAPSHOT
  */
 public class EntityObject extends Entity {
     private String description;
