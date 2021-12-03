@@ -13,9 +13,13 @@
 \usepackage{hyperref}
 \usepackage{caption}
 
+\usepackage{blindtext}
+\usepackage{dirtree}
+
 \usepackage{xcolor}
 \colorlet{cBlue}{blue!80}
 \colorlet{cPurple}{blue!40!red}
+\colorlet{cRed}{red!60}
 
 \NewDocumentCommand{\codeword}{v}{
     \texttt{\textcolor{cBlue}{#1}}
@@ -142,6 +146,7 @@
                     See \autoref{fig:help-command} for an example of the help menu.
             \end{itemize}
 
+        \setlength{\parskip}{0.1cm plus4mm minus3mm}
         \section{Challenge Tasks}
 
             This section describes how I implemented the challenge tasks and what I did in addition.
@@ -150,7 +155,16 @@
             \begin{itemize}[leftmargin=*]
                 \item \textit{``Add characters to your game.''}
                 
-                    %
+                    I ended up adding $8$ characters to my game, $3$ of which can move on their own.
+
+                    \begin{itemize}[leftmargin=*]
+                        \item \textbf{Static NPCs}: There are several static NPCs which the player can interact with, talk with or complete missions for.
+                        Including the receptionist, city NPC, the old man, the security guard, the shopkeeper and Marie who is part of the main story.
+                        \item \textbf{Dynamic NPCs}: There are $2$ NPCs which appear or disappear depending on the state of the game, this includes the protestors and security guard.
+                        \item \textbf{Moving NPCs}: There is a single NPC, the cat, which randomly follows a fixed path to move around the map. This is done by listening to \codeword{EventTick} from world events and then randomly deciding to move.
+                    \end{itemize}
+
+                    Note on character creation: I decided to stick to mostly generic characters in the game, mainly since the people you encounter have not as much impact on the story, with the exception of Marie \cite{marie}, who I took straight from BNA \cite{bna}, see \autoref{fig:festival-marie}, she is a sly and cunning character which I think perfectly fits the role I need.
 
                 \item \textit{``Extend the parser.''}
                 
@@ -168,35 +182,87 @@
                 \item \textit{``Add a magic transporter room.''}
                 
                     To do this, I added a \codeword{RoomWormHole} which I made implement \codeword{EventEntityEnteredRoom} to listen for when any entities entered the room, as soon as one is detected, a short animation is played and a room is selected at random to teleport the user to. Allowing the user to go to \textbf{any room} may interfere with my story so I chose to only spawn the user at any outside areas of the map.
-            \end{itemize}
+                \end{itemize}
 
-            \subsection{Dialogue and Localisation}
-            \textit{``Give NPCs interactive dynamic dialogue.''}
+                \subsection{World Event System}
+                \textit{``Add a system for managing world events.''}
 
-            \subsection{World Event System}
-            \textit{``Add a system for managing world events.''}
+                    I began by creating a basic \codeword{Event} class which can be extended to hold any arbitrary data, it also provides basic functionality to prevent event propagation (see \autoref{fig:event}).
 
-            \subsection{Terminal Emulator}
-            \textit{``Implement a terminal emulator.''}
+                    I created an \codeword{EventSystem} class which would manage incoming and outgoing events, I decided that it should have the ability to handle any event and allow anything to create listeners for any object that extends Event.
 
-            I implemented this by creating a new class \codeword{TerminalEmulator} which implements the \codeword{IOSystem} so that it could be easily slotted into the game. 
+                    To map these, I had a \codeword{HashMap} which mapped unique \codeword{Class<? extends Event>} to linked (as to keep order of registration) hash sets of \codeword{IEventListener<? extends Event>}. The interface simply provides a single method, \codeword{onEvent(Event e)}, which is called when the event is triggered.
 
-            \subsubsection{Ansi Escape Codes}
-            \subsubsection{Emoji Support}
-            \subsubsection{EventDraw and the Map}
+                    Since Java has type erasure, it means my generic type annotations are gone once the program is compiled, so I can't do things such as object is `instanceof' class. As such, I decided to ignore cast warnings and entirely rely on compiler type checking to verify that the objects provided are correct, I achieved this by adding a generic type argument to the add listener method and making the compiler check that the target class and event listener match, see \autoref{fig:generic-method}.
+
+                \subsection{Dialogue and Localisation}
+                \textit{``Give NPCs interactive dynamic dialogue.''} \\
+
+                    To implement dialogue, I made a simple data structure implemented as follows:
+
+                    \dirtree{%
+                        .1 Dialogue.
+                        .2 DialogueNode.
+                        .3 DialogueOption.
+                        .3 DialogueOption.
+                        .2 DialogueNode.
+                        .3 DialogueOption.
+                    }
+
+                    The \codeword{Dialogue} houses several nodes each of which have options which lead to other nodes. With this system, I can add dynamic conversations, such as with the shopkeeper, by extending the \codeword{DialogueNode} class and providing my own dynamically generated description and options.
+
+                    For simpler tasks, such as changing game state through conversation, I can create a new \codeword{DialogueOption} with an \codeword{IDialogueHandler} which provides a method that the dialogue system calls to determine whether anything else needs to happen and what the next node is.
+
+                \subsection{Terminal Emulator}
+                \textit{``Implement a terminal emulator.''} \\
+
+                %\blindtext
+
+                I implemented this by creating a new class \codeword{TerminalEmulator} which implements the \codeword{IOSystem} so that it could be easily slotted into the game. 
+
+                    \subsubsection{Ansi Escape Codes}
+
+                        %\blindtext
+                        To make the game experience 
+
+                    \subsubsection{Emoji Support}
+
+                        %\blindtext
+
+                    \subsubsection{EventDraw and the Map}
+
+                        %
 
         \section{Code Quality}
         % For each of the following code quality considerations, give and explain an example in your
         % project where you considered it: coupling, cohesion, responsibility-driven design, maintain-
         % ability.
 
+            \subsection{Coupling}
+                Talk about EventSystem
+
+            \subsection{Cohesion}
+                Talk about IOSystem
+
+            \subsection{Responsibility-driven design}
+                %
+
+            \subsection{Maintainability}
+                Talk about separation of World / CampaignWorld
+
         \section{Walkthrough}
-        %
+            \textbf{\color{cRed}This guide will skip over some parts of the plot}, it serves as a way to just get to the end, I would recommend playing through first and then falling back on this if you are stuck.
+
+            You wake up in your home, \cmd{go down}, then \cmd{east} then \cmd{north}. Here, you must \cmd{talk to Marie}, go through the prompts ($1 \rightarrow 1 \rightarrow 2 \rightarrow 1$) to progress the story. 
+
+            Now, \cmd{go south}, \cmd{north west}, \cmd{north} and \cmd{talk with shopkeeper}, buy the communicator device and leave. Now \cmd{go south}, \cmd{east}, \cmd{north} and \cmd{talk to Marie} again. Continue by going \cmd{south}, \cmd{north west}, \cmd{west}. Sit down by \cmd{use couch} then \cmd{use comms} and go through the prompts, afterwards \cmd{go down}. Here, you must pick up documents $2$, $4$ and $5$ by using \cmd{take doc2}, ...
+
+            Now, \cmd{go up}, \cmd{east}, \cmd{south}, \cmd{up} to get back to your home and \cmd{use the laptop}. Go through the prompts ($1 \rightarrow 4 \rightarrow 2$). At this point, you can use the command \cmd{win}. If you want to do the side-quest, you'll have to figure it out yourself :-)
 
         \section{Known Issues}
         
             \begin{itemize}[leftmargin=*]
-                \item find issue
+                \item Typing any command starting with `b' will run the inventory command.
             \end{itemize}
 
     \end{multicols}
@@ -208,6 +274,8 @@
         Brand New Animal Wiki. Beastman \url{https://brand-new-animal.fandom.com/wiki/Beastman}
         \bibitem{animacity}
         Brand New Animal Wiki. Animacity \url{https://brand-new-animal.fandom.com/wiki/Anima_City}
+        \bibitem{marie}
+        Brand New Animal Wiki. Marie Itami \url{https://brand-new-animal.fandom.com/wiki/Marie_Itami}
         \bibitem{bna}
         IMDb. BNA (TV Mini Series 2020) \url{https://www.imdb.com/title/tt12013558/}
         \bibitem{utopia}
@@ -247,5 +315,19 @@
         \centering
         \includegraphics[width=\textwidth]{images/help-command.jpg}
         \caption{Output from the help command} \label{fig:help-command}
+    \end{figure}
+    \begin{figure}
+        \lstinputlisting[language=Java]
+        {../src/main/java/uk/insrt/coursework/zuul/events/Event.java}
+        \caption{Event.java (uk.insrt.coursework.zuul.events.Event)} \label{fig:event}
+    \end{figure}
+    \begin{figure}
+        \begin{lstlisting}[language=Java]
+public<E extends Event> void addListener(Class<E> event,
+    IEventListener<E> listener) {
+    this.getList(event).add(listener);
+}
+        \end{lstlisting}
+        \caption{Excerpt from EventSystem.java (uk.insrt.coursework.zuul.events.EventSystem)} \label{fig:generic-method}
     \end{figure}
 \end{document}
