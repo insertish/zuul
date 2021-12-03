@@ -108,7 +108,7 @@ public class Game {
         this.io = new LocalisedIO(this.io, locale);
 
         // Prompt for language
-        this.io.print("What language would you like to use?\n1. :uk:Traditional English\n2. :us:Simplified English\n3. :de:German\nSelection: ");
+        this.io.print("What language would you like to use?\n1. :uk:Traditional English (recommended)\n2. :us:Simplified English\n3. :de:German\nSelection: ");
         String input = this.io.readLine();
         String selectedLanguage = input.equals("3") ? "de_DE" : "en_GB";
 

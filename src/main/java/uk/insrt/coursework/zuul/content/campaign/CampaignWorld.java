@@ -253,6 +253,8 @@ public class CampaignWorld extends World {
                         type = MusicType.Bay1;
                     } else if (room instanceof RoomMainlandCoastline) {
                         type = MusicType.Bay2;
+                    } else if (room instanceof RoomForest) {
+                        type = MusicType.Nature;
                     }
 
                     if (type != null) {
@@ -272,6 +274,8 @@ public class CampaignWorld extends World {
                         type = MusicType.Bay1;
                     } else if (room instanceof RoomMainlandCoastline) {
                         type = MusicType.Bay2;
+                    } else if (room instanceof RoomForest) {
+                        type = MusicType.Nature;
                     }
 
                     if (type != null) {

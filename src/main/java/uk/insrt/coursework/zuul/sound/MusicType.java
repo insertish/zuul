@@ -8,5 +8,10 @@ package uk.insrt.coursework.zuul.sound;
  */
 public enum MusicType {
     Bay1,
-    Bay2
+    Bay2,
+    Nature,
+
+    BgmExplore,
+    BgmMission,
+    BgmConclusion
 }
