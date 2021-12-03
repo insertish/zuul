@@ -1,51 +1,78 @@
 \documentclass{article}
 \usepackage[a4paper, total={6in, 10in}]{geometry}
+\setlength{\parskip}{0.01cm plus4mm minus3mm}
 
 \usepackage{multicol}
 \usepackage{enumitem}
 
-\usepackage{xcolor}
 \usepackage{listings}
 \usepackage{xparse}
 
+\usepackage[superscript,biblabel]{cite}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+
+\usepackage{xcolor}
+\colorlet{cBlue}{blue!80}
+\colorlet{cPurple}{blue!40!red}
+
 \NewDocumentCommand{\codeword}{v}{
-    \texttt{\textcolor{blue}{#1}}
+    \texttt{\textcolor{cBlue}{#1}}
 }
 
 \NewDocumentCommand{\cmd}{v}{
-    \textit{\textcolor{purple}{#1}}
+    \textit{\textcolor{cPurple}{#1}}
 }
 
 \title{World of Deez}
-\author{Joe}
-\date{19th November 2021}
+\author{Pawel Makles \\ \small (K21002534)}
+\date{\small Created: 19th November 2021 \\ Last Modified: 3rd December 2021}
 
 \begin{document}
 \maketitle
 
     \begin{multicols}{2}
         \section{User Level Description}
-        In this game you play Among Us. deez nuts
+        This game is largely open world but has a main storyline which the player can choose to follow to complete the game, as well as other side-quests which can be done alongside or after the story.
+
+        In this game, you are one of millions of citizens in an isolated city home to a Beastman \cite{beastman} society, the city being loosely based off Animacity \cite{animacity} from the series Brand New Animal \cite{bna}. The plot revolves Sylvasta who are deeply intertwined with the city and own the city's medical centre.
+
+        There have been reports that their research has been highly unethical and leaks have been coming out from former employees which have been riling up protests throughout the city, your goal is to figure out what's really happening and to put a stop to it.
+
+        I ended up not adding any information about the main character as to add to the open world, `your adventure', feeling. The story is also loosely based off Utopia \cite{utopia}, in which a group of people are finding the truth behind a manuscript and find themselves in the middle of a conspiracy \cite{pyrocynical}.
         
         \section{Implementation}
-
-        talk about implementation
+        The project is split up into several packages, most of which work independently of each other, in general, the \codeword{Game} uses the \codeword{commands} package (providing actions the player can perform) along with the \codeword{world} (providing the things that the player can interact with in the game) package to run the game. They are laid out as follows:
         
-            % \subsection{Game}
+            \subsection{Commands}
+            This package provides the classes required to parse and run commands, it includes the \codeword{CommandManager} which registers objects of type \codeword{Command}. More about parsing commands is in the challenge task section.
+
+            This package also includes a subpackage called \codeword{core} containing all of the `core' commands required to run any game world, this includes things such as picking items up, quiting the game, and so forth.
             
-            % \subsection{World}
+            \subsection{Entities}
+            This package provides the basic tools required to create simple and complex entities within the world, more about entity detail is discussed later.
+
+            It also contains a subpackage \codeword{actions} which contains common interfaces which entities can implement to allow the ways that they can be interacted with to be quite modular.
             
-            %     \subsubsection{Rooms}
+            \subsection{Content / Campaign}
+            The \codeword{content.campaign} package contains a lot of custom content derived from the base game used to construct the story and the story world.
             
-            % \subsection{Entities}
+            \subsection{World}
+            This package has the basic building blocks for creating worlds including the \codeword{World} and \codeword{Room} classes which can be easily extended for more functionality. The only limitations are that traveling between rooms must be done in a direction specified in the \codeword{Direction} enum and that the \codeword{Location} of any entity must be either a room, inventory or neither.
             
-            %     \subsubsection{Actions}
-                
-            %     \subsubsection{Behaviours}
-            
-            % \subsection{Commands}
-            
-            % \subsection{Campaign}
+            \subsection{Util}
+            This package contains a bunch of small utility classes, including:
+
+                \begin{itemize}[leftmargin=*]
+                    \item \textbf{BlueJ.java} \cite{bluej}: Contains improved methods on detecting whether the application is currently running in BlueJ. (taken from my previous coursework assignment)
+                    \item \textbf{Localisation.java}: A pretty straightforward implementation of a localisation engine. Simply maps (period-separated) keys to their respective (nested) keys in a language file.
+                    \item \textbf{Search.java}: Methods for searching through various data structures in the game.
+                    \item \textbf{Tree.java}: A very simple implementation of a tree with basic traversal methods.
+                \end{itemize}
+
+            \subsection{Dialogue \& IO \& UI \& Events}
+            These are all discussed later on in the challenge task section.
 
         \section{Base Tasks}
 
@@ -54,13 +81,23 @@
             \begin{itemize}[leftmargin=*]
                 \item \textit{``The game has several locations the player can walk through.''}
                 
+                    I began by first designing the world map (see \autoref{fig:map}), using Excalidraw \cite{excalidraw}, then implemented each location as a \codeword{Room}.
+
+                    To build the world, I made a \codeword{World} class to house all the locations which exist in the game world and then extended this using the \codeword{CampaignWorld} class which builds the story world, creates rooms and registers events.
+
                     I ended up adding $10$ locations into my game:
                     \begin{itemize}[leftmargin=*]
-                        \item \textbf{City Centre}: Centre of the city connecting major areas.
+                        \item \textbf{City Centre}: Centre of the city connecting major areas with the coast.
                         \item \textbf{Apartments}: This is the player's residence.
                         \item \textbf{Street}: This is the main city street connecting important buildings.
                         \item \textbf{Shop}: The local city shop where the player frequents to get necessary items.
+                        \item \textbf{Back Alley}: This is where the player can start the main story mission.
+                        \item \textbf{Coastline}: There are two coasts, one on the city side and one on the mainland.
+                        \item \textbf{Forest}: The forest grants access to the Worm Hole and to other side-quests.
+                        \item \textbf{Worm Hole}: For challenge task 3.
                     \end{itemize}
+
+                    The layout is heavily inspired by Animacity, although since there's no available map of the actual city, I made my own interpretation based off various pieces of art, (see \autoref{fig:runaway-raccoon}). I used an existing real life location to determine the size of the river \cite{river-map}.
 
                 \item \textit{``There are items in some rooms that may or may not be picked up by players.''}
                 
@@ -76,10 +113,12 @@
                     $$
                         \textsf{currentWeight} + \textsf{itemWeight} \le \textsf{maxWeight}
                     $$
+
+                    To determine the weight of common items, I referred to a document I found online published by the City of York Council \cite{common-weights}.
                 
                 \item \textit{``Player can win.''}
                 
-                    The player may win by completing the main story mission which sets a flag that the game has been completed, the player may choose to keep playing in the open world or run \cmd{win} to end the game.
+                    The player may win by completing the main story mission (detailed in the walkthrough) which sets a flag that the game has been completed, the player may choose to keep playing in the open world or run \cmd{win} to end the game.
 
                 \item \textit{``There is a command} \cmd{back} {which takes you back to the last room.''}
                 
@@ -87,13 +126,27 @@
 
                 \item \textit{``Add at least four new commands.''}
                 
-                    %
+                    I added several additional commands which are listed below:
+
+                    \begin{itemize}[leftmargin=*]
+                        \item \cmd{bag}: Allows the player to look at their or another entity's inventory.
+                        \item \cmd{drop}: Drop any specified item from the player's inventory into current room.
+                        \item \cmd{give}: Give a specified item to another entity, we ensure that the entity implements \codeword{IGiveable} and give the item to the entity using \codeword{IGiveable::give}.
+                        \item \cmd{pet}: Pet a specified entity, has to implement \codeword{IPettable}, we use \codeword{IPettable::pet}.
+                        \item \cmd{take}: Take any specified item from another entity's inventory.
+                        \item \cmd{talk}: Initiate a conversation with an entity, must implement \codeword{ITalkwith}, we call \codeword{ITalkwith::talk} to start the conversation.
+                        \item \cmd{use}: `Use' an entity, we call \codeword{IUseable::use} to use the entity. (implemented by entity)
+                        \item \cmd{where am i}: Tells the game to print out room information again, this is done by emitting \codeword{EventEntityEnteredRoom} again.
+                    \end{itemize}
+
+                    See \autoref{fig:help-command} for an example of the help menu.
             \end{itemize}
 
         \section{Challenge Tasks}
 
             This section describes how I implemented the challenge tasks and what I did in addition.
 
+            \subsection{Required Tasks}
             \begin{itemize}[leftmargin=*]
                 \item \textit{``Add characters to your game.''}
                 
@@ -115,61 +168,84 @@
                 \item \textit{``Add a magic transporter room.''}
                 
                     To do this, I added a \codeword{RoomWormHole} which I made implement \codeword{EventEntityEnteredRoom} to listen for when any entities entered the room, as soon as one is detected, a short animation is played and a room is selected at random to teleport the user to. Allowing the user to go to \textbf{any room} may interfere with my story so I chose to only spawn the user at any outside areas of the map.
-                
-                \item \textit{``Implement a terminal emulator.''}
-            
-                    I implemented this by creating a new class \codeword{TerminalEmulator} which implements the \codeword{IOSystem} so that it could be easily slotted into the game. 
-                    %
-                
-                \item \textit{``Give NPCs interactive dynamic dialogue.''}
-                
-                    %
-
-                \item \textit{``Add a system for managing world events.''}
-                
-                    %
             \end{itemize}
 
+            \subsection{Dialogue and Localisation}
+            \textit{``Give NPCs interactive dynamic dialogue.''}
+
+            \subsection{World Event System}
+            \textit{``Add a system for managing world events.''}
+
+            \subsection{Terminal Emulator}
+            \textit{``Implement a terminal emulator.''}
+
+            I implemented this by creating a new class \codeword{TerminalEmulator} which implements the \codeword{IOSystem} so that it could be easily slotted into the game. 
+
+            \subsubsection{Ansi Escape Codes}
+            \subsubsection{Emoji Support}
+            \subsubsection{EventDraw and the Map}
+
         \section{Code Quality}
-        %
+        % For each of the following code quality considerations, give and explain an example in your
+        % project where you considered it: coupling, cohesion, responsibility-driven design, maintain-
+        % ability.
 
         \section{Walkthrough}
         %
 
         \section{Known Issues}
         
-            \begin{itemize}
-                \item testing
+            \begin{itemize}[leftmargin=*]
+                \item find issue
             \end{itemize}
 
     \end{multicols}
 
+    \newpage
+
     \begin{thebibliography}{9}
-        \bibitem{something}
-        Some sort of references
-    \end{thebibliography}        
+        \bibitem{beastman}
+        Brand New Animal Wiki. Beastman \url{https://brand-new-animal.fandom.com/wiki/Beastman}
+        \bibitem{animacity}
+        Brand New Animal Wiki. Animacity \url{https://brand-new-animal.fandom.com/wiki/Anima_City}
+        \bibitem{bna}
+        IMDb. BNA (TV Mini Series 2020) \url{https://www.imdb.com/title/tt12013558/}
+        \bibitem{utopia}
+        IMDb. Utopia (TV Series 2013-2014) \url{https://www.imdb.com/title/tt2384811/}
+        \bibitem{excalidraw}
+        Excalidraw. \url{https://excalidraw.com/}
+        \bibitem{bluej}
+        GitHub. maven-bluej / BlueJ.java \url{https://github.com/KCLOSS/maven-bluej/blob/master/BlueJ.java}
+        \bibitem{river-map}
+        Google Maps. Jezioro Świerklaniec, Poland \url{https://www.google.com/maps/@50.4293559,18.9742453,16.12z}
+        \bibitem{common-weights}
+        PDF. Set of average weights for furniture, appliances and other items \url{https://democracy.york.gov.uk/documents/s2116/Annex\%20C\%20REcycling\%20Report\%20frnweights2005.pdf}
+        \bibitem{pyrocynical}
+        YouTube. The best (and worst) show you haven't seen \url{https://youtu.be/PFx2QM0Z8Qo}
+    \end{thebibliography}  
+    
+    \newpage
 
-    \begin{multicols}{2}
-        \section{First Section}
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin congue leo nec ligula euismod, sit amet efficitur mi condimentum. Nulla pulvinar, justo sed sollicitudin euismod, mi velit vestibulum diam, et mollis odio felis id nulla. Nam id velit nec lacus fringilla cursus. Nulla quis tempus erat, a dignissim urna. Curabitur justo risus, varius vel iaculis finibus, eleifend quis metus. Proin id bibendum purus, non elementum ante. Vestibulum eu orci non erat luctus iaculis. Suspendisse potenti. Praesent libero leo, condimentum eu mauris et, mollis efficitur ligula. Duis eget nisi erat. Donec urna ipsum, convallis at faucibus non, maximus quis orci. Donec vitae neque ac dui tempor scelerisque id faucibus nulla. Nullam vel suscipit metus. Mauris vel semper nisl, eu elementum arcu.
-
-        Vivamus in leo et enim laoreet tempor. Phasellus feugiat volutpat neque, a faucibus justo fringilla eleifend. Pellentesque condimentum ipsum nec justo blandit aliquam ac et nisl. Donec placerat et dui ac varius. Integer faucibus odio est, nec hendrerit ex scelerisque ac. In viverra tortor id aliquet eleifend. Sed ut dignissim ligula. Aenean dapibus ornare venenatis.
-
-        \section{Second}
-        Nulla vitae sodales tellus. Donec vel placerat velit. Sed ac consequat magna. Maecenas lacus magna, consequat eget dictum a, accumsan non nisl. Pellentesque vel mauris ullamcorper, pellentesque ipsum et, congue nisl. Aliquam faucibus nulla aliquam pulvinar ultricies. In ut odio id lectus tristique sodales eu ac ante. Donec commodo commodo scelerisque. Praesent ullamcorper, lacus non malesuada dignissim, tortor lectus elementum mauris, eget tempus ante nunc quis lectus. Sed gravida metus et urna tempus porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-        Sed lorem metus, accumsan ut erat ut, vestibulum porta lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras nec nisi mauris. Integer nisi nisi, gravida sed sodales quis, dignissim eu nisi. Vestibulum sollicitudin mattis ligula, vitae rutrum magna rhoncus ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur odio id diam fermentum, malesuada vehicula sapien accumsan. Fusce auctor quam sit amet imperdiet venenatis. Duis gravida pellentesque nibh, nec luctus mauris. Cras ipsum libero, rhoncus nec pretium non, hendrerit a sem. Fusce blandit dapibus est, vitae fermentum lectus mattis eu. Morbi et pretium nisi. Donec congue, nunc quis posuere hendrerit, elit risus vulputate velit, ut tempus nisi ipsum quis sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc libero lorem, feugiat sit amet erat ut, rutrum scelerisque purus.
-
-        \begin{itemize}
-            \item testing
-                amogus!
-            \item testing
-        \end{itemize}
-
-        Ut efficitur odio non tincidunt volutpat. Vivamus et fermentum libero, sit amet volutpat elit. Etiam egestas orci non pharetra facilisis. Mauris faucibus turpis vel purus luctus aliquam. Quisque vehicula felis id nulla mollis aliquet. In hac habitasse platea dictumst. Sed aliquet elementum nisl sed efficitur. In lobortis leo purus, nec pretium nunc suscipit sed. Aenean pretium porttitor est. Nam mollis eget quam et facilisis. Phasellus tincidunt tellus eu sapien gravida laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pellentesque convallis euismod. Sed ut lobortis enim. Aliquam a felis metus. Quisque id nibh tincidunt, tincidunt urna sed, interdum risus.
-
-        Curabitur velit dui, luctus ut tincidunt vel, condimentum ut nisi. Ut porttitor odio nisl, non facilisis turpis molestie non. Sed consectetur ipsum eu rhoncus bibendum. In iaculis scelerisque semper. Nunc ac nisi nec justo tempus sollicitudin non sed diam. Integer lacinia sit amet orci vitae posuere. Aliquam vehicula sapien id turpis tempor malesuada rhoncus sed risus. Cras et scelerisque turpis, sed tristique nisi. Sed id dui sed lorem feugiat egestas et id nisl. Nunc ut venenatis mauris.
-
-        Etiam vulputate, sem non laoreet facilisis, leo odio viverra lorem, at elementum quam ipsum et nunc. Pellentesque a augue volutpat, ultricies ligula vel, egestas felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus tincidunt quam justo, at condimentum purus rhoncus nec. Vivamus vel nisi sit amet ex mattis viverra quis ac leo.
-    \end{multicols}
+    % Appendix
+    \captionsetup{justification=centering,margin=3cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{../src/main/resources/map/base.png}
+        \caption{World Map} \label{fig:map}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{images/runaway-raccoon-302.jpg}
+        \caption{Shot of Animacity as seen in Episode 1 at 3:02 of Brand New Animal \cite{bna}} \label{fig:runaway-raccoon}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{images/festival-marie.jpg}
+        \caption{Michiru Kagemori and Marie Itami pictured left to right in Episode 1 at 12:51 of Brand New Animal \cite{bna}} \label{fig:festival-marie}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{images/help-command.jpg}
+        \caption{Output from the help command} \label{fig:help-command}
+    \end{figure}
 \end{document}

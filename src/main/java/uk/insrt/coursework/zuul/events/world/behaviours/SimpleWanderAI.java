@@ -1,4 +1,4 @@
-package uk.insrt.coursework.zuul.behaviours;
+package uk.insrt.coursework.zuul.events.world.behaviours;
 
 import java.util.Random;
 
