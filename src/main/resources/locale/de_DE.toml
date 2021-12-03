@@ -520,34 +520,35 @@ Du solltest hier eigentlich auf jeden Fall nicht sein...
 
     [medical_centre_office.books]
         [medical_centre_office.books.1]
-        title = "Alan Stern. Chasing New Horizons"
+        title = "Alan Stern. Auf der Suche nach New Horizons"
         contents = """
-On July 14, 2015, something amazing happened. More than 3 billion miles from
-Earth, a small NASA spacecraft called New Horizons screamed past Pluto at more
-than 32,000 miles per hour, focusing its instruments on the long mysterious icy
-worlds of the Pluto system, and then, just as quickly, continued on its journey
-out into the beyond.
+Am 14. Juli 2015 geschah etwas Erstaunliches. Mehr als 3 Milliarden Meilen von
+der Erde, eine kleine NASA-Raumsonde namens New Horizons, flog an Pluto
+mit 32.000 Meilen pro Stunde vorbei und konzentrierte seine Instrumente auf
+die lang mysteriösen Eiswelten des Pluto-Systems und ging dann genauso schnell
+weiter hinaus ins Jenseits.
 """
 
         [medical_centre_office.books.2] # yes
-        title = "Stack of research papers"
+        title = "Stapel von Forschungspapieren"
         contents = """
-Upon our latest series of tests, we have found the effect of \u001B[47m\u001B[37m[redacted]\u001B[0m has
-considerable negative effects. These tests were performed over a series of 8
-days and caused \u001B[47m\u001B[37m[rdctd]\u001B[0m and \u001B[47m\u001B[37m[redact]\u001B[0m in the body.
+Bei unseren jüngsten Testreihen haben wir festgestellt, dass die Wirkung von
+\u001B[47m\u001B[37m[redacted]\u001B[0m erhebliche negative Auswirkungen hat.
+Diese Tests wurden über eine Reihe von 8 Tagen durchgeführt und verursachten
+\u001B[47m\u001B[37m[redacted]\u001B[0m und \u001B[47m\u001B[37m[redacted]\u001B[0m im Körper.
 
-This document is confidential and should not be shared with third parties.
+Dieses Dokument ist vertraulich und darf nicht an Dritte weitergegeben werden.
 """
 
         [medical_centre_office.books.3]
         title = "Barry A. Burd. Java For Dummies"
         contents = """
-Java is the platform–independent, object–oriented programming language used for
-developing web and mobile applications. The revised version offers new
-functionality and features that have programmers excited, and this popular guide
-covers them all.
+Java ist die Plattformunabhängige, objektorientierte Programmiersprache, die für
+die Entwicklung von Web und Mobile-Anwendungen genutzt wird. Die neue Version
+hat erweiterte Funkionalität, auf die Programmierer ganz aufgeregt warteten, und
+dieses Handbuch wird alle davon vorstellen.
 
-You will learn how to program good in Java, like this:
+Sie werden lernen, wie man gut in Java programmiert, etwa so:
 
 \u001B[36mimport \u001B[33mjava\u001B[37m.\u001B[33mio\u001B[37m.\u001B[33mBufferedReader\u001B[37m;
 \u001B[36mimport \u001B[33mjava\u001B[37m.\u001B[33mio\u001B[37m.\u001B[33mInputStreamReader\u001B[37m;
@@ -567,21 +568,21 @@ You will learn how to program good in Java, like this:
 \u001B[0m"""
 
         [medical_centre_office.books.4] # yes
-        title = "Dr. Mike Ox. Introducing Impostors in Society"
+        title = "Dr. Mike Ox. Hochstapler in die Gesellschaft integrieren"
         contents = """
-[Stamped for internal use only.]
+[Markiert als nur für den internen Gebrauch.]
 
-This book details methods which we can use to manipulate and control the general
-populous, I will be going into detail about ways we can subtly remove dangerous
-ideas and to keep your secrets under covers.
+Dieses Buch beschreibt detalliert Methoden, welche genutzt werden können, um das
+allgemeine Volk zu manipulieren. Ich erkläre ganz genau, wie man ge-
+fährliche Personen ganz subtil entfernt und Geheimnisse geheim haltet.
 """
 
         [medical_centre_office.books.5] # yes
-        title = "RNA sequences"
+        title = "RNA-Sequenzen"
         contents = """
-Confidential document
+Vertrauliches Dokument
 
-Figure 1.
+Figur 1.
 GAGAATAAACTAGTATTCTTCTGGTCCCCACAGACTCAGAGAGAACCCGCCACCATGTTCGTGTTCCTGGTGCTGCTGCC
 TCTGGTGTCCAGCCAGTGTGTGAACCTGACCACCAGAACACAGCTGCCTCCAGCCTACACCAACAGCTTTACCAGAGGCG
 TGTACTACCCCGACAAGGTGTTCAGATCCAGCGTGCTGCACTCTACCCAGGACCTGTTCCTGCCTTTCTTCAGCAACGTG
@@ -597,17 +598,18 @@ TGCTGAAGTACAACGAGAACGGCACCATCACCGACGCCGTGGATTGTGCTCTGGATCCTCTGAGCGAGACAAAGTGCACC
 """
 
         [medical_centre_office.books.6]
-        title = "Jules Verne. Around the World in Eighty Days"
+        title = "Jules Verne. Um die Welt in 80 Tagen"
         contents = """
-One ill-fated evening at the Reform Club, Phileas Fogg rashly bets his
-companions £20,000 that he can travel around the entire globe in just eighty
-days - and he is determined not to lose. Breaking the well-established routine
-of his daily life, the reserved Englishman immediately sets off for Dover,
-accompanied by his hot-blooded French manservant Passepartout. Travelling by
-train, steamship, sailing boat, sledge and even elephant, they must overcome
-storms, kidnapping, natural disaster, Sioux attacks and the dogged Inspector Fix
-of Scotland Yard - who believes that Fogg has robbed the Bank of England - to
-win the extraordinary wager.
+An einem unglückseligen Abend im Reform Club wettet Phileas Fogg unvorsichtiger-
+weise mit seinen um 20.000 Pfund, dass er in nur achtzig Tagen um den gesamten
+Globus reisen kann. um die ganze Welt reisen kann - und er ist fest entschlossen,
+nicht zu verlieren. Der zurückhaltende Engländer durchbricht die gewohnte Routine
+sofort und macht sich auf den Weg nach Dover, in Begleitung seines heißblütigen
+französischen Dieners Passepartout. Unterwegs mit Zug, Dampfschiff, Segelboot,
+Schlitten und sogar einem Elefanten müssen sie Stürme, Entführungen, Natur-
+katastrophen, Sioux-Angriffe und den verbissenen Inspektor Fix von Scotland Yard
+- der glaubt, dass Fogg die Bank von England ausgeraubt hat - überwinden, um die
+außergewöhnliche Wette zu gewinnen.
 """
 
 [marie]
