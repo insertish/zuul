@@ -1,0 +1,735 @@
+# Translations for World of Deez
+# By Infi
+
+[global]
+sight = "Du kannst Folgendes sehen:"
+
+    [global.can_go_in_x_directions]
+    1 = "Du kannst in"
+    2 = "Richtungen gehen"
+
+[selectors]
+direction = "<Richtung>"
+something = "<Etwas>"
+someone = "<Jemand>"
+item = "<Item>"
+
+    [selectors.cant_find]
+    1 = "Du schaust nach"
+    2 = ", aber du findest nichts"
+
+[commands]
+unknown = "Keine Ahnung, was du gerade versuchst."
+
+back = "Zurück zum vorherigen Raum"
+quit = "Spiel beenden"
+where_am_i = "Das Zimmer nochmal beschreiben"
+
+    [commands.bag]
+    usage = "Schau in deinen Beutel oder nach dem Inventar von etwas"
+    cant_find = "Was du suchst kann nicht gefunden werden"
+    empty = "Dein Beutel ist leer!"
+    entity_empty = "hat nichts im Inventar"
+    can_carry_kg = "Deine Tragekraft beträgt"
+    are_carrying_kg = "Du trägst"
+    look_in_bag = "Du schaust in deinen Beutel und siehst folgendes:"
+    entity_appears_to_have = "hat anscheinend"
+
+    [commands.drop]
+    usage = "Lege ein Item ab"
+    nothing_specified = "Was willst du ablegen?"
+    
+        [commands.drop.dropped]
+        1 = "Du legst"
+        2 = "ab"
+    
+    [commands.give]
+    usage = "Etwas an jemanden geben"
+    nothing_specified = "Was willst du geben?"
+    no_target = "Wem oder in was willst du das geben?"
+    denied_player = "Du kannst dich selbst nicht selber geben \u1F438"
+
+        [commands.give.denied]
+        1 = "Du kannst"
+        2 = "nicht geben an"
+
+    [commands.go]
+    usage = "Gehe in eine bestimmte Richtung"
+    nothing_specified = "Wohin gehst du?"
+
+    [commands.help]
+    usage = "Hilfemenü anzeigen"
+    can_run = "Du kannst die folgenden Befehle ausführen:"
+
+    [commands.pet]
+    usage = "Streichel etwas in deiner Umgebung oder deinem Inventar"
+    nothing_specified = "Was willst du streicheln?"
+    denied = "Du kannst nicht folgendes streicheln:"
+
+    [commands.take]
+    usage = "Nimm ein Item auf"
+    nothing_specified = "Von wem willst du etwas nehmen?"
+    entity_does_not_have_entity = "hat nicht"
+    item_not_specified = "Was willst du nehmen?"
+
+        [commands.take.took]
+        1 = "Du nimmst"
+        2 = "von"
+        3 = "und machst es in deinen Beutel"
+
+        [commands.take.denied]
+        1 = "Du kannst"
+        2 = "nicht nehmen, es ist zu schwer für dich und deinen Beutel"
+    
+    [commands.talk]
+    usage = "Fang an, mit jemandem zu reden"
+    nothing_specified = "Mit was willst du reden?"
+    denied = "Du kannst nicht reden mit:"
+
+    [commands.use]
+    usage = "Benutze ein Item in deiner Umgebung oder deinem Inventar"
+    nothing_specified = "Was willst du benutzen?"
+    denied = "Du kannst nicht folgendes benutzen:"
+
+    [commands.map]
+    usage = "Zeige die Weltkarte"
+    close = "Drück Enter, um die Weltkarte zu schließen"
+
+        [commands.map.discovered]
+        1 = "Du hast"
+        2 = "der Weltkarte erkundet"
+
+    [commands.win]
+    usage = "Gewinnen"
+    conclusion = """...
+
+ Kapitel 4.:
+Die Dateien werden ins Internet freigegeben, wo sie jedermann lesen kann, die
+Leute sind schnell um jedes kleine Detail zu erkennen, einige Details kommen
+schnell ans Licht:
+- Slyvasta hat über ethisch fragwürdige Wissenschaftsgebiete geforscht, genau-
+  genommen, wurden hunderte Tests täglich an verschiedenen Tiermensch-
+  testobjekten durchgeführt. Aber niemand konnte beweisen, dass jemand gegen
+  ihren eigenen Willen dort war.
+- Jedoch wurde die Forschung auch sofort von ausländischen Mächten aufgenommen,
+  die schnell entdeckt haben, dass die Tiermenschgesellschaft in der Stadt eine
+  viel größere Bedrohung ist, als sie zuerst erwartet haben.
+- Die Staft, mit dem öffentlichem Rat von Sylvasta, hat sofort die Evakuierung
+  von allen Bürgern angeordnetm, zu jedem Ort an dem sie einen potenziell töd-
+  lichen Konflikt fürchteten. Die Stadt ging in den nächsten Tagen relativ
+  schnell unters Feuer.
+"""
+    stats = "\u001B[47m\u001B[30mDeine Spielstatistiken\u001B[0m"
+    total_ticks = "Insgesamt Spielticks: "
+    sidequests_complete = "Sidequests abgeschlossen: "
+    press_enter_key = "Drücke Enter, um das Spiel zu schließen."
+
+[entities]
+boat_key = "Ein Schlüssel für ein Schnellboot"
+
+    [entities.bed]
+    description = "Bett"
+    use = "Du schläfst im Bett."
+
+    [entities.boat]
+    description = "Schnellboot an der Küste"
+    locked = "Das Boot ist abgeschlossen."
+    locked_for_sale = "Das Boot ist abgeschlossen.\nEs klebt eine Notiz darüber, dass du den\nLadenbesitzer kontaktieren kannst, um es zu kaufen."
+    denied = "Du darfst nichts tragen, sonst darfst du nicht aufs Boot.\nDu kannst aber Dinge ins Boot legen."
+    travel = "Du springst ins Boot und reist zu der anderen Seite..."
+    too_heavy = "Im Boot ist bereits viel zu viel Zeug drin!"
+
+        [entities.boat.give]
+        1 = "" # empty
+        2 = "ins Boot legen"
+
+    [entities.cat]
+    description = "Eine verfallene schwarze Katze"
+    pet = "Du streichelst die Katze."
+    use = "Du kannst nicht die Katze.\nBitte nicht die Katze. \u1F633\u1F633\u1F633"
+    enter = "Eine Katze läuft her."
+    leave = "Du siehst, wie eine Katze wegläuft."
+
+    [entities.comms]
+    description = "Kommunikationsgerät"
+    off = "Das Gerät ist ausgeschaltet."
+
+    [entities.couch]
+    description = "Eine braune Ledercouch"
+    sitting = "Du sitzt bereits in der Couch."
+    sit = "Du setzt dich auf die Couch."
+
+    [entities.laptop]
+    description = "Laptop"
+
+        [entities.laptop.boot]
+        dialog = "Du schaltest den Laptop an..."
+        option_1 = "[wait]"
+
+        [entities.laptop.home]
+        dialog = "Wähle eine Option:"
+        option_q = "Herunterfahren"
+        option_1 = "/Meine Bilder"
+        option_2 = "/Lustige Katzenvideos"
+        option_3 = "/Marie's Dokumentenscanner"
+
+        [entities.laptop.pictures]
+        dialog = """Es ist ein Bild in deinem Bilderordner.
+
+\u1F99D
+
+
+
+
+
+
+
+"""
+        option_q = "Zurück."
+
+        [entities.laptop.cat_videos]
+        dialog = "Du schaust dir lustige Katzenvideos an..."
+        option_q = "Nett hier."
+
+        [entities.laptop.document]
+        dialog = """\u001B[35mMarie\u001B[0m's Dokumentenscanner"""
+        option_q = "Beenden"
+        option_1 = "Dokumente senden"
+
+[home]
+first_load = '''
+Du wirst gleich in die Welt platziert.
+Falls du an einem Punkt ratlos feststeckst,
+kannst du `help` nutzen um all die verfügbaren
+Befehle zu sehen.
+
+---
+
+Du wachst auf und hörst, wie Leute draußen miteinander quatschen..
+Du solltest gestern wirklich das Fenster geschlossen haben..
+
+Neugierig, schaust du aus dem Fenster um zu gucken, was los ist.. Es ist eine
+Gruppe an Demonstranten außerhalb des Medizinzentrums weiter runter auf der
+Straße, du kannst nicht wirklich erkennen, was sie sagen oder was auf den
+Schildern steht.
+
+Aber es wäre nicht überraschend, falls etwas komisches da drin passieren würde,
+aber du kannst nicht wirklich sagen, was. Vielleicht ist ja etwas in den
+Nachrichten..
+'''
+
+enter = '''
+Du gehst in deine Wohnung.
+'''
+
+    [home.tv]
+    description = "LG 55NANO966PA 55\" Super UHD 8K HDR Smart LED TV"
+    off = "Schalte den Fernseher aus."
+    keep_watching = "Schau weiter..."
+
+        # Red: \u001B[31m
+        # Green: \u001B[32m
+        # Yellow: \u001B[33m
+        # Cyan: \u001B[36m
+        [home.tv.first_on]
+        dialog = "Du schaltest den Fernseher ein.\n\nDer Nachrichtensender kommt..."
+        dialog_a="""\u001B[31mNachrichtensprecher\u001B[0m: Bürgerunruhen nehmen zu, Sylvasta steht von allen
+Seiten in der Kritik, und viele sind über ihre Zukunft unsicher, während die
+Spannung zwischen den Menschlichen und Tiermenschlichen Gesellschaften
+eskalierende Konflikte an den Grenzen der Stadt verursacht.
+
+\u001B[31mNachrichtensprecher\u001B[0m: Wir bringen ihnen jetzt Szenen aus der Umgebung des Medizinzentrums,
+in denen eine Gruppe Demonstranten in Opposition gegenüber der Forschung bei
+Sylvasta erschienen ist.
+
+\u001B[36mKorrespondent\u001B[0m: Ich bin hier, stehe dreußen mit einer Gruppe Demonstranten..
+
+\u001B[36mKorrespondent\u001B[0m zum \u001B[33mDemonstranten\u001B[0m: Was bringt sie heute hierher?
+"""
+
+        dialog_b="""\u001B[33mDemonstrant\u001B[0m:
+Demonstrant: Sie nehmen das Geld der Stadt und nutzen es für ihren eigenen
+Vorteil, sie sollten keine Fördergelder bekommen, geschweige denn hier ihre
+Forschung betreiben dürfen.
+
+\u001B[31mNachrichtensprecher\u001B[0m: Mutige Behauptungen direkt von außerhalb Sylvasta, aber ob
+diese begründet sind ist noch nicht bekannt. Wir haben Monate und
+Monate an Leaks von früheren Mitarbeitern und internen Fehlern, aber
+die echte Absicht hinter den Menschen bei Sylvasta bleibt noch abzuwarten.
+
+\u001B[31mNachrichtensprecher\u001B[0m: Sylvasta hat persönlich angekündigt, dass sie sich weigern,
+öffentlich jegliche Informationen über ihre Forschung preiszugeben,
+begründet mit der öffentlichen Sicherheit. Was genau das bedeutet,
+weiß niemand außer ihre eigenen Leute.
+"""
+
+dialog_c="""\u001B[31mNachrichtensprecher\u001B[0m: So stellt sich auch die Frage, ob die Demonstrationen
+unbegründet sind und lediglich Probleme in der Stadt verursachen wollen.
+Vorher haben wir auch mit lokalen Einwohnern der Stadtmitte Earlier
+gesprochen..
+
+\u001B[32mLadenbesitzer\u001B[0m: Ich glaube, diese Leute wollen nur Probleme, Sylvasta war
+unglaublich wichtig darin, die Stadt aufzubauen und uns in Frieden leben zu
+lassen, ohne dass wir uns darüber Sorgen machen müssen, attackiert zu
+werden. Ich glaube es gibt nicht genug Gründe, zu demonstrieren.
+
+\u001B[32mLadenbesitzer\u001B[0m: Wie sehen bereits, wie die Welt sich gegen unsere Stadt
+wendet, und solche internen Konflifte werden ihnen einfach einen Grund geben,
+die Stadt zu übernehmen.
+
+\u001B[31mNachrichtensprecher\u001B[0m: Damit ist unsere Sendung für heute Morgen beendet,
+und um eins werden wir wieder zurück sein mit der Nachrichtenstunde.
+"""
+
+[apartments]
+enter = '''
+Du gehst in die Rezeption des Wohnungsbaus.
+'''
+
+    # Cyan: \u001B[36m
+    [apartments.receptionist]
+    description = "Der Rezeptionist sitzt hinter einem Tisch"
+
+        [apartments.receptionist.first_encounter]
+        dialog = "\u001B[36mRezeptionist\u001B[0m: Guten morgen, wie geht es Ihnen heute?"
+        option_1 = "Was ist da draußen los?"
+        option_q = "Egal."
+
+        [apartments.receptionist.protestors]
+        dialog = """\u001B[36mRezeptionist\u001B[0m: Ich weiß nicht viel, aber anscheinend schreien
+Leute außerhalb des Medizinzentrums rum..."""
+        option_1 = "Wissen Sie noch mehr?"
+        option_q = "Achso."
+
+        [apartments.receptionist.protestors2]
+        dialog = """\u001B[36mRezeptionist\u001B[0m: Sie haben vorhin Flyer ausgeteilt, vielleicht würde
+jemand in der Nähe es wissen..."""
+        option_q = "Danke."
+
+        [apartments.receptionist.repeated]
+        dialog = "\u001B[36mRezeptionist\u001B[0m: Hallo, wie kann ich behilflich sein?"
+        option_1 = "Was ist draußen mit den Demonstranten los?"
+        option_q = "Das war's, danke."
+
+[city_centre]
+first_load = '''
+Du kommst in die Stadtmitte, es ist morgens relativ voll. Viele Menschen
+sind hier, und es ist unwahrscheinlich dass du die meisten für ein Gespräch
+anhalten kannst.
+
+Es ist generell sehr unruhig im Gebiet, einige Menschen sehen angespannt aus,
+und andere, als würde die Welt heute enden...
+'''
+
+enter = '''
+Du kommst in die Stadtmitte.
+'''
+
+    # Yellow: \u001B[33m
+    [city_centre.npc]
+    description = "Eine Person auf einer Bank"
+
+        [city_centre.npc.small_talk]
+        dialog = "\u001B[33mFremder\u001B[0m: Hallo, kann ich ihnen helfen?"
+        option_1 = "Haben Sie zufällig Demonstranten hier gesehen?"
+        option_2 = "Was lesen Sie?"
+        option_q = "Egal."
+
+        [city_centre.npc.protestors]
+        dialog = """\u001B[33mFremder\u001B[0m: Oh ja, sie waren sehr laut..
+Eigentlich ganz nervig, mein Morgen wurde gestört.
+...
+Sie haben mir aber einen Flyer dagelassen."""
+        option_1 = "Kann ich ihn sehen?"
+
+        [city_centre.npc.enquire]
+        dialog = "\u001B[33mFremder\u001B[0m: Die Demonstranten waren hier und haben mir ein Flyer dagelassen."
+
+        [city_centre.npc.leaflet]
+        # dialog = "\u001B[33mStranger\u001B[0m: Sure, here you go, keep it.\n[\u001B[33mStranger\u001B[0m gave you an item.]"
+        dialog = """\u001B[33mStranger\u001B[0m: Klar, hier hab ich es...
+
+Du schaust auf den Flyer:
+
+\u001B[41mUNETHISCHE FORSCHUNG
+\u001B[40m\u001B[31mUnsere Stadt ist in Gefahr, Slyvasta finanziert
+weiter ihre Forschung, aber machen nichts dafür,
+dass die Stadt am Leben bleibt.
+
+Sylvasta nutzt ihre Stellung aus, um
+weiter an komplett ILLEGALER Biotech-
+nischer Herstellung von Tiermenschen
+zu forschen.\u001B[0m
+
+Unterstützen Sie uns: \u001B[36mhttps://sylvasta.vercel.app\u001B[0m
+"""
+        option_1 = "Dankeschön."
+
+[street]
+first_load = '''
+Du kommst in die Hauptstraße, die die hauptsächlichen Teile der Stadt vereint.
+
+Es gibt viel Chaos und Lärm, zu deinem Westen siehst du ein paar
+Demonstranten vor dem Medizinzentrum, sie halten Schilder hoch,
+"UNETHISCHE FORSCHUNG", "UNSERE BEZIEHUNGEN AUF DEM SPIEL",
+"UNVORHERGESEHENE KONSEQUENZEN".
+'''
+
+enter = '''
+Du kommst in die Hauptstraße.
+'''
+
+    # Red: \u001B[31m
+    [street.protestors]
+    description = "Eine Gruppe Demonstranten hält Schilder hoch"
+    blocking = "Eine Gruppe an Demonstranten blockiert den Eingang."
+
+        [street.protestors.small_talk]
+        dialog = "\u001B[31mDemonstrant\u001B[0m: Hast du darüber Gehört, was Sylvasta macht und warum wir hier sind?"
+        option_1 = "Nein, aber erzähl doch mal darüber."
+        option_2 = "Egal."
+
+        [street.protestors.enquire]
+        dialog = """\u001B[31mDemonstrant\u001B[0m: Sie nutzen öffentliches Geld um ihre illegale Forschungen
+weiterzuführen, sie haben doch die Leaks gesehen, oder?"""
+        option_1 = "Nein."
+        option_2 = "Alles klar.. Ich lass Sie dann mal in Ruhe."
+
+        [street.protestors.leaks]
+        dialog = """\u001B[31mDemonstrant\u001B[0m: Naja, einige frühere Mitarbeiter haben Infos über ihre aktuellen
+Forschungsprojekte geleakt und anscheinend experimentieren sie mit Biotechnik
+an Tiermenschen, das sollte nicht toleriert oder gar subventioniert werden."""
+        option_1 = "Ok."
+
+        [street.protestors.confrontation]
+        dialog = "\u001B[31mProtestor\u001B[0m: You taking me for some sort of conspiracy theorist?"
+        option_1 = "Ja."
+        option_2 = "Ich gehe jetzt einfach."
+
+[shop]
+enter = '''
+Du kommst in den Laden, die Glocke klingelt als du die Tür hinter dir schließt.
+'''
+
+    # Green: \u001B[32m
+    [shop.npc]
+    description = "Der Ladenbesitzer"
+    leave = "Egal."
+
+    currently_have_amount_of_money = "Du hast aktuell:"
+    not_enough = "Du hast nicht genug Geld und leistest dir kein"
+    too_heavy = "Zu schwer für dich!"
+
+    out_of_stock = "ausverkauft"
+    x_left = "übrig"
+
+        [shop.npc.fake_item]
+        cat = "Eine einzige Katze"
+
+        [shop.npc.item_out_of_stock]
+        1 = "Dieses Item ist"
+        2 = ", du kannst es nicht kaufen"
+
+        [shop.npc.bought]
+        1 = "Du kaufst dir"
+        2 = "und machst es in deinen Beutel."
+
+        [shop.npc.greeting]
+        Exposition = "\u001B[32mLadenbesitzer\u001B[0m: Guten Tag, was würden Sie gerne kaufen?"
+        Recon = "\u001B[32mLadenbesitzer\u001B[0m: Hallo, was neues kaufen?"
+        Stealth = "\u001B[32mLadenbesitzer\u001B[0m: Wollen Sie etwas kaufen?"
+        End = "\u001B[32mLadenbesitzer\u001B[0m: Brauchen Sie etwas?"
+
+[back_alley]
+first_load = '''
+Du kommst in eine dunkle Gasse, es ist hier ziemlich leise, ein starker
+Kontrast zur Stadtmitte, obwohl sie direkt dazwischen liegt. Die Seiten der
+Gasse sind voll mit Bauten und dunkler Beleuchtung.
+
+Du siehst vor dir eine dir bekannte Figur.
+'''
+
+enter = '''
+Du kommst in eine dunkle Gasse.
+'''
+
+[coastline]
+enter = '''
+Du kommst an die Stadtküste, das Wasser ist eher ruhig und still.
+'''
+
+[mainland_coastline]
+enter = '''
+Du kommst an die Festlandküste,
+der See konfrontiert direkt die Steine, die gegen ihn ausgelegt sind,
+es ist außerhalb des Beton-Dschungels außerdem viel leiser.
+'''
+
+[forest]
+enter = '''
+Du wanderst durch den Wald und hörst wie die Vögel an den Baumkronen pfeifen...
+Durch die Mitte fließt ein Fluss und es ist eine alte Holzbrücke darüber.
+Es würde relativ einfach sein, dich hier für eine Weile zu verlaufen.
+'''
+
+    # Yellow: \u001B[33m
+    [forest.old_man]
+    description = "Ein alter Mann, der durch den Wald wandert"
+    full = "Du kannst ihm nichts mehr geben."
+    accept = "\u001B[33mAlter Mann\u001B[0m: Danke, dass du ihn mir zurückgebracht hast."
+    deny = "\u001B[33mAlter Mann\u001B[0m: Ich möchte aber nicht den"
+
+        [forest.old_man.small_talk]
+        dialog = "\u001B[33mAlter Mann\u001B[0m: Du hast meine schwarze Katze doch nirgendwo gesehen?"
+        option_1 = "In der Stadt habe ich so eine gesehen..."
+        option_q = "Nein."
+
+        [forest.old_man.request]
+        dialog = "\u001B[33mAlter Mann\u001B[0m: Könntest du sie mir zurückbringen?"
+        option_1 = "Klar doch."
+        option_q = "Gerade geht das leider nicht."
+
+        [forest.old_man.praise]
+        dialog = "\u001B[33mAlter Mann\u001B[0m: Danke für deine Hilfe!"
+        option_q = "[verlassen]"
+
+[worm_hole]
+enter = '''
+Du gehst ins Wurmloch...
+'''
+
+[medical_centre]
+enter = '''
+Du bist jetzt an der Rezeption des Medizinzentrums.
+'''
+
+    # Red: \u001B[31m
+    [medical_centre.guard]
+    description = "Sicherheitsmann an der Tür"
+    blocking = "Die Security schaut auf die Treppen, du kannst nicht an ihnen vorbei."
+
+        [medical_centre.guard.small_talk]
+        dialog = "\u001B[31mWachmann\u001B[0m: Was willst du?"
+        option_q = "Egal."
+
+[medical_centre_office]
+enter = '''
+Du bist im Büro des Medizinzentrums.
+Du solltest hier eigentlich auf jeden Fall nicht sein...
+'''
+
+    [medical_centre_office.books]
+        [medical_centre_office.books.1]
+        title = "Alan Stern. Chasing New Horizons"
+        contents = """
+On July 14, 2015, something amazing happened. More than 3 billion miles from
+Earth, a small NASA spacecraft called New Horizons screamed past Pluto at more
+than 32,000 miles per hour, focusing its instruments on the long mysterious icy
+worlds of the Pluto system, and then, just as quickly, continued on its journey
+out into the beyond.
+"""
+
+        [medical_centre_office.books.2] # yes
+        title = "Stack of research papers"
+        contents = """
+Upon our latest series of tests, we have found the effect of \u001B[47m\u001B[37m[redacted]\u001B[0m has
+considerable negative effects. These tests were performed over a series of 8
+days and caused \u001B[47m\u001B[37m[rdctd]\u001B[0m and \u001B[47m\u001B[37m[redact]\u001B[0m in the body.
+
+This document is confidential and should not be shared with third parties.
+"""
+
+        [medical_centre_office.books.3]
+        title = "Barry A. Burd. Java For Dummies"
+        contents = """
+Java is the platform–independent, object–oriented programming language used for
+developing web and mobile applications. The revised version offers new
+functionality and features that have programmers excited, and this popular guide
+covers them all.
+
+You will learn how to program good in Java, like this:
+
+\u001B[36mimport \u001B[33mjava\u001B[37m.\u001B[33mio\u001B[37m.\u001B[33mBufferedReader\u001B[37m;
+\u001B[36mimport \u001B[33mjava\u001B[37m.\u001B[33mio\u001B[37m.\u001B[33mInputStreamReader\u001B[37m;
+\u001B[33mpublic class \u001B[31mMain  \u001B[34m{
+    \u001B[33mpublic static  void \u001B[31mmain  \u001B[34m(\u001B[33mString[] args\u001B[34m) \u001B[34m{
+        \u001B[33mtry{ String a=new \u001B[31mBufferedReader \u001B[34m(
+            \u001B[33mnew \u001B[31mInputStreamReader\u001B[34m( System\u001B[37m.\u001B[33mout\u001B[37m \u001B[34m))\u001B[37m.
+                \u001B[31mreadLine() \u001B[37m;
+        \u001B[33mif
+            \u001B[34m(a == \u001B[32m"hi"\u001B[34m) {
+            System\u001B[37m.\u001B[33mout\u001B[37m.\u001B[31mprintln\u001B[34m(\u001B[32m"Hello!!"\u001B[34m) \u001B[37m;
+        \u001B[34m} \u001B[33melse
+       \u001B[34m{
+            System\u001B[37m.\u001B[33mout\u001B[37m.\u001B[31mprintln\u001B[34m(\u001B[32m"you did not greet me!"\u001B[34m) \u001B[37m;
+        \u001B[34m}
+    } \u001B[33mcatch \u001B[34m(\u001B[33mException e\u001B[34m) {\u001B[35m/*something bad happen! */ \u001B[34m} } }
+\u001B[0m"""
+
+        [medical_centre_office.books.4] # yes
+        title = "Dr. Mike Ox. Introducing Impostors in Society"
+        contents = """
+[Stamped for internal use only.]
+
+This book details methods which we can use to manipulate and control the general
+populous, I will be going into detail about ways we can subtly remove dangerous
+ideas and to keep your secrets under covers.
+"""
+
+        [medical_centre_office.books.5] # yes
+        title = "RNA sequences"
+        contents = """
+Confidential document
+
+Figure 1.
+GAGAATAAACTAGTATTCTTCTGGTCCCCACAGACTCAGAGAGAACCCGCCACCATGTTCGTGTTCCTGGTGCTGCTGCC
+TCTGGTGTCCAGCCAGTGTGTGAACCTGACCACCAGAACACAGCTGCCTCCAGCCTACACCAACAGCTTTACCAGAGGCG
+TGTACTACCCCGACAAGGTGTTCAGATCCAGCGTGCTGCACTCTACCCAGGACCTGTTCCTGCCTTTCTTCAGCAACGTG
+ACCTGGTTCCACGCCATCCACGTGTCCGGCACCAATGGCACCAAGAGATTCGACAACCCCGTGCTGCCCTTCAACGACGG
+GGTGTACTTTGCCAGCACCGAGAAGTCCAACATCATCAGAGGCTGGATCTTCGGCACCACACTGGACAGCAAGACCCAGA
+GCCTGCTGATCGTGAACAACGCCACCAACGTGGTCATCAAAGTGTGCGAGTTCCAGTTCTGCAACGACCCCTTCCTGGGC
+GTCTACTACCACAAGAACAACAAGAGCTGGATGGAAAGCGAGTTCCGGGTGTACAGCAGCGCCAACAACTGCACCTTCGA
+GTACGTGTCCCAGCCTTTCCTGATGGACCTGGAAGGCAAGCAGGGCAACTTCAAGAACCTGCGCGAGTTCGTGTTTAAGA
+ACATCGACGGCTACTTCAAGATCTACAGCAAGCACACCCCTATCAACCTCGTGCGGGATCTGCCTCAGGGCTTCTCTGCT
+CTGGAACCCCTGGTGGATCTGCCCATCGGCATCAACATCACCCGGTTTCAGACACTGCTGGCCCTGCACAGAAGCTACCT
+GACACCTGGCGATAGCAGCAGCGGATGGACAGCTGGTGCCGCCGCTTACTATGTGGGCTACCTGCAGCCTAGAACCTTCC
+TGCTGAAGTACAACGAGAACGGCACCATCACCGACGCCGTGGATTGTGCTCTGGATCCTCTGAGCGAGACAAAGTGCACC
+"""
+
+        [medical_centre_office.books.6]
+        title = "Jules Verne. Around the World in Eighty Days"
+        contents = """
+One ill-fated evening at the Reform Club, Phileas Fogg rashly bets his
+companions £20,000 that he can travel around the entire globe in just eighty
+days - and he is determined not to lose. Breaking the well-established routine
+of his daily life, the reserved Englishman immediately sets off for Dover,
+accompanied by his hot-blooded French manservant Passepartout. Travelling by
+train, steamship, sailing boat, sledge and even elephant, they must overcome
+storms, kidnapping, natural disaster, Sioux attacks and the dogged Inspector Fix
+of Scotland Yard - who believes that Fogg has robbed the Bank of England - to
+win the extraordinary wager.
+"""
+
+[marie]
+description = "\u001B[35mMarie der Nerz\u001B[0m"
+
+    # Purple: \u001B[35m
+    [marie.alley]
+
+        [marie.alley.small_talk]
+        dialog = "\u001B[35mMarie\u001B[0m: Was bringt dich hierher?"
+        option_1 = "Hast du von den Protesten gehört?"
+        option_2 = "Sylvasta hat etwas böses vor..."
+        option_q = "Egal, hab einen schönen Tag."
+
+        [marie.alley.protests]
+        dialog = """\u001B[35mMarie\u001B[0m: Ja, die von Sylvasta haben auf jeden Fall
+nichts Gutes auf dem Schirm, aber ich weiß auch nicht ob ich den Demonstranten
+trauen sollte."""
+        option_1 = "Willst du mir dabei helfen, das herauszufinden?"
+        option_q = "Egal."
+
+        [marie.alley.sylvasta]
+        dialog = "\u001B[35mMarie\u001B[0m: Glaubst du, ich weiß das nicht? Willst du mir helfen, es herauszufinden?"
+        option_1 = "Klar."
+        option_q = "Nein danke."
+
+        [marie.alley.confirm]
+        dialog = "\u001B[35mMarie\u001B[0m: Wir könnten einbrechen und die Wahrheit herausfinden."
+        option_1 = "Lass machen! [bringt die Story weiter]"
+        option_q = "Auf keinen Fall!"
+
+        [marie.alley.recon]
+        dialog = """\u001B[35mMarie\u001B[0m: Okay, während ich nachdenke, wie wir reinkommen, musst du mir
+eetwas bringen, worüber wir reden müssen, ich bin mir sicher, dass es im Laden etwas gibt, komm wieder hierher
+wenn du zurückkommst."""
+        option_q = "Verstanden."
+
+        [marie.alley.waiting]
+        dialog = "\u001B[35mMarie\u001B[0m: Na dann? Hol es dir."
+        option_q = "Okay."
+
+        [marie.alley.mission_brief]
+        dialog = """\u001B[35mMarie\u001B[0m: Also, der Plan ist, du gehst zum Medizinzentrum,
+bummelst lässig zur Rezeption, du darfst aber nicht auffallen... Finde dir zum Beispiel einen
+Stuhl um darauf zu sitzen oder so was. Jedenfalls, wenn du dort bist und denkst dass die
+Security nicht zuschaut, nutz dein Kommunikationsgerät um mir bescheid zu sagen.
+
+\u001B[35mMarie\u001B[0m: Alsdann werde ich eine Ablenkung senden und sie in ihr
+Pausenzimmer führen während du ins Büro schleichst und versuchst, alles was du willst, zu finden...
+Aber wenn du dort bist, sag mir bescheid.
+
+\u001B[35mMarie\u001B[0m: Wenn du willst, kannst du das Kommunikationsgerät jetzt testen."""
+        option_q = "Okay."
+
+    [marie.comms]
+    received = """\u001B[35mMarie\u001B[0m: Alles klar, ich hab die Dokumente gefunden,
+Ich sende sie an die breiten Massen. Gut gemacht mit dem Einbruch."""
+    bad_documents = "\u001B[35mMarie\u001B[0m: Das sieht nicht wie die richtigen Dokumente aus..."
+    no_access = "\u001B[31mZugriff verweigert!\u001B[0m"
+
+        [marie.comms.orientation]
+        dialog = "\u001B[35mMarie\u001B[0m: Was willst du?"
+        option_1 = "Wohin muss ich nochmal?"
+        option_2 = "Kannst du mich hören?"
+        option_q = "Egal."
+
+        [marie.comms.directions]
+        dialog = """\u001B[35mMarie\u001B[0m: Du musst ins Medizinzentrum, wenn du dort bist, versuch
+nicht aufzufallen und sage mir, wenn du in Position bist."""
+        option_q = "Verstanden."
+
+        [marie.comms.hear]
+        dialog = "\u001B[35mMarie\u001B[0m: Laut und deutlich."
+        option_q = "Nett."
+
+        [marie.comms.complaint]
+        dialog = "\u001B[35mMarie\u001B[0m: Versuche, nicht aufzufallen..."
+        option_q = "Okay."
+
+        [marie.comms.in_position]
+        dialog = "\u001B[35mMarie\u001B[0m: Okay, Ich werde eine Ablenkung schaffen, gib mir einen Moment..."
+        option_1 = "[warten]"
+
+        [marie.comms.distraction]
+        dialog = """\u001B[31mWachmann\u001B[0m: Wer ist da?
+Komm raus, oder wir haben ein Problem.
+
+(Du siehst, wie der Wache in den Pausenraum geht)
+"""
+        option_1 = "[warten]"
+
+        [marie.comms.coast_is_clear]
+        dialog = "\u001B[35mMarie\u001B[0m: Okay, jetzt ist deine Chance."
+        option_q = "Verstanden."
+
+        [marie.comms.gogogo]
+        dialog = "\u001B[35mMarie\u001B[0m: Auf was wartest du??"
+        option_q = "AAAAAAA"
+
+        [marie.comms.office]
+        dialog = "\u001B[35mMarie\u001B[0m: Was siehst du?"
+        option_1 = "Rumgestreute Dokumente."
+
+        [marie.comms.documents]
+        dialog = """\u001B[35mMarie\u001B[0m: Ok, schau sie dir durch und finde alles, was relevant
+ist, achte besonders auf alles, was die Sachen erwähnt, über die demonstriert wird.
+Wenn du das gemachst hast, solltest du die Dokumente mir hochladen,
+geh zurück zu deiner Wohnung und wir machen es von dort, sag mir wenn du dort bist.
+
+\u001B[35mMarie\u001B[0m: Ich schau genau darauf, dass deine Deckung nicht platzt.
+
+\u001B[33mTipp: Du kannst die Dokumente benutzen (use), um sie zu lesen.\u001B[0m"""
+        option_q = "Okay."
+
+        [marie.comms.home]
+        dialog = """\u001B[35mMarie\u001B[0m: Warscheinlich hast du die Dokumente, schalte deinen PC an,
+geh auf den Link den ich dir gesendet hab, er sollte dort erscheinen, und lade dann hoch."""
+
+[stage]
+reached_conclusion = """\n
+Du hast das Spielende erreicht, du bist jetzt in einem Open-World-Modus,
+erkunde weiter um deine Ergebnisse zu maximieren.
+
+Du kannst endgültig aufhören mit dem Befehl \u001B[47m\u001B[30mwin\u001B[0m
+"""
