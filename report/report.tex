@@ -255,7 +255,8 @@
 
                         One of the main reasons I built this was for greater flexibility, so naturally I added support for Ansi escape codes. I matched the escape codes in the \codeword{TextBuffer} and adjusted the buffer accordingly. (\autoref{fig:ansi-match} for the implementation)
 
-                    \subsubsection{Emoji Support}
+                    \label{sec:emoji}
+                    \subsubsection{Emoji / Image Support}
 
                         I also added a way to load and display small images like emojis (see \autoref{fig:emoji}), although I had some difficulties with Unicode being mangled when working with BlueJ \cite{bluej-issue}.
 
@@ -308,8 +309,8 @@
         
             \begin{itemize}[leftmargin=*]
                 \item Anything starting with `b' will show inventory.
-                \item NPC dialogue not changing between chapters.
-                \item Can't include Unicode in Java source.
+                \item NPC dialogue does not vary in conclusion.
+                \item \hyperref[sec:emoji]{Can't include Unicode in Java source.}
             \end{itemize}
 
     \end{multicols}
