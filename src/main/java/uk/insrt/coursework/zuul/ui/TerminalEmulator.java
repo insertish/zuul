@@ -124,7 +124,7 @@ public class TerminalEmulator implements IOSystem {
      */
     public void flush() {
         this.queue.add(this.input);
-        this.input = new String();
+        this.input = "";
     }
 
     @Override

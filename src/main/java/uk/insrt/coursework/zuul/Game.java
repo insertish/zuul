@@ -14,7 +14,6 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.io.LocalisedIO;
 import uk.insrt.coursework.zuul.io.SanitiseIO;
 import uk.insrt.coursework.zuul.io.StandardIO;
-import uk.insrt.coursework.zuul.sound.EventSound;
 import uk.insrt.coursework.zuul.sound.SoundManager;
 import uk.insrt.coursework.zuul.ui.EventDraw;
 import uk.insrt.coursework.zuul.ui.TerminalEmulator;
@@ -26,7 +25,7 @@ import uk.insrt.coursework.zuul.world.World;
  * Class for managing the game loop and initialising the world.
  * 
  * @author Pawel Makles (K21002534)
- * @version 1.0-SNAPSHOT
+ * @version 1.1-SNAPSHOT
  */
 public class Game {
     public static final String GAME_NAME = "World of Deez";
@@ -62,6 +61,7 @@ public class Game {
         try {
             this.soundManager.init();
         } catch (Exception e) {
+            e.printStackTrace();
             // If we can't load the sound system,
             // just play without sound.
         }
@@ -119,10 +119,11 @@ public class Game {
             e.printStackTrace();
         }
 
+        // Construct the world.
         this.world = new CampaignWorld(this.io);
-        this.world
-            .getEventSystem()
-            .addListener(EventSound.class, this.soundManager);
+
+        // Register sound events.
+        this.soundManager.register(this.world.getEventSystem());
     }
 
     /**

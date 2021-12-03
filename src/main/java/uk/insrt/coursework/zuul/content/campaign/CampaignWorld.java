@@ -28,6 +28,8 @@ import uk.insrt.coursework.zuul.events.world.EventEntityEnteredRoom;
 import uk.insrt.coursework.zuul.events.world.EventEntityLeftRoom;
 import uk.insrt.coursework.zuul.io.Ansi;
 import uk.insrt.coursework.zuul.io.IOSystem;
+import uk.insrt.coursework.zuul.sound.EventMusic;
+import uk.insrt.coursework.zuul.sound.MusicType;
 import uk.insrt.coursework.zuul.world.Room;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -35,7 +37,7 @@ import uk.insrt.coursework.zuul.world.World;
  * The main campaign World.
  * 
  * @author Pawel Makles (K21002534)
- * @version 1.0-SNAPSHOT
+ * @version 1.1-SNAPSHOT
  */
 public class CampaignWorld extends World {
     private StoryFlags flags;
@@ -239,6 +241,45 @@ public class CampaignWorld extends World {
         @SuppressWarnings("unchecked")
         var st = (IEventListener<EventGameStageChanged>) this.getRoom("Street");
         this.eventSystem.addListener(EventGameStageChanged.class, st);
+
+        // Play BGM when player enters room.
+        this.eventSystem.addListener(EventEntityEnteredRoom.class,
+            (EventEntityEnteredRoom event) -> {
+                Entity entity = event.getEntity();
+                if (entity == this.getPlayer()) {
+                    Room room = entity.getRoom();
+                    MusicType type = null;
+                    if (room instanceof RoomCoastline) {
+                        type = MusicType.Bay1;
+                    } else if (room instanceof RoomMainlandCoastline) {
+                        type = MusicType.Bay2;
+                    }
+
+                    if (type != null) {
+                        this.getEventSystem()
+                            .emit(new EventMusic(type, true));
+                    }
+                }
+            });
+
+        // Stop prevous BGM when player leaves room.
+        this.eventSystem.addListener(EventEntityLeftRoom.class,
+            (EventEntityLeftRoom event) -> {
+                if (event.getEntity() == this.getPlayer()) {
+                    Room room = event.getRoom();
+                    MusicType type = null;
+                    if (room instanceof RoomCoastline) {
+                        type = MusicType.Bay1;
+                    } else if (room instanceof RoomMainlandCoastline) {
+                        type = MusicType.Bay2;
+                    }
+
+                    if (type != null) {
+                        this.getEventSystem()
+                            .emit(new EventMusic(type, false));
+                    }
+                }
+            });
     }
 
     @Override
