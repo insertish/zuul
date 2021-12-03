@@ -10,6 +10,8 @@ public enum MusicType {
     Bay1,
     Bay2,
     Nature,
+    City1,
+    City2,
 
     BgmExplore,
     BgmMission,

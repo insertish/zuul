@@ -39,10 +39,13 @@ public class SoundManager {
         this.initialised = true;
 
         this.sounds.put(SoundType.MoneyBag, lib.loadSound("/sounds/money-bag.ogg"));
+        this.sounds.put(SoundType.WormHole, lib.loadSound("/sounds/worm-hole-enc.ogg"));
 
         this.music.put(MusicType.Bay1, lib.loadSound("/sounds/bay1-enc.ogg"));
         this.music.put(MusicType.Bay2, lib.loadSound("/sounds/bay2-enc.ogg"));
         this.music.put(MusicType.Nature, lib.loadSound("/sounds/nature-enc.ogg"));
+        this.music.put(MusicType.City1, lib.loadSound("/sounds/city-1-quieter.ogg"));
+        this.music.put(MusicType.City2, lib.loadSound("/sounds/city-2-quieter.ogg"));
 
         this.music.put(MusicType.BgmExplore, lib.loadSound("/sounds/bgm-explore-quieter.ogg"));
         this.music.put(MusicType.BgmMission, lib.loadSound("/sounds/bgm-mission-quieter.ogg"));

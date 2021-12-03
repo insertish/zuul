@@ -71,7 +71,7 @@ public class Game {
         // Determine how the game should run.
         boolean inBlueJ = BlueJ.isRunningInBlueJ();
         int selection = JOptionPane.showConfirmDialog(null, "Play full experience?\nUses custom terminal emulator.\n(recommended option)", GAME_NAME, JOptionPane.YES_NO_OPTION);
-        if (selection == 0) {
+        if (selection != 1) {
             if (inBlueJ) {
                 // Fullscreen minimises itself immediately
                 // when running from BlueJ, not sure what's

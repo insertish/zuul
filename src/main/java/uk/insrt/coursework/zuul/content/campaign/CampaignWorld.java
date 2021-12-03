@@ -255,6 +255,10 @@ public class CampaignWorld extends World {
                         type = MusicType.Bay2;
                     } else if (room instanceof RoomForest) {
                         type = MusicType.Nature;
+                    } else if (room instanceof RoomCityCentre) {
+                        type = MusicType.City1;
+                    } else if (room instanceof RoomStreet) {
+                        type = MusicType.City2;
                     }
 
                     if (type != null) {
@@ -276,6 +280,10 @@ public class CampaignWorld extends World {
                         type = MusicType.Bay2;
                     } else if (room instanceof RoomForest) {
                         type = MusicType.Nature;
+                    } else if (room instanceof RoomCityCentre) {
+                        type = MusicType.City1;
+                    } else if (room instanceof RoomStreet) {
+                        type = MusicType.City2;
                     }
 
                     if (type != null) {
