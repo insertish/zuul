@@ -14,6 +14,8 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.io.LocalisedIO;
 import uk.insrt.coursework.zuul.io.SanitiseIO;
 import uk.insrt.coursework.zuul.io.StandardIO;
+import uk.insrt.coursework.zuul.sound.EventMusic;
+import uk.insrt.coursework.zuul.sound.MusicType;
 import uk.insrt.coursework.zuul.sound.SoundManager;
 import uk.insrt.coursework.zuul.ui.EventDraw;
 import uk.insrt.coursework.zuul.ui.TerminalEmulator;
@@ -108,7 +110,7 @@ public class Game {
         this.io = new LocalisedIO(this.io, locale);
 
         // Prompt for language
-        this.io.print("What language would you like to use?\n1. :uk:Traditional English (recommended)\n2. :us:Simplified English\n3. :de:German\nSelection: ");
+        this.io.print("Welcome! \u1F604\nBefore we start...\n\n\u1F508 Note: \u001B[35mthis game uses sound.\u001B[0m \n\nWhat language would you like to use?\n1. :uk:Traditional English (recommended)\n2. :us:Simplified English\n3. :de:German\nSelection: ");
         String input = this.io.readLine();
         String selectedLanguage = input.equals("3") ? "de_DE" : "en_GB";
 
@@ -124,6 +126,7 @@ public class Game {
 
         // Register sound events.
         this.soundManager.register(this.world.getEventSystem());
+        this.world.getEventSystem().emit(new EventMusic(MusicType.BgmExplore, true));
     }
 
     /**

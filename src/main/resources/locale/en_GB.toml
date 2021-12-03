@@ -78,7 +78,7 @@ where_am_i = "describe the current room again"
 
         [commands.take.denied]
         1 = "You cannot take"
-        2 = "it's too heavy to put in your bad"
+        2 = "it's too heavy to put in your bag"
     
     [commands.talk]
     usage = "start talking with someone"

@@ -146,7 +146,7 @@ public class CampaignWorld extends World {
     private void registerEvents() {
         // Capture all Events for Entities entering Rooms.
         this.eventSystem.addListener(EventEntityEnteredRoom.class,
-            (EventEntityEnteredRoom event) -> {
+            event -> {
                 Entity entity = event.getEntity();
                 if (entity instanceof EntityPlayer) {
                     Room room = entity.getRoom();
@@ -197,7 +197,7 @@ public class CampaignWorld extends World {
 
         // Capture all Events for Entities leaving Rooms.
         this.eventSystem.addListener(EventEntityLeftRoom.class,
-            (EventEntityLeftRoom event) -> {
+            event -> {
                 Entity entity = event.getEntity();
                 if (entity instanceof EntityPlayer) return;
 
@@ -213,7 +213,7 @@ public class CampaignWorld extends World {
         
         // Register event for game stage changing.
         this.eventSystem.addListener(EventGameStageChanged.class,
-            (EventGameStageChanged event) -> {
+            event -> {
                 Stage stage = event.getStage();
                 switch (stage) {
                     case Recon: {
@@ -244,7 +244,7 @@ public class CampaignWorld extends World {
 
         // Play BGM when player enters room.
         this.eventSystem.addListener(EventEntityEnteredRoom.class,
-            (EventEntityEnteredRoom event) -> {
+            event -> {
                 Entity entity = event.getEntity();
                 if (entity == this.getPlayer()) {
                     Room room = entity.getRoom();
@@ -266,7 +266,7 @@ public class CampaignWorld extends World {
 
         // Stop prevous BGM when player leaves room.
         this.eventSystem.addListener(EventEntityLeftRoom.class,
-            (EventEntityLeftRoom event) -> {
+            event -> {
                 if (event.getEntity() == this.getPlayer()) {
                     Room room = event.getRoom();
                     MusicType type = null;
@@ -279,9 +279,31 @@ public class CampaignWorld extends World {
                     }
 
                     if (type != null) {
-                        this.getEventSystem()
+                        this.eventSystem
                             .emit(new EventMusic(type, false));
                     }
+                }
+            });
+        
+        // Adaptive BGM depending on the part of the story.
+        this.eventSystem.addListener(EventGameStageChanged.class,
+            event -> {
+                switch (event.getStage()) {
+                    case Stealth: {
+                        this.eventSystem
+                            .emit(new EventMusic(MusicType.BgmExplore, false));
+                        this.eventSystem
+                            .emit(new EventMusic(MusicType.BgmMission, true));
+                        break;
+                    }
+                    case End: {
+                        this.eventSystem
+                            .emit(new EventMusic(MusicType.BgmMission, false));
+                        this.eventSystem
+                            .emit(new EventMusic(MusicType.BgmConclusion, true));
+                        break;
+                    }
+                    default: break;
                 }
             });
     }

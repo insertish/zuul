@@ -44,9 +44,9 @@ public class SoundManager {
         this.music.put(MusicType.Bay2, lib.loadSound("/sounds/bay2-enc.ogg"));
         this.music.put(MusicType.Nature, lib.loadSound("/sounds/nature-enc.ogg"));
 
-        this.music.put(MusicType.BgmExplore, lib.loadSound("/sounds/bgm-explore.ogg"));
-        this.music.put(MusicType.BgmMission, lib.loadSound("/sounds/bgm-mission.ogg"));
-        this.music.put(MusicType.BgmConclusion, lib.loadSound("/sounds/bgm-conclude.ogg"));
+        this.music.put(MusicType.BgmExplore, lib.loadSound("/sounds/bgm-explore-quieter.ogg"));
+        this.music.put(MusicType.BgmMission, lib.loadSound("/sounds/bgm-mission-quieter.ogg"));
+        this.music.put(MusicType.BgmConclusion, lib.loadSound("/sounds/bgm-conclude-quieter.ogg"));
 
         this.loaded = true;
     }
@@ -66,17 +66,21 @@ public class SoundManager {
     public void register(EventSystem eventSystem) {
         eventSystem.addListener(EventSound.class, event -> {
             if (!this.loaded) return;
-            this.sounds.get(event.getTarget()).play();
+            try {
+                this.sounds.get(event.getTarget()).play();
+            } catch (Exception e) { /* ignore sound if we fail here */ }
         });
 
         eventSystem.addListener(EventMusic.class, event -> {
             if (!this.loaded) return;
-            Sound song = this.music.get(event.getTarget());
-            if (event.shouldPlay()) {
-                song.play();
-            } else {
-                song.stop();
-            }
+            try {
+                Sound song = this.music.get(event.getTarget());
+                if (event.shouldPlay()) {
+                    song.play();
+                } else {
+                    song.stop();
+                }
+            } catch (Exception e) { /* ignore sound if we fail here */ }
         });
     }
 }
