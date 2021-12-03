@@ -13,6 +13,8 @@ import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.EntityObject;
 import uk.insrt.coursework.zuul.entities.Inventory;
 import uk.insrt.coursework.zuul.io.Ansi;
+import uk.insrt.coursework.zuul.sound.EventSound;
+import uk.insrt.coursework.zuul.sound.SoundType;
 import uk.insrt.coursework.zuul.world.Location;
 import uk.insrt.coursework.zuul.world.World;
 
@@ -163,6 +165,8 @@ public class EntityShopkeeper extends EntityNpc {
 
                                     Entity entity = factory.produce();
                                     entity.setLocation(inv);
+
+                                    world.emit(new EventSound(SoundType.MoneyBag));
                                 } else {
                                     io.println("\n\n<shop.npc.not_enough> "
                                         + item.getHighlightedName() + "!");

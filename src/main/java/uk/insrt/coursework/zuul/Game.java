@@ -14,6 +14,8 @@ import uk.insrt.coursework.zuul.io.IOSystem;
 import uk.insrt.coursework.zuul.io.LocalisedIO;
 import uk.insrt.coursework.zuul.io.SanitiseIO;
 import uk.insrt.coursework.zuul.io.StandardIO;
+import uk.insrt.coursework.zuul.sound.EventSound;
+import uk.insrt.coursework.zuul.sound.SoundManager;
 import uk.insrt.coursework.zuul.ui.EventDraw;
 import uk.insrt.coursework.zuul.ui.TerminalEmulator;
 import uk.insrt.coursework.zuul.util.BlueJ;
@@ -32,6 +34,7 @@ public class Game {
     private World world;
     private IOSystem io;
     private CommandManager commands;
+    private SoundManager soundManager;
 
     /**
      * Entrypoint to our application.
@@ -53,6 +56,16 @@ public class Game {
      * Initialise all required resources for the game to run.
      */
     private void init() {
+        // Load audio resources.
+        this.soundManager = new SoundManager();
+
+        try {
+            this.soundManager.init();
+        } catch (Exception e) {
+            // If we can't load the sound system,
+            // just play without sound.
+        }
+
         // Determine how the game should run.
         boolean inBlueJ = BlueJ.isRunningInBlueJ();
         int selection = JOptionPane.showConfirmDialog(null, "Play full experience?\nUses custom terminal emulator.\n(recommended option)", GAME_NAME, JOptionPane.YES_NO_OPTION);
@@ -107,6 +120,9 @@ public class Game {
         }
 
         this.world = new CampaignWorld(this.io);
+        this.world
+            .getEventSystem()
+            .addListener(EventSound.class, this.soundManager);
     }
 
     /**
@@ -135,5 +151,7 @@ public class Game {
             Thread.sleep(1000);
             this.io.dispose();
         } catch (Exception e) {}
+
+        this.soundManager.dispose();
     }
 }
