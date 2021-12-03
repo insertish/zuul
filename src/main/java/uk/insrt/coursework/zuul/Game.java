@@ -91,8 +91,13 @@ public class Game {
         Localisation locale = new Localisation();
         this.io = new LocalisedIO(this.io, locale);
 
+        // Prompt for language
+        this.io.print("What language would you like to use?\n1. :uk:Traditional English\n2. :us:Simplified English\n3. :de:German\nSelection: ");
+        String input = this.io.readLine();
+        String selectedLanguage = input.equals("3") ? "de_DE" : "en_GB";
+
         try {
-            locale.loadLocale("en_GB");
+            locale.loadLocale(selectedLanguage);
         } catch (IOException e) {
             System.err.println("Failed to load translations!");
             e.printStackTrace();

@@ -6,6 +6,9 @@ emojis = [
     { unicode = "\u1F610", path = "weirdChamp.png" }, # 😐
     { unicode = "\u1F604", path = "peepoHappy.png" }, # 😄
     { unicode = "\u1F99D", path = "they is stuck.jpg", width = 24, height = 8 }, # 🦝
+    { unicode = ":uk:", path = "uk.png", width = 3, height = 1 }, # 🇬🇧
+    { unicode = ":us:", path = "us.png", width = 3, height = 1 }, # 🇺🇸
+    { unicode = ":de:", path = "de.png", width = 3, height = 1 }, # 🇩🇪
 
     # Example definitions:
     #{ unicode = "[wideChamp]", path = "weirdChamp.png" },
