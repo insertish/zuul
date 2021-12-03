@@ -30,4 +30,9 @@ public interface IOSystem {
      * Dispose of the arbitrary input and output channels.
      */
     public void dispose();
+
+    /**
+     * Clear the output.
+     */
+    public void clear();
 }

@@ -189,8 +189,8 @@
     office = { description = "office.dialog", options = [
         { description = "office.option_1", to = "documents" }
     ] }
-    documents = { description = "office.dialog", options = [
-        { description = "office.option_q", to = "office", mustExit = true }
+    documents = { description = "documents.dialog", options = [
+        { description = "documents.option_q", to = "office", mustExit = true }
     ] }
 
     home = { description = "home.dialog", options = [

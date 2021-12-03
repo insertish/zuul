@@ -156,4 +156,10 @@ public class TerminalEmulator implements IOSystem {
     public void dispose() {
         this.frame.dispose();
     }
+
+    @Override
+    public void clear() {
+        this.buffer.clear();
+        this.input = "";
+    }
 }

@@ -30,7 +30,7 @@ import uk.insrt.coursework.zuul.world.World;
  * @version 1.1-SNAPSHOT
  */
 public class Game {
-    public static final String GAME_NAME = "World of Deez";
+    public static final String GAME_NAME = "World of These";
 
     private World world;
     private IOSystem io;
@@ -60,14 +60,6 @@ public class Game {
         // Load audio resources.
         this.soundManager = new SoundManager();
 
-        try {
-            this.soundManager.init();
-        } catch (Exception e) {
-            e.printStackTrace();
-            // If we can't load the sound system,
-            // just play without sound.
-        }
-
         // Determine how the game should run.
         boolean inBlueJ = BlueJ.isRunningInBlueJ();
         int selection = JOptionPane.showConfirmDialog(null, "Play full experience?\nUses custom terminal emulator.\n(recommended option)", GAME_NAME, JOptionPane.YES_NO_OPTION);
@@ -86,12 +78,12 @@ public class Game {
             this.io = new StandardIO();
 
             if (inBlueJ) {
-                selection = JOptionPane.showConfirmDialog(null, "Is this running from inside BlueJ?", GAME_NAME, JOptionPane.YES_NO_OPTION);
-                if (selection == 0) {
-                    this.io = new SanitiseIO(this.io);
-                }
+                this.io = new SanitiseIO(this.io);
             }
         }
+
+        // Notify player that resources are loading.
+        this.io.println("Loading resources...\nThis may take a second.");
 
         // Setup the command manager.
         this.commands = new CommandManager();
@@ -105,14 +97,41 @@ public class Game {
             ((TerminalEmulator) this.io).getEventSystem().addListener(EventDraw.class, map);
         }
 
+        // Load sounds
+        try {
+            this.soundManager.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // If we can't load the sound system,
+            // just play without sound.
+        }
+
         // Load all the data we need and initialise world.
         Localisation locale = new Localisation();
         this.io = new LocalisedIO(this.io, locale);
 
         // Prompt for language
-        this.io.print("Welcome! \u1F604\nBefore we start...\n\n\u1F508 Note: \u001B[35mthis game uses sound.\u001B[0m \n\nWhat language would you like to use?\n1. :uk:Traditional English (recommended)\n2. :us:Simplified English\n3. :de:German\nSelection: ");
+        this.io.clear();
+        this.io.print("Welcome! \u1F604\nBefore we start...\n\n"
+            + "\u1F508 Note: \u001B[35mthis game uses sound.\u001B[0m \n\n"
+            + "What language would you like to use?\n"
+            + "1. :uk:Traditional English (recommended)\n"
+            + "2. :us:Simplified English\n"
+            + "3. :de:German\n"
+            + "4. :cz:Czech\n"
+            + "Selection: ");
+
         String input = this.io.readLine();
-        String selectedLanguage = input.equals("3") ? "de_DE" : "en_GB";
+        this.io.clear();
+
+        String selectedLanguage;
+        if (input.equals("3")) {
+            selectedLanguage = "de_DE";
+        } else if (input.equals("4")) {
+            selectedLanguage = "cs_CZ";
+        } else {
+            selectedLanguage = "en_GB";
+        }
 
         try {
             locale.loadLocale(selectedLanguage);

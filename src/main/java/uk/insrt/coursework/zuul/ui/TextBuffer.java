@@ -34,20 +34,9 @@ public class TextBuffer {
      * @param height Buffer height
      */
     public TextBuffer(int width, int height) {
-        this.buffer = new char[height][width];
-        this.bufferBg = new Color[height][width];
-        this.bufferFg = new Color[height][width];
-
         this.width = width;
         this.height = height;
-
-        this.posX = 0;
-        this.posY = 0;
-
-        this.bg = Color.BLACK;
-        this.fg = Color.WHITE;
-
-        this.overflow = false;
+        this.clear();
     }
 
     /**
@@ -232,5 +221,22 @@ public class TextBuffer {
      */
     public int getPosY() {
         return this.posY;
+    }
+
+    /**
+     * Clear the buffer
+     */
+    public void clear() {
+        this.buffer = new char[height][width];
+        this.bufferBg = new Color[height][width];
+        this.bufferFg = new Color[height][width];
+
+        this.posX = 0;
+        this.posY = 0;
+
+        this.bg = Color.BLACK;
+        this.fg = Color.WHITE;
+
+        this.overflow = false;
     }
 }

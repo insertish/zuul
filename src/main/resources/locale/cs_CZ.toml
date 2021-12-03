@@ -1,0 +1,723 @@
+# Translations for World of Deez
+# Provided by FatalErrorCoded
+
+[global]
+sight = "Vidíš:"
+
+    [global.can_go_in_x_directions]
+    1 = "Můžeš jít do"
+    2 = "směrů"
+
+[selectors]
+direction = "<směr>"
+something = "<něco>"
+someone = "<někdo>"
+item = "<věc>"
+
+    [selectors.cant_find]
+    1 = "Podíváš se kolem po"
+    2 = "ale nemůžeš nic najít"
+
+[commands]
+unknown = "Nejsem si jistý o co se snažíš."
+
+back = "vrátit se do předchozí místnosti"
+quit = "opustit hru"
+where_am_i = "znova popsat tuto místnost"
+
+    [commands.bag]
+    usage = "podíváš se do svého batohu nebo na inventář nečeho"
+    cant_find = "Nemůžu najít na co se snažíš podívat."
+    empty = "Tvoje taška je prázdná!"
+    entity_empty = "nevypadá, že něco má"
+    can_carry_kg = "Můžeš unést"
+    are_carrying_kg = "Nosíš"
+    look_in_bag = "Podíváš se do batohu a vidíš"
+    entity_appears_to_have = "vypadá, že má"
+
+    [commands.drop]
+    usage = "vyhodit předmět z batohu"
+    nothing_specified = "Co chceš vyhodit?"
+    
+        [commands.drop.dropped]
+        1 = "Vyhodíš"
+        2 = "z batohu"
+    
+    [commands.give]
+    usage = "dát něco někomu"
+    nothing_specified = "Co si přeješ dát?"
+    no_target = "Komu / do čeho tohle dáváš?"
+    denied_player = "Sebe nemůžeš dát nikomu ani ničemu. \u1F438"
+
+        [commands.give.denied]
+        1 = "Nemůžeš dát"
+        2 = ""
+
+    [commands.go]
+    usage = "jít určitým směrem"
+    nothing_specified = "Kam jdeš?"
+
+    [commands.help]
+    usage = "zobrazit help menu"
+    can_run = "Můžeš spustit následující příkazy:"
+
+    [commands.pet]
+    usage = "pohlaď něco okolo sebe nebo ve svém inventáři"
+    nothing_specified = "Co se snažíš pohladit?"
+    denied = "Nemůžeš pohladit"
+
+    [commands.take]
+    usage = "dát něco do tvé tašky"
+    nothing_specified = "Od koho?"
+    entity_does_not_have_entity = "nemá"
+    item_not_specified = "Co si chceš vzít?"
+
+        [commands.take.took]
+        1 = "Bereš si"
+        2 = "od"
+        3 = "a dáváš si ho do tašky"
+
+        [commands.take.denied]
+        1 = "Nemůžeš si vzít"
+        2 = "je moc těžký pro tvůj batoh"
+    
+    [commands.talk]
+    usage = "začít s něčím mluvit"
+    nothing_specified = "S čím chceš mluvit?"
+    denied = "Nemůžeš mluvit s"
+
+    [commands.use]
+    usage = "použít něco kolem tebe nebo v tvé tašce"
+    nothing_specified = "Co chceš použít?"
+    denied = "Nemůžeš použít"
+
+    [commands.map]
+    usage = "ukázat světovou mapu"
+    close = "Stiskni Enter pro zavření."
+
+        [commands.map.discovered]
+        1 = "Objevil si"
+        2 = "světa"
+
+    [commands.win]
+    usage = "vyhrát hru"
+    conclusion = """...
+
+Kapitola 4.:
+Soubory jsou vypuštěny do světa pro každého ke stažení, lidi rychle rozebírají
+každý malý detail, pár bezprostředních detailů vyjde na světlo:
+- Sylvasta zkoumala eticky sporné vědecké oblasti, zejména denně prováděla
+  stovky testů na několik různých beastmanů jako testovacích subjektů.
+  Nikdo ale nedokázal dokázat, že tam někdo byl proti jejich vůli.
+- Nicméně, na tento výzkum se zárověn okamžitě podívali i cizí moci, které
+  velmi rychle zjistili, že beastmanní socializace žíjící vě městě je mnohem
+  větší hrozba než původně očekávali.
+- Město společně s veřejnou radou Sylvasta okamžitě nařídila evakuaci všech
+  občanů do jakékoliv oblasti, kterou mohli najít, pod obavama potenciálně
+  smrtelného konfliktu. Město se v přístích dnech stalo terčem palby.
+"""
+    stats = "\u001B[47m\u001B[30mVaše konečné statistiky\u001B[0m"
+    total_ticks = "Herních ticků celkem: "
+    total_time = "Celkový čas: "
+    minutes = "minut"
+    seconds = "sekund"
+    sidequests_complete = "Postranních misí dokončeno: "
+    press_enter_key = "Stiskněte Enter pro uzavření hry."
+
+[entities]
+boat_key = "Klíč k rychlostnímu člunu"
+
+    [entities.bed]
+    description = "Postel"
+    use = "Dáš si šlofíka."
+
+    [entities.boat]
+    description = "Rychlostní člun je zakotvená na pobřeží"
+    locked = "Člun je zamčen."
+    locked_for_sale = "Člun je zamčen.\nJe na něm poznámka, která říká, že máte kontaktovat obchodníka ohledně prodeje."
+    denied = "Nesmíš u sebe nic mít, aby si mohl člun použít.\nMůžeš ale dávat věci do člunu."
+    travel = "Skočíš do člunu a přecestuješ na druhou stranu..."
+    too_heavy = "Člun už toho v sobě má až moc!"
+
+        [entities.boat.give]
+        1 = "Dát"
+        2 = "do člunu"
+
+    [entities.cat]
+    description = "Toulavá černá kočka"
+    pet = "Pohladíš kočku."
+    use = "Nemůžes kočku.\nProsím ne kočku. \u1F633\u1F633\u1F633"
+    enter = "Kočka přirazila mezi nás."
+    leave = "Vidíš kočku jak odejde."
+
+    [entities.comms]
+    description = "Komunikační zařízení"
+    off = "Zařízení je vypnuté."
+
+    [entities.couch]
+    description = "Hnědý kožený gauč"
+    sitting = "Už sedíš na gauči."
+    sit = "Sedl sis na gauč."
+
+    [entities.laptop]
+    description = "Laptop"
+
+        [entities.laptop.boot]
+        dialog = "Zapneš počítač..."
+        option_1 = "[počkat]"
+
+        [entities.laptop.home]
+        dialog = "Select an option:"
+        option_q = "Vypnout"
+        option_1 = "/Moje Obrázky"
+        option_2 = "/Vtipné kočičí videa"
+        option_3 = "/Mariin skener dokumentů"
+
+        [entities.laptop.pictures]
+        dialog = """Je jenom jedna fotka v tvých obrázkách:
+
+\u1F99D
+
+
+
+
+
+
+
+"""
+        option_q = "Vrátit se."
+
+        [entities.laptop.cat_videos]
+        dialog = "Podíváš se na vtipné kočičí videa..."
+        option_q = "Super."
+
+        [entities.laptop.document]
+        dialog = """\u001B[35mMariin\u001B[0m skener dokumentů"""
+        option_q = "Vrátit se"
+        option_1 = "Poslat dokumenty"
+
+[home]
+first_load = '''
+Zrovna vcházíš do světa.
+Pokud se v jakémkoliv bodě zasekneš,
+můžeš použít `help` pro zobrazení všech příkazů.
+
+---
+
+Probudíš se ke zvuku lidí protestujících venku..
+Měl si si přes noc zavřít okno..
+
+Zaujatý, podíváš se z okna, aby si viděl, co se děje.. venku je skupina
+protestantů před Zdravotním střediskem. Nemůžeš úplně přijít na to,
+co říkají, nebo co je napsáno na jejich cedulích.
+
+Ikdyž by nebylo překvapující kdyby se tam dělo něco divného, nemůžeš na to
+nějak přiložit prst. Možná je něco ve zprávách..
+'''
+
+enter = '''
+Vstoupíš do svého bytu.
+'''
+
+    [home.tv]
+    description = "LG 55NANO966PA 55\" Super UHD 8K HDR Smart LED TV"
+    off = "Vypnout televizi."
+    keep_watching = "Dále sledovat..."
+
+        # Red: \u001B[31m
+        # Green: \u001B[32m
+        # Yellow: \u001B[33m
+        # Cyan: \u001B[36m
+        [home.tv.first_on]
+        dialog = "Zapneš televizi.\n\nNaskočí zpravodajský kanál..."
+        dialog_a="""\u001B[31mZprávy\u001B[0m: Občanské nepokoje stoupají, Sylvasta čelí konfliktům ze všech
+stran, a mnoho lidí se cítí neklidní o jejich budoucnosti mezitím co stoupající
+napětí mezi lidským a beastman socializacemi způsobuje spory okolo
+městké hranice.
+
+\u001B[31mZprávy\u001B[0m: Přinášíme vám scény před Zdravotním střediskem kde
+se ukázala skupina protestantů v opozici proti výzkumu prováděnému v
+Sylvasta.
+
+\u001B[36mKorespondent\u001B[0m: Jsem tady, stojím venku se skupinou protestantů..
+
+\u001B[36mKorespondent\u001B[0m na \u001B[33mProtestanta\u001B[0m: Co vás sem dnes přináší?
+"""
+
+        dialog_b="""\u001B[33mProtestant\u001B[0m:
+Protestant: Berou peníze města a používají je pro svoje vlastní dobro,
+neměli by dostávat žádné financování, natož mít dovoleno zde operovat.
+
+\u001B[31mZprávy\u001B[0m: Odvážné tvrzení přicházející přímo před Sylvasta, jestli jsou tyto
+tvrzení na nečem založené, to ještě nikdo neví, viděli jsme měsíce a měsíce
+úniků od dřívějších zaměstnanců a různých vnitřních nehod ale ještě nevíme
+skutečné úmysly lidí pracující pro Sylvasta.
+
+\u001B[31mZprávy\u001B[0m: Sylvasta oznámila, že odmíta komunikovat
+nebo dále oznámit jejich vnitřní výzkum, citující veřejnou bezpečnost.
+Co to znamená, nikdo kromě jejich vnitřního personálu neví.
+"""
+
+dialog_c="""\u001B[31mZprávy\u001B[0m: Také to pokládá otázku jestli jsou protesty neopodstatněné,
+pouze se snažíci vyvolat nesnáz ve městě. Dnes dříve jsme mluvili s několika místními
+obyvateli žíjící ve středu města..
+
+\u001B[32mObchodník\u001B[0m: Myslím si, že se nás jenom snaží vyprovokovat. Sylvasta měla
+důležitou roli v založení tohoto města a umožnila nám žít v míru bez obav toho,
+že by na nás něco zaútočilo, nemyslím si, že je dostatečný důvod protestovat.
+
+\u001B[32mObchodník\u001B[0m: Už vidíme, jak se svět otáči proti městu, a tyto typy
+vnitřních sporů jim jenom dává důvod vstoupit a ujmout se řízení.
+
+\u001B[31mZprávy\u001B[0m: Toto zakončuje náš ranní pořad, budeme zpátky
+pro zpravodajskou hodinu v jednu odpoledne.
+"""
+
+[apartments]
+enter = '''
+Vstoupíš do recepce bytového komplexu.
+'''
+
+    # Cyan: \u001B[36m
+    [apartments.receptionist]
+    description = "Recepční sedící za stolem"
+
+        [apartments.receptionist.first_encounter]
+        dialog = "\u001B[36mRecepční\u001B[0m: Dobré ráno, jak se dneska máte?"
+        option_1 = "Co se to venku děje?"
+        option_q = "Ale nic."
+
+        [apartments.receptionist.protestors]
+        dialog = """\u001B[36mRecepční\u001B[0m: Vůbec nevím ale vypadá to jako skupina lidí řvající
+před Zdravodním střediskem..."""
+        option_1 = "Nevíte něco víc?"
+        option_q = "Dobře."
+
+        [apartments.receptionist.protestors2]
+        dialog = """\u001B[36mRecepční\u001B[0m: Rozdávali letáky když přišli, možná někdo
+poblíž bude vědět..."""
+        option_q = "Díky."
+
+        [apartments.receptionist.repeated]
+        dialog = "\u001B[36mRecepční\u001B[0m: Dobré ráno, s čím vám můžu pomoci?"
+        option_1 = "Co se to venku s těmi protestanty děje?"
+        option_q = "To je vše, díky."
+
+[city_centre]
+first_load = '''
+Přijdeš na náměstí. Ráno bývá docela rušno. Kolem pobýhá hodně lidí,
+docela nepravděpodobné, že by si si s někým mohl popovídat.
+
+V oblasti je všeobecná nesnáz, někteří jsou docela nervózní, ostatní vypadají,
+jako kdyby byl poslední den na zemi...
+'''
+
+enter = '''
+Přijdeš na náměstí.
+'''
+
+    # Yellow: \u001B[33m
+    [city_centre.npc]
+    description = "Člověk sedící na lavičce"
+
+        [city_centre.npc.small_talk]
+        dialog = "\u001B[33mCizinec\u001B[0m: Dobrý den, mohl bych vám pomoci?"
+        option_1 = "Tuším, že si tady neviděl projít protestanty?"
+        option_2 = "Co to čteš?"
+        option_q = "Ale nic."
+
+        [city_centre.npc.protestors]
+        dialog = """\u001B[33mCizinec\u001B[0m: Ale jo, byli docela hlasití..
+Byli pěkně otravní, pěkně mi vyrušili ráno.
+...
+Nechali mi tady ale tenhle leták"""
+        option_1 = "Můžu se podívat?"
+
+        [city_centre.npc.enquire]
+        dialog = "\u001B[33mCizinec\u001B[0m: Támhleti kolem mě prošli a nechali mi tady leták."
+
+        [city_centre.npc.leaflet]
+        # dialog = "\u001B[33mStranger\u001B[0m: Sure, here you go, keep it.\n[\u001B[33mStranger\u001B[0m gave you an item.]"
+        dialog = """\u001B[33mCizinec\u001B[0m: Jistě, tady ho máš...
+
+Podíváš se na leták:
+
+\u001B[41mNEETICKÝ VÝZKUM
+\u001B[40m\u001B[31mNaše město je v nebezpečí, Sylvasta
+dále financuje jejich výzkum ale nic nedělá,
+aby pomohla městu přežít.
+
+Sylvasta zneužívá jejich pozici aby
+pokračovali v práci kompletně NELEGÁLNÍHO
+bioinženýrství beastmenů.\u001B[0m
+
+Podpořte nás: \u001B[36mhttps://sylvasta.vercel.app\u001B[0m
+"""
+        option_1 = "Díky."
+
+[street]
+first_load = '''
+Přijdeš do hlavní městské ulice propojující hlavní části města.
+
+Je tu hodně hluku a chaosu, na západ vidíš protestanty před
+komplexem zdravotního střediska, drží cedule, "NEETICKÝ VÝZKUM",
+"NAŠE VZTAHY V KRIZI", "NEPŘEDVÍDATELNÉ NÁSLEDKY".
+'''
+
+enter = '''
+Přijdeš do městské ulice.
+'''
+
+    # Red: \u001B[31m
+    [street.protestors]
+    description = "Skupina protestantů držící cedule"
+    blocking = "Je tu skupina protestantů blokující hlavní dveře."
+
+        [street.protestors.small_talk]
+        dialog = "\u001B[31mProtestant\u001B[0m: Slyšeli jste o tom, co Sylvasta dělá, a proč jsme tady venku?"
+        option_1 = "Ne, prosím vysvětlete mi."
+        option_2 = "Ale nic."
+
+        [street.protestors.enquire]
+        dialog = """\u001B[31mProtestant\u001B[0m: Používají městské finance, aby pokračovali v jejich upřímně řečeno
+nelegálním výzkumu, viděli jste ty úniky, ne?"""
+        option_1 = "Ne."
+        option_2 = "Dobře.. Nechám vás v tom."
+
+        [street.protestors.leaks]
+        dialog = """\u001B[31mProtestant\u001B[0m: No někteři bývalí zaměstnanci vypustili informace o jejich
+aktuálních výzkumech a co z toho můžeme říct je že dělají bioinženýrství na
+beastmanech, toto by nemělo být tolerováno natož finanocáno městem."""
+        option_1 = "Ok."
+
+        [street.protestors.confrontation]
+        dialog = "\u001B[31mProtestant\u001B[0m: Ze mě děláte nějakého konspiračního teoretika nebo co?"
+        option_1 = "Ano."
+        option_2 = "Odcházím."
+
+[shop]
+enter = '''
+Vstoupíš do obchodu, za zavírajícíma dveřma zazvoní vstupní zvonek.
+'''
+
+    # Green: \u001B[32m
+    [shop.npc]
+    description = "Obchodník"
+    leave = "Ale nic."
+
+    currently_have_amount_of_money = "Zrovna máš:"
+    not_enough = "Nemáš dost peněz aby si koupil"
+    too_heavy = "Je to moc těžké!"
+
+    out_of_stock = "není skladem"
+    x_left = "zbývá"
+
+        [shop.npc.fake_item]
+        cat = "Jedna jediná kočka"
+
+        [shop.npc.item_out_of_stock]
+        1 = "Tato položka"
+        2 = "nemůžeš jí koupit"
+
+        [shop.npc.bought]
+        1 = "Koupil si"
+        2 = "a dal si ji do tašky"
+
+        [shop.npc.greeting]
+        Exposition = "\u001B[32mObchodník\u001B[0m: Dobré ráno, co byste si chtěli koupit?"
+        Recon = "\u001B[32mObchodník\u001B[0m: Dobrý den, něco dneska na mysli?"
+        Stealth = "\u001B[32mObchodník\u001B[0m: Hledáte něco ke koupi?"
+        End = "\u001B[32mObchodník\u001B[0m: Je třeba něco nového?"
+
+[back_alley]
+first_load = '''
+Vstoupíš do temné uličky, je tady docela ticho, velký rozdíl oproti náměstí
+přímo umístěna skoro přímo uprostřed města. Strany uličky jsou obklopeny
+zastaralými budovami a temným světlem.
+
+Rozeznáš povědomou postavu ahead před tebou.
+'''
+
+enter = '''
+Vstoupíš do temné uličky.
+'''
+
+[coastline]
+enter = '''
+Dorazíš na městskou pobřežní čáru, voda je převážně klidná.
+'''
+
+[mainland_coastline]
+enter = '''
+Dorazíš na pobřežní čáru na pevnině,
+moře bourá do kamenů postavených v cestě,
+je tady mnohem chladněji, pryč od betonové džungle.
+'''
+
+[forest]
+enter = '''
+Bloudíš lesem, slyšíš ptáky zpívat z vršků stromů...
+Přes prostředek proudí řeka, se starým dřevěným mostem nad ní.
+Bylo by pěkně jednoduché se tady na pár hodin ztratit.
+'''
+
+    # Yellow: \u001B[33m
+    [forest.old_man]
+    description = "Starý muž procházející se lesem"
+    full = "Není nic jiného, co mu můžeš dát."
+    accept = "\u001B[33mStarý Muž\u001B[0m: Děkuji, že jste mi ji přinesli."
+    deny = "\u001B[33mStarý Muž\u001B[0m: Nechci tvůj"
+
+        [forest.old_man.small_talk]
+        dialog = "\u001B[33mStarý Muž\u001B[0m: Neviděl si nikde moji kočku, co?"
+        option_1 = "Viděl jsem tuhle černou kočku okolo města..."
+        option_q = "Ne."
+
+        [forest.old_man.request]
+        dialog = "\u001B[33mStarý Muž\u001B[0m: Mohl by si mi ji přinést?"
+        option_1 = "Jistě."
+        option_q = "Omlouvám se, teď ne."
+
+        [forest.old_man.praise]
+        dialog = "\u001B[33mStarý Muž\u001B[0m: Děkuji vám za pomoc!"
+        option_q = "[odejít]"
+
+[worm_hole]
+enter = '''
+Vstoupíš do červí díry...
+'''
+
+[medical_centre]
+enter = '''
+Nyní jsi u recepce Zdravotního střediska.
+'''
+
+    # Red: \u001B[31m
+    [medical_centre.guard]
+    description = "Ochranka umístěná u dveří"
+    blocking = "U dveří je ochranka hlídající schody, žádný způsob jak se přes ni dostat."
+
+        [medical_centre.guard.small_talk]
+        dialog = "\u001B[31mOchranka\u001B[0m: Co chceš?"
+        option_q = "Nic..."
+
+[medical_centre_office]
+enter = '''
+Nacházíš se v kanceláři Zdravotního střediska.
+Rozhodně by si tady neměl být...
+'''
+
+    [medical_centre_office.books]
+        [medical_centre_office.books.1]
+        title = "Alan Stern. Hon za Novými Obzory"
+        contents = """
+14. července , 2015 se stalo něco úžasného. Víc než 3 miliardy mil od
+Země, malá NASA loď pojmenovaná Nové Obzory přeletěla kolem Pluta rychlostí
+více než 32 000 mil za hodinu, mířící její instrumenty na tajemné ledové
+světy Pluto systému, a pak, stejně rychle, pokračovala na své cestě do dále.
+"""
+
+        [medical_centre_office.books.2] # yes
+        title = "Štos výzkumných papíru"
+        contents = """
+Po našich nejnovějších testech jsme zjistili že \u001B[47m\u001B[37m[redigováno]\u001B[0m má
+značné záporné účinky. Tyto testy byly provedeny napříč 8 dnů a způsobily
+\u001B[47m\u001B[37m[redigováno]\u001B[0m a \u001B[47m\u001B[37m[redigováno]\u001B[0m uvnitř těla.
+
+Tento dokument je důvěrný a neměl by být sdílen s třetími stranami.
+"""
+
+        [medical_centre_office.books.3]
+        title = "Barry A. Burd. Java pro Blbce"
+        contents = """
+Java je platformově–nezávislý, objektově–orientovaný programovací jazyk
+používaný pro vývoj webových a mobilních aplikací. Revizovaná verze obsahuje
+funkce, které mají programátory nadšené, a tento oblíbený průvodce
+se jimi všemi zabývá.
+
+Naučíte se programovat v Javě jako takto:
+
+\u001B[36mimport \u001B[33mjava\u001B[37m.\u001B[33mio\u001B[37m.\u001B[33mBufferedReader\u001B[37m;
+\u001B[36mimport \u001B[33mjava\u001B[37m.\u001B[33mio\u001B[37m.\u001B[33mInputStreamReader\u001B[37m;
+\u001B[33mpublic class \u001B[31mMain  \u001B[34m{
+    \u001B[33mpublic static  void \u001B[31mmain  \u001B[34m(\u001B[33mString[] args\u001B[34m) \u001B[34m{
+        \u001B[33mtry{ String a=new \u001B[31mBufferedReader \u001B[34m(
+            \u001B[33mnew \u001B[31mInputStreamReader\u001B[34m( System\u001B[37m.\u001B[33mout\u001B[37m \u001B[34m))\u001B[37m.
+                \u001B[31mreadLine() \u001B[37m;
+        \u001B[33mif
+            \u001B[34m(a == \u001B[32m"ahoj"\u001B[34m) {
+            System\u001B[37m.\u001B[33mout\u001B[37m.\u001B[31mprintln\u001B[34m(\u001B[32m"Ahoj!!"\u001B[34m) \u001B[37m;
+        \u001B[34m} \u001B[33melse
+       \u001B[34m{
+            System\u001B[37m.\u001B[33mout\u001B[37m.\u001B[31mprintln\u001B[34m(\u001B[32m"nepozdravil si mě!"\u001B[34m) \u001B[37m;
+        \u001B[34m}
+    } \u001B[33mcatch \u001B[34m(\u001B[33mException e\u001B[34m) {\u001B[35m/*něco špatného se stalo! */ \u001B[34m} } }
+\u001B[0m"""
+
+        [medical_centre_office.books.4] # yes
+        title = "Dr. Mike Ox. Introducing Impostors in Society"
+        contents = """
+[Orazítkováno pouze pro vnitřní využití.]
+
+Tato kniha podrobně popisuje metody, které můžeme použít k manipulaci obecného
+lidu, budu se podrobně věnovat způsobům, jak můžeme nenápadně odstranit
+nebezpečné nápady a udržet vaše tajemství pod pokličkou.
+"""
+
+        [medical_centre_office.books.5] # yes
+        title = "RNA sekvence"
+        contents = """
+Důvěrný dokument
+
+Tvar 1.
+GAGAATAAACTAGTATTCTTCTGGTCCCCACAGACTCAGAGAGAACCCGCCACCATGTTCGTGTTCCTGGTGCTGCTGCC
+TCTGGTGTCCAGCCAGTGTGTGAACCTGACCACCAGAACACAGCTGCCTCCAGCCTACACCAACAGCTTTACCAGAGGCG
+TGTACTACCCCGACAAGGTGTTCAGATCCAGCGTGCTGCACTCTACCCAGGACCTGTTCCTGCCTTTCTTCAGCAACGTG
+ACCTGGTTCCACGCCATCCACGTGTCCGGCACCAATGGCACCAAGAGATTCGACAACCCCGTGCTGCCCTTCAACGACGG
+GGTGTACTTTGCCAGCACCGAGAAGTCCAACATCATCAGAGGCTGGATCTTCGGCACCACACTGGACAGCAAGACCCAGA
+GCCTGCTGATCGTGAACAACGCCACCAACGTGGTCATCAAAGTGTGCGAGTTCCAGTTCTGCAACGACCCCTTCCTGGGC
+GTCTACTACCACAAGAACAACAAGAGCTGGATGGAAAGCGAGTTCCGGGTGTACAGCAGCGCCAACAACTGCACCTTCGA
+GTACGTGTCCCAGCCTTTCCTGATGGACCTGGAAGGCAAGCAGGGCAACTTCAAGAACCTGCGCGAGTTCGTGTTTAAGA
+ACATCGACGGCTACTTCAAGATCTACAGCAAGCACACCCCTATCAACCTCGTGCGGGATCTGCCTCAGGGCTTCTCTGCT
+CTGGAACCCCTGGTGGATCTGCCCATCGGCATCAACATCACCCGGTTTCAGACACTGCTGGCCCTGCACAGAAGCTACCT
+GACACCTGGCGATAGCAGCAGCGGATGGACAGCTGGTGCCGCCGCTTACTATGTGGGCTACCTGCAGCCTAGAACCTTCC
+TGCTGAAGTACAACGAGAACGGCACCATCACCGACGCCGTGGATTGTGCTCTGGATCCTCTGAGCGAGACAAAGTGCACC
+"""
+
+        [medical_centre_office.books.6]
+        title = "Jules Verne. Cesta kolem světa za osmdesát dní"
+        contents = """
+Jednoho nešťastného večera v Reformním klubu, Phileas Fogg se unáhleně vsadí
+se svými společníky o £20,000 že dokáže objet celou zemi za pouhých osmdesát
+dnů - a je rozhodnutý neprohrát. Porušení zaběhnuté rutiny svého každodenního
+života, rezervovaný Angličan se okamžitě vydává do Doveru, doprovázený svým
+horkokrevným francouzským sluhou Passepartoutem. Cestování vlakem, parníkem,
+plachetnicí, saněmi a dokonce i slonem, musí překonat, bouře, únos,
+přírodní katastrofy, útoky Siouxů and zarputilého inspektora Fixe ze Scotland
+Yardu, který věří, že Fogg vyloupil Banku Anglie. - aby vyhrál mimořádnou sázku
+"""
+
+[marie]
+description = "\u001B[35mMarie, Mink\u001B[0m"
+
+    # Purple: \u001B[35m
+    [marie.alley]
+
+        [marie.alley.small_talk]
+        dialog = "\u001B[35mMarie\u001B[0m: Co tě jsem přináší?"
+        option_1 = "Slyšela si o protestech?"
+        option_2 = "Sylvasta něco chystá..."
+        option_q = "Ale nic, měj hezký den."
+
+        [marie.alley.protests]
+        dialog = """\u001B[35mMarie\u001B[0m: To jo, ty týpci od Sylvasta rozhodně něco dělají,
+ale nevím, jestli věřím těm davům, co se prý objevili."""
+        option_1 = "Chceš mi pomoct na to přijít?"
+        option_q = "Ale nic."
+
+        [marie.alley.sylvasta]
+        dialog = "\u001B[35mMarie\u001B[0m: Myslíš si, že nevím? Chceš mi pomoct na to přijít?"
+        option_1 = "Klidně."
+        option_q = "Ne, díky."
+
+        [marie.alley.confirm]
+        dialog = "\u001B[35mMarie\u001B[0m: Předpokládám že bychom se mohli vloupat a přijít na pravdu."
+        option_1 = "Pojďme na to! [pokračovat v příběhu]"
+        option_q = "V žádném případě!"
+
+        [marie.alley.recon]
+        dialog = """\u001B[35mMarie\u001B[0m: Ok, mezitím co přijdu na to jak se tam dostat, potřebuji, aby si našel
+něco co můžem použít pro komunikaci, Jsem si jistá, že ten obchod něco má,
+setkej se se mnou tady zase až něco najdeš."""
+        option_q = "Chápu."
+
+        [marie.alley.waiting]
+        dialog = "\u001B[35mMarie\u001B[0m: No? Běž pro něj."
+        option_q = "Ok."
+
+        [marie.alley.mission_brief]
+        dialog = """\u001B[35mMarie\u001B[0m: Tak plán je, ty půjdeš do Zdravotního střediska, přijdeš k recepci,
+zkus ale splynout s ostatními... Třeba najdi židli na kterou si sedneš
+nebo něco, tak či tak, až tam budeš a ochranka nebude koukat,
+použij svůj komunikátor a dej mi vědět.
+
+\u001B[35mMarie\u001B[0m: Odtamtud zkusím způsobit rozrušení a poslat je do jejich odpočívárny,
+mezitím co ty zkusíš vniknout do kanceláře a najít cokoliv co můžeš...
+ale až tam budeš, dej mi vědět.
+
+\u001B[35mMarie\u001B[0m: Pokud chceš, můžeš vyzkoušet svůj komunikátor teďkon."""
+        option_q = "Ok."
+
+    [marie.comms]
+    received = """\u001B[35mMarie\u001B[0m: Dobře, mám ty dokumenty, všude je rozesílám,
+Dobrá práce."""
+    bad_documents = "\u001B[35mMarie\u001B[0m: Tyhle nevypadaj jako ty správný dokumenty..."
+    no_access = "\u001B[31mPřístup zamítnut!\u001B[0m"
+
+        [marie.comms.orientation]
+        dialog = "\u001B[35mMarie\u001B[0m: Co chceš?"
+        option_1 = "Kam mám zase jít?"
+        option_2 = "Slyšíš mě?"
+        option_q = "Ale nic."
+
+        [marie.comms.directions]
+        dialog = """\u001B[35mMarie\u001B[0m: Musíš jít do Zdravotního střediska, až tam budeš, zkus splynout,
+a dej mi vědět až budeš připraven."""
+        option_q = "Mám to."
+
+        [marie.comms.hear]
+        # translation(jan): is jasně, čistě or zřetelně better here?
+        dialog = "\u001B[35mMarie\u001B[0m: Hlasitě a jasně."
+        option_q = "Super."
+
+        [marie.comms.complaint]
+        dialog = "\u001B[35mMarie\u001B[0m: Zkus zapadnout..."
+        option_q = "Ok."
+
+        [marie.comms.in_position]
+        dialog = "\u001B[35mMarie\u001B[0m: Ok, udělám rozrušení, dej mi chvilku..."
+        option_1 = "[počkat]"
+
+        [marie.comms.distraction]
+        dialog = """\u001B[31mOchranka\u001B[0m: Kdo tam je?
+Měl by si vyjít nebo budeme mít velký problem.
+
+(vidíš ochranku vejít do odpočívárny)
+"""
+        option_1 = "[počkat]"
+
+        [marie.comms.coast_is_clear]
+        dialog = "\u001B[35mMarie\u001B[0m: Ok, nyní je tvoje šance."
+        option_q = "Jdu na to."
+
+        [marie.comms.gogogo]
+        dialog = "\u001B[35mMarie\u001B[0m: Na co čekáš??"
+        option_q = "ÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁÁ"
+
+        [marie.comms.office]
+        dialog = "\u001B[35mMarie\u001B[0m: Co vidíš?"
+        option_1 = "Hromadu všude rozprostřených dokumentů."
+
+        [marie.comms.documents]
+        dialog = """\u001B[35mMarie\u001B[0m: Ok, projdi je a vyber cokoliv, co vypadá relevantní, vyhledej
+cokoliv, co zmiňuje to, o čem protestovali. Jakmile je najdeš, budeš mi je
+muset poslat, tuším běž zpátky do svého bytu a uděláme to odtamtud,
+dej mi vědět až tam budeš.
+
+\u001B[35mMarie\u001B[0m: Budu jistit, aby si tě nevšimli.
+
+\u001B[33mNápověda: můžeš použít dokumenty aby si je přečetl.\u001B[0m"""
+        option_q = "Ok."
+
+        [marie.comms.home]
+        dialog = """\u001B[35mMarie\u001B[0m: Pravděpodobně máš ty dokumenty, zapni si počítač, otevři si skener
+dokumentů, a nahraj je."""
+
+[stage]
+# replace "režimu otevřeného světa" with "režimu open world" if you think that suits more
+reached_conclusion = """\n
+Dosáhl si konec hry, jsi nyní v režimu otevřeného světa.
+Pokračuj v prozkoumávání všeho, co si neprozkoumal, pro maximální skóre.
+
+Můžeš skončit tím, že napíšeš \u001B[47m\u001B[30mwin\u001B[0m
+"""

@@ -30,11 +30,14 @@ public class StoryFlags {
      * Side-quests available in the game.
      */
     public enum Quest {
-        Cat
+        Cat,
+        WormHole
     }
     
     private EventSystem eventSystem;
     private HashSet<Quest> quests;
+
+    private long startTime;
     private int balance;
     private Stage stage;
     private int ticks;
@@ -47,6 +50,8 @@ public class StoryFlags {
         this.eventSystem = eventSystem;
         this.stage = Stage.Exposition;
         this.quests = new HashSet<>();
+
+        this.startTime = System.currentTimeMillis();
         this.balance = 100_000;
         this.ticks = 0;
 
@@ -129,5 +134,23 @@ public class StoryFlags {
      */
     public int getTotalQuests() {
         return Quest.values().length;
+    }
+
+    /**
+     * Get time elapsed since the start of the game.
+     * @return Time elapsed
+     */
+    public long timeElapsed() {
+        return System.currentTimeMillis() - this.startTime;
+    }
+
+    /**
+     * Take the time elapsed and pretty print it.
+     * @return Pretty printed time elapsed.
+     */
+    public String prettyPrintTimeElapsed() {
+        long time = this.timeElapsed() / 1000;
+        return (time / 60) + " <commands.win.minutes> "
+            + (time % 60) + " <commands.win.seconds>";
     }
 }

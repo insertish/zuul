@@ -1,5 +1,5 @@
-# Translations for World of Deez
-# By Infi
+# Translations for World of These
+# Provided by Infi
 
 [global]
 sight = "Du kannst Folgendes sehen:"
@@ -121,6 +121,9 @@ schnell ans Licht:
 """
     stats = "\u001B[47m\u001B[30mDeine Spielstatistiken\u001B[0m"
     total_ticks = "Insgesamt Spielticks: "
+    total_time = "Spielzeit insgesamt: "
+    minutes = "minuten"
+    seconds = "sekunden"
     sidequests_complete = "Sidequests abgeschlossen: "
     press_enter_key = "Drücke Enter, um das Spiel zu schließen."
 
@@ -247,8 +250,7 @@ Sylvasta erschienen ist.
 \u001B[36mKorrespondent\u001B[0m zum \u001B[33mDemonstranten\u001B[0m: Was bringt sie heute hierher?
 """
 
-        dialog_b="""\u001B[33mDemonstrant\u001B[0m:
-Demonstrant: Sie nehmen das Geld der Stadt und nutzen es für ihren eigenen
+        dialog_b="""\u001B[33mDemonstrant\u001B[0m: Sie nehmen das Geld der Stadt und nutzen es für ihren eigenen
 Vorteil, sie sollten keine Fördergelder bekommen, geschweige denn hier ihre
 Forschung betreiben dürfen.
 

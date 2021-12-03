@@ -10,6 +10,7 @@ emojis = [
     { unicode = ":uk:", path = "uk.png", width = 3, height = 1 }, # 🇬🇧
     { unicode = ":us:", path = "us.png", width = 3, height = 1 }, # 🇺🇸
     { unicode = ":de:", path = "de.png", width = 3, height = 1 }, # 🇩🇪
+    { unicode = ":cz:", path = "cz.png", width = 3, height = 1 }, # 🇨🇿
 
     # Example definitions:
     #{ unicode = "[wideChamp]", path = "weirdChamp.png" },

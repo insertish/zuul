@@ -36,4 +36,9 @@ public class StandardIO implements IOSystem {
 
     @Override
     public void dispose() {}
+
+    @Override
+    public void clear() {
+        this.print("\u000C");
+    }
 }

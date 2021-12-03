@@ -38,4 +38,9 @@ public class SanitiseIO implements IOSystem {
     public void dispose() {
         this.io.dispose();
     }
+
+    @Override
+    public void clear() {
+        this.io.clear();
+    }
 }

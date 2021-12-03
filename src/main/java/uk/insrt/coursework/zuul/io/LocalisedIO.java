@@ -64,4 +64,9 @@ public class LocalisedIO implements IOSystem {
     public void dispose() {
         this.io.dispose();
     }
+
+    @Override
+    public void clear() {
+        this.io.clear();
+    }
 }

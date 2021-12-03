@@ -2,6 +2,7 @@ package uk.insrt.coursework.zuul.content.campaign.rooms;
 
 import java.util.Random;
 
+import uk.insrt.coursework.zuul.content.campaign.StoryFlags.Quest;
 import uk.insrt.coursework.zuul.entities.Entity;
 import uk.insrt.coursework.zuul.entities.EntityPlayer;
 import uk.insrt.coursework.zuul.events.IEventListener;
@@ -69,6 +70,7 @@ public class RoomWormHole extends CampaignRoom implements IEventListener<EventEn
 
             // Play worm hole sound while we are falling through time and space.
             world.emit(new EventSound(SoundType.WormHole));
+            world.getStoryFlags().completeSideQuest(Quest.WormHole);
 
             for (int i=0;i<25*16;i++) {
                 var out = "";

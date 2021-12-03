@@ -1,4 +1,4 @@
-# Translations for World of Deez
+# Translations for World of These
 
 [global]
 sight = "You can see:"
@@ -117,6 +117,9 @@ analyse through every single tiny detail, some immediate details come to light:
 """
     stats = "\u001B[47m\u001B[30mYour final game stats\u001B[0m"
     total_ticks = "Total game ticks: "
+    total_time = "Total time played: "
+    minutes = "minutes"
+    seconds = "seconds"
     sidequests_complete = "Side-quests completed: "
     press_enter_key = "Press enter to close the game."
 
@@ -240,8 +243,7 @@ Sylvasta.
 \u001B[36mCorrespondent\u001B[0m to \u001B[33mProtestor\u001B[0m: What brings you here today?
 """
 
-        dialog_b="""\u001B[33mProtestor\u001B[0m:
-Protestor: They're taking the city's money and using it for their own gain, they
+        dialog_b="""\u001B[33mProtestor\u001B[0m: They're taking the city's money and using it for their own gain, they
 shouldn't receive any funding let alone be allowed to operate here.
 
 \u001B[31mNews Anchor\u001B[0m: Bold claims coming straight from outside Sylvasta, whether these
@@ -357,7 +359,7 @@ You enter the main city street connecting the major parts of the city.
 
 There's a lot of chaos and noise here, to your west you can see protestors
 outside of the medical centre complex, they're holding signs up, "UNETHICAL
-RESEARCH", "OUR RELATIONS AT STAKE", "UNFORSEEN CONSEQUENCES".
+RESEARCH", "OUR RELATIONS AT STAKE", "UNFORESEEN CONSEQUENCES".
 '''
 
 enter = '''
@@ -707,8 +709,8 @@ from there, let me know once you're there.
         option_q = "Ok."
 
         [marie.comms.home]
-        dialog = """\u001B[35mMarie\u001B[0m: Presumably you have the documents, turn your computer on, go to the link
-I've sent you, it should show up, and upload them."""
+        dialog = """\u001B[35mMarie\u001B[0m: Presumably you have the documents, turn your computer on, open the
+document scanner and upload them."""
 
 [stage]
 reached_conclusion = """\n
