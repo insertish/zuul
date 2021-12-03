@@ -29,6 +29,33 @@
     \textit{\textcolor{cPurple}{#1}}
 }
 
+% Styles stolen from https://www.overleaf.com/learn/latex/Code_listing
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
 \title{World of Deez}
 \author{Pawel Makles \\ \small (K21002534)}
 \date{\small Created: 19th November 2021 \\ Last Modified: 3rd December 2021}
@@ -216,20 +243,18 @@
                 \subsection{Terminal Emulator}
                 \textit{``Implement a terminal emulator.''} \\
 
-                %\blindtext
+                I began by creating a new \codeword{IOSystem} interface which provides common I/O methods, such as \codeword{print}, \codeword{println} and \codeword{readLine}. I then made all game output come through this interface and created two new classes that implemented it, \codeword{StandardIO} as a fallback to stdout and the \codeword{TerminalEmulator} which uses a new window.
 
-                I implemented this by creating a new class \codeword{TerminalEmulator} which implements the \codeword{IOSystem} so that it could be easily slotted into the game. 
-
-                    \subsubsection{Ansi Escape Codes}
+                    %\subsubsection{Ansi Escape Codes}
 
                         %\blindtext
-                        To make the game experience 
+                        %To make the game experience 
 
-                    \subsubsection{Emoji Support}
+                    %\subsubsection{Emoji Support}
 
                         %\blindtext
 
-                    \subsubsection{EventDraw and the Map}
+                    %\subsubsection{EventDraw and the Map}
 
                         %
 
@@ -239,15 +264,28 @@
         % ability.
 
             \subsection{Coupling}
-                Talk about EventSystem
+                % The term coupling describes the interconnectedness of classes. We strive for 
+                % loose coupling in a system—that is, a system where each class is largely independent and 
+                % communicates with other classes via a small, well-defined interface.
+                An example of loose coupling in my project is the \codeword{EventSystem}, it is completely independent from the rest of the project and can be used with anything (see \autoref{fig:event-system}), as such I am using it with both the \codeword{World} and \codeword{TerminalEmulator} for different purposes to provide different sets of events. Another example of loose coupling is the \codeword{Dialogue<T>} system, it accepts any kind of key through the generic \codeword{T} so it can be used with practically anything and if needed, the type can be constricted (example: \autoref{fig:dialogue}). The only dependency it has is the \codeword{IOSystem} interface.
 
             \subsection{Cohesion}
-                Talk about IOSystem
+                % The term cohesion describes how well a unit of code maps to a logical task 
+                % or entity. In a highly cohesive system, each unit of code (method, class, or module) is 
+                % responsible for a well-defined task or entity. Good class design exhibits a high degree of cohesion.
+                One example of high cohesion is the \codeword{IOSystem} and the classes which implement it (see \autoref{fig:io-system}).
+                
+                The first implementation I made was StandardIO (see \autoref{fig:standard-io}) which passes these methods through to \codeword{System.out/in}. One benefit of this is that I can easily slot in additional processing layers, such as \codeword{LocalisedIO} (see \autoref{fig:localised-io}) which can take in data, process it and pass it through to an arbitrary \codeword{IOSystem}.
 
             \subsection{Responsibility-driven design}
-                %
+                % Responsibility-driven design is the process of designing
+                % classes by assigning well-defined responsibilities to each class. This process can be used to 
+                % determine which class should implement which part of an application function
 
             \subsection{Maintainability}
+                % Writing for maintainability is maybe the most fundamental topic. It is about trying to write 
+                % code in such a way that errors are avoided in the first place and, if they still slip in, that 
+                % they can be found as easily as possible.
                 Talk about separation of World / CampaignWorld
 
         \section{Walkthrough}
@@ -322,12 +360,36 @@
         \caption{Event.java (uk.insrt.coursework.zuul.events.Event)} \label{fig:event}
     \end{figure}
     \begin{figure}
+        \lstinputlisting[language=Java]
+        {../src/main/java/uk/insrt/coursework/zuul/io/IOSystem.java}
+        \caption{IOSystem.java (uk.insrt.coursework.zuul.io.IOSystem)} \label{fig:io-system}
+    \end{figure}
+    \begin{figure}
+        \lstinputlisting[language=Java]
+        {../src/main/java/uk/insrt/coursework/zuul/io/StandardIO.java}
+        \caption{StandardIO.java (uk.insrt.coursework.zuul.io.StandardIO)} \label{fig:standard-io}
+    \end{figure}
+    \begin{figure}
+        \lstinputlisting[language=Java]
+        {../src/main/java/uk/insrt/coursework/zuul/io/LocalisedIO.java}
+        \caption{LocalisedIO.java (uk.insrt.coursework.zuul.io.LocalisedIO)} \label{fig:localised-io}
+    \end{figure}
+    \begin{figure}
+        \lstinputlisting[language=Java]
+        {../src/main/java/uk/insrt/coursework/zuul/events/EventSystem.java}
+        \caption{EventSystem.java (uk.insrt.coursework.zuul.events.EventSystem)} \label{fig:event-system}
+    \end{figure}
+    \begin{figure}
+        \lstinputlisting[language=Java]
+        {../src/main/java/uk/insrt/coursework/zuul/dialogue/DialogueOption.java}
+        \caption{DialogueOption.java (uk.insrt.coursework.zuul.dialogue.DialogueOption)} \label{fig:dialogue}
+    \end{figure}
+    \begin{figure}
         \begin{lstlisting}[language=Java]
 public<E extends Event> void addListener(Class<E> event,
     IEventListener<E> listener) {
     this.getList(event).add(listener);
-}
-        \end{lstlisting}
+}\end{lstlisting}
         \caption{Excerpt from EventSystem.java (uk.insrt.coursework.zuul.events.EventSystem)} \label{fig:generic-method}
     \end{figure}
 \end{document}

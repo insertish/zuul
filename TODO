@@ -1,7 +1,4 @@
-I18N FOR ENTITYPLAYER
-
-Sound
-Multiplayer
+I18N FOR ENTITYPLAYER AND DIALOGUE NODE
 
 Launcher with:
 - options such as:
@@ -10,15 +7,6 @@ Launcher with:
   - full screen
   - limited IO
 
-https://stackoverflow.com/questions/577724/trouble-playing-wav-in-java/577926#577926
-https://15.ai/
-https://uberduck.ai/#voice=jschlatt&mode=tts-basic
-https://freesound.org/people/tim.kahn/packs/7955/
-https://freesound.org/people/Doctor_Dreamchip/sounds/511279/
-https://freesound.org/people/Timbre/sounds/586988/
-https://freesound.org/people/Timbre/sounds/418692/
-
-https://www.youtube.com/watch?v=4_GL_iCxz0o
 https://refactoring.guru/design-patterns
 
 at the end:
@@ -26,21 +14,3 @@ at the end:
  * 
  * @author Pawel Makles (k21002534)
  * @version 1.0-SNAPSHOT
-
-map design:
-// https://democracy.york.gov.uk/documents/s2116/Annex%20C%20REcycling%20Report%20frnweights2005.pdf
-// https://www.google.com/maps/@50.4293559,18.9742453,16.12z
-// https://twitter.com/Yarung3/status/1258670295520628736/photo/1
-// https://twitter.com/jgilleard/status/1242354985351786497
-// [3:02] https://brand-new-animal.fandom.com/wiki/Runaway_Raccoon
-
-STUFF:
-need money to buy
-put in flags
-
-during recon
-you get money
-to buy shit
-
-fetch quest for something
-maybe money??
